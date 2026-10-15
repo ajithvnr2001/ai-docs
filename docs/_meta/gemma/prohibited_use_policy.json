@@ -1,0 +1,10 @@
+{
+  "url": "https://ai.google.dev/gemma/prohibited_use_policy/",
+  "file": "gemma/prohibited_use_policy.md",
+  "title": "https://ai.google.dev/gemma/prohibited_use_policy/",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
+  "fetched_at": "2026-10-15T19:19:25.386107+00:00",
+  "html_len": 3063,
+  "md_len": 1771,
+  "depth": 0
+}

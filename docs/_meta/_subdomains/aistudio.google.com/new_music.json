@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/new_music/",
+  "file": "_subdomains/aistudio.google.com/new_music.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (452 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:34:16.890824+00:00",
+  "html_len": 1252896,
+  "md_len": 524,
+  "depth": 2
+}

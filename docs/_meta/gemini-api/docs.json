@@ -1,0 +1,10 @@
+{
+  "url": "https://ai.google.dev/gemini-api/docs/",
+  "file": "gemini-api/docs.md",
+  "title": "https://ai.google.dev/oauth2authorize?return_url=https%3A%2F%2Fai.google.dev%2Fgemini-api%2Fdocs&prompt=none&auto_signin=True&scopes=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdeveloperprofiles+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdeveloperprofiles.award+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdevprofiles.full_control.firstparty",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
+  "fetched_at": "2026-10-15T19:17:37.952912+00:00",
+  "html_len": 4304,
+  "md_len": 3024,
+  "depth": 0
+}

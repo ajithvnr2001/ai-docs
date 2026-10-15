@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/app/apikey/",
+  "file": "_subdomains/aistudio.google.com/app/apikey.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (453 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:23:59.088398+00:00",
+  "html_len": 1245533,
+  "md_len": 453,
+  "depth": 2
+}

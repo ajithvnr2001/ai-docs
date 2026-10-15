@@ -1,0 +1,543 @@
+---
+url: https://ai.google.dev/api/webhooks.md.txt
+title: webhooks
+method: httpx-raw-text
+fetched_at: 2026-10-15T19:16:06.092092+00:00
+---
+
+# webhooks
+
+> Source: https://ai.google.dev/api/webhooks.md.txt
+
+<!-- disableFinding(G3DOC_JINJA) -->
+<!-- disableFinding(HEADING_FUNCTION) -->
+<!-- disableFinding(LINE_OVER_80) -->
+<!-- disableFinding(SPACES) -->
+
+
+
+# Gemini Webhooks API
+
+Note: This API is in Beta. Endpoints are under `/v1beta/`.
+
+Webhooks allow the Gemini API to push real-time notifications to your server when asynchronous or Long-Running Operations (LROs) complete. This replaces the need to poll the API for status updates, reducing latency and overhead.
+
+## Webhooks
+
+### CreateWebhook
+
+`POST https://generativelanguage.googleapis.com/v1beta/webhooks`
+
+Creates a new Webhook.
+
+
+#### Request Body
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **subscribed_events** (`array (enum (string))`) *(Required)* Required. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **uri** (`string`) *(Required)* Required. The URI to which webhook events will be sent.
+
+
+#### Response
+- **create_time** (`string`) Output only. The timestamp when the webhook was created.
+
+- **id** (`string`) Output only. The ID of the webhook.
+
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **new_signing_secret** (`string`) Output only. The new signing secret for the webhook. Only populated on create.
+
+- **signing_secrets** (`array (SigningSecret)`) Output only. The signing secrets associated with this webhook.
+  - **expire_time** (`string`)   Output only. The expiration date of the signing secret.
+
+  - **truncated_secret** (`string`)   Output only. The truncated version of the signing secret.
+
+
+- **state** (`enum (string)`) Output only. The state of the webhook.
+  Possible values:
+  - `enabled`: The webhook is enabled.
+  - `disabled`: The webhook is disabled by the user.
+  - `disabled_due_to_failed_deliveries`: The webhook is disabled due to failed deliveries.
+
+- **subscribed_events** (`array (enum (string))`) Required. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **update_time** (`string`) Output only. The timestamp when the webhook was last updated.
+
+- **uri** (`string`) Required. The URI to which webhook events will be sent.
+
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X POST 'https://generativelanguage.googleapis.com/v1beta/webhooks' \
+-H 'Content-Type: application/json' \
+-d '{
+  "create_time": "string",
+  "id": "string",
+  "name": "string",
+  "new_signing_secret": "string",
+  "signing_secrets": [
+    {
+      "expire_time": "string",
+      "truncated_secret": "string"
+    }
+  ],
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "update_time": "string",
+  "uri": "string"
+}'
+```
+Response:
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "name": "string",
+  "new_signing_secret": "string",
+  "signing_secrets": [
+    {
+      "expire_time": "string",
+      "truncated_secret": "string"
+    }
+  ],
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "update_time": "string",
+  "uri": "string"
+}
+```
+---
+
+### PingWebhook
+
+`POST https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:ping`
+
+Sends a ping event to a Webhook.
+
+#### Parameters
+- **id** (`string`) *(Required)* Required. The ID of the webhook to ping.
+
+
+#### Request Body
+
+#### Response
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X POST 'https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:ping' \
+-H 'Content-Type: application/json' \
+```
+---
+
+### RotateSigningSecret
+
+`POST https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:rotateSigningSecret`
+
+Generates a new signing secret for a Webhook.
+
+#### Parameters
+- **id** (`string`) *(Required)* Required. The ID of the webhook for which to generate a signing secret.
+
+
+#### Request Body
+- **revocation_behavior** (`enum (string)`) Optional. The revocation behavior for previous signing secrets.
+  Possible values:
+  - `revoke_previous_secrets_after_h24`: Generate a new signing secret and revoke all previous secrets after 24
+hours. Default and safest option for migrations.
+  - `revoke_previous_secrets_immediately`: Revoke all previous secrets immediately. Use with caution as this can
+interrupt ongoing notifications.
+
+
+#### Response
+- **secret** (`string`) Output only. The newly generated signing secret.
+
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X POST 'https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:rotateSigningSecret' \
+-H 'Content-Type: application/json' \
+-d '{
+  "revocation_behavior": "revoke_previous_secrets_after_h24"
+}'
+```
+Response:
+
+```json
+{
+  "secret": "string"
+}
+```
+---
+
+### ListWebhooks
+
+`GET https://generativelanguage.googleapis.com/v1beta/webhooks`
+
+Lists all Webhooks.
+
+#### Parameters
+- **page_size** (`integer`) Optional. The maximum number of webhooks to return. The service may return fewer than this value. If unspecified, at most 50 webhooks will be returned. The maximum value is 1000.
+
+- **page_token** (`string`) Optional. A page token, received from a previous `ListWebhooks` call. Provide this to retrieve the subsequent page.
+
+
+
+#### Response
+- **next_page_token** (`string`) A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
+
+- **webhooks** (`array (<a href="#Resource:Webhook">Webhook</a>)`) The webhooks.
+
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X GET 'https://generativelanguage.googleapis.com/v1beta/webhooks' \
+-H 'Content-Type: application/json' \
+```
+Response:
+
+```json
+{
+  "next_page_token": "string",
+  "webhooks": [
+    {
+      "create_time": "string",
+      "id": "string",
+      "name": "string",
+      "new_signing_secret": "string",
+      "signing_secrets": [
+        {
+          "expire_time": "string",
+          "truncated_secret": "string"
+        }
+      ],
+      "state": "enabled",
+      "subscribed_events": [
+        "batch.succeeded"
+      ],
+      "update_time": "string",
+      "uri": "string"
+    }
+  ]
+}
+```
+---
+
+### GetWebhook
+
+`GET https://generativelanguage.googleapis.com/v1beta/webhooks/{id}`
+
+Gets a specific Webhook.
+
+#### Parameters
+- **id** (`string`) *(Required)* Required. The ID of the webhook to retrieve.
+
+
+
+#### Response
+- **create_time** (`string`) Output only. The timestamp when the webhook was created.
+
+- **id** (`string`) Output only. The ID of the webhook.
+
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **new_signing_secret** (`string`) Output only. The new signing secret for the webhook. Only populated on create.
+
+- **signing_secrets** (`array (SigningSecret)`) Output only. The signing secrets associated with this webhook.
+  - **expire_time** (`string`)   Output only. The expiration date of the signing secret.
+
+  - **truncated_secret** (`string`)   Output only. The truncated version of the signing secret.
+
+
+- **state** (`enum (string)`) Output only. The state of the webhook.
+  Possible values:
+  - `enabled`: The webhook is enabled.
+  - `disabled`: The webhook is disabled by the user.
+  - `disabled_due_to_failed_deliveries`: The webhook is disabled due to failed deliveries.
+
+- **subscribed_events** (`array (enum (string))`) Required. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **update_time** (`string`) Output only. The timestamp when the webhook was last updated.
+
+- **uri** (`string`) Required. The URI to which webhook events will be sent.
+
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X GET 'https://generativelanguage.googleapis.com/v1beta/webhooks/{id}' \
+-H 'Content-Type: application/json' \
+```
+Response:
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "name": "string",
+  "new_signing_secret": "string",
+  "signing_secrets": [
+    {
+      "expire_time": "string",
+      "truncated_secret": "string"
+    }
+  ],
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "update_time": "string",
+  "uri": "string"
+}
+```
+---
+
+### UpdateWebhook
+
+`PATCH https://generativelanguage.googleapis.com/v1beta/webhooks/{id}`
+
+Updates an existing Webhook.
+
+#### Parameters
+- **id** (`string`) *(Required)* Required. The ID of the webhook to update.
+
+- **update_mask** (`string`) Optional list of fields to update.
+
+
+#### Request Body
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **state** (`enum (string)`) Optional. The state of the webhook.
+  Possible values:
+  - `enabled`: The webhook is enabled.
+  - `disabled`: The webhook is disabled by the user.
+  - `disabled_due_to_failed_deliveries`: The webhook is disabled due to failed deliveries.
+
+- **subscribed_events** (`array (enum (string))`) Optional. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **uri** (`string`) Optional. The URI to which webhook events will be sent.
+
+
+#### Response
+- **create_time** (`string`) Output only. The timestamp when the webhook was created.
+
+- **id** (`string`) Output only. The ID of the webhook.
+
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **new_signing_secret** (`string`) Output only. The new signing secret for the webhook. Only populated on create.
+
+- **signing_secrets** (`array (SigningSecret)`) Output only. The signing secrets associated with this webhook.
+  - **expire_time** (`string`)   Output only. The expiration date of the signing secret.
+
+  - **truncated_secret** (`string`)   Output only. The truncated version of the signing secret.
+
+
+- **state** (`enum (string)`) Output only. The state of the webhook.
+  Possible values:
+  - `enabled`: The webhook is enabled.
+  - `disabled`: The webhook is disabled by the user.
+  - `disabled_due_to_failed_deliveries`: The webhook is disabled due to failed deliveries.
+
+- **subscribed_events** (`array (enum (string))`) Required. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **update_time** (`string`) Output only. The timestamp when the webhook was last updated.
+
+- **uri** (`string`) Required. The URI to which webhook events will be sent.
+
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X PATCH 'https://generativelanguage.googleapis.com/v1beta/webhooks/{id}' \
+-H 'Content-Type: application/json' \
+-d '{
+  "name": "string",
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "uri": "string"
+}'
+```
+Response:
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "name": "string",
+  "new_signing_secret": "string",
+  "signing_secrets": [
+    {
+      "expire_time": "string",
+      "truncated_secret": "string"
+    }
+  ],
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "update_time": "string",
+  "uri": "string"
+}
+```
+---
+
+### DeleteWebhook
+
+`DELETE https://generativelanguage.googleapis.com/v1beta/webhooks/{id}`
+
+Deletes a Webhook.
+
+#### Parameters
+- **id** (`string`) *(Required)* Required. The ID of the webhook to delete.
+
+
+
+#### Response
+
+#### Examples
+**Example**
+
+**REST**
+
+```sh
+curl -X DELETE 'https://generativelanguage.googleapis.com/v1beta/webhooks/{id}' \
+-H 'Content-Type: application/json' \
+```
+---
+
+
+## Resources
+### Webhook { #Resource:Webhook }
+A Webhook resource.
+
+**Properties:**
+- **create_time** (`string`) Output only. The timestamp when the webhook was created.
+
+- **id** (`string`) Output only. The ID of the webhook.
+
+- **name** (`string`) Optional. The user-provided name of the webhook.
+
+- **new_signing_secret** (`string`) Output only. The new signing secret for the webhook. Only populated on create.
+
+- **signing_secrets** (`array (SigningSecret)`) Output only. The signing secrets associated with this webhook.
+  - **expire_time** (`string`)   Output only. The expiration date of the signing secret.
+
+  - **truncated_secret** (`string`)   Output only. The truncated version of the signing secret.
+
+
+- **state** (`enum (string)`) Output only. The state of the webhook.
+  Possible values:
+  - `enabled`: The webhook is enabled.
+  - `disabled`: The webhook is disabled by the user.
+  - `disabled_due_to_failed_deliveries`: The webhook is disabled due to failed deliveries.
+
+- **subscribed_events** (`array (enum (string))`) *(Required)* Required. The events that the webhook is subscribed to. Available events: - batch.succeeded - batch.expired - batch.failed - interaction.requires_action - interaction.completed - interaction.failed - video.generated
+  Possible values:
+  - `batch.succeeded`: Batch processing finished successfully.
+  - `batch.expired`: Batch has not been processed within the 48h timeframe.
+  - `batch.failed`: Batch job failed.
+  - `interaction.requires_action`: Interaction requires action (e.g., function calling).
+  - `interaction.completed`: Interaction completed successfully.
+  - `interaction.failed`: Interaction failed.
+  - `video.generated`: Video generation completed.
+
+- **update_time** (`string`) Output only. The timestamp when the webhook was last updated.
+
+- **uri** (`string`) *(Required)* Required. The URI to which webhook events will be sent.
+
+
+**JSON Representation:**
+
+```json
+{
+  "create_time": "string",
+  "id": "string",
+  "name": "string",
+  "new_signing_secret": "string",
+  "signing_secrets": [
+    {
+      "expire_time": "string",
+      "truncated_secret": "string"
+    }
+  ],
+  "state": "enabled",
+  "subscribed_events": [
+    "batch.succeeded"
+  ],
+  "update_time": "string",
+  "uri": "string"
+}
+```
+
+
+

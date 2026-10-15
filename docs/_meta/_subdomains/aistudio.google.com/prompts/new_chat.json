@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/prompts/new_chat/",
+  "file": "_subdomains/aistudio.google.com/prompts/new_chat.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (459 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:19:49.558873+00:00",
+  "html_len": 1253376,
+  "md_len": 531,
+  "depth": 1
+}

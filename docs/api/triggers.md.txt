@@ -1,0 +1,3716 @@
+---
+url: https://ai.google.dev/api/triggers.md.txt
+title: triggers
+method: httpx-raw-text
+fetched_at: 2026-10-15T19:16:05.990864+00:00
+---
+
+# triggers
+
+> Source: https://ai.google.dev/api/triggers.md.txt
+
+Triggers allow you to schedule agent executions on a cron schedule, enabling automated and recurring tasks.
+[View as markdown](https://ai.google.dev/static/api/triggers.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
+
+> [!NOTE]
+> This API is in Beta. Endpoints are under `/v1beta/`.
+
+## CreateTrigger
+
+post https://generativelanguage.googleapis.com/v1beta/triggers Creates a new trigger that will invoke the specified agent on the given
+cron schedule.
+- [Request body](https://ai.google.dev/api/triggers#CreateTrigger.request_body)
+- [Response](https://ai.google.dev/api/triggers#CreateTrigger.response)
+
+### Request body
+
+The request body contains data with the following structure:
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+interaction AgentInteraction (required) Required. The interaction request template to be executed.
+Interaction for generating the completion using agents.
+
+#### Fields
+
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
+environment EnvironmentConfig or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+Configuration for a custom environment.
+
+#### Fields
+
+env object (optional) Environment variables to set in the sandbox environment.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional) Network configuration for the environment.
+Network egress configuration for the environment.
+
+#### Fields
+
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+Possible
+values:
+
+- `disabled`
+
+  All network egress is blocked.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+- `skill_registry`
+
+  A skill resource from the Skill Registry Service.
+  Skill: projects/{project}/locations/{location}/skills/{skill}
+  SkillRevision:
+  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
+  Support mounting all skills under a project:
+  projects/{project}/locations/{location}/skills.
+type object (optional) No description provided.
+
+Always set to `"remote"`.
+input Content or array (Content) or array (Step) or string (optional) The input for the interaction.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+response_format ResponseFormat or array (ResponseFormat) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+<br />
+
+#### Possible Types
+
+AudioResponseFormat Configuration for audio output format.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
+mime_type enum (string) (optional) The MIME type of the audio output.
+
+Possible
+values:
+
+- `audio/mp3`
+
+  MP3 audio format.
+- `audio/ogg_opus`
+
+  OGG Opus audio format.
+- `audio/l16`
+
+  Raw PCM (L16) audio format.
+- `audio/wav`
+
+  WAV audio format.
+- `audio/alaw`
+
+  A-law audio format.
+- `audio/mulaw`
+
+  Mu-law audio format.
+sample_rate integer (optional) Sample rate in Hz.
+type object (required) No description provided.
+
+Always set to `"audio"`.
+ImageResponseFormat Configuration for image output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+
+Possible
+values:
+
+- `1:1`
+
+  1:1 aspect ratio.
+- `2:3`
+
+  2:3 aspect ratio.
+- `3:2`
+
+  3:2 aspect ratio.
+- `3:4`
+
+  3:4 aspect ratio.
+- `4:3`
+
+  4:3 aspect ratio.
+- `4:5`
+
+  4:5 aspect ratio.
+- `5:4`
+
+  5:4 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+- `16:9`
+
+  16:9 aspect ratio.
+- `21:9`
+
+  21:9 aspect ratio.
+- `1:8`
+
+  1:8 aspect ratio.
+- `8:1`
+
+  8:1 aspect ratio.
+- `1:4`
+
+  1:4 aspect ratio.
+- `4:1`
+
+  4:1 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
+image_size enum (string) (optional) The size of the image output.
+
+Possible
+values:
+
+- `512`
+
+  512px image size.
+- `1K`
+
+  1K image size.
+- `2K`
+
+  2K image size.
+- `4K`
+
+  4K image size.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+type object (required) No description provided.
+
+Always set to `"image"`.
+TextResponseFormat Configuration for text output format.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
+type object (required) No description provided.
+
+Always set to `"text"`.
+VideoResponseFormat Configuration for video output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+duration string (optional) The duration for the video output.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
+type object (required) No description provided.
+
+Always set to `"video"`.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+type HarmCategory (optional) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+- `deferred`
+
+  Deferred service tier.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+system_instruction string (optional) System instruction for the interaction.
+tools array (Tool) (optional) A list of tool declarations the model may call during interaction.
+A tool that can be used by the model.
+
+#### Possible Types
+
+CodeExecution A tool that can be used by the model to execute code.
+type object (required) No description provided.
+
+Always set to `"code_execution"`.
+ComputerUse A tool that can be used by the model to interact with the computer.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+FileSearch A tool that can be used by the model to search files.
+file_search_store_names array (string) (optional) The file search store names to search.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+Function A tool that can be used by the model.
+description string (optional) A description of the function.
+name string (optional) The name of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+type object (required) No description provided.
+
+Always set to `"function"`.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+GoogleSearch A tool that can be used by the model to search Google.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
+name string (optional) The name of the MCPServer.
+type object (required) No description provided.
+
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+Retrieval A tool that can be used by the model to retrieve files.
+exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
+Used to specify configuration for ExaAISearch.
+
+#### Fields
+
+api_key string (optional) Required. The API key for ExaAiSearch.
+custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
+Used to specify configuration for ParallelAISearch.
+
+#### Fields
+
+api_key string (optional) Optional. The API key for ParallelAiSearch.
+custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
+rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
+Use to specify configuration for RAG Store.
+
+#### Fields
+
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
+The definition of the Rag resource.
+
+#### Fields
+
+rag_corpus string (optional) Optional. RagCorpora resource name.
+rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
+rag_corpus field.
+rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
+Specifies the context retrieval config.
+
+#### Fields
+
+filter Filter (optional) Optional. Config for filters.
+Config for filters.
+
+#### Fields
+
+metadata_filter string (optional) Optional. String for metadata filtering.
+vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
+threshold.
+vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
+threshold.
+hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
+Config for Hybrid Search.
+
+#### Fields
+
+alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
+results.
+ranking Ranking (optional) Optional. Config for ranking and reranking.
+Config for ranking and reranking.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+rank_service RankService (optional) Config for Rank Service.
+Config for Rank Service.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+ranking_config object (optional) No description provided.
+
+Always set to `"rank_service"`.
+top_k integer (optional) Optional. The number of contexts to retrieve.
+retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
+
+Possible
+values:
+
+- `rag_store`
+- `exa_ai_search`
+- `parallel_ai_search`
+type object (required) No description provided.
+
+Always set to `"retrieval"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+schedule string (required) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+time_zone string (required) Required. Time zone in which the schedule should be interpreted.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction AgentInteraction (optional) Required. The interaction request template to be executed.
+Interaction for generating the completion using agents.
+
+#### Fields
+
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
+environment EnvironmentConfig or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+Configuration for a custom environment.
+
+#### Fields
+
+env object (optional) Environment variables to set in the sandbox environment.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional) Network configuration for the environment.
+Network egress configuration for the environment.
+
+#### Fields
+
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+Possible
+values:
+
+- `disabled`
+
+  All network egress is blocked.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+- `skill_registry`
+
+  A skill resource from the Skill Registry Service.
+  Skill: projects/{project}/locations/{location}/skills/{skill}
+  SkillRevision:
+  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
+  Support mounting all skills under a project:
+  projects/{project}/locations/{location}/skills.
+type object (optional) No description provided.
+
+Always set to `"remote"`.
+input Content or array (Content) or array (Step) or string (optional) The input for the interaction.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+response_format ResponseFormat or array (ResponseFormat) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+<br />
+
+#### Possible Types
+
+AudioResponseFormat Configuration for audio output format.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
+mime_type enum (string) (optional) The MIME type of the audio output.
+
+Possible
+values:
+
+- `audio/mp3`
+
+  MP3 audio format.
+- `audio/ogg_opus`
+
+  OGG Opus audio format.
+- `audio/l16`
+
+  Raw PCM (L16) audio format.
+- `audio/wav`
+
+  WAV audio format.
+- `audio/alaw`
+
+  A-law audio format.
+- `audio/mulaw`
+
+  Mu-law audio format.
+sample_rate integer (optional) Sample rate in Hz.
+type object (required) No description provided.
+
+Always set to `"audio"`.
+ImageResponseFormat Configuration for image output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+
+Possible
+values:
+
+- `1:1`
+
+  1:1 aspect ratio.
+- `2:3`
+
+  2:3 aspect ratio.
+- `3:2`
+
+  3:2 aspect ratio.
+- `3:4`
+
+  3:4 aspect ratio.
+- `4:3`
+
+  4:3 aspect ratio.
+- `4:5`
+
+  4:5 aspect ratio.
+- `5:4`
+
+  5:4 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+- `16:9`
+
+  16:9 aspect ratio.
+- `21:9`
+
+  21:9 aspect ratio.
+- `1:8`
+
+  1:8 aspect ratio.
+- `8:1`
+
+  8:1 aspect ratio.
+- `1:4`
+
+  1:4 aspect ratio.
+- `4:1`
+
+  4:1 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
+image_size enum (string) (optional) The size of the image output.
+
+Possible
+values:
+
+- `512`
+
+  512px image size.
+- `1K`
+
+  1K image size.
+- `2K`
+
+  2K image size.
+- `4K`
+
+  4K image size.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+type object (required) No description provided.
+
+Always set to `"image"`.
+TextResponseFormat Configuration for text output format.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
+type object (required) No description provided.
+
+Always set to `"text"`.
+VideoResponseFormat Configuration for video output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+duration string (optional) The duration for the video output.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
+type object (required) No description provided.
+
+Always set to `"video"`.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+type HarmCategory (optional) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+- `deferred`
+
+  Deferred service tier.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+system_instruction string (optional) System instruction for the interaction.
+tools array (Tool) (optional) A list of tool declarations the model may call during interaction.
+A tool that can be used by the model.
+
+#### Possible Types
+
+CodeExecution A tool that can be used by the model to execute code.
+type object (required) No description provided.
+
+Always set to `"code_execution"`.
+ComputerUse A tool that can be used by the model to interact with the computer.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+FileSearch A tool that can be used by the model to search files.
+file_search_store_names array (string) (optional) The file search store names to search.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+Function A tool that can be used by the model.
+description string (optional) A description of the function.
+name string (optional) The name of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+type object (required) No description provided.
+
+Always set to `"function"`.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+GoogleSearch A tool that can be used by the model to search Google.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
+name string (optional) The name of the MCPServer.
+type object (required) No description provided.
+
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+Retrieval A tool that can be used by the model to retrieve files.
+exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
+Used to specify configuration for ExaAISearch.
+
+#### Fields
+
+api_key string (optional) Required. The API key for ExaAiSearch.
+custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
+Used to specify configuration for ParallelAISearch.
+
+#### Fields
+
+api_key string (optional) Optional. The API key for ParallelAiSearch.
+custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
+rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
+Use to specify configuration for RAG Store.
+
+#### Fields
+
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
+The definition of the Rag resource.
+
+#### Fields
+
+rag_corpus string (optional) Optional. RagCorpora resource name.
+rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
+rag_corpus field.
+rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
+Specifies the context retrieval config.
+
+#### Fields
+
+filter Filter (optional) Optional. Config for filters.
+Config for filters.
+
+#### Fields
+
+metadata_filter string (optional) Optional. String for metadata filtering.
+vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
+threshold.
+vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
+threshold.
+hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
+Config for Hybrid Search.
+
+#### Fields
+
+alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
+results.
+ranking Ranking (optional) Optional. Config for ranking and reranking.
+Config for ranking and reranking.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+rank_service RankService (optional) Config for Rank Service.
+Config for Rank Service.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+ranking_config object (optional) No description provided.
+
+Always set to `"rank_service"`.
+top_k integer (optional) Optional. The number of contexts to retrieve.
+retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
+
+Possible
+values:
+
+- `rag_store`
+- `exa_ai_search`
+- `parallel_ai_search`
+type object (required) No description provided.
+
+Always set to `"retrieval"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Create
+
+<iframe src="https:///frame/api/triggers_86dd8ee839ab42eef693bf4c7ab339a83aea36c03bc53e37f26bf14a8ce072ea.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+## RunTrigger
+
+post https://generativelanguage.googleapis.com/v1beta/triggers/{triggerId}/executions Runs a trigger immediately.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#RunTrigger.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/triggers#RunTrigger.response)
+
+### Path / Query Parameters
+
+triggerId string (required) Required. Resource name of the trigger.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+end_time string (optional) Output only. The time when the execution finished.
+environment_id string (optional) Output only. The environment ID used for the execution.
+error string (optional) Output only. The error message if the execution failed.
+id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
+interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
+scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
+start_time string (optional) Output only. The time when the execution started.
+status enum (string) (optional) Output only. The status of the execution.
+
+Possible
+values:
+
+- `in_progress`
+
+  The execution is currently in progress.
+- `completed`
+
+  The execution completed successfully.
+- `failed`
+
+  The execution failed.
+- `skipped`
+
+  The execution was skipped (e.g., previous execution still running).
+- `timed_out`
+
+  The execution timed out.
+trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_d067faf8636113e16c8798ec66b6051ae9e8806adb0ddf922a52a76eabb08b45.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "end_time": "string",
+  "environment_id": "string",
+  "error": "string",
+  "id": "string",
+  "interaction_id": "string",
+  "scheduled_time": "string",
+  "start_time": "string",
+  "status": "in_progress",
+  "trigger_id": "string"
+}
+```
+
+## ListTriggers
+
+get https://generativelanguage.googleapis.com/v1beta/triggers Lists triggers for a project.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#ListTriggers.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/triggers#ListTriggers.response)
+
+### Path / Query Parameters
+
+filter string (optional) Optional. Filter expression (e.g., by state).
+page_size integer (optional) Optional. The maximum number of triggers to return per page.
+page_token string (optional) Optional. A page token from a previous ListTriggers call.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+next_page_token string (optional) A page token, received from a previous \`ListTriggers\` call.
+Provide this to retrieve the subsequent page.
+triggers array ([Trigger](https://ai.google.dev/api/triggers#Resource:Trigger)) (optional) The list of triggers.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_88d4ce9cd00dfdb0d58650ad142188cdc7a715b46fc632f001253acce33dd756.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "next_page_token": "string",
+  "triggers": [
+    {
+      "consecutive_failure_count": 0,
+      "create_time": "string",
+      "display_name": "string",
+      "environment_id": "string",
+      "execution_timeout_seconds": 0,
+      "id": "string",
+      "interaction": {
+        "agent": "deep-research-pro-preview-12-2025",
+        "agent_config": {
+          "max_total_tokens": "string",
+          "model": "string",
+          "type": {}
+        },
+        "background": true,
+        "environment": {
+          "env": {},
+          "environment_id": "string",
+          "network": {
+            "allowlist": [
+              {
+                "domain": "github.com",
+                "transform": [
+                  {
+                    "Authorization": "Bearer your-token"
+                  }
+                ]
+              },
+              {
+                "domain": "*.googleapis.com"
+              }
+            ]
+          },
+          "sources": [
+            "..."
+          ],
+          "type": {}
+        },
+        "input": {
+          "type": "audio",
+          "data": "BASE64_ENCODED_AUDIO",
+          "mime_type": "audio/wav"
+        },
+        "labels": {},
+        "previous_interaction_id": "string",
+        "response_format": {
+          "type": "audio",
+          "sample_rate": 24000
+        },
+        "safety_settings": [
+          {
+            "method": "severity",
+            "threshold": "block_low_and_above",
+            "type": "..."
+          }
+        ],
+        "service_tier": "flex",
+        "store": true,
+        "stream": true,
+        "system_instruction": "string",
+        "tools": [
+          {
+            "type": "..."
+          }
+        ],
+        "webhook_config": {
+          "uris": [
+            "string"
+          ],
+          "user_metadata": {}
+        }
+      },
+      "last_pause_time": "string",
+      "last_resume_time": "string",
+      "last_run_time": "string",
+      "max_consecutive_failures": 0,
+      "next_run_time": "string",
+      "previous_interaction_id": "string",
+      "schedule": "string",
+      "status": "active",
+      "time_zone": "string",
+      "update_time": "string"
+    }
+  ]
+}
+```
+
+## GetTrigger
+
+get https://generativelanguage.googleapis.com/v1beta/triggers/{id} Gets details of a single trigger.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#GetTrigger.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/triggers#GetTrigger.response)
+
+### Path / Query Parameters
+
+id string (required) Required. Resource name of the trigger.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction AgentInteraction (optional) Required. The interaction request template to be executed.
+Interaction for generating the completion using agents.
+
+#### Fields
+
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
+environment EnvironmentConfig or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+Configuration for a custom environment.
+
+#### Fields
+
+env object (optional) Environment variables to set in the sandbox environment.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional) Network configuration for the environment.
+Network egress configuration for the environment.
+
+#### Fields
+
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+Possible
+values:
+
+- `disabled`
+
+  All network egress is blocked.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+- `skill_registry`
+
+  A skill resource from the Skill Registry Service.
+  Skill: projects/{project}/locations/{location}/skills/{skill}
+  SkillRevision:
+  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
+  Support mounting all skills under a project:
+  projects/{project}/locations/{location}/skills.
+type object (optional) No description provided.
+
+Always set to `"remote"`.
+input Content or array (Content) or array (Step) or string (optional) The input for the interaction.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+response_format ResponseFormat or array (ResponseFormat) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+<br />
+
+#### Possible Types
+
+AudioResponseFormat Configuration for audio output format.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
+mime_type enum (string) (optional) The MIME type of the audio output.
+
+Possible
+values:
+
+- `audio/mp3`
+
+  MP3 audio format.
+- `audio/ogg_opus`
+
+  OGG Opus audio format.
+- `audio/l16`
+
+  Raw PCM (L16) audio format.
+- `audio/wav`
+
+  WAV audio format.
+- `audio/alaw`
+
+  A-law audio format.
+- `audio/mulaw`
+
+  Mu-law audio format.
+sample_rate integer (optional) Sample rate in Hz.
+type object (required) No description provided.
+
+Always set to `"audio"`.
+ImageResponseFormat Configuration for image output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+
+Possible
+values:
+
+- `1:1`
+
+  1:1 aspect ratio.
+- `2:3`
+
+  2:3 aspect ratio.
+- `3:2`
+
+  3:2 aspect ratio.
+- `3:4`
+
+  3:4 aspect ratio.
+- `4:3`
+
+  4:3 aspect ratio.
+- `4:5`
+
+  4:5 aspect ratio.
+- `5:4`
+
+  5:4 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+- `16:9`
+
+  16:9 aspect ratio.
+- `21:9`
+
+  21:9 aspect ratio.
+- `1:8`
+
+  1:8 aspect ratio.
+- `8:1`
+
+  8:1 aspect ratio.
+- `1:4`
+
+  1:4 aspect ratio.
+- `4:1`
+
+  4:1 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
+image_size enum (string) (optional) The size of the image output.
+
+Possible
+values:
+
+- `512`
+
+  512px image size.
+- `1K`
+
+  1K image size.
+- `2K`
+
+  2K image size.
+- `4K`
+
+  4K image size.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+type object (required) No description provided.
+
+Always set to `"image"`.
+TextResponseFormat Configuration for text output format.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
+type object (required) No description provided.
+
+Always set to `"text"`.
+VideoResponseFormat Configuration for video output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+duration string (optional) The duration for the video output.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
+type object (required) No description provided.
+
+Always set to `"video"`.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+type HarmCategory (optional) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+- `deferred`
+
+  Deferred service tier.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+system_instruction string (optional) System instruction for the interaction.
+tools array (Tool) (optional) A list of tool declarations the model may call during interaction.
+A tool that can be used by the model.
+
+#### Possible Types
+
+CodeExecution A tool that can be used by the model to execute code.
+type object (required) No description provided.
+
+Always set to `"code_execution"`.
+ComputerUse A tool that can be used by the model to interact with the computer.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+FileSearch A tool that can be used by the model to search files.
+file_search_store_names array (string) (optional) The file search store names to search.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+Function A tool that can be used by the model.
+description string (optional) A description of the function.
+name string (optional) The name of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+type object (required) No description provided.
+
+Always set to `"function"`.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+GoogleSearch A tool that can be used by the model to search Google.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
+name string (optional) The name of the MCPServer.
+type object (required) No description provided.
+
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+Retrieval A tool that can be used by the model to retrieve files.
+exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
+Used to specify configuration for ExaAISearch.
+
+#### Fields
+
+api_key string (optional) Required. The API key for ExaAiSearch.
+custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
+Used to specify configuration for ParallelAISearch.
+
+#### Fields
+
+api_key string (optional) Optional. The API key for ParallelAiSearch.
+custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
+rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
+Use to specify configuration for RAG Store.
+
+#### Fields
+
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
+The definition of the Rag resource.
+
+#### Fields
+
+rag_corpus string (optional) Optional. RagCorpora resource name.
+rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
+rag_corpus field.
+rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
+Specifies the context retrieval config.
+
+#### Fields
+
+filter Filter (optional) Optional. Config for filters.
+Config for filters.
+
+#### Fields
+
+metadata_filter string (optional) Optional. String for metadata filtering.
+vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
+threshold.
+vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
+threshold.
+hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
+Config for Hybrid Search.
+
+#### Fields
+
+alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
+results.
+ranking Ranking (optional) Optional. Config for ranking and reranking.
+Config for ranking and reranking.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+rank_service RankService (optional) Config for Rank Service.
+Config for Rank Service.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+ranking_config object (optional) No description provided.
+
+Always set to `"rank_service"`.
+top_k integer (optional) Optional. The number of contexts to retrieve.
+retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
+
+Possible
+values:
+
+- `rag_store`
+- `exa_ai_search`
+- `parallel_ai_search`
+type object (required) No description provided.
+
+Always set to `"retrieval"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_892e9f2b810313e63b3bd47c6343735a49e8d336477a131eb5bc29ca83c47471.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "consecutive_failure_count": 0,
+  "create_time": "string",
+  "display_name": "string",
+  "environment_id": "string",
+  "execution_timeout_seconds": 0,
+  "id": "string",
+  "interaction": {
+    "agent": "deep-research-pro-preview-12-2025",
+    "agent_config": {
+      "max_total_tokens": "string",
+      "model": "string",
+      "type": {}
+    },
+    "background": true,
+    "environment": {
+      "env": {},
+      "environment_id": "string",
+      "network": {
+        "allowlist": [
+          {
+            "domain": "github.com",
+            "transform": [
+              {
+                "Authorization": "Bearer your-token"
+              }
+            ]
+          },
+          {
+            "domain": "*.googleapis.com"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "content": "string",
+          "encoding": "string",
+          "source": "string",
+          "target": "string",
+          "type": "gcs"
+        }
+      ],
+      "type": {}
+    },
+    "input": {
+      "type": "audio",
+      "data": "BASE64_ENCODED_AUDIO",
+      "mime_type": "audio/wav"
+    },
+    "labels": {},
+    "previous_interaction_id": "string",
+    "response_format": {
+      "type": "audio",
+      "sample_rate": 24000
+    },
+    "safety_settings": [
+      {
+        "method": "severity",
+        "threshold": "block_low_and_above",
+        "type": "hate_speech"
+      }
+    ],
+    "service_tier": "flex",
+    "store": true,
+    "stream": true,
+    "system_instruction": "string",
+    "tools": [
+      {
+        "type": {}
+      }
+    ],
+    "webhook_config": {
+      "uris": [
+        "string"
+      ],
+      "user_metadata": {}
+    }
+  },
+  "last_pause_time": "string",
+  "last_resume_time": "string",
+  "last_run_time": "string",
+  "max_consecutive_failures": 0,
+  "next_run_time": "string",
+  "previous_interaction_id": "string",
+  "schedule": "string",
+  "status": "active",
+  "time_zone": "string",
+  "update_time": "string"
+}
+```
+
+## ListTriggerExecutions
+
+get https://generativelanguage.googleapis.com/v1beta/triggers/{triggerId}/executions Lists executions for a trigger.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#ListTriggerExecutions.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/triggers#ListTriggerExecutions.response)
+
+### Path / Query Parameters
+
+page_size integer (optional) The maximum number of executions to return per page.
+page_token string (optional) A page token from a previous ListTriggerExecutions call.
+triggerId string (required) Required. The trigger ID to list executions from.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+next_page_token string (optional) A page token, received from a previous \`ListTriggerExecutions\` call.
+Provide this to retrieve the subsequent page.
+trigger_executions array (TriggerExecution) (optional) The list of trigger executions.
+An execution instance of a trigger.
+
+#### Fields
+
+end_time string (optional) Output only. The time when the execution finished.
+environment_id string (optional) Output only. The environment ID used for the execution.
+error string (optional) Output only. The error message if the execution failed.
+id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
+interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
+scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
+start_time string (optional) Output only. The time when the execution started.
+status enum (string) (optional) Output only. The status of the execution.
+
+Possible
+values:
+
+- `in_progress`
+
+  The execution is currently in progress.
+- `completed`
+
+  The execution completed successfully.
+- `failed`
+
+  The execution failed.
+- `skipped`
+
+  The execution was skipped (e.g., previous execution still running).
+- `timed_out`
+
+  The execution timed out.
+trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_57f41629912ef145cf8137cf76e4795a8e287fa512a985a9c36acc36de4f4331.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "next_page_token": "string",
+  "trigger_executions": [
+    {
+      "end_time": "string",
+      "environment_id": "string",
+      "error": "string",
+      "id": "string",
+      "interaction_id": "string",
+      "scheduled_time": "string",
+      "start_time": "string",
+      "status": "in_progress",
+      "trigger_id": "string"
+    }
+  ]
+}
+```
+
+## UpdateTrigger
+
+patch https://generativelanguage.googleapis.com/v1beta/triggers/{id} Updates a trigger.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#UpdateTrigger.PATH_PARAMETERS)
+- [Request body](https://ai.google.dev/api/triggers#UpdateTrigger.request_body)
+- [Response](https://ai.google.dev/api/triggers#UpdateTrigger.response)
+
+### Path / Query Parameters
+
+id string (required) Required. Resource name of the trigger.
+
+### Request body
+
+The request body contains data with the following structure:
+display_name string (optional) Optional. The display name of the trigger.
+status enum (string) (optional) Optional. The status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+
+### Response
+
+If successful, the response body contains data with the following structure:
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction AgentInteraction (optional) Required. The interaction request template to be executed.
+Interaction for generating the completion using agents.
+
+#### Fields
+
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
+environment EnvironmentConfig or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+Configuration for a custom environment.
+
+#### Fields
+
+env object (optional) Environment variables to set in the sandbox environment.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional) Network configuration for the environment.
+Network egress configuration for the environment.
+
+#### Fields
+
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+Possible
+values:
+
+- `disabled`
+
+  All network egress is blocked.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+- `skill_registry`
+
+  A skill resource from the Skill Registry Service.
+  Skill: projects/{project}/locations/{location}/skills/{skill}
+  SkillRevision:
+  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
+  Support mounting all skills under a project:
+  projects/{project}/locations/{location}/skills.
+type object (optional) No description provided.
+
+Always set to `"remote"`.
+input Content or array (Content) or array (Step) or string (optional) The input for the interaction.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+response_format ResponseFormat or array (ResponseFormat) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+<br />
+
+#### Possible Types
+
+AudioResponseFormat Configuration for audio output format.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
+mime_type enum (string) (optional) The MIME type of the audio output.
+
+Possible
+values:
+
+- `audio/mp3`
+
+  MP3 audio format.
+- `audio/ogg_opus`
+
+  OGG Opus audio format.
+- `audio/l16`
+
+  Raw PCM (L16) audio format.
+- `audio/wav`
+
+  WAV audio format.
+- `audio/alaw`
+
+  A-law audio format.
+- `audio/mulaw`
+
+  Mu-law audio format.
+sample_rate integer (optional) Sample rate in Hz.
+type object (required) No description provided.
+
+Always set to `"audio"`.
+ImageResponseFormat Configuration for image output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+
+Possible
+values:
+
+- `1:1`
+
+  1:1 aspect ratio.
+- `2:3`
+
+  2:3 aspect ratio.
+- `3:2`
+
+  3:2 aspect ratio.
+- `3:4`
+
+  3:4 aspect ratio.
+- `4:3`
+
+  4:3 aspect ratio.
+- `4:5`
+
+  4:5 aspect ratio.
+- `5:4`
+
+  5:4 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+- `16:9`
+
+  16:9 aspect ratio.
+- `21:9`
+
+  21:9 aspect ratio.
+- `1:8`
+
+  1:8 aspect ratio.
+- `8:1`
+
+  8:1 aspect ratio.
+- `1:4`
+
+  1:4 aspect ratio.
+- `4:1`
+
+  4:1 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
+image_size enum (string) (optional) The size of the image output.
+
+Possible
+values:
+
+- `512`
+
+  512px image size.
+- `1K`
+
+  1K image size.
+- `2K`
+
+  2K image size.
+- `4K`
+
+  4K image size.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+type object (required) No description provided.
+
+Always set to `"image"`.
+TextResponseFormat Configuration for text output format.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
+type object (required) No description provided.
+
+Always set to `"text"`.
+VideoResponseFormat Configuration for video output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+duration string (optional) The duration for the video output.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
+type object (required) No description provided.
+
+Always set to `"video"`.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+type HarmCategory (optional) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+- `deferred`
+
+  Deferred service tier.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+system_instruction string (optional) System instruction for the interaction.
+tools array (Tool) (optional) A list of tool declarations the model may call during interaction.
+A tool that can be used by the model.
+
+#### Possible Types
+
+CodeExecution A tool that can be used by the model to execute code.
+type object (required) No description provided.
+
+Always set to `"code_execution"`.
+ComputerUse A tool that can be used by the model to interact with the computer.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+FileSearch A tool that can be used by the model to search files.
+file_search_store_names array (string) (optional) The file search store names to search.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+Function A tool that can be used by the model.
+description string (optional) A description of the function.
+name string (optional) The name of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+type object (required) No description provided.
+
+Always set to `"function"`.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+GoogleSearch A tool that can be used by the model to search Google.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
+name string (optional) The name of the MCPServer.
+type object (required) No description provided.
+
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+Retrieval A tool that can be used by the model to retrieve files.
+exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
+Used to specify configuration for ExaAISearch.
+
+#### Fields
+
+api_key string (optional) Required. The API key for ExaAiSearch.
+custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
+Used to specify configuration for ParallelAISearch.
+
+#### Fields
+
+api_key string (optional) Optional. The API key for ParallelAiSearch.
+custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
+rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
+Use to specify configuration for RAG Store.
+
+#### Fields
+
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
+The definition of the Rag resource.
+
+#### Fields
+
+rag_corpus string (optional) Optional. RagCorpora resource name.
+rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
+rag_corpus field.
+rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
+Specifies the context retrieval config.
+
+#### Fields
+
+filter Filter (optional) Optional. Config for filters.
+Config for filters.
+
+#### Fields
+
+metadata_filter string (optional) Optional. String for metadata filtering.
+vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
+threshold.
+vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
+threshold.
+hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
+Config for Hybrid Search.
+
+#### Fields
+
+alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
+results.
+ranking Ranking (optional) Optional. Config for ranking and reranking.
+Config for ranking and reranking.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+rank_service RankService (optional) Config for Rank Service.
+Config for Rank Service.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+ranking_config object (optional) No description provided.
+
+Always set to `"rank_service"`.
+top_k integer (optional) Optional. The number of contexts to retrieve.
+retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
+
+Possible
+values:
+
+- `rag_store`
+- `exa_ai_search`
+- `parallel_ai_search`
+type object (required) No description provided.
+
+Always set to `"retrieval"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_688432ac6861c110cf6e29cb42c21d64ee43c80a0b5ef324fa1b757c973d2ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "consecutive_failure_count": 0,
+  "create_time": "string",
+  "display_name": "string",
+  "environment_id": "string",
+  "execution_timeout_seconds": 0,
+  "id": "string",
+  "interaction": {
+    "agent": "deep-research-pro-preview-12-2025",
+    "agent_config": {
+      "max_total_tokens": "string",
+      "model": "string",
+      "type": {}
+    },
+    "background": true,
+    "environment": {
+      "env": {},
+      "environment_id": "string",
+      "network": {
+        "allowlist": [
+          {
+            "domain": "github.com",
+            "transform": [
+              {
+                "Authorization": "Bearer your-token"
+              }
+            ]
+          },
+          {
+            "domain": "*.googleapis.com"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "content": "string",
+          "encoding": "string",
+          "source": "string",
+          "target": "string",
+          "type": "gcs"
+        }
+      ],
+      "type": {}
+    },
+    "input": {
+      "type": "audio",
+      "data": "BASE64_ENCODED_AUDIO",
+      "mime_type": "audio/wav"
+    },
+    "labels": {},
+    "previous_interaction_id": "string",
+    "response_format": {
+      "type": "audio",
+      "sample_rate": 24000
+    },
+    "safety_settings": [
+      {
+        "method": "severity",
+        "threshold": "block_low_and_above",
+        "type": "hate_speech"
+      }
+    ],
+    "service_tier": "flex",
+    "store": true,
+    "stream": true,
+    "system_instruction": "string",
+    "tools": [
+      {
+        "type": {}
+      }
+    ],
+    "webhook_config": {
+      "uris": [
+        "string"
+      ],
+      "user_metadata": {}
+    }
+  },
+  "last_pause_time": "string",
+  "last_resume_time": "string",
+  "last_run_time": "string",
+  "max_consecutive_failures": 0,
+  "next_run_time": "string",
+  "previous_interaction_id": "string",
+  "schedule": "string",
+  "status": "active",
+  "time_zone": "string",
+  "update_time": "string"
+}
+```
+
+## DeleteTrigger
+
+delete https://generativelanguage.googleapis.com/v1beta/triggers/{id} Deletes a trigger.
+- [Path / Query parameters](https://ai.google.dev/api/triggers#DeleteTrigger.PATH_PARAMETERS)
+- [Response](https://ai.google.dev/api/triggers#DeleteTrigger.response)
+
+### Path / Query Parameters
+
+id string (required) Required. Resource name of the trigger.
+
+### Response
+
+If successful, the response is empty.
+
+### Example
+
+<iframe src="https:///frame/api/triggers_2f61d2ed63f72748ba633b64f7ccc8683e6a31cfce26bd5490f2037cdd9fc1e8.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+## Resources
+
+### Trigger
+
+A trigger configuration that is scheduled to run an agent.
+
+#### Fields
+
+consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
+since the last successful execution.
+create_time string (optional) Output only. The time when the trigger was created.
+display_name string (optional) Optional. The display name of the trigger.
+environment_id string (optional) Optional. The environment ID for the trigger execution.
+execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
+id string (optional) Required. Output only. Identifier. The ID of the trigger.
+interaction AgentInteraction (optional) Required. The interaction request template to be executed.
+Interaction for generating the completion using agents.
+
+#### Fields
+
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
+environment EnvironmentConfig or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+Configuration for a custom environment.
+
+#### Fields
+
+env object (optional) Environment variables to set in the sandbox environment.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional) Network configuration for the environment.
+Network egress configuration for the environment.
+
+#### Fields
+
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+Possible
+values:
+
+- `disabled`
+
+  All network egress is blocked.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+- `skill_registry`
+
+  A skill resource from the Skill Registry Service.
+  Skill: projects/{project}/locations/{location}/skills/{skill}
+  SkillRevision:
+  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
+  Support mounting all skills under a project:
+  projects/{project}/locations/{location}/skills.
+type object (optional) No description provided.
+
+Always set to `"remote"`.
+input Content or array (Content) or array (Step) or string (optional) The input for the interaction.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+response_format ResponseFormat or array (ResponseFormat) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+<br />
+
+#### Possible Types
+
+AudioResponseFormat Configuration for audio output format.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
+mime_type enum (string) (optional) The MIME type of the audio output.
+
+Possible
+values:
+
+- `audio/mp3`
+
+  MP3 audio format.
+- `audio/ogg_opus`
+
+  OGG Opus audio format.
+- `audio/l16`
+
+  Raw PCM (L16) audio format.
+- `audio/wav`
+
+  WAV audio format.
+- `audio/alaw`
+
+  A-law audio format.
+- `audio/mulaw`
+
+  Mu-law audio format.
+sample_rate integer (optional) Sample rate in Hz.
+type object (required) No description provided.
+
+Always set to `"audio"`.
+ImageResponseFormat Configuration for image output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+
+Possible
+values:
+
+- `1:1`
+
+  1:1 aspect ratio.
+- `2:3`
+
+  2:3 aspect ratio.
+- `3:2`
+
+  3:2 aspect ratio.
+- `3:4`
+
+  3:4 aspect ratio.
+- `4:3`
+
+  4:3 aspect ratio.
+- `4:5`
+
+  4:5 aspect ratio.
+- `5:4`
+
+  5:4 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+- `16:9`
+
+  16:9 aspect ratio.
+- `21:9`
+
+  21:9 aspect ratio.
+- `1:8`
+
+  1:8 aspect ratio.
+- `8:1`
+
+  8:1 aspect ratio.
+- `1:4`
+
+  1:4 aspect ratio.
+- `4:1`
+
+  4:1 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
+image_size enum (string) (optional) The size of the image output.
+
+Possible
+values:
+
+- `512`
+
+  512px image size.
+- `1K`
+
+  1K image size.
+- `2K`
+
+  2K image size.
+- `4K`
+
+  4K image size.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+type object (required) No description provided.
+
+Always set to `"image"`.
+TextResponseFormat Configuration for text output format.
+mime_type enum (string) (optional) The MIME type of the text output.
+
+Possible
+values:
+
+- `application/json`
+
+  JSON output format.
+- `text/plain`
+
+  Plain text output format.
+schema object (optional) The JSON schema that the output should conform to. Only applicable when
+mime_type is application/json.
+type object (required) No description provided.
+
+Always set to `"text"`.
+VideoResponseFormat Configuration for video output format.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
+delivery enum (string) (optional) The delivery mode for the video output.
+
+Possible
+values:
+
+- `inline`
+
+  Video data is returned inline in the response.
+- `uri`
+
+  Video data is returned as a URI.
+duration string (optional) The duration for the video output.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
+type object (required) No description provided.
+
+Always set to `"video"`.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+type HarmCategory (optional) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+- `deferred`
+
+  Deferred service tier.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+system_instruction string (optional) System instruction for the interaction.
+tools array (Tool) (optional) A list of tool declarations the model may call during interaction.
+A tool that can be used by the model.
+
+#### Possible Types
+
+CodeExecution A tool that can be used by the model to execute code.
+type object (required) No description provided.
+
+Always set to `"code_execution"`.
+ComputerUse A tool that can be used by the model to interact with the computer.
+disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
+
+Possible
+values:
+
+- `financial_transactions`
+
+  Safety policy for financial transactions.
+- `sensitive_data_modification`
+
+  Safety policy for sensitive data modification.
+- `communication_tool`
+
+  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+- `account_creation`
+
+  Safety policy for account creation.
+- `data_modification`
+
+  Safety policy for data modification.
+- `user_consent_management`
+
+  Safety policy for user consent management.
+- `legal_terms_and_agreements`
+
+  Safety policy for legal terms and agreements.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+FileSearch A tool that can be used by the model to search files.
+file_search_store_names array (string) (optional) The file search store names to search.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+type object (required) No description provided.
+
+Always set to `"file_search"`.
+Function A tool that can be used by the model.
+description string (optional) A description of the function.
+name string (optional) The name of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+type object (required) No description provided.
+
+Always set to `"function"`.
+GoogleMaps A tool that can be used by the model to call Google Maps.
+enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
+response.
+latitude number (optional) The latitude of the user's location.
+longitude number (optional) The longitude of the user's location.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
+GoogleSearch A tool that can be used by the model to search Google.
+search_types array (enum (string)) (optional) The types of search grounding to enable.
+
+Possible
+values:
+
+- `web_search`
+
+  Setting this field enables web search. Only text results are returned.
+- `image_search`
+
+  Setting this field enables image search. Image bytes are returned.
+- `enterprise_web_search`
+
+  Setting this field enables enterprise web search.
+type object (required) No description provided.
+
+Always set to `"google_search"`.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
+tools array (string) (optional) The names of the allowed tools.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
+name string (optional) The name of the MCPServer.
+type object (required) No description provided.
+
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+Retrieval A tool that can be used by the model to retrieve files.
+exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
+Used to specify configuration for ExaAISearch.
+
+#### Fields
+
+api_key string (optional) Required. The API key for ExaAiSearch.
+custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
+Used to specify configuration for ParallelAISearch.
+
+#### Fields
+
+api_key string (optional) Optional. The API key for ParallelAiSearch.
+custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
+rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
+Use to specify configuration for RAG Store.
+
+#### Fields
+
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
+The definition of the Rag resource.
+
+#### Fields
+
+rag_corpus string (optional) Optional. RagCorpora resource name.
+rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
+rag_corpus field.
+rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
+Specifies the context retrieval config.
+
+#### Fields
+
+filter Filter (optional) Optional. Config for filters.
+Config for filters.
+
+#### Fields
+
+metadata_filter string (optional) Optional. String for metadata filtering.
+vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
+threshold.
+vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
+threshold.
+hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
+Config for Hybrid Search.
+
+#### Fields
+
+alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
+results.
+ranking Ranking (optional) Optional. Config for ranking and reranking.
+Config for ranking and reranking.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+rank_service RankService (optional) Config for Rank Service.
+Config for Rank Service.
+
+#### Fields
+
+model_name string (optional) Optional. The model name of the rank service.
+ranking_config object (optional) No description provided.
+
+Always set to `"rank_service"`.
+top_k integer (optional) Optional. The number of contexts to retrieve.
+retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
+
+Possible
+values:
+
+- `rag_store`
+- `exa_ai_search`
+- `parallel_ai_search`
+type object (required) No description provided.
+
+Always set to `"retrieval"`.
+UrlContext A tool that can be used by the model to fetch URL context.
+type object (required) No description provided.
+
+Always set to `"url_context"`.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
+last_pause_time string (optional) Output only. The time when the trigger was last paused.
+last_resume_time string (optional) Output only. The time when the trigger was last resumed.
+last_run_time string (optional) Output only. The time when the trigger was last run.
+max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
+the trigger is automatically paused (status becomes ERROR).
+next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
+previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
+schedule string (optional) Required. The cron schedule on which the trigger should run.
+Standard cron format.
+status enum (string) (optional) Output only. The current status of the trigger.
+
+Possible
+values:
+
+- `active`
+
+  The trigger is active and will fire on schedule.
+- `paused`
+
+  The trigger is paused and will not fire.
+- `error`
+
+  The trigger has entered an error state due to consecutive failures.
+time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
+update_time string (optional) Output only. The time when the trigger was last updated.

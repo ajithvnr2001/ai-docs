@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/apps/bundled/sky_metropolis/",
+  "file": "_subdomains/aistudio.google.com/apps/bundled/sky_metropolis.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (470 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:34:25.316898+00:00",
+  "html_len": 1254014,
+  "md_len": 542,
+  "depth": 2
+}

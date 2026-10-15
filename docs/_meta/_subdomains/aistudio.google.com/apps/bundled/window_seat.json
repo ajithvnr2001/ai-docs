@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/apps/bundled/window_seat/",
+  "file": "_subdomains/aistudio.google.com/apps/bundled/window_seat.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (467 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:34:25.656339+00:00",
+  "html_len": 1253305,
+  "md_len": 539,
+  "depth": 2
+}

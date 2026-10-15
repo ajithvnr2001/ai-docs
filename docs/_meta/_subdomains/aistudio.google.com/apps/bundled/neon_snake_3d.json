@@ -1,0 +1,10 @@
+{
+  "url": "https://aistudio.google.com/apps/bundled/neon_snake_3d/",
+  "file": "_subdomains/aistudio.google.com/apps/bundled/neon_snake_3d.md",
+  "title": "Sign in - Google Accounts",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling thin content (469 chars), fallback to crawl4ai)",
+  "fetched_at": "2026-10-15T19:34:17.442871+00:00",
+  "html_len": 1253734,
+  "md_len": 541,
+  "depth": 2
+}

@@ -1,0 +1,10 @@
+{
+  "url": "https://ai.google.dev/gemma/apache_2/",
+  "file": "gemma/apache_2.md",
+  "title": "https://ai.google.dev/gemma/apache_2/",
+  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
+  "fetched_at": "2026-10-15T19:18:52.377635+00:00",
+  "html_len": 3013,
+  "md_len": 1708,
+  "depth": 0
+}
