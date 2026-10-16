@@ -1,0 +1,23 @@
+{
+  "base": "https://ai.google.dev",
+  "total_seeds": 654,
+  "sitemap_count": 654,
+  "llms_files": [],
+  "visited": 5725,
+  "failed": 12,
+  "stats": {
+    "ok": 5725,
+    "fail": 0,
+    "skipped_existing": 0,
+    "by_method": {},
+    "by_host": {}
+  },
+  "elapsed_sec": 5.0,
+  "out_root": "/data/opencode/aidocs/docs",
+  "tools": [
+    "scrapling (Fetcher)",
+    "crawl4ai (AsyncWebCrawler fallback)",
+    "scrapegraph-ai (cleanup_html/convert_to_md)"
+  ],
+  "generated_at": "2026-10-16T09:26:38.061505+00:00"
+}
