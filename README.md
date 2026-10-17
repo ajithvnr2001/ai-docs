@@ -1,5 +1,7 @@
 # Google AI Studio Docs — End-to-End Crawler
 
+> Last verified: 2026-10-17 — see `docs/_last_verified.json` (rewritten daily by GitHub Actions).
+
 Crawls **https://ai.google.dev/** completely (sitemap + linked reference domains: aistudio, saif, discuss, developer.android, developer.chrome) and saves clean markdown docs. Three stacks: **Scrapling** → **Crawl4AI** → **ScrapeGraphAI** (local, no LLM key).
 
 ## Install
