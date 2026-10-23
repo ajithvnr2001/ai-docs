@@ -1,38 +1,46 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:12.866375+00:00
+title: mp.tasks.vision.drawing_utils.draw_landmarks
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:40.433968+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/
+# mp.tasks.vision.drawing_utils.draw_landmarks
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=10661199485717977534&q=EgQoUFpcGLbNxNYGIjDbDBgaUpeULCZ8Ezpye6rh6cd07nYHPSACkFhrpm9JtDuqSc77Zvj7c-yeHRg3kJUyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/drawing_utils.py#L122-L207) Draws the landmarks and the connections on the image.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/&q=EgQoUFpcGLbNxNYGIjDbDBgaUpeULCZ8Ezpye6rh6cd07nYHPSACkFhrpm9JtDuqSc77Zvj7c-yeHRg3kJUyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils.draw_landmarks`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks)
+    
+    
+    mp.tasks.vision.drawing_utils.draw_landmarks(
+        image: np.ndarray,
+        landmark_list: list[landmark_module.NormalizedLandmark],
+        connections: Optional[list[_CONNECTION]] = None,
+        landmark_drawing_spec: Optional[Union[DrawingSpec, Mapping[int, DrawingSpec]]] = [DrawingSpec(color=RED_COLOR)](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec),
+        connection_drawing_spec: Union[DrawingSpec, Mapping[tuple[int, int], DrawingSpec]] = [DrawingSpec()](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec),
+        is_drawing_landmarks: bool = True
+    )
+    
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:10Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks/  
+| 
 
+## Args  
+  
+---  
+  
+`image` |  A three channel BGR image represented as numpy ndarray.   
+`landmark_list` |  A list of normalized landmarks to be annotated on the image.   
+`connections` |  A list of landmark index tuples that specifies how landmarks to be connected in the drawing.   
+`landmark_drawing_spec` |  Either a DrawingSpec object or a mapping from hand landmarks to the DrawingSpecs that specifies the landmarks' drawing settings such as color, line thickness, and circle radius. If this argument is explicitly set to None, no landmarks will be drawn.   
+`connection_drawing_spec` |  Either a DrawingSpec object or a mapping from hand connections to the DrawingSpecs that specifies the connections' drawing settings such as color and line thickness. If this argument is explicitly set to None, no landmark connections will be drawn.   
+`is_drawing_landmarks` |  Whether to draw landmarks. If set false, skip drawing landmarks, only contours will be drawed.   
+  
+## Raises  
+  
+---  
+  
+`ValueError` |  If one of the followings: a) If the input image is not three channel BGR. b) If any connetions contain invalid landmark index. 

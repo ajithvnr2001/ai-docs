@@ -1,38 +1,50 @@
 ---
 url: https://ai.google.dev/gemma/docs/setup/
-title: https://ai.google.dev/gemma/docs/setup/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:23.372938+00:00
+title: Legacy Gemma setup
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:03.022761+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/setup/
+# Legacy Gemma setup
 
 > Source: https://ai.google.dev/gemma/docs/setup/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=13748356991478150034&q=EgQoUFpcGLjOxNYGIjA-rSstUEtYvRYa7a7j3DjFxRtel1AVXwDwDSm3EzUAJNmO69uPq1b4z9UFRhchG4oyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/setup/)  
-  
-  
-  
-  
+This page provides setup instructions for using Gemma in Colab. Some of the instructions are applicable to other development environments as well.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/setup/&q=EgQoUFpcGLjOxNYGIjA-rSstUEtYvRYa7a7j3DjFxRtel1AVXwDwDSm3EzUAJNmO69uPq1b4z9UFRhchG4oyA2NyUloBQw)  
-  
+## Get access to Gemma
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Before using Gemma for the first time, you must request access to the model through Kaggle. As part of the process, you'll have to use a Kaggle account to accept the Gemma use policy and license terms.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:20Z  
-URL: https://ai.google.dev/gemma/docs/setup/  
+If you don't already have a Kaggle account, you can register for one at [kaggle.com](https://www.kaggle.com). Then complete the following steps:
 
+  1. Go to the [Gemma model card](https://www.kaggle.com/models/google/gemma) and select **Request Access**.
+  2. Complete the consent form and accept the terms and conditions.
+
+
+
+## Select a Colab runtime
+
+To complete a Colab tutorial, you must have a Colab runtime with sufficient resources to run the Gemma model. To [get started](https://ai.google.dev/gemma/docs/get_started), you can use a T4 GPU:
+
+  1. In the upper-right of the Colab window, select ▾ (**Additional connection options**).
+  2. Select **Change runtime type**.
+  3. Under **Hardware accelerator** , select **T4 GPU**.
+
+
+
+## Configure your API key
+
+To use Gemma, you must provide your Kaggle username and a Kaggle API key. To generate and configure these values, follow these steps:
+
+  1. To generate a Kaggle API key, go to the **Account** tab of your Kaggle [user profile](https://www.kaggle.com/settings) and select **Create New Token**. This will trigger the download of a `kaggle.json` file containing your API credentials.
+  2. Open `kaggle.json` in a text editor. The contents should look something like this:
+         
+         {"username":"your_username","key":"012345678abcdef012345678abcdef1a"}
+         
+
+  3. In Colab, select **Secrets** (🔑) and add your Kaggle username and Kaggle API key. Store your username under the name `KAGGLE_USERNAME` and your API key under the name `KAGGLE_KEY`.
+
+
+
+
+Now you're ready to complete the remaining setup steps in Colab. If you're working through a Colab tutorial, go to Colab and set the environment variables.

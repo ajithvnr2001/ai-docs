@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview",
   "file": "gemini-api/docs/models/gemini-3.5-live-translate-preview.md",
-  "title": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:24.246959+00:00",
-  "html_len": 3177,
-  "md_len": 1913,
-  "depth": 0
+  "title": "Gemini 3.5 Live translate",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:41.763186+00:00"
 }

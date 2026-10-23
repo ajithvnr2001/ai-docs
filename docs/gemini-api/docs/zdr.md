@@ -1,38 +1,47 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/zdr/
-title: https://ai.google.dev/gemini-api/docs/zdr/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:45.694508+00:00
+title: Zero data retention in the Gemini Developer API
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:28.189105+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/zdr/
+# Zero data retention in the Gemini Developer API
 
 > Source: https://ai.google.dev/gemini-api/docs/zdr/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=7251246820984676736&q=EgQoUFpcGJLOxNYGIjBPvsBqxMtUfjFxBhszvcqLHkoNmZz9BOc0qLm7ux3dbExx1jqfNIwuRJYH9F-EMwoyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/zdr/)  
-  
-  
-  
-  
+This page outlines details of what is commonly referred to as "zero data retention" in the Gemini Developer API.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/zdr/&q=EgQoUFpcGJLOxNYGIjBPvsBqxMtUfjFxBhszvcqLHkoNmZz9BOc0qLm7ux3dbExx1jqfNIwuRJYH9F-EMwoyA2NyUloBQw)  
-  
+## Training restriction
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+As outlined in the [Gemini API Terms of Service](https://ai.google.dev/gemini-api/terms), when you use Paid Services, Google does not use your prompts (including associated system instructions, cached content, and files such as images, videos, or documents) or responses to improve our products. Paid Services are defined [here](https://ai.google.dev/gemini-api/terms#paid-services).
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:43Z  
-URL: https://ai.google.dev/gemini-api/docs/zdr/  
+## Customer data retention and achieving zero data retention
+
+Customer data is typically retained for limited periods of time in the following scenarios and conditions. To achieve zero data retention, customers must take specific actions or avoid specific features within each of these areas:
+
+  * **Prompt logging for abuse monitoring** : As outlined in the [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms), for Paid Services, Google logs prompts and responses for a limited period of time solely for detecting violations of the [Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy). If your workload requires guaranteed zero data retention or enterprise data processing agreements, use Vertex AI. For details, see [Gemini Enterprise Agent Platform and zero data retention](https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/zero-data-retention).
+
+  * **Grounding with Google Search** : As outlined in the [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms#grounding-with-google-search), Google stores prompts, contextual information, and generated output for thirty (30) days for the purposes of creating grounded results and search suggestions. This stored information may be used for debugging and testing of systems that support grounding. **There is no way to disable the storage of this information if you use Grounding with Google Search.**
+
+  * **Grounding with Google Maps** : As outlined in the [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms), Google stores prompts, contextual information, and generated output for thirty (30) days for the purposes of creating grounded results. This stored information may only be used for reliability engineering, such as debugging in case of service issues. **There is no way to disable the storage of this information if you use Grounding with Google Maps.**
+
+  * **Interactions API** : The Interactions API manages the active state of a conversation to enable multi-turn turns. **By default, the Interactions API enables state storage**. To ensure a zero-data footprint, you must explicitly set the `store` parameter to `false` in your API requests to opt out of the default state retention.
+
+  * **Live API** : This stateful API allows real-time reconnection by storing conversation state. To achieve zero data retention, **do not configure SessionResumptionConfig**. If a session handle is generated, conversation state (including text, audio, and video) is retained for up to 24 hours.
+
+  * **File API Storage** : The File API allows users to upload large assets. Files are stored at-rest until deleted by the user or until they expire. Usage of the File API is independent of ZDR logging; users must manually delete files to ensure a zero-data footprint.
+
+  * **Explicit Context Caching** : Users may manually cache large datasets (e.g., long videos or document libraries) using the `cached_content` field. While the logs of these requests follow ZDR dropping policies, the cached context itself is stored with a user-defined `ttl` or `expire_time`. To achieve an absolute zero-data footprint, do not utilize the cached_content feature.
+
+  * **Implicit In-Memory Caching** : By default, Gemini models cache data in-memory to reduce latency and cost for developers. This data is strictly in RAM (not at-rest), isolated at the project level, and has a 24-hour TTL. **This does not violate zero data retention.**
+
+
+
+
+## What's next
+
+  * Learn about [Gen AI Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy).
+  * Review the [Gemini API Additional Terms of Service](https://ai.google.dev/gemini-api/terms).
+  * If you require enterprise-grade, self-serve ZDR controls, see the [Gemini Enterprise Agent Platform zero data retention guide](https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/zero-data-retention).
+
 

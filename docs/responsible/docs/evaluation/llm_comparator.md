@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/responsible/docs/evaluation/llm_comparator/
-title: https://ai.google.dev/responsible/docs/evaluation/llm_comparator/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:30.640652+00:00
+title: LLM Comparator
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:09.009821+00:00
 ---
 
-# https://ai.google.dev/responsible/docs/evaluation/llm_comparator/
+# LLM Comparator
 
 > Source: https://ai.google.dev/responsible/docs/evaluation/llm_comparator/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=9723870098009879722&q=EgQoUFpcGL_OxNYGIjDILqGLXaYBfRLcu8S1bg3BqMDyGRx0jOJ7IUaq7rVJs0trg4a4Mmu84dzQ_OssShUyA2NyUloBQw&hl=en&continue=https://ai.google.dev/responsible/docs/evaluation/llm_comparator/)  
-  
-  
-  
-  
+Side-by-side evaluation has emerged as a common strategy for assessing the quality and safety of responses from large language models (LLMs). Side-by-side comparisons can be used to choose between two different models, two different prompts for the same model, or even two different tunings of a model. However, manually analyzing side-by-side comparison results can be cumbersome and tedious.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/responsible/docs/evaluation/llm_comparator/&q=EgQoUFpcGL_OxNYGIjDILqGLXaYBfRLcu8S1bg3BqMDyGRx0jOJ7IUaq7rVJs0trg4a4Mmu84dzQ_OssShUyA2NyUloBQw)  
-  
+The LLM Comparator is a [web app](http://pair-code.github.io/llm-comparator) with a companion [Python library](https://pypi.org/project/llm-comparator/) that enables more effective, _scalable_ analysis of [side-by-side evaluations](https://cloud.google.com/vertex-ai/generative-ai/docs/models/side-by-side-eval) with interactive visualizations. LLM Comparator helps you:
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * **See _where_ model performance differs**: You can slice the responses to identify subsets of the evaluation data where outputs meaningfully differ between two models.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:27Z  
-URL: https://ai.google.dev/responsible/docs/evaluation/llm_comparator/  
+  * **Understand _why_ it differs**: It is common to have a policy against which model performance and compliance is evaluated. [Side-by-side evaluation](https://cloud.google.com/vertex-ai/generative-ai/docs/models/side-by-side-eval) helps automate policy compliance assessments and provides rationales for which model is likely more compliant. LLM Comparator summarizes these reasons into several themes and highlights which model aligns better with each theme.
 
+  * **Examine _how_ model outputs differ**: You can further investigate how the outputs from two models differ through built-in and user-defined comparison functions. The tool can highlight specific patterns in the text the models generated, providing a clear anchor to understand their differences.
+
+
+
+
+![Example of the LLM Comparator interface](https://ai.google.dev/static/responsible/images/llm-comparator.png)
+
+**Figure 1.** LLM Comparator interface showing a comparison of the Gemma Instruct 7B v1.1 model against v1.0
+
+LLM Comparator helps you analyze side-by-side evaluation results. It visually summarizes model performance from multiple angles, while letting you interactively inspect individual model outputs for a deeper understanding.
+
+Explore LLM Comparator for yourself:
+
+  * This [demo](http://pair-code.github.io/llm-comparator) compares the performance of Gemma Instruct 7B v1.1 against the Gemma Instruct 7B v1.0 on the [Chatbot Arena Conversations](https://huggingface.co/datasets/lmsys/chatbot_arena_conversations) dataset.
+  * This [Colab notebook](https://colab.research.google.com/github/PAIR-code/llm-comparator/blob/main/python/notebooks/basic_demo.ipynb) uses the Python library to run a small side-by-side evaluation using the [Vertex AI API](https://cloud.google.com/vertex-ai/docs/reference), and loads the results into the LLM Comparator app in a cell.
+
+
+
+For more about LLM Comparator, check out the [research paper](https://arxiv.org/abs/2402.10524) and [GitHub repo](https://github.com/pair-code/llm-comparator).

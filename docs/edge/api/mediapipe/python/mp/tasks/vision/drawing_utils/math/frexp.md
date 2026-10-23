@@ -1,38 +1,40 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:21.986619+00:00
+title: mp.tasks.vision.drawing_utils.math.frexp
+method: httpx+scrapegraph (scrapling: scrapling thin content (607 chars), fallback to crawl4ai | crawl4ai: crawl4ai failed: Unexpected error in _crawl_web at line 632 in wrap_api_call (../../../usr/local/lib/python3.10/dist-packages/playwright/_impl/_connection.py):
+Error: BrowserContext.add_cookies: Protocol error (Storage.setCookies): Invalid cookie fields
+
+Code context:
+ 627           )
+ 628           self._api_zone.set(parsed_st)
+ 629           try:
+ 630               return await cb()
+ 631           except Exception as error:
+ 632 →             raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+ 633           finally:
+ 634               self._api_zone.set(None)
+ 635   
+ 636       def wrap_api_call_sync(
+ 637           self, cb: Callable[[], Any], is_internal: bool = False, title: str = None)
+fetched_at: 2026-10-23T11:42:03.225357+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/
+# mp.tasks.vision.drawing_utils.math.frexp
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1506849160814703619&q=EgQoUFpcGL7NxNYGIjCkTCA37hmwehuEYeOa30BRCT1kp9rzANuU4SydMgTble1nbGjN7Z7mcr3usJkdNmsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/)  
-  
-  
-  
-  
+Return the mantissa and exponent of x, as pair (m, e).
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/&q=EgQoUFpcGL7NxNYGIjCkTCA37hmwehuEYeOa30BRCT1kp9rzANuU4SydMgTble1nbGjN7Z7mcr3usJkdNmsyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases**
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:19Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp/  
+[`mp.tasks.vision.drawing_styles.drawing_utils.math.frexp`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/frexp)
+    
+    
+    mp.tasks.vision.drawing_utils.math.frexp(
+        x, /
+    )
+    
 
+m is a float and e is an int, such that x = m * 2.**e. If x is 0, m and e are both 0. Else 0.5 <= abs(m) < 1.0.

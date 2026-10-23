@@ -1,31 +1,17 @@
 ---
 url: https://ai.google.dev/api/webhooks/
-title: Gemini Webhooks API \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Gemini Webhooks API
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:16:04.201224+00:00
+fetched_at: 2026-10-23T12:00:07.136895+00:00
 ---
 
-# Gemini Webhooks API  |  Gemini API  |  Google AI for Developers
+# Gemini Webhooks API
 
 > Source: https://ai.google.dev/api/webhooks/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Gemini Webhooks API
 
 Webhooks allow the Gemini API to push real-time notifications to your server when asynchronous or Long-Running Operations (LROs) complete. This replaces the need to poll the API for status updates, reducing latency and overhead.
 
 [View as markdown](https://ai.google.dev/static/api/webhooks.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
-
-This API is in Beta. Endpoints are under `/v1beta/`.
 
 ## CreateWebhook
 
@@ -33,79 +19,49 @@ post  https://generativelanguage.googleapis.com/v1beta/webhooks
 
 Creates a new Webhook.
 
+  * Path / Query parameters
   * Request body
   * Response
 
 
 
+### Path / Query Parameters
+
+webhook_id string (optional)
+
+The webhook_id to use for the webhook. If not specified, the server will generate a unique ID.
+
 ### Request body
 
 The request body contains data with the following structure:
 
-name string (optional)
+webhook Webhook (required)
 
-Optional. The user-provided name of the webhook.
-
-subscribed_events array (enum (string)) (required)
-
-Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
-
-Possible values:
-
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-uri string (required)
-
-Required. The URI to which webhook events will be sent.
+Required. The webhook to create.
 
 ### Response
 
 If successful, the response body contains data with the following structure:
 
-create_time string (optional)
+uri string (required)
 
-Output only. The timestamp when the webhook was created.
+Required. The URI to which webhook events will be sent.
 
-id string (optional)
+subscribed_events array (string) (required)
 
-Output only. The ID of the webhook.
+Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
 
 name string (optional)
 
 Optional. The user-provided name of the webhook.
 
-new_signing_secret string (optional)
+create_time string (optional)
 
-Output only. The new signing secret for the webhook. Only populated on create.
+Output only. The timestamp when the webhook was created.
+
+update_time string (optional)
+
+Output only. The timestamp when the webhook was last updated.
 
 signing_secrets array (SigningSecret) (optional)
 
@@ -115,13 +71,13 @@ Represents a signing secret used to verify webhook payloads.
 
 #### Fields
 
-expire_time string (optional)
-
-Output only. The expiration date of the signing secret.
-
 truncated_secret string (optional)
 
 Output only. The truncated version of the signing secret.
+
+expire_time string (optional)
+
+Output only. The expiration date of the signing secret.
 
 state enum (string) (optional)
 
@@ -144,50 +100,13 @@ The webhook is disabled due to failed deliveries.
 
 
 
-subscribed_events array (enum (string)) (optional)
+new_signing_secret string (optional)
 
-Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
+Output only. The new signing secret for the webhook. Only populated on create.
 
-Possible values:
+id string (optional)
 
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-update_time string (optional)
-
-Output only. The timestamp when the webhook was last updated.
-
-uri string (optional)
-
-Required. The URI to which webhook events will be sent.
+Output only. The ID of the webhook.
 
 ### Example
 
@@ -195,22 +114,22 @@ Required. The URI to which webhook events will be sent.
     
     
     {
-      "create_time": "string",
-      "id": "string",
+      "uri": "string",
+      "subscribed_events": [
+        "string"
+      ],
       "name": "string",
-      "new_signing_secret": "string",
+      "create_time": "string",
+      "update_time": "string",
       "signing_secrets": [
         {
-          "expire_time": "string",
-          "truncated_secret": "string"
+          "truncated_secret": "string",
+          "expire_time": "string"
         }
       ],
       "state": "enabled",
-      "subscribed_events": [
-        "batch.succeeded"
-      ],
-      "update_time": "string",
-      "uri": "string"
+      "new_signing_secret": "string",
+      "id": "string"
     }
 
 ## PingWebhook
@@ -220,7 +139,6 @@ post  https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:ping
 Sends a ping event to a Webhook.
 
   * Path / Query parameters
-  * Request body
   * Response
 
 
@@ -230,10 +148,6 @@ Sends a ping event to a Webhook.
 id string (required)
 
 Required. The ID of the webhook to ping.
-
-### Request body
-
-The request body contains data with the following structure:
 
 ### Response
 
@@ -248,7 +162,6 @@ post  https://generativelanguage.googleapis.com/v1beta/webhooks/{id}:rotateSigni
 Generates a new signing secret for a Webhook.
 
   * Path / Query parameters
-  * Request body
   * Response
 
 
@@ -258,27 +171,6 @@ Generates a new signing secret for a Webhook.
 id string (required)
 
 Required. The ID of the webhook for which to generate a signing secret.
-
-### Request body
-
-The request body contains data with the following structure:
-
-revocation_behavior enum (string) (optional)
-
-Optional. The revocation behavior for previous signing secrets.
-
-Possible values:
-
-  * `revoke_previous_secrets_after_h24`
-
-Generate a new signing secret and revoke all previous secrets after 24 hours. Default and safest option for migrations.
-
-  * `revoke_previous_secrets_immediately`
-
-Revoke all previous secrets immediately. Use with caution as this can interrupt ongoing notifications.
-
-
-
 
 ### Response
 
@@ -322,13 +214,13 @@ Optional. A page token, received from a previous `ListWebhooks` call. Provide th
 
 If successful, the response body contains data with the following structure:
 
-next_page_token string (optional)
-
-A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
-
 webhooks array (Webhook) (optional)
 
 The webhooks.
+
+next_page_token string (optional)
+
+A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.
 
 ### Example
 
@@ -336,27 +228,27 @@ The webhooks.
     
     
     {
-      "next_page_token": "string",
       "webhooks": [
         {
-          "create_time": "string",
-          "id": "string",
+          "uri": "string",
+          "subscribed_events": [
+            "string"
+          ],
           "name": "string",
-          "new_signing_secret": "string",
+          "create_time": "string",
+          "update_time": "string",
           "signing_secrets": [
             {
-              "expire_time": "string",
-              "truncated_secret": "string"
+              "truncated_secret": "string",
+              "expire_time": "string"
             }
           ],
           "state": "enabled",
-          "subscribed_events": [
-            "batch.succeeded"
-          ],
-          "update_time": "string",
-          "uri": "string"
+          "new_signing_secret": "string",
+          "id": "string"
         }
-      ]
+      ],
+      "next_page_token": "string"
     }
 
 ## GetWebhook
@@ -380,21 +272,25 @@ Required. The ID of the webhook to retrieve.
 
 If successful, the response body contains data with the following structure:
 
-create_time string (optional)
+uri string (required)
 
-Output only. The timestamp when the webhook was created.
+Required. The URI to which webhook events will be sent.
 
-id string (optional)
+subscribed_events array (string) (required)
 
-Output only. The ID of the webhook.
+Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
 
 name string (optional)
 
 Optional. The user-provided name of the webhook.
 
-new_signing_secret string (optional)
+create_time string (optional)
 
-Output only. The new signing secret for the webhook. Only populated on create.
+Output only. The timestamp when the webhook was created.
+
+update_time string (optional)
+
+Output only. The timestamp when the webhook was last updated.
 
 signing_secrets array (SigningSecret) (optional)
 
@@ -404,13 +300,13 @@ Represents a signing secret used to verify webhook payloads.
 
 #### Fields
 
-expire_time string (optional)
-
-Output only. The expiration date of the signing secret.
-
 truncated_secret string (optional)
 
 Output only. The truncated version of the signing secret.
+
+expire_time string (optional)
+
+Output only. The expiration date of the signing secret.
 
 state enum (string) (optional)
 
@@ -433,50 +329,13 @@ The webhook is disabled due to failed deliveries.
 
 
 
-subscribed_events array (enum (string)) (optional)
+new_signing_secret string (optional)
 
-Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
+Output only. The new signing secret for the webhook. Only populated on create.
 
-Possible values:
+id string (optional)
 
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-update_time string (optional)
-
-Output only. The timestamp when the webhook was last updated.
-
-uri string (optional)
-
-Required. The URI to which webhook events will be sent.
+Output only. The ID of the webhook.
 
 ### Example
 
@@ -484,22 +343,22 @@ Required. The URI to which webhook events will be sent.
     
     
     {
-      "create_time": "string",
-      "id": "string",
+      "uri": "string",
+      "subscribed_events": [
+        "string"
+      ],
       "name": "string",
-      "new_signing_secret": "string",
+      "create_time": "string",
+      "update_time": "string",
       "signing_secrets": [
         {
-          "expire_time": "string",
-          "truncated_secret": "string"
+          "truncated_secret": "string",
+          "expire_time": "string"
         }
       ],
       "state": "enabled",
-      "subscribed_events": [
-        "batch.succeeded"
-      ],
-      "update_time": "string",
-      "uri": "string"
+      "new_signing_secret": "string",
+      "id": "string"
     }
 
 ## UpdateWebhook
@@ -520,17 +379,27 @@ id string (required)
 
 Required. The ID of the webhook to update.
 
-update_mask string (optional)
-
-Optional list of fields to update.
-
 ### Request body
 
 The request body contains data with the following structure:
 
+webhook WebhookUpdate (required)
+
+Required. The webhook to update.
+
+#### Fields
+
 name string (optional)
 
 Optional. The user-provided name of the webhook.
+
+uri string (optional)
+
+Optional. The URI to which webhook events will be sent.
+
+subscribed_events array (string) (optional)
+
+Optional. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
 
 state enum (string) (optional)
 
@@ -553,66 +422,37 @@ The webhook is disabled due to failed deliveries.
 
 
 
-subscribed_events array (enum (string)) (optional)
+id string (required)
 
-Optional. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
+Required. The ID of the webhook to update.
 
-Possible values:
+update_mask string (optional)
 
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-uri string (optional)
-
-Optional. The URI to which webhook events will be sent.
+Optional. The list of fields to update.
 
 ### Response
 
 If successful, the response body contains data with the following structure:
 
-create_time string (optional)
+uri string (required)
 
-Output only. The timestamp when the webhook was created.
+Required. The URI to which webhook events will be sent.
 
-id string (optional)
+subscribed_events array (string) (required)
 
-Output only. The ID of the webhook.
+Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
 
 name string (optional)
 
 Optional. The user-provided name of the webhook.
 
-new_signing_secret string (optional)
+create_time string (optional)
 
-Output only. The new signing secret for the webhook. Only populated on create.
+Output only. The timestamp when the webhook was created.
+
+update_time string (optional)
+
+Output only. The timestamp when the webhook was last updated.
 
 signing_secrets array (SigningSecret) (optional)
 
@@ -622,13 +462,13 @@ Represents a signing secret used to verify webhook payloads.
 
 #### Fields
 
-expire_time string (optional)
-
-Output only. The expiration date of the signing secret.
-
 truncated_secret string (optional)
 
 Output only. The truncated version of the signing secret.
+
+expire_time string (optional)
+
+Output only. The expiration date of the signing secret.
 
 state enum (string) (optional)
 
@@ -651,50 +491,13 @@ The webhook is disabled due to failed deliveries.
 
 
 
-subscribed_events array (enum (string)) (optional)
+new_signing_secret string (optional)
 
-Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
+Output only. The new signing secret for the webhook. Only populated on create.
 
-Possible values:
+id string (optional)
 
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-update_time string (optional)
-
-Output only. The timestamp when the webhook was last updated.
-
-uri string (optional)
-
-Required. The URI to which webhook events will be sent.
+Output only. The ID of the webhook.
 
 ### Example
 
@@ -702,22 +505,22 @@ Required. The URI to which webhook events will be sent.
     
     
     {
-      "create_time": "string",
-      "id": "string",
+      "uri": "string",
+      "subscribed_events": [
+        "string"
+      ],
       "name": "string",
-      "new_signing_secret": "string",
+      "create_time": "string",
+      "update_time": "string",
       "signing_secrets": [
         {
-          "expire_time": "string",
-          "truncated_secret": "string"
+          "truncated_secret": "string",
+          "expire_time": "string"
         }
       ],
       "state": "enabled",
-      "subscribed_events": [
-        "batch.succeeded"
-      ],
-      "update_time": "string",
-      "uri": "string"
+      "new_signing_secret": "string",
+      "id": "string"
     }
 
 ## DeleteWebhook
@@ -751,21 +554,25 @@ A Webhook resource.
 
 #### Fields
 
-create_time string (optional)
+uri string (required)
 
-Output only. The timestamp when the webhook was created.
+Required. The URI to which webhook events will be sent.
 
-id string (optional)
+subscribed_events array (string) (required)
 
-Output only. The ID of the webhook.
+Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
 
 name string (optional)
 
 Optional. The user-provided name of the webhook.
 
-new_signing_secret string (optional)
+create_time string (optional)
 
-Output only. The new signing secret for the webhook. Only populated on create.
+Output only. The timestamp when the webhook was created.
+
+update_time string (optional)
+
+Output only. The timestamp when the webhook was last updated.
 
 signing_secrets array (SigningSecret) (optional)
 
@@ -775,13 +582,13 @@ Represents a signing secret used to verify webhook payloads.
 
 #### Fields
 
-expire_time string (optional)
-
-Output only. The expiration date of the signing secret.
-
 truncated_secret string (optional)
 
 Output only. The truncated version of the signing secret.
+
+expire_time string (optional)
+
+Output only. The expiration date of the signing secret.
 
 state enum (string) (optional)
 
@@ -804,55 +611,10 @@ The webhook is disabled due to failed deliveries.
 
 
 
-subscribed_events array (enum (string)) (optional)
+new_signing_secret string (optional)
 
-Required. The events that the webhook is subscribed to. Available events: \- batch.succeeded \- batch.expired \- batch.failed \- interaction.requires_action \- interaction.completed \- interaction.failed \- video.generated
+Output only. The new signing secret for the webhook. Only populated on create.
 
-Possible values:
+id string (optional)
 
-  * `batch.succeeded`
-
-Batch processing finished successfully.
-
-  * `batch.expired`
-
-Batch has not been processed within the 48h timeframe.
-
-  * `batch.failed`
-
-Batch job failed.
-
-  * `interaction.requires_action`
-
-Interaction requires action (e.g., function calling).
-
-  * `interaction.completed`
-
-Interaction completed successfully.
-
-  * `interaction.failed`
-
-Interaction failed.
-
-  * `video.generated`
-
-Video generation completed.
-
-
-
-
-update_time string (optional)
-
-Output only. The timestamp when the webhook was last updated.
-
-uri string (optional)
-
-Required. The URI to which webhook events will be sent.
-
-Send feedback 
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-09-28 UTC.
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-09-28 UTC."],[],[]] 
+Output only. The ID of the webhook.

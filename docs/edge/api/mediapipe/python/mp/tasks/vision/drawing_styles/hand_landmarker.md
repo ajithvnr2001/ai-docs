@@ -1,38 +1,20 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:14.588684+00:00
+title: Module: mp.tasks.vision.drawing_styles.hand_landmarker
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:43.183530+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/
+# Module: mp.tasks.vision.drawing_styles.hand_landmarker
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=14563696763715550699&q=EgQoUFpcGLfNxNYGIjAq9W34wgBI7CsfPIrIwzYVX52ZyUg-n8PVF1_o6I8s-1ma2YDzP9ckoGnARJAZ4tYyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/hand_landmarker.py) MediaPipe hand landmarker task.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/&q=EgQoUFpcGLfNxNYGIjAq9W34wgBI7CsfPIrIwzYVX52ZyUg-n8PVF1_o6I8s-1ma2YDzP9ckoGnARJAZ4tYyA2NyUloBQw)  
-  
+## Modules
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[`async_result_dispatcher`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/async_result_dispatcher) module: A dispatcher to handle asynchronous results from a C library. [`base_options_c`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/base_options_c_lib) module: C types for BaseOptions. [`base_options_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/base_options_lib) module: Base options for MediaPipe Task APIs. [`category`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module) module: Category data class. [`category_c`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/components/containers/category_c) module: C types for Category. [`image_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_lib) module: MediaPipe image container. [`image_processing_options_c`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_processing_options_c_lib) module: MediaPipe ImageProcessingOptions C API types. [`image_processing_options_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_processing_options_lib) module: MediaPipe vision options for image processing. [`landmark`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/landmark_module) module: Landmark data class. [`landmark_c`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/components/containers/landmark_c) module: C types for Landmark. [`mediapipe_c_bindings`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/mediapipe_c_bindings_lib) module: MediaPipe Text tasks shared library. [`mediapipe_c_utils`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/mediapipe_c_utils) module: Common MediaPipe CTypes definitions and utilities. [`serial_dispatcher`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/serial_dispatcher) module: A thread-safe dispatcher for a ctypes. [`vision_task_running_mode`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib) module: The running mode of MediaPipe Vision Tasks.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:12Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/  
+## Classes
 
+[`class HandLandmark`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/HandLandmark): The 21 hand landmarks. [`class HandLandmarker`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/HandLandmarker): Class that performs hand landmarks detection on images. [`class HandLandmarkerOptions`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/HandLandmarkerOptions): Options for the hand landmarker task. [`class HandLandmarkerOptionsC`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/HandLandmarkerOptionsC): The hand landmarker options used in the C API. [`class HandLandmarkerResult`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/HandLandmarkerResult): The hand landmarks result from HandLandmarker, where each vector element represents a single hand detected in the image. [`class HandLandmarkerResultC`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/hand_landmarker/HandLandmarkerResultC): The hand landmarker result from HandLandmarker in ctypes. [`class HandLandmarksConnections`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/HandLandmarksConnections): The connections between hand landmarks.

@@ -1,38 +1,45 @@
 ---
 url: https://ai.google.dev/gemma/docs/gemma-aps/
-title: https://ai.google.dev/gemma/docs/gemma-aps/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:14.388186+00:00
+title: Gemma for abstractive proposition segmentation (APS)
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:52.939624+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/gemma-aps/
+# Gemma for abstractive proposition segmentation (APS)
 
 > Source: https://ai.google.dev/gemma/docs/gemma-aps/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=10121600482169065559&q=EgQoUFpcGK7OxNYGIjBSjr9i0wkXAY6hEhrBf45QpbTqCZNDQE5Za4zhWQmv84ZLGmy_HD44ciE86fRpQ3MyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/gemma-aps/)  
-  
-  
-  
-  
+##  Gemma-APS 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/gemma-aps/&q=EgQoUFpcGK7OxNYGIjBSjr9i0wkXAY6hEhrBf45QpbTqCZNDQE5Za4zhWQmv84ZLGmy_HD44ciE86fRpQ3MyA2NyUloBQw)  
-  
+Abstractive proposition segmentation (APS) is an analysis technique that breaks down text information into component parts. Gemma-APS is a variant of Gemma that takes a given passage of text and attempts to segment the content into the individual facts, statements, and ideas expressed in the text, and restates them in full sentences with small changes to the original text. 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+This model can be used for research where there is a need to break down text content into meaningful components. Applications include generative content grounding, content retrieval, fact-checking, and evaluation of generative output, such as summarization, where it is useful to divide up individual factual data so that they can be verified independently. For more information, check out the [research paper](https://arxiv.org/pdf/2406.19803). 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:11Z  
-URL: https://ai.google.dev/gemma/docs/gemma-aps/  
+  * lists 
 
+####  Analyze content for component parts 
+
+Apply generative artificial intelligence (AI) to break down content into discrete statements for analysis or further processing. 
+
+  * analytics 
+
+####  Combine with larger content analysis 
+
+Use generated content segments in larger content analysis projects such as grounding, retrieval, fact-checking, evaluation of generation tasks, and duplicate content detection. 
+
+
+
+
+##  Learn more 
+
+###  [ View 2B model ](https://huggingface.co/google/gemma-2b-aps-it)
+
+View more code, notebooks, information, and discussions about the Gemma-APS 2B model on Hugging Face. 
+
+###  [ View 7B model ](https://huggingface.co/google/gemma-7b-aps-it)
+
+View more code, notebooks, information, and discussions about the Gemma-APS 7B model on Hugging Face. 
+
+###  [ Read the research ](https://arxiv.org/pdf/2406.19803)
+
+Get more insights into the research, development, and operation of the Gemma-APS model. 

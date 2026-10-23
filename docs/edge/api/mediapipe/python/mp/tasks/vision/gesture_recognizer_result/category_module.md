@@ -1,38 +1,24 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:31.635684+00:00
+title: Module: mp.tasks.vision.gesture_recognizer_result.category_module
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:33.014421+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/
+# Module: mp.tasks.vision.gesture_recognizer_result.category_module
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=6149372944570527021&q=EgQoUFpcGMjNxNYGIjBvC45cREFkvNB8T1_ykUWNGHgY3dDVOfR2vIrBCLVDOhHxpmr8Ci0iByuK7XHuK5YyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/components/containers/category.py) Category data class.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/&q=EgQoUFpcGMjNxNYGIjBvC45cREFkvNB8T1_ykUWNGHgY3dDVOfR2vIrBCLVDOhHxpmr8Ci0iByuK7XHuK5YyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils.detections_module.category_lib`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module), [`mp.tasks.vision.drawing_styles.drawing_utils.face_landmarker.category_lib`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module), [`mp.tasks.vision.drawing_styles.face_landmarker.category_lib`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module), [`mp.tasks.vision.drawing_styles.hand_landmarker.category`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module), [`mp.tasks.vision.drawing_utils.detections_module.category_lib`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module), [`mp.tasks.vision.drawing_utils.face_landmarker.category_lib`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:28Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/  
+## Modules
 
+[`category_c_module`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/components/containers/category_c) module: C types for Category.
+
+## Classes
+
+[`class Category`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/components/containers/Category): A classification category.

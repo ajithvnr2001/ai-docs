@@ -1,38 +1,32 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:21.817142+00:00
+title: mp.tasks.vision.drawing_utils.math.isclose
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:00.928880+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/
+# mp.tasks.vision.drawing_utils.math.isclose
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=9884334993588504005&q=EgQoUFpcGL7NxNYGIjBX-5EKYJClfgIX2futY34M5jtTwHprDZlzebKNQpCTerx5HakkjwWdR5ZFvNSuyJEyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/)  
-  
-  
-  
-  
+Determine whether two floating point numbers are close in value.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/&q=EgQoUFpcGL7NxNYGIjBX-5EKYJClfgIX2futY34M5jtTwHprDZlzebKNQpCTerx5HakkjwWdR5ZFvNSuyJEyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases**
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:19Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose/  
+[`mp.tasks.vision.drawing_styles.drawing_utils.math.isclose`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isclose)
+    
+    
+    mp.tasks.vision.drawing_utils.math.isclose(
+        a, b, *, rel_tol=1e-09, abs_tol=0.0
+    )
+    
 
+rel_tol maximum difference for being considered "close", relative to the magnitude of the input values abs_tol maximum difference for being considered "close", regardless of the magnitude of the input values
+
+Return True if a is close in value to b, and False otherwise.
+
+For the values to be considered close, the difference between them must be smaller than at least one of the tolerances.
+
+-inf, inf and NaN behave similarly to the IEEE 754 Standard. That is, NaN is not close to anything, even itself. inf and -inf are only close to themselves.

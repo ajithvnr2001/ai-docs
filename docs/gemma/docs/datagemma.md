@@ -1,38 +1,52 @@
 ---
 url: https://ai.google.dev/gemma/docs/datagemma/
-title: https://ai.google.dev/gemma/docs/datagemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:05.320814+00:00
+title: DataGemma
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:45.006153+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/datagemma/
+# DataGemma
 
 > Source: https://ai.google.dev/gemma/docs/datagemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3974610314619765719&q=EgQoUFpcGKbOxNYGIjAJt5k8URi_PYNtp47TUkl1UIsDwMe4REIEjQfsvtP8ci9_erQ-SBCGcMXWIsknGcAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/datagemma/)  
-  
-  
-  
-  
+##  DataGemma 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/datagemma/&q=EgQoUFpcGKbOxNYGIjAJt5k8URi_PYNtp47TUkl1UIsDwMe4REIEjQfsvtP8ci9_erQ-SBCGcMXWIsknGcAyA2NyUloBQw)  
-  
+DataGemma is a research tool that lets users ask questions in plain language and receive answers based on publicly available statistical data in the [Data Commons](https://datacommons.org/) repository. The tool uses specially built versions of [Gemma](https://ai.google.dev/gemma/docs/core), the [Gemini API](https://ai.google.dev/gemini-api) with Gemini 1.5 Pro, and a set of libraries specifically designed to work with Data Commons. 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+This research tool provides two separate techniques for answering questions based on Data Commons statistical data: 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:03Z  
-URL: https://ai.google.dev/gemma/docs/datagemma/  
+  * **Retrieval-Interleaved Generation (RIG)** \- This approach uses a variant of Gemma 2 that is fine-tuned to recognize when it needs to replace a generated number with more accurate information from Data Commons. For more details, see the Colab [notebook](https://colab.research.google.com/github/datacommonsorg/llm-tools/blob/main/notebooks/datagemma_rig.ipynb) and models on [Kaggle](https://www.kaggle.com/models/google/datagemma-rig) or [Hugging Face](https://huggingface.co/google/datagemma-rig-27b-it).
+  * **Retrieval-Augmented Generation (RAG)** \- This approach uses a variant of Gemma 2 that retrieves relevant information from Data Commons and then uses that information to create an extended prompt for the Gemini 1.5 Pro model. For more details, see the Colab [notebook](https://colab.research.google.com/github/datacommonsorg/llm-tools/blob/main/notebooks/datagemma_rag.ipynb) and models on [Kaggle](https://www.kaggle.com/models/google/datagemma-rag) or [Hugging Face](https://huggingface.co/google/datagemma-rag-27b-it).
 
+
+
+For more research and technical details on DataGemma, see the [DataGemma technical paper](http://datacommons.org/link/DataGemmaPaper). 
+
+  * auto_awesome 
+
+####  Generate answers with real data 
+
+Apply generative artificial intelligence (AI) to a vast repository of public statistical data to explore and uncover new insights. 
+
+  * biotech 
+
+####  Evaluate AI data grounding techniques 
+
+Investigate ways to guide generative AI model output with retrieval-augmented and data-interleaved techniques. 
+
+
+
+
+##  Learn more 
+
+###  [ View RIG on Kaggle ](https://www.kaggle.com/models/google/datagemma-rig)
+
+View more code, notebooks, information, and discussions about the DataGemma RIG model on Kaggle. 
+
+###  [ Run RIG in Colab ](https://colab.research.google.com/github/datacommonsorg/llm-tools/blob/main/notebooks/datagemma_rig.ipynb)
+
+Try DataGemma using the retrieval-interleaved technique to answer questions. 
+
+###  [ Run RAG in Colab ](https://colab.research.google.com/github/datacommonsorg/llm-tools/blob/main/notebooks/datagemma_rag.ipynb)
+
+Try DataGemma using the retrieval-augmented technique to answer questions. 

@@ -1,38 +1,130 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:36.915760+00:00
+title: tf.lite.experimental.QuantizationDebugger
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:35.207752+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/
+# tf.lite.experimental.QuantizationDebugger
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=16439615562602054219&q=EgQoUFpcGMzNxNYGIjAWqXgNY2vEzvN-i-dBQsRiwlHMJE_JHrPmE_Fxv4IuFCS_30B7iFatUGhudd4FzJYyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L120-L549) Debugger for Quantized TensorFlow Lite debug mode models.
+    
+    
+    tf.lite.experimental.QuantizationDebugger(
+        quant_debug_model_path: Optional[str] = None,
+        quant_debug_model_content: Optional[bytes] = None,
+        float_model_path: Optional[str] = None,
+        float_model_content: Optional[bytes] = None,
+        debug_dataset: Optional[Callable[[], Iterable[Sequence[np.ndarray]]]] = None,
+        debug_options: Optional[[tf.lite.experimental.QuantizationDebugOptions](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions)] = None,
+        converter: Optional[TFLiteConverter] = None
+    ) -> None
+    
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/&q=EgQoUFpcGMzNxNYGIjAWqXgNY2vEzvN-i-dBQsRiwlHMJE_JHrPmE_Fxv4IuFCS_30B7iFatUGhudd4FzJYyA2NyUloBQw)  
-  
+### Used in the notebooks
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+| Used in the tutorials  
+---  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * [Inspecting Quantization Errors with Quantization Debugger](https://www.tensorflow.org/lite/performance/quantization_debugger)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:33Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger/  
+  
+  
+This can run the TensorFlow Lite converted models equipped with debug ops and collect debug information. This debugger calculates statistics from user-defined post-processing functions as well as default ones.
 
+## Args  
+  
+---  
+  
+`quant_debug_model_path` |  Path to the quantized debug TFLite model file.   
+`quant_debug_model_content` |  Content of the quantized debug TFLite model.   
+`float_model_path` |  Path to float TFLite model file.   
+`float_model_content` |  Content of the float TFLite model.   
+`debug_dataset` |  a factory function that returns dataset generator which is used to generate input samples (list of np.ndarray) for the model. The generated elements must have same types and shape as inputs to the model.   
+`debug_options` |  Debug options to debug the given model.   
+`converter` |  Optional, use converter instead of quantized model.   
+  
+## Raises  
+  
+---  
+  
+`ValueError` |  If the debugger was unable to be created.   
+  
+## Attributes  
+  
+---  
+  
+`options` |   
+  
+## Methods
+
+### `get_debug_quantized_model`
+
+[View source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L261-L273)
+    
+    
+    get_debug_quantized_model() -> bytes
+    
+
+Returns an instrumented quantized model.
+
+Convert the quantized model with the initialized converter and return bytes for model. The model will be instrumented with numeric verification operations and should only be used for debugging.
+
+Returns  
+---  
+Model bytes corresponding to the model.   
+  
+Raises  
+---  
+  
+`ValueError` |  if converter is not passed to the debugger.   
+  
+### `get_nondebug_quantized_model`
+
+[View source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L247-L259)
+    
+    
+    get_nondebug_quantized_model() -> bytes
+    
+
+Returns a non-instrumented quantized model.
+
+Convert the quantized model with the initialized converter and return bytes for nondebug model. The model will not be instrumented with numeric verification operations.
+
+Returns  
+---  
+Model bytes corresponding to the model.   
+  
+Raises  
+---  
+  
+`ValueError` |  if converter is not passed to the debugger.   
+  
+### `layer_statistics_dump`
+
+[View source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L524-L549)
+    
+    
+    layer_statistics_dump(
+        file: IO[str]
+    ) -> None
+    
+
+Dumps layer statistics into file, in csv format.
+
+Args  
+---  
+  
+`file` |  file, or file-like object to write.   
+  
+### `run`
+
+[View source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L326-L330)
+    
+    
+    run() -> None
+    
+
+Runs models and gets metrics.

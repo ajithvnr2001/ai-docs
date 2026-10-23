@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/custom-agents/",
   "file": "gemini-api/docs/custom-agents.md",
-  "title": "https://ai.google.dev/gemini-api/docs/custom-agents/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:47.599085+00:00",
-  "html_len": 3073,
-  "md_len": 1783,
-  "depth": 0
+  "title": "Building managed agents",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:11.174882+00:00"
 }

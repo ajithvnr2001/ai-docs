@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/caching/",
   "file": "gemini-api/docs/generate-content/caching.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/caching/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:51.563286+00:00",
-  "html_len": 3118,
-  "md_len": 1839,
-  "depth": 0
+  "title": "Context caching",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:25.497867+00:00"
 }

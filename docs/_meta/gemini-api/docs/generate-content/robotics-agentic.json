@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/robotics-agentic/",
   "file": "gemini-api/docs/generate-content/robotics-agentic.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/robotics-agentic/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:56.676617+00:00",
-  "html_len": 3153,
-  "md_len": 1883,
-  "depth": 0
+  "title": "Agentic vision capabilities",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:43.924146+00:00"
 }

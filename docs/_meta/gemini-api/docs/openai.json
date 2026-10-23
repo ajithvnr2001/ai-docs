@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/openai/",
   "file": "gemini-api/docs/openai.md",
-  "title": "https://ai.google.dev/gemini-api/docs/openai/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:33.056410+00:00",
-  "html_len": 3045,
-  "md_len": 1748,
-  "depth": 0
+  "title": "OpenAI compatibility",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:55.580506+00:00"
 }

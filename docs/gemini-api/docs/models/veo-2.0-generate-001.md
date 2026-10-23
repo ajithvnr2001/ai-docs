@@ -1,38 +1,25 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001
-title: https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:30.590852+00:00
+title: Veo 2.0
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:47.362315+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001
+# Veo 2.0
 
 > Source: https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=11596247423514390667&q=EgQoUFpcGIPOxNYGIjCplJDyPSvy5pi56JFUjHHTwiT_sV98jbmXfluyJdeYURdH6pEDfrg3MV510Ef6SDIyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001)  
-  
-  
-  
-  
+Our robust and reliable stable video generation model, providing consistent performance for production-ready workflows. Veo 2.0 is best for standard 1080p content creation, social media assets, and high-volume video tasks that prioritize reliable character consistency and predictable sub-second generation speeds.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001&q=EgQoUFpcGIPOxNYGIjCplJDyPSvy5pi56JFUjHHTwiT_sV98jbmXfluyJdeYURdH6pEDfrg3MV510Ef6SDIyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Video generation](https://ai.google.dev/gemini-api/docs/video) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:27Z  
-URL: https://ai.google.dev/gemini-api/docs/models/veo-2.0-generate-001  
+## veo-2.0-generate-001
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `veo-2.0-generate-001`  
+saveSupported data types |  **Input** Text, image **Output** Video  
+token_autoLimits |  **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2  
+calendar_monthLatest update | April 2025

@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/flex-inference/",
   "file": "gemini-api/docs/flex-inference.md",
-  "title": "https://ai.google.dev/gemini-api/docs/flex-inference/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:49.533507+00:00",
-  "html_len": 3078,
-  "md_len": 1789,
-  "depth": 0
+  "title": "Flex inference",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:15.438512+00:00"
 }

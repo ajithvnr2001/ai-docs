@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/
-title: https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:15.734971+00:00
+title: Deep Research Pro preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:34.671340+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/
+# Deep Research Pro preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=16277659355708126447&q=EgQoUFpcGPTNxNYGIjDhhJ_QrK4OExwd1ZcTH2SWw6Pv79PtgA8bbjrvEVq61C0vGQa0P0ANg1ClT4H9ck8yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/)  
-  
-  
-  
-  
+A powerful agentic researcher designed for autonomous, multi-step investigations that synthesize complex information into comprehensive, cited reports. Powered by Gemini 3.1 Pro, this model is optimized for long-running tasks and accuracy-critical analysis across hundreds of public web sources and private workspace data like Gmail and Drive.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/&q=EgQoUFpcGPTNxNYGIjDhhJ_QrK4OExwd1ZcTH2SWw6Pv79PtgA8bbjrvEVq61C0vGQa0P0ANg1ClT4H9ck8yA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Deep Research](https://ai.google.dev/gemini-api/docs/deep-research) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:12Z  
-URL: https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025/  
+## deep-research-pro-preview-12-2025
 
+Property | Description  
+---|---  
+id_cardAgent code |  **Interactions API** `deep-research-pro-preview-12-2025`  
+saveSupported data types |  **Input** Text, Image, PDF, Audio, Video **Output** Text (Cited Reports)  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input context window** 1,048,576 **Output token limit** 65,536  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Preview: `deep-research-pro-preview-12-2025`
+
+  
+calendar_monthLatest update | December 2025

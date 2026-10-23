@@ -1,38 +1,33 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:12.956329+00:00
+title: mp.tasks.vision.drawing_styles.pose_landmarker.PoseLandmarkerOptionsC
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:40.814927+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/
+# mp.tasks.vision.drawing_styles.pose_landmarker.PoseLandmarkerOptionsC
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=5368326760791220679&q=EgQoUFpcGLbNxNYGIjCoCr4qRMtthCryS4UydKaZ_qPdtDd-Ht9KPwfGDZSLawl7cr_5ouO4UGH9O6-1iHcyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/pose_landmarker.py#L197-L237) The ctypes struct for PoseLandmarkerOptions.
+    
+    
+    mp.tasks.vision.drawing_styles.pose_landmarker.PoseLandmarkerOptionsC(
+        *args, **kwargs
+    )
+    
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/&q=EgQoUFpcGLbNxNYGIjCoCr4qRMtthCryS4UydKaZ_qPdtDd-Ht9KPwfGDZSLawl7cr_5ouO4UGH9O6-1iHcyA2NyUloBQw)  
-  
+| 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+## Attributes  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
+---  
   
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
-
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:11Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC/  
-
+`base_options` |  Structure/Union member   
+`min_pose_detection_confidence` |  Structure/Union member   
+`min_pose_presence_confidence` |  Structure/Union member   
+`min_tracking_confidence` |  Structure/Union member   
+`num_poses` |  Structure/Union member   
+`output_segmentation_masks` |  Structure/Union member   
+`result_callback` |  Structure/Union member   
+`running_mode` |  Structure/Union member 

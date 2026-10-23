@@ -1,38 +1,28 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:34.928671+00:00
+title: tf.lite.experimental.OpResolverType
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:34.440951+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/
+# tf.lite.experimental.OpResolverType
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=13848234865436097109&q=EgQoUFpcGMvNxNYGIjA5xMXUKJSO-0X78lUPHWg8HodXZ_0G-thiVggXBDifBswlEQSzyv8C2O_h04lrgjsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/python/interpreter.py#L315-L343) Different types of op resolvers for Tensorflow Lite.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/&q=EgQoUFpcGMvNxNYGIjA5xMXUKJSO-0X78lUPHWg8HodXZ_0G-thiVggXBDifBswlEQSzyv8C2O_h04lrgjsyA2NyUloBQw)  
-  
+  * `AUTO`: Indicates the op resolver that is chosen by default in TfLite Python, which is the "BUILTIN" as described below.
+  * `BUILTIN`: Indicates the op resolver for built-in ops with optimized kernel implementation.
+  * `BUILTIN_REF`: Indicates the op resolver for built-in ops with reference kernel implementation. It's generally used for testing and debugging.
+  * `BUILTIN_WITHOUT_DEFAULT_DELEGATES`: Indicates the op resolver for built-in ops with optimized kernel implementation, but it will disable the application of default TfLite delegates (like the XNNPACK delegate) to the model graph. Generally this should not be used unless there are issues with the default configuration.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+| 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:32Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType/  
-
+## Class Variables  
+  
+---  
+  
+AUTO |  `<OpResolverType.AUTO: 0>`  
+BUILTIN |  `<OpResolverType.BUILTIN: 1>`  
+BUILTIN_REF |  `<OpResolverType.BUILTIN_REF: 2>`  
+BUILTIN_WITHOUT_DEFAULT_DELEGATES |  `<OpResolverType.BUILTIN_WITHOUT_DEFAULT_DELEGATES: 3>`

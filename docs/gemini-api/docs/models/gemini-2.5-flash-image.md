@@ -1,38 +1,36 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image
-title: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:16.204643+00:00
+title: Gemini 2.5 Flash image (Nano Banana)
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:35.397245+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image
+# Gemini 2.5 Flash image (Nano Banana)
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=6954628259520201783&q=EgQoUFpcGPbNxNYGIjBd_1DJuwqSrr7dJZuSB-hvJkx8N2Mgumy51dxDD_JF9qD3akU8dewnmARAi_vzpoQyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)  
-  
-  
-  
-  
+Our best engine for high-velocity visual creation, offering state-of-the-art speed and efficiency. Gemini 2.5 Flash Image, also known as Nano Banana, is best for high-volume generation, conversational image editing, and low-latency creative workflows that require native multimodal understanding.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image&q=EgQoUFpcGPbNxNYGIjBd_1DJuwqSrr7dJZuSB-hvJkx8N2Mgumy51dxDD_JF9qD3akU8dewnmARAi_vzpoQyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-flash-image)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:14Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image  
+Visit the [Image generation](https://ai.google.dev/gemini-api/docs/image-generation) guide for full coverage of features and capabilities.
 
+## gemini-2.5-flash-image
+
+Property | Description  
+---|---  
+id_cardModel code | `gemini-2.5-flash-image`  
+saveSupported data types |  **Inputs** Image and Text **Output** Image and Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 65,536 **Output token limit** 32,768  
+handymanCapabilities |  **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Not supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Not supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Not supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Not supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Stable: `gemini-2.5-flash-image`
+  * Deprecated: `gemini-2.5-flash-image-preview`
+
+  
+calendar_monthLatest update | October 2025  
+cognition_2Knowledge cutoff | June 2025

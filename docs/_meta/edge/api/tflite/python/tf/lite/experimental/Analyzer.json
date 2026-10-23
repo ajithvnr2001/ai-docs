@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/",
   "file": "edge/api/tflite/python/tf/lite/experimental/Analyzer.md",
-  "title": "https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:34.834027+00:00",
-  "html_len": 3166,
-  "md_len": 1899,
-  "depth": 0
+  "title": "tf.lite.experimental.Analyzer",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:42:34.170185+00:00"
 }

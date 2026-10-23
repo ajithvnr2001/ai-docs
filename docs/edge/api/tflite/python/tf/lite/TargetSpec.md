@@ -1,38 +1,39 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:33.016984+00:00
+title: tf.lite.TargetSpec
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:33.305090+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/
+# tf.lite.TargetSpec
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=8210847160958577527&q=EgQoUFpcGMrNxNYGIjBnSg-lCnw4c9nwj_KLCTurqKuik5ygVYsjw_x-LvVjUSSRv545gyyuP3dq59GjhF8yA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/python/lite.py#L195-L240) Specification of target device used to optimize the model.
+    
+    
+    tf.lite.TargetSpec(
+        supported_ops=None,
+        supported_types=None,
+        experimental_select_user_tf_ops=None,
+        experimental_supported_backends=None
+    )
+    
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/&q=EgQoUFpcGMrNxNYGIjBnSg-lCnw4c9nwj_KLCTurqKuik5ygVYsjw_x-LvVjUSSRv545gyyuP3dq59GjhF8yA2NyUloBQw)  
-  
+### Used in the notebooks
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+| Used in the guide  
+---  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * [TFLite Authoring Tool](https://www.tensorflow.org/lite/guide/authoring)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:31Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec/  
-
+  
+  
+## Attributes  
+  
+---  
+  
+`supported_ops` |  Experimental flag, subject to change. Set of [`tf.lite.OpsSet`](https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet) options, where each option represents a set of operators supported by the target device. (default {tf.lite.OpsSet.TFLITE_BUILTINS}))   
+`supported_types` |  Set of [`tf.dtypes.DType`](https://www.tensorflow.org/api_docs/python/tf/dtypes/DType) data types supported on the target device. If initialized, optimization might be driven by the smallest type in this set. (default set())   
+`experimental_select_user_tf_ops` |  Experimental flag, subject to change. Set of user's TensorFlow operators' names that are required in the TensorFlow Lite runtime. These ops will be exported as select TensorFlow ops in the model (in conjunction with the tf.lite.OpsSet.SELECT_TF_OPS flag). This is an advanced feature that should only be used if the client is using TF ops that may not be linked in by default with the TF ops that are provided when using the SELECT_TF_OPS path. The client is responsible for linking these ops into the target runtime.   
+`experimental_supported_backends` |  Experimental flag, subject to change. Set containing names of supported backends. Currently only "GPU" is supported, more options will be available later. 

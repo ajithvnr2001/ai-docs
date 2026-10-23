@@ -1,25 +1,13 @@
 ---
 url: https://ai.google.dev/api/caching/
-title: Caching \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Caching
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:15:53.473451+00:00
+fetched_at: 2026-10-23T12:00:05.612581+00:00
 ---
 
-# Caching  |  Gemini API  |  Google AI for Developers
+# Caching
 
 > Source: https://ai.google.dev/api/caching/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Caching
 
 Context caching allows you to save and reuse precomputed input tokens that you wish to use repeatedly, for example when asking different questions about the same media file. This can lead to cost and speed savings, depending on the usage. For a detailed introduction, see the [Context caching](https://ai.google.dev/gemini-api/docs/caching) guide.
 
@@ -83,7 +71,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L25-L46)
+    print(response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L25-L46)
 
 ### Node.js
     
@@ -117,7 +105,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
       contents: 'Please summarize this transcript',
       config: {cachedContent: cache.name},
     });
-    console.log('Response text:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L29-L58)
+    console.log('Response text:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L29-L58)
 
 ### Go
     
@@ -172,7 +160,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L16-L66)
+    printResponse(response)[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L16-L66)
 
 ### Shell
     
@@ -252,7 +240,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
         contents="Find a lighthearted moment from this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L52-L75)
+    print(response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L52-L75)
 
 ### Node.js
     
@@ -288,7 +276,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
       contents: 'Find a lighthearted moment from this transcript',
       config: {cachedContent: retrievedCache.name},
     });
-    console.log('Response text:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L67-L98)
+    console.log('Response text:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L67-L98)
 
 ### Go
     
@@ -348,7 +336,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
     	log.Fatal(err)
     }
     fmt.Println("Response from cache (create from name):")
-    printResponse(response)[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L76-L131)
+    printResponse(response)[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L76-L131)
 
 ### From chat
 
@@ -399,7 +387,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
             " simpler language?"
         )
     )
-    print("\n\nmodel:  ", response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L81-L125)
+    print("\n\nmodel:  ", response.text)[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L81-L125)
 
 ### Node.js
     
@@ -455,7 +443,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
       message:
           'I didn\'t understand that last part, could you explain it in simpler language?',
     });
-    console.log('\n\nmodel:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L107-L158)
+    console.log('\n\nmodel:', response.text);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L107-L158)
 
 ### Go
     
@@ -545,7 +533,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("\n\nmodel: ", resp.Text())[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L140-L225)
+    fmt.Println("\n\nmodel: ", resp.Text())[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L140-L225)
 
 ### Response body
 
@@ -637,7 +625,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    print(client.caches.get(name=cache.name))[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L149-L162)
+    print(client.caches.get(name=cache.name))[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L149-L162)
 
 ### Node.js
     
@@ -665,7 +653,7 @@ The request body must be empty.
       },
     });
     const retrievedCache = await ai.caches.get({name: cache.name});
-    console.log('Retrieved Cache:', retrievedCache);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L196-L219)
+    console.log('Retrieved Cache:', retrievedCache);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L196-L219)
 
 ### Go
     
@@ -712,7 +700,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
     fmt.Println("Retrieved cache:")
-    fmt.Println(cache)[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L285-L327)
+    fmt.Println(cache)[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L285-L327)
 
 ### Shell
     
@@ -800,7 +788,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
     client.caches.update(
         name=cache.name,
         config=types.UpdateCachedContentConfig(expire_time=expire_time),
-    )[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L189-L225)
+    )[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L189-L225)
 
 ### Node.js
     
@@ -844,7 +832,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
       name: cache.name,
       config: {expireTime: expireTime},
     });
-    console.log('After update (expire_time):', cache);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L269-L308)
+    console.log('After update (expire_time):', cache);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L269-L308)
 
 ### Go
     
@@ -890,7 +878,7 @@ Specifies when this resource will expire. The following is a list of mutually ex
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L237-L278)
+    fmt.Println("Cache deleted:", cache.Name)[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L237-L278)
 
 ### Shell
     
@@ -946,7 +934,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    client.caches.delete(name=cache.name)[cache.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/cache.py#L131-L144)
+    client.caches.delete(name=cache.name)[cache.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/cache.py#L131-L144)
 
 ### Node.js
     
@@ -974,7 +962,7 @@ The request body must be empty.
       },
     });
     await ai.caches.delete({name: cache.name});
-    console.log('Cache deleted:', cache.name);[cache.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/cache.js#L167-L190)
+    console.log('Cache deleted:', cache.name);[cache.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/cache.js#L167-L190)
 
 ### Go
     
@@ -1020,7 +1008,7 @@ The request body must be empty.
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)[cache.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/cache.go#L237-L278)
+    fmt.Println("Cache deleted:", cache.Name)[cache.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/cache.go#L237-L278)
 
 ### Shell
     
@@ -1187,12 +1175,4 @@ Fields
     
     {
       "totalTokenCount": integer
-    }  
-  
-Send feedback 
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-10-13 UTC.
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-10-13 UTC."],[],[]] 
+    }

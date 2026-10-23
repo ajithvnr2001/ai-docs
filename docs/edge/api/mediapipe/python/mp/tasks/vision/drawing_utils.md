@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:14.882605+00:00
+title: Module: mp.tasks.vision.drawing_utils
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:45.209733+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/
+# Module: mp.tasks.vision.drawing_utils
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17009609550786407686&q=EgQoUFpcGLjNxNYGIjCSR89voq4dwNBelnoE5dkQYB7Q8TjdsvJb1tCTcPi-Wwh63x--p2vjk1aTYeLlnqYyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/drawing_utils.py) MediaPipe solution drawing utils.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/&q=EgQoUFpcGLjNxNYGIjCSR89voq4dwNBelnoE5dkQYB7Q8TjdsvJb1tCTcPi-Wwh63x--p2vjk1aTYeLlnqYyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:12Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/  
+## Modules
 
+[`detections_module`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/detections_module) module: Detections data class. [`face_landmarker`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker) module: MediaPipe face landmarker task. [`landmark_module`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/landmark_module) module: Landmark data class. [`math`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math) module: This module provides access to the mathematical functions defined by the C standard.
+
+## Classes
+
+[`class DrawingSpec`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec)
+
+## Functions
+
+[`draw_axis(...)`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_axis): Draws the 3D axis on the image. [`draw_detection(...)`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_detection): Draws the detction bounding box and keypoints on the image. [`draw_landmarks(...)`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/draw_landmarks): Draws the landmarks and the connections on the image. [`plot_landmarks(...)`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks): Plot the landmarks and the connections in matplotlib 3d. | 
+
+## Other Members  
+  
+---  
+  
+BLACK_COLOR |  `(0, 0, 0)`  
+BLUE_COLOR |  `(255, 0, 0)`  
+GREEN_COLOR |  `(0, 128, 0)`  
+RED_COLOR |  `(0, 0, 255)`  
+WHITE_COLOR |  `(224, 224, 224)`

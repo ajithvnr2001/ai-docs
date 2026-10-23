@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/models/",
   "file": "gemini-api/docs/models.md",
-  "title": "https://ai.google.dev/gemini-api/docs/models/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:14.070113+00:00",
-  "html_len": 3045,
-  "md_len": 1748,
-  "depth": 0
+  "title": "Models",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:27.329873+00:00"
 }

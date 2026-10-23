@@ -1,21 +1,15 @@
 ---
 url: https://ai.google.dev/
-title: Gemini Developer API | Gemma open models \u00a0|\u00a0 Google AI for Developers
+title: AI for every developer
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:15:51.715248+00:00
+fetched_at: 2026-10-23T12:00:16.353895+00:00
 ---
 
-# Gemini Developer API | Gemma open models  |  Google AI for Developers
+# AI for every developer
 
 > Source: https://ai.google.dev/
 
-  * [ Google AI for Developers ](https://ai.google.dev/)
-
-
-
-Send feedback 
-
-[ New Build with Gemini 3 Flash, our frontier intelligence built for speed and scale ](https://aistudio.google.com/apps)
+[ New Try Gemini 4 Argon, our latest frontier model ](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon)
 
 # AI for every  
 developer
@@ -176,5 +170,3 @@ Explore how AgentOps provides cost-effective and powerful LLM-powered agent obse
 Tap into the power of our community forum. Get answers, build together, and be part of the conversation.
 
 [ Google AI Forum ](https://discuss.ai.google.dev/)
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],[],[],[]] 

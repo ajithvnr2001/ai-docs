@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk/",
   "file": "gemini-api/docs/live-api/get-started-sdk.md",
-  "title": "https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:10.307089+00:00",
-  "html_len": 3116,
-  "md_len": 1837,
-  "depth": 0
+  "title": "Get started with Gemini Live API using the Google GenAI SDK",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:20.946484+00:00"
 }

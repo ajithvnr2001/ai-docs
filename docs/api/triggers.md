@@ -1,31 +1,17 @@
 ---
 url: https://ai.google.dev/api/triggers/
-title: Gemini Triggers API \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Gemini Triggers API
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:16:02.830473+00:00
+fetched_at: 2026-10-23T12:00:14.136181+00:00
 ---
 
-# Gemini Triggers API  |  Gemini API  |  Google AI for Developers
+# Gemini Triggers API
 
 > Source: https://ai.google.dev/api/triggers/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Gemini Triggers API
 
 Triggers allow you to schedule agent executions on a cron schedule, enabling automated and recurring tasks.
 
 [View as markdown](https://ai.google.dev/static/api/triggers.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
-
-This API is in Beta. Endpoints are under `/v1beta/`.
 
 ## CreateTrigger
 
@@ -42,27 +28,23 @@ Creates a new trigger that will invoke the specified agent on the given cron sch
 
 The request body contains data with the following structure:
 
-display_name string (optional)
+schedule string (required)
 
-Optional. The display name of the trigger.
+Required. The cron schedule on which the trigger should run. Standard cron format.
 
-environment_id string (optional)
+time_zone string (required)
 
-Optional. The environment ID for the trigger execution.
+Required. Time zone in which the schedule should be interpreted.
 
-execution_timeout_seconds integer (optional)
-
-Optional. The execution timeout for the triggered interaction.
-
-interaction AgentInteraction (required)
+interaction CreateAgentInteractionParams (required)
 
 Required. The interaction request template to be executed.
 
-Interaction for generating the completion using agents.
+Parameters for creating agent interactions
 
 #### Fields
 
-agent AgentOption (optional)
+agent AgentOption (required)
 
 The name of the `Agent` used for generating the interaction.
 
@@ -89,117 +71,13 @@ Use the Antigravity managed agent to perform multi-step tasks that require reaso
 
 
 
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
-
-Configuration parameters for the agent interaction.
-
-background boolean (optional)
-
-Input only. Whether to run the model interaction in the background.
-
-environment EnvironmentConfig or string (optional)
-
-The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-Configuration for a custom environment.
-
-#### Fields
-
-env object (optional)
-
-Environment variables to set in the sandbox environment.
-
-environment_id string (optional)
-
-Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
-network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
-
-Network configuration for the environment.
-
-Network egress configuration for the environment.
-
-#### Fields
-
-allowlist array (EgressRule) or enum (string) (optional)
-
-List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
-
-Possible values:
-
-  * `disabled`
-
-All network egress is blocked.
-
-
-
-
-sources array (Source) (optional)
-
-No description provided.
-
-A source to be mounted into the environment.
-
-#### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
-type enum (string) (optional)
-
-No description provided.
-
-Possible values:
-
-  * `gcs`
-
-A Cloud Storage bucket.
-
-  * `inline`
-
-Inline content.
-
-  * `repository`
-
-A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
-
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
-
-
-
-
-type object (optional)
-
-No description provided.
-
-Always set to `"remote"`.
-
-input Content or array (Content) or array (Step) or string (optional)
+input Content or array (Content) or array (Step) or string (required)
 
 The input for the interaction.
 
-labels object (optional)
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
 
-The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
-
-previous_interaction_id string (optional)
-
-The ID of the previous interaction, if any.
+Configuration parameters for the agent interaction.
 
 response_format ResponseFormat or array (ResponseFormat) (optional)
 
@@ -211,26 +89,11 @@ AudioResponseFormat
 
 Configuration for audio output format.
 
-bit_rate integer (optional)
+type object (required)
 
-Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+No description provided.
 
-delivery enum (string) (optional)
-
-The delivery mode for the audio output.
-
-Possible values:
-
-  * `inline`
-
-Audio data is returned inline in the response.
-
-  * `uri`
-
-Audio data is returned as a URI.
-
-
-
+Always set to `"audio"`.
 
 mime_type enum (string) (optional)
 
@@ -265,19 +128,70 @@ Mu-law audio format.
 
 
 
+delivery enum (string) (optional)
+
+The delivery mode for the audio output.
+
+Possible values:
+
+  * `inline`
+
+Audio data is returned inline in the response.
+
+  * `uri`
+
+Audio data is returned as a URI.
+
+
+
+
 sample_rate integer (optional)
 
 Sample rate in Hz.
+
+bit_rate integer (optional)
+
+Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+ImageResponseFormat
+
+Configuration for image output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"audio"`.
+Always set to `"image"`.
 
-ImageResponseFormat
+mime_type enum (string) (optional)
 
-Configuration for image output format.
+The MIME type of the image output.
+
+Possible values:
+
+  * `image/jpeg`
+
+JPEG image format.
+
+
+
+
+delivery enum (string) (optional)
+
+The delivery mode for the image output.
+
+Possible values:
+
+  * `inline`
+
+Image data is returned inline in the response.
+
+  * `uri`
+
+Image data is returned as a URI.
+
+
+
 
 aspect_ratio enum (string) (optional)
 
@@ -344,23 +258,6 @@ Possible values:
 
 
 
-delivery enum (string) (optional)
-
-The delivery mode for the image output.
-
-Possible values:
-
-  * `inline`
-
-Image data is returned inline in the response.
-
-  * `uri`
-
-Image data is returned as a URI.
-
-
-
-
 image_size enum (string) (optional)
 
 The size of the image output.
@@ -386,28 +283,15 @@ Possible values:
 
 
 
-mime_type enum (string) (optional)
+TextResponseFormat
 
-The MIME type of the image output.
-
-Possible values:
-
-  * `image/jpeg`
-
-JPEG image format.
-
-
-
+Configuration for text output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"image"`.
-
-TextResponseFormat
-
-Configuration for text output format.
+Always set to `"text"`.
 
 mime_type enum (string) (optional)
 
@@ -428,34 +312,17 @@ Plain text output format.
 
 schema object (optional)
 
-The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
-
-type object (required)
-
-No description provided.
-
-Always set to `"text"`.
+The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
 VideoResponseFormat
 
 Configuration for video output format.
 
-aspect_ratio enum (string) (optional)
+type object (required)
 
-The aspect ratio for the video output.
+No description provided.
 
-Possible values:
-
-  * `16:9`
-
-16:9 aspect ratio.
-
-  * `9:16`
-
-9:16 aspect ratio.
-
-
-
+Always set to `"video"`.
 
 delivery enum (string) (optional)
 
@@ -474,13 +341,26 @@ Video data is returned as a URI.
 
 
 
+aspect_ratio enum (string) (optional)
+
+The aspect ratio for the video output.
+
+Possible values:
+
+  * `16:9`
+
+16:9 aspect ratio.
+
+  * `9:16`
+
+9:16 aspect ratio.
+
+
+
+
 duration string (optional)
 
 The duration for the video output.
-
-gcs_uri string (optional)
-
-The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
 
 resolution enum (string) (optional)
 
@@ -507,143 +387,146 @@ Possible values:
 
 
 
+environment EnvironmentConfig or string (optional)
+
+The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+Configuration for a custom environment.
+
+#### Fields
+
 type object (required)
 
 No description provided.
 
-Always set to `"video"`.
+Always set to `"remote"`.
 
-safety_settings array (SafetySetting) (optional)
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
-Safety settings for the interaction.
+Network configuration for the environment.
 
-A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+Network egress configuration for the environment.
 
 #### Fields
 
-method enum (string) (optional)
+allowlist array (EgressRule) or enum (string) (optional)
 
-Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-Possible values:
-
-  * `severity`
-
-The harm block method uses both probability and severity scores.
-
-  * `probability`
-
-The harm block method uses the probability score.
-
-
-
-
-threshold enum (string) (optional)
-
-Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
 Possible values:
 
-  * `block_low_and_above`
+  * `disabled`
 
-Block content with a low harm probability or higher.
-
-  * `block_medium_and_above`
-
-Block content with a medium harm probability or higher.
-
-  * `block_only_high`
-
-Block content with a high harm probability.
-
-  * `block_none`
-
-Do not block any content, regardless of its harm probability.
-
-  * `off`
-
-Turn off the safety filter entirely.
+All network egress is blocked.
 
 
 
 
-type HarmCategory (optional)
+sources array (Source) (optional)
 
-Required. The type of harm category to be blocked.
+No description provided.
 
-#### Possible values
+A source to be mounted into the environment.
 
-  * `hate_speech`
+#### Fields
 
-Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+type enum (string) (optional)
 
-  * `dangerous_content`
+No description provided.
 
-Content that promotes, facilitates, or enables dangerous activities.
+Possible values:
 
-  * `harassment`
+  * `gcs`
 
-Abusive, threatening, or content intended to bully, torment, or ridicule.
+A Cloud Storage bucket.
 
-  * `sexually_explicit`
+  * `inline`
 
-Content that contains sexually explicit material.
+Inline content.
 
-  * `image_hate`
+  * `repository`
 
-Images that contain hate speech.
-
-  * `image_dangerous_content`
-
-Images that contain dangerous content.
-
-  * `image_harassment`
-
-Images that contain harassment.
-
-  * `image_sexually_explicit`
-
-Images that contain sexually explicit content.
-
-  * `jailbreak`
-
-Prompts designed to bypass safety filters.
+A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
 
 
 
-service_tier ServiceTier (optional)
+source string (optional)
 
-The service tier for the interaction.
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-#### Possible values
+target string (optional)
 
-  * `flex`
+Where the source should appear in the environment.
 
-Flex service tier.
+content string (optional)
 
-  * `standard`
+The inline content if `type` is `INLINE`.
 
-Standard service tier.
+encoding string (optional)
 
-  * `priority`
+Optional encoding for inline content (e.g. `base64`).
 
-Priority service tier.
+environment_id string (optional)
 
-  * `deferred`
+Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-Deferred service tier.
+env object or string (optional)
+
+Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+object
+
+string
+
+A direct string value.
+
+id string (optional)
+
+Required. Output only. A unique identifier for the interaction completion.
+
+status enum (string) (optional)
+
+Required. Output only. The status of the interaction.
+
+Possible values:
+
+  * `in_progress`
+
+The interaction is in progress.
+
+  * `requires_action`
+
+The interaction requires action/input from the user.
+
+  * `completed`
+
+The interaction is completed.
+
+  * `failed`
+
+The interaction failed.
+
+  * `cancelled`
+
+The interaction was cancelled.
+
+  * `incomplete`
+
+The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
 
 
 
-store boolean (optional)
+created string (optional)
 
-Input only. Whether to store the response and request for later retrieval.
+Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-stream boolean (optional)
+updated string (optional)
 
-Input only. Whether the interaction will be streamed.
+Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 system_instruction string (optional)
 
@@ -670,6 +553,41 @@ Always set to `"code_execution"`.
 ComputerUse
 
 A tool that can be used by the model to interact with the computer.
+
+type object (required)
+
+No description provided.
+
+Always set to `"computer_use"`.
+
+environment enum (string) (optional)
+
+The environment being operated.
+
+Possible values:
+
+  * `browser`
+
+Operates in a web browser.
+
+  * `mobile`
+
+Operates in a mobile environment.
+
+  * `desktop`
+
+Operates in a desktop environment.
+
+
+
+
+excluded_predefined_functions array (string) (optional)
+
+The list of predefined functions that are excluded from the model call.
+
+enable_prompt_injection_detection boolean (optional)
+
+Whether enable the prompt injection detection check on computer-use request.
 
 disabled_safety_policies array (enum (string)) (optional)
 
@@ -708,56 +626,9 @@ Safety policy for legal terms and agreements.
 
 
 
-enable_prompt_injection_detection boolean (optional)
-
-Whether enable the prompt injection detection check on computer-use request.
-
-environment enum (string) (optional)
-
-The environment being operated.
-
-Possible values:
-
-  * `browser`
-
-Operates in a web browser.
-
-  * `mobile`
-
-Operates in a mobile environment.
-
-  * `desktop`
-
-Operates in a desktop environment.
-
-
-
-
-excluded_predefined_functions array (string) (optional)
-
-The list of predefined functions that are excluded from the model call.
-
-type object (required)
-
-No description provided.
-
-Always set to `"computer_use"`.
-
 FileSearch
 
 A tool that can be used by the model to search files.
-
-file_search_store_names array (string) (optional)
-
-The file search store names to search.
-
-metadata_filter string (optional)
-
-Metadata filter to apply to the semantic retrieval documents and chunks.
-
-top_k integer (optional)
-
-The number of semantic retrieval chunks to retrieve.
 
 type object (required)
 
@@ -765,21 +636,21 @@ No description provided.
 
 Always set to `"file_search"`.
 
+file_search_store_names array (string) (optional)
+
+The file search store names to search.
+
+top_k integer (optional)
+
+The number of semantic retrieval chunks to retrieve.
+
+metadata_filter string (optional)
+
+Metadata filter to apply to the semantic retrieval documents and chunks.
+
 Function
 
 A tool that can be used by the model.
-
-description string (optional)
-
-A description of the function.
-
-name string (optional)
-
-The name of the function.
-
-parameters object (optional)
-
-The JSON Schema for the function's parameters.
 
 type object (required)
 
@@ -787,9 +658,27 @@ No description provided.
 
 Always set to `"function"`.
 
+name string (optional)
+
+The name of the function.
+
+description string (optional)
+
+A description of the function.
+
+parameters object (optional)
+
+The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
 GoogleMaps
 
 A tool that can be used by the model to call Google Maps.
+
+type object (required)
+
+No description provided.
+
+Always set to `"google_maps"`.
 
 enable_widget boolean (optional)
 
@@ -803,15 +692,15 @@ longitude number (optional)
 
 The longitude of the user's location.
 
+GoogleSearch
+
+A tool that can be used by the model to search Google.
+
 type object (required)
 
 No description provided.
 
-Always set to `"google_maps"`.
-
-GoogleSearch
-
-A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 
 search_types array (enum (string)) (optional)
 
@@ -827,22 +716,30 @@ Setting this field enables web search. Only text results are returned.
 
 Setting this field enables image search. Image bytes are returned.
 
-  * `enterprise_web_search`
-
-Setting this field enables enterprise web search.
 
 
 
+McpServer
+
+A MCPServer is a server that can be called by the model to perform actions.
 
 type object (required)
 
 No description provided.
 
-Always set to `"google_search"`.
+Always set to `"mcp_server"`.
 
-McpServer
+url string (optional)
 
-A MCPServer is a server that can be called by the model to perform actions.
+The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+name string (optional)
+
+The name of the MCPServer.
+
+headers object (optional)
+
+Optional: Fields for authentication headers, timeouts, etc., if needed.
 
 allowed_tools array (AllowedTools) (optional)
 
@@ -881,176 +778,6 @@ tools array (string) (optional)
 
 The names of the allowed tools.
 
-headers object (optional)
-
-Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-name string (optional)
-
-The name of the MCPServer.
-
-type object (required)
-
-No description provided.
-
-Always set to `"mcp_server"`.
-
-url string (optional)
-
-The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
-Retrieval
-
-A tool that can be used by the model to retrieve files.
-
-exa_ai_search_config ExaAISearchConfig (optional)
-
-Used to specify configuration for ExaAISearch.
-
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Required. The API key for ExaAiSearch.
-
-custom_config object (optional)
-
-Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-parallel_ai_search_config ParallelAISearchConfig (optional)
-
-Used to specify configuration for ParallelAISearch.
-
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Optional. The API key for ParallelAiSearch.
-
-custom_config object (optional)
-
-Optional. Custom configs for ParallelAiSearch.
-
-rag_store_config RagStoreConfig (optional)
-
-Used to specify configuration for RagStore.
-
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional)
-
-Optional. The representation of the rag source.
-
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional)
-
-Optional. RagCorpora resource name.
-
-rag_file_ids array (string) (optional)
-
-Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-rag_retrieval_config RagRetrievalConfig (optional)
-
-Optional. The retrieval config for the Rag query.
-
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional)
-
-Optional. Config for filters.
-
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional)
-
-Optional. String for metadata filtering.
-
-vector_distance_threshold number (optional)
-
-Optional. Only returns contexts with vector distance smaller than the threshold.
-
-vector_similarity_threshold number (optional)
-
-Optional. Only returns contexts with vector similarity larger than the threshold.
-
-hybrid_search HybridSearch (optional)
-
-Optional. Config for Hybrid Search.
-
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional)
-
-Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-ranking Ranking (optional)
-
-Optional. Config for ranking and reranking.
-
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-rank_service RankService (optional)
-
-Config for Rank Service.
-
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-ranking_config object (optional)
-
-No description provided.
-
-Always set to `"rank_service"`.
-
-top_k integer (optional)
-
-Optional. The number of contexts to retrieve.
-
-retrieval_types array (enum (string)) (optional)
-
-The types of file retrieval to enable.
-
-Possible values:
-
-  * `rag_store`
-  * `exa_ai_search`
-  * `parallel_ai_search`
-
-
-
-type object (required)
-
-No description provided.
-
-Always set to `"retrieval"`.
-
 UrlContext
 
 A tool that can be used by the model to fetch URL context.
@@ -1060,6 +787,35 @@ type object (required)
 No description provided.
 
 Always set to `"url_context"`.
+
+previous_interaction_id string (optional)
+
+The ID of the previous interaction, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+service_tier ServiceTier (optional)
+
+The service tier for the interaction.
+
+#### Possible values
+
+  * `flex`
+
+Flex service tier.
+
+  * `standard`
+
+Standard service tier.
+
+  * `priority`
+
+Priority service tier.
+
+
+
 
 webhook_config WebhookConfig (optional)
 
@@ -1077,9 +833,108 @@ user_metadata object (optional)
 
 Optional. The user metadata that will be returned on each event emission to the webhooks.
 
+safety_settings array (SafetySetting) (optional)
+
+Safety settings for the interaction.
+
+A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+
+#### Fields
+
+type HarmCategory (required)
+
+Required. The type of harm category to be blocked.
+
+#### Possible values
+
+  * `hate_speech`
+
+Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+
+  * `dangerous_content`
+
+Content that promotes, facilitates, or enables dangerous activities.
+
+  * `harassment`
+
+Abusive, threatening, or content intended to bully, torment, or ridicule.
+
+  * `sexually_explicit`
+
+Content that contains sexually explicit material.
+
+  * `jailbreak`
+
+Prompts designed to bypass safety filters.
+
+
+
+
+threshold enum (string) (required)
+
+Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+Possible values:
+
+  * `block_low_and_above`
+
+Block content with a low harm probability or higher.
+
+  * `block_medium_and_above`
+
+Block content with a medium harm probability or higher.
+
+  * `block_only_high`
+
+Block content with a high harm probability.
+
+  * `off`
+
+Turn off the safety filter entirely.
+
+
+
+
+method enum (string) (optional)
+
+Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+Possible values:
+
+  * `severity`
+
+The harm block method uses both probability and severity scores.
+
+  * `probability`
+
+The harm block method uses the probability score.
+
+
+
+
+labels object (optional)
+
+The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+display_name string (optional)
+
+Optional. The display name of the trigger.
+
+environment_id string (optional)
+
+Optional. The environment ID for the trigger execution.
+
 max_consecutive_failures integer (optional)
 
 Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+
+execution_timeout_seconds integer (optional)
+
+Optional. The execution timeout for the triggered interaction.
+
+### Response
+
+If successful, the response body contains data with the following structure:
 
 schedule string (required)
 
@@ -1089,43 +944,15 @@ time_zone string (required)
 
 Required. Time zone in which the schedule should be interpreted.
 
-### Response
-
-If successful, the response body contains data with the following structure:
-
-consecutive_failure_count integer (optional)
-
-Output only. The number of consecutive failures that have occurred since the last successful execution.
-
-create_time string (optional)
-
-Output only. The time when the trigger was created.
-
-display_name string (optional)
-
-Optional. The display name of the trigger.
-
-environment_id string (optional)
-
-Optional. The environment ID for the trigger execution.
-
-execution_timeout_seconds integer (optional)
-
-Optional. The execution timeout for the triggered interaction.
-
-id string (optional)
-
-Required. Output only. Identifier. The ID of the trigger.
-
-interaction AgentInteraction (optional)
+interaction CreateAgentInteractionParams (required)
 
 Required. The interaction request template to be executed.
 
-Interaction for generating the completion using agents.
+Parameters for creating agent interactions
 
 #### Fields
 
-agent AgentOption (optional)
+agent AgentOption (required)
 
 The name of the `Agent` used for generating the interaction.
 
@@ -1152,117 +979,13 @@ Use the Antigravity managed agent to perform multi-step tasks that require reaso
 
 
 
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
-
-Configuration parameters for the agent interaction.
-
-background boolean (optional)
-
-Input only. Whether to run the model interaction in the background.
-
-environment EnvironmentConfig or string (optional)
-
-The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-Configuration for a custom environment.
-
-#### Fields
-
-env object (optional)
-
-Environment variables to set in the sandbox environment.
-
-environment_id string (optional)
-
-Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
-network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
-
-Network configuration for the environment.
-
-Network egress configuration for the environment.
-
-#### Fields
-
-allowlist array (EgressRule) or enum (string) (optional)
-
-List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
-
-Possible values:
-
-  * `disabled`
-
-All network egress is blocked.
-
-
-
-
-sources array (Source) (optional)
-
-No description provided.
-
-A source to be mounted into the environment.
-
-#### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
-type enum (string) (optional)
-
-No description provided.
-
-Possible values:
-
-  * `gcs`
-
-A Cloud Storage bucket.
-
-  * `inline`
-
-Inline content.
-
-  * `repository`
-
-A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
-
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
-
-
-
-
-type object (optional)
-
-No description provided.
-
-Always set to `"remote"`.
-
-input Content or array (Content) or array (Step) or string (optional)
+input Content or array (Content) or array (Step) or string (required)
 
 The input for the interaction.
 
-labels object (optional)
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
 
-The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
-
-previous_interaction_id string (optional)
-
-The ID of the previous interaction, if any.
+Configuration parameters for the agent interaction.
 
 response_format ResponseFormat or array (ResponseFormat) (optional)
 
@@ -1274,26 +997,11 @@ AudioResponseFormat
 
 Configuration for audio output format.
 
-bit_rate integer (optional)
+type object (required)
 
-Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+No description provided.
 
-delivery enum (string) (optional)
-
-The delivery mode for the audio output.
-
-Possible values:
-
-  * `inline`
-
-Audio data is returned inline in the response.
-
-  * `uri`
-
-Audio data is returned as a URI.
-
-
-
+Always set to `"audio"`.
 
 mime_type enum (string) (optional)
 
@@ -1328,19 +1036,70 @@ Mu-law audio format.
 
 
 
+delivery enum (string) (optional)
+
+The delivery mode for the audio output.
+
+Possible values:
+
+  * `inline`
+
+Audio data is returned inline in the response.
+
+  * `uri`
+
+Audio data is returned as a URI.
+
+
+
+
 sample_rate integer (optional)
 
 Sample rate in Hz.
+
+bit_rate integer (optional)
+
+Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+ImageResponseFormat
+
+Configuration for image output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"audio"`.
+Always set to `"image"`.
 
-ImageResponseFormat
+mime_type enum (string) (optional)
 
-Configuration for image output format.
+The MIME type of the image output.
+
+Possible values:
+
+  * `image/jpeg`
+
+JPEG image format.
+
+
+
+
+delivery enum (string) (optional)
+
+The delivery mode for the image output.
+
+Possible values:
+
+  * `inline`
+
+Image data is returned inline in the response.
+
+  * `uri`
+
+Image data is returned as a URI.
+
+
+
 
 aspect_ratio enum (string) (optional)
 
@@ -1407,23 +1166,6 @@ Possible values:
 
 
 
-delivery enum (string) (optional)
-
-The delivery mode for the image output.
-
-Possible values:
-
-  * `inline`
-
-Image data is returned inline in the response.
-
-  * `uri`
-
-Image data is returned as a URI.
-
-
-
-
 image_size enum (string) (optional)
 
 The size of the image output.
@@ -1449,28 +1191,15 @@ Possible values:
 
 
 
-mime_type enum (string) (optional)
+TextResponseFormat
 
-The MIME type of the image output.
-
-Possible values:
-
-  * `image/jpeg`
-
-JPEG image format.
-
-
-
+Configuration for text output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"image"`.
-
-TextResponseFormat
-
-Configuration for text output format.
+Always set to `"text"`.
 
 mime_type enum (string) (optional)
 
@@ -1491,34 +1220,17 @@ Plain text output format.
 
 schema object (optional)
 
-The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
-
-type object (required)
-
-No description provided.
-
-Always set to `"text"`.
+The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
 VideoResponseFormat
 
 Configuration for video output format.
 
-aspect_ratio enum (string) (optional)
+type object (required)
 
-The aspect ratio for the video output.
+No description provided.
 
-Possible values:
-
-  * `16:9`
-
-16:9 aspect ratio.
-
-  * `9:16`
-
-9:16 aspect ratio.
-
-
-
+Always set to `"video"`.
 
 delivery enum (string) (optional)
 
@@ -1537,13 +1249,26 @@ Video data is returned as a URI.
 
 
 
+aspect_ratio enum (string) (optional)
+
+The aspect ratio for the video output.
+
+Possible values:
+
+  * `16:9`
+
+16:9 aspect ratio.
+
+  * `9:16`
+
+9:16 aspect ratio.
+
+
+
+
 duration string (optional)
 
 The duration for the video output.
-
-gcs_uri string (optional)
-
-The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
 
 resolution enum (string) (optional)
 
@@ -1570,143 +1295,146 @@ Possible values:
 
 
 
+environment EnvironmentConfig or string (optional)
+
+The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+Configuration for a custom environment.
+
+#### Fields
+
 type object (required)
 
 No description provided.
 
-Always set to `"video"`.
+Always set to `"remote"`.
 
-safety_settings array (SafetySetting) (optional)
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
-Safety settings for the interaction.
+Network configuration for the environment.
 
-A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+Network egress configuration for the environment.
 
 #### Fields
 
-method enum (string) (optional)
+allowlist array (EgressRule) or enum (string) (optional)
 
-Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-Possible values:
-
-  * `severity`
-
-The harm block method uses both probability and severity scores.
-
-  * `probability`
-
-The harm block method uses the probability score.
-
-
-
-
-threshold enum (string) (optional)
-
-Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
 Possible values:
 
-  * `block_low_and_above`
+  * `disabled`
 
-Block content with a low harm probability or higher.
-
-  * `block_medium_and_above`
-
-Block content with a medium harm probability or higher.
-
-  * `block_only_high`
-
-Block content with a high harm probability.
-
-  * `block_none`
-
-Do not block any content, regardless of its harm probability.
-
-  * `off`
-
-Turn off the safety filter entirely.
+All network egress is blocked.
 
 
 
 
-type HarmCategory (optional)
+sources array (Source) (optional)
 
-Required. The type of harm category to be blocked.
+No description provided.
 
-#### Possible values
+A source to be mounted into the environment.
 
-  * `hate_speech`
+#### Fields
 
-Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+type enum (string) (optional)
 
-  * `dangerous_content`
+No description provided.
 
-Content that promotes, facilitates, or enables dangerous activities.
+Possible values:
 
-  * `harassment`
+  * `gcs`
 
-Abusive, threatening, or content intended to bully, torment, or ridicule.
+A Cloud Storage bucket.
 
-  * `sexually_explicit`
+  * `inline`
 
-Content that contains sexually explicit material.
+Inline content.
 
-  * `image_hate`
+  * `repository`
 
-Images that contain hate speech.
-
-  * `image_dangerous_content`
-
-Images that contain dangerous content.
-
-  * `image_harassment`
-
-Images that contain harassment.
-
-  * `image_sexually_explicit`
-
-Images that contain sexually explicit content.
-
-  * `jailbreak`
-
-Prompts designed to bypass safety filters.
+A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
 
 
 
-service_tier ServiceTier (optional)
+source string (optional)
 
-The service tier for the interaction.
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-#### Possible values
+target string (optional)
 
-  * `flex`
+Where the source should appear in the environment.
 
-Flex service tier.
+content string (optional)
 
-  * `standard`
+The inline content if `type` is `INLINE`.
 
-Standard service tier.
+encoding string (optional)
 
-  * `priority`
+Optional encoding for inline content (e.g. `base64`).
 
-Priority service tier.
+environment_id string (optional)
 
-  * `deferred`
+Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-Deferred service tier.
+env object or string (optional)
+
+Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+object
+
+string
+
+A direct string value.
+
+id string (optional)
+
+Required. Output only. A unique identifier for the interaction completion.
+
+status enum (string) (optional)
+
+Required. Output only. The status of the interaction.
+
+Possible values:
+
+  * `in_progress`
+
+The interaction is in progress.
+
+  * `requires_action`
+
+The interaction requires action/input from the user.
+
+  * `completed`
+
+The interaction is completed.
+
+  * `failed`
+
+The interaction failed.
+
+  * `cancelled`
+
+The interaction was cancelled.
+
+  * `incomplete`
+
+The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
 
 
 
-store boolean (optional)
+created string (optional)
 
-Input only. Whether to store the response and request for later retrieval.
+Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-stream boolean (optional)
+updated string (optional)
 
-Input only. Whether the interaction will be streamed.
+Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 system_instruction string (optional)
 
@@ -1733,6 +1461,41 @@ Always set to `"code_execution"`.
 ComputerUse
 
 A tool that can be used by the model to interact with the computer.
+
+type object (required)
+
+No description provided.
+
+Always set to `"computer_use"`.
+
+environment enum (string) (optional)
+
+The environment being operated.
+
+Possible values:
+
+  * `browser`
+
+Operates in a web browser.
+
+  * `mobile`
+
+Operates in a mobile environment.
+
+  * `desktop`
+
+Operates in a desktop environment.
+
+
+
+
+excluded_predefined_functions array (string) (optional)
+
+The list of predefined functions that are excluded from the model call.
+
+enable_prompt_injection_detection boolean (optional)
+
+Whether enable the prompt injection detection check on computer-use request.
 
 disabled_safety_policies array (enum (string)) (optional)
 
@@ -1771,56 +1534,9 @@ Safety policy for legal terms and agreements.
 
 
 
-enable_prompt_injection_detection boolean (optional)
-
-Whether enable the prompt injection detection check on computer-use request.
-
-environment enum (string) (optional)
-
-The environment being operated.
-
-Possible values:
-
-  * `browser`
-
-Operates in a web browser.
-
-  * `mobile`
-
-Operates in a mobile environment.
-
-  * `desktop`
-
-Operates in a desktop environment.
-
-
-
-
-excluded_predefined_functions array (string) (optional)
-
-The list of predefined functions that are excluded from the model call.
-
-type object (required)
-
-No description provided.
-
-Always set to `"computer_use"`.
-
 FileSearch
 
 A tool that can be used by the model to search files.
-
-file_search_store_names array (string) (optional)
-
-The file search store names to search.
-
-metadata_filter string (optional)
-
-Metadata filter to apply to the semantic retrieval documents and chunks.
-
-top_k integer (optional)
-
-The number of semantic retrieval chunks to retrieve.
 
 type object (required)
 
@@ -1828,21 +1544,21 @@ No description provided.
 
 Always set to `"file_search"`.
 
+file_search_store_names array (string) (optional)
+
+The file search store names to search.
+
+top_k integer (optional)
+
+The number of semantic retrieval chunks to retrieve.
+
+metadata_filter string (optional)
+
+Metadata filter to apply to the semantic retrieval documents and chunks.
+
 Function
 
 A tool that can be used by the model.
-
-description string (optional)
-
-A description of the function.
-
-name string (optional)
-
-The name of the function.
-
-parameters object (optional)
-
-The JSON Schema for the function's parameters.
 
 type object (required)
 
@@ -1850,9 +1566,27 @@ No description provided.
 
 Always set to `"function"`.
 
+name string (optional)
+
+The name of the function.
+
+description string (optional)
+
+A description of the function.
+
+parameters object (optional)
+
+The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
 GoogleMaps
 
 A tool that can be used by the model to call Google Maps.
+
+type object (required)
+
+No description provided.
+
+Always set to `"google_maps"`.
 
 enable_widget boolean (optional)
 
@@ -1866,15 +1600,15 @@ longitude number (optional)
 
 The longitude of the user's location.
 
+GoogleSearch
+
+A tool that can be used by the model to search Google.
+
 type object (required)
 
 No description provided.
 
-Always set to `"google_maps"`.
-
-GoogleSearch
-
-A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 
 search_types array (enum (string)) (optional)
 
@@ -1890,22 +1624,30 @@ Setting this field enables web search. Only text results are returned.
 
 Setting this field enables image search. Image bytes are returned.
 
-  * `enterprise_web_search`
-
-Setting this field enables enterprise web search.
 
 
 
+McpServer
+
+A MCPServer is a server that can be called by the model to perform actions.
 
 type object (required)
 
 No description provided.
 
-Always set to `"google_search"`.
+Always set to `"mcp_server"`.
 
-McpServer
+url string (optional)
 
-A MCPServer is a server that can be called by the model to perform actions.
+The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+name string (optional)
+
+The name of the MCPServer.
+
+headers object (optional)
+
+Optional: Fields for authentication headers, timeouts, etc., if needed.
 
 allowed_tools array (AllowedTools) (optional)
 
@@ -1944,176 +1686,6 @@ tools array (string) (optional)
 
 The names of the allowed tools.
 
-headers object (optional)
-
-Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-name string (optional)
-
-The name of the MCPServer.
-
-type object (required)
-
-No description provided.
-
-Always set to `"mcp_server"`.
-
-url string (optional)
-
-The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
-Retrieval
-
-A tool that can be used by the model to retrieve files.
-
-exa_ai_search_config ExaAISearchConfig (optional)
-
-Used to specify configuration for ExaAISearch.
-
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Required. The API key for ExaAiSearch.
-
-custom_config object (optional)
-
-Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-parallel_ai_search_config ParallelAISearchConfig (optional)
-
-Used to specify configuration for ParallelAISearch.
-
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Optional. The API key for ParallelAiSearch.
-
-custom_config object (optional)
-
-Optional. Custom configs for ParallelAiSearch.
-
-rag_store_config RagStoreConfig (optional)
-
-Used to specify configuration for RagStore.
-
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional)
-
-Optional. The representation of the rag source.
-
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional)
-
-Optional. RagCorpora resource name.
-
-rag_file_ids array (string) (optional)
-
-Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-rag_retrieval_config RagRetrievalConfig (optional)
-
-Optional. The retrieval config for the Rag query.
-
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional)
-
-Optional. Config for filters.
-
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional)
-
-Optional. String for metadata filtering.
-
-vector_distance_threshold number (optional)
-
-Optional. Only returns contexts with vector distance smaller than the threshold.
-
-vector_similarity_threshold number (optional)
-
-Optional. Only returns contexts with vector similarity larger than the threshold.
-
-hybrid_search HybridSearch (optional)
-
-Optional. Config for Hybrid Search.
-
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional)
-
-Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-ranking Ranking (optional)
-
-Optional. Config for ranking and reranking.
-
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-rank_service RankService (optional)
-
-Config for Rank Service.
-
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-ranking_config object (optional)
-
-No description provided.
-
-Always set to `"rank_service"`.
-
-top_k integer (optional)
-
-Optional. The number of contexts to retrieve.
-
-retrieval_types array (enum (string)) (optional)
-
-The types of file retrieval to enable.
-
-Possible values:
-
-  * `rag_store`
-  * `exa_ai_search`
-  * `parallel_ai_search`
-
-
-
-type object (required)
-
-No description provided.
-
-Always set to `"retrieval"`.
-
 UrlContext
 
 A tool that can be used by the model to fetch URL context.
@@ -2123,6 +1695,35 @@ type object (required)
 No description provided.
 
 Always set to `"url_context"`.
+
+previous_interaction_id string (optional)
+
+The ID of the previous interaction, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+service_tier ServiceTier (optional)
+
+The service tier for the interaction.
+
+#### Possible values
+
+  * `flex`
+
+Flex service tier.
+
+  * `standard`
+
+Standard service tier.
+
+  * `priority`
+
+Priority service tier.
+
+
+
 
 webhook_config WebhookConfig (optional)
 
@@ -2140,6 +1741,129 @@ user_metadata object (optional)
 
 Optional. The user metadata that will be returned on each event emission to the webhooks.
 
+safety_settings array (SafetySetting) (optional)
+
+Safety settings for the interaction.
+
+A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+
+#### Fields
+
+type HarmCategory (required)
+
+Required. The type of harm category to be blocked.
+
+#### Possible values
+
+  * `hate_speech`
+
+Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+
+  * `dangerous_content`
+
+Content that promotes, facilitates, or enables dangerous activities.
+
+  * `harassment`
+
+Abusive, threatening, or content intended to bully, torment, or ridicule.
+
+  * `sexually_explicit`
+
+Content that contains sexually explicit material.
+
+  * `jailbreak`
+
+Prompts designed to bypass safety filters.
+
+
+
+
+threshold enum (string) (required)
+
+Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+Possible values:
+
+  * `block_low_and_above`
+
+Block content with a low harm probability or higher.
+
+  * `block_medium_and_above`
+
+Block content with a medium harm probability or higher.
+
+  * `block_only_high`
+
+Block content with a high harm probability.
+
+  * `off`
+
+Turn off the safety filter entirely.
+
+
+
+
+method enum (string) (optional)
+
+Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+Possible values:
+
+  * `severity`
+
+The harm block method uses both probability and severity scores.
+
+  * `probability`
+
+The harm block method uses the probability score.
+
+
+
+
+labels object (optional)
+
+The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+id string (required)
+
+Required. Output only. Identifier. The ID of the trigger.
+
+display_name string (optional)
+
+Optional. The display name of the trigger.
+
+environment_id string (optional)
+
+Optional. The environment ID for the trigger execution.
+
+max_consecutive_failures integer (optional)
+
+Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+
+execution_timeout_seconds integer (optional)
+
+Optional. The execution timeout for the triggered interaction.
+
+consecutive_failure_count integer (optional)
+
+Output only. The number of consecutive failures that have occurred since the last successful execution.
+
+create_time string (optional)
+
+Output only. The time when the trigger was created.
+
+update_time string (optional)
+
+Output only. The time when the trigger was last updated.
+
+last_run_time string (optional)
+
+Output only. The time when the trigger was last run.
+
+next_run_time string (optional)
+
+Output only. The time when the trigger is scheduled to run next.
+
 last_pause_time string (optional)
 
 Output only. The time when the trigger was last paused.
@@ -2148,25 +1872,9 @@ last_resume_time string (optional)
 
 Output only. The time when the trigger was last resumed.
 
-last_run_time string (optional)
-
-Output only. The time when the trigger was last run.
-
-max_consecutive_failures integer (optional)
-
-Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
-
-next_run_time string (optional)
-
-Output only. The time when the trigger is scheduled to run next.
-
 previous_interaction_id string (optional)
 
 Output only. The ID of the last interaction created by this trigger.
-
-schedule string (optional)
-
-Required. The cron schedule on which the trigger should run. Standard cron format.
 
 status enum (string) (optional)
 
@@ -2188,14 +1896,6 @@ The trigger has entered an error state due to consecutive failures.
 
 
 
-
-time_zone string (optional)
-
-Required. Time zone in which the schedule should be interpreted.
-
-update_time string (optional)
-
-Output only. The time when the trigger was last updated.
 
 ### Create
 
@@ -2220,25 +1920,13 @@ Required. Resource name of the trigger.
 
 If successful, the response body contains data with the following structure:
 
-end_time string (optional)
-
-Output only. The time when the execution finished.
-
-environment_id string (optional)
-
-Output only. The environment ID used for the execution.
-
-error string (optional)
-
-Output only. The error message if the execution failed.
-
-id string (optional)
+id string (required)
 
 Required. Output only. Identifier. The ID of the trigger execution.
 
-interaction_id string (optional)
+trigger_id string (required)
 
-Output only. The ID of the interaction created by this execution, if any.
+Required. Output only. Identifier. The ID of the trigger that created this execution.
 
 scheduled_time string (optional)
 
@@ -2247,6 +1935,10 @@ Output only. The time when the execution was scheduled to run.
 start_time string (optional)
 
 Output only. The time when the execution started.
+
+end_time string (optional)
+
+Output only. The time when the execution finished.
 
 status enum (string) (optional)
 
@@ -2277,9 +1969,17 @@ The execution timed out.
 
 
 
-trigger_id string (optional)
+interaction_id string (optional)
 
-Required. Output only. Identifier. The ID of the trigger that created this execution.
+Output only. The ID of the interaction created by this execution, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID used for the execution.
+
+error string (optional)
+
+Output only. The error message if the execution failed.
 
 ### Example
 
@@ -2287,15 +1987,15 @@ Required. Output only. Identifier. The ID of the trigger that created this execu
     
     
     {
-      "end_time": "string",
-      "environment_id": "string",
-      "error": "string",
       "id": "string",
-      "interaction_id": "string",
+      "trigger_id": "string",
       "scheduled_time": "string",
       "start_time": "string",
+      "end_time": "string",
       "status": "in_progress",
-      "trigger_id": "string"
+      "interaction_id": "string",
+      "environment_id": "string",
+      "error": "string"
     }
 
 ## ListTriggers
@@ -2327,13 +2027,13 @@ Optional. A page token from a previous ListTriggers call.
 
 If successful, the response body contains data with the following structure:
 
-next_page_token string (optional)
-
-A page token, received from a previous `ListTriggers` call. Provide this to retrieve the subsequent page.
-
 triggers array (Trigger) (optional)
 
 The list of triggers.
+
+next_page_token string (optional)
+
+A page token, received from a previous `ListTriggers` call. Provide this to retrieve the subsequent page.
 
 ### Example
 
@@ -2341,92 +2041,91 @@ The list of triggers.
     
     
     {
-      "next_page_token": "string",
       "triggers": [
         {
-          "consecutive_failure_count": 0,
-          "create_time": "string",
-          "display_name": "string",
-          "environment_id": "string",
-          "execution_timeout_seconds": 0,
-          "id": "string",
+          "schedule": "string",
+          "time_zone": "string",
           "interaction": {
             "agent": "deep-research-pro-preview-12-2025",
-            "agent_config": {
-              "max_total_tokens": "string",
-              "model": "string",
-              "type": {}
+            "input": {
+              "type": "...",
+              "data": "...",
+              "uri": "...",
+              "channels": "...",
+              "sample_rate": "...",
+              "mime_type": "..."
             },
-            "background": true,
+            "agent_config": {
+              "type": {},
+              "model": "string",
+              "max_total_tokens": "string"
+            },
+            "response_format": {
+              "type": {},
+              "mime_type": "audio/mp3",
+              "delivery": "inline",
+              "sample_rate": 0,
+              "bit_rate": 0
+            },
             "environment": {
-              "env": {},
-              "environment_id": "string",
+              "type": {},
               "network": {
-                "allowlist": [
-                  {
-                    "domain": "github.com",
-                    "transform": [
-                      {
-                        "Authorization": "Bearer your-token"
-                      }
-                    ]
-                  },
-                  {
-                    "domain": "*.googleapis.com"
-                  }
-                ]
+                "allowlist": "..."
               },
               "sources": [
                 "..."
               ],
-              "type": {}
+              "environment_id": "string",
+              "env": {}
             },
-            "input": {
-              "type": "audio",
-              "data": "BASE64_ENCODED_AUDIO",
-              "mime_type": "audio/wav"
-            },
-            "labels": {},
-            "previous_interaction_id": "string",
-            "response_format": {
-              "type": "audio",
-              "sample_rate": 24000
-            },
-            "safety_settings": [
-              {
-                "method": "severity",
-                "threshold": "block_low_and_above",
-                "type": "..."
-              }
-            ],
-            "service_tier": "flex",
-            "store": true,
-            "stream": true,
+            "id": "string",
+            "status": "in_progress",
+            "created": "string",
+            "updated": "string",
             "system_instruction": "string",
             "tools": [
               {
                 "type": "..."
               }
             ],
+            "previous_interaction_id": "string",
+            "environment_id": "string",
+            "service_tier": "flex",
             "webhook_config": {
               "uris": [
                 "string"
               ],
               "user_metadata": {}
-            }
+            },
+            "safety_settings": [
+              {
+                "type": "...",
+                "threshold": "block_low_and_above",
+                "method": "severity"
+              }
+            ],
+            "labels": {},
+            "stream": true,
+            "store": true,
+            "background": true
           },
+          "id": "string",
+          "display_name": "string",
+          "environment_id": "string",
+          "max_consecutive_failures": 0,
+          "execution_timeout_seconds": 0,
+          "consecutive_failure_count": 0,
+          "create_time": "string",
+          "update_time": "string",
+          "last_run_time": "string",
+          "next_run_time": "string",
           "last_pause_time": "string",
           "last_resume_time": "string",
-          "last_run_time": "string",
-          "max_consecutive_failures": 0,
-          "next_run_time": "string",
           "previous_interaction_id": "string",
-          "schedule": "string",
-          "status": "active",
-          "time_zone": "string",
-          "update_time": "string"
+          "status": "active"
         }
-      ]
+      ],
+      "next_page_token": "string"
     }
 
 ## GetTrigger
@@ -2450,39 +2149,23 @@ Required. Resource name of the trigger.
 
 If successful, the response body contains data with the following structure:
 
-consecutive_failure_count integer (optional)
+schedule string (required)
 
-Output only. The number of consecutive failures that have occurred since the last successful execution.
+Required. The cron schedule on which the trigger should run. Standard cron format.
 
-create_time string (optional)
+time_zone string (required)
 
-Output only. The time when the trigger was created.
+Required. Time zone in which the schedule should be interpreted.
 
-display_name string (optional)
-
-Optional. The display name of the trigger.
-
-environment_id string (optional)
-
-Optional. The environment ID for the trigger execution.
-
-execution_timeout_seconds integer (optional)
-
-Optional. The execution timeout for the triggered interaction.
-
-id string (optional)
-
-Required. Output only. Identifier. The ID of the trigger.
-
-interaction AgentInteraction (optional)
+interaction CreateAgentInteractionParams (required)
 
 Required. The interaction request template to be executed.
 
-Interaction for generating the completion using agents.
+Parameters for creating agent interactions
 
 #### Fields
 
-agent AgentOption (optional)
+agent AgentOption (required)
 
 The name of the `Agent` used for generating the interaction.
 
@@ -2509,117 +2192,13 @@ Use the Antigravity managed agent to perform multi-step tasks that require reaso
 
 
 
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
-
-Configuration parameters for the agent interaction.
-
-background boolean (optional)
-
-Input only. Whether to run the model interaction in the background.
-
-environment EnvironmentConfig or string (optional)
-
-The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-Configuration for a custom environment.
-
-#### Fields
-
-env object (optional)
-
-Environment variables to set in the sandbox environment.
-
-environment_id string (optional)
-
-Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
-network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
-
-Network configuration for the environment.
-
-Network egress configuration for the environment.
-
-#### Fields
-
-allowlist array (EgressRule) or enum (string) (optional)
-
-List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
-
-Possible values:
-
-  * `disabled`
-
-All network egress is blocked.
-
-
-
-
-sources array (Source) (optional)
-
-No description provided.
-
-A source to be mounted into the environment.
-
-#### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
-type enum (string) (optional)
-
-No description provided.
-
-Possible values:
-
-  * `gcs`
-
-A Cloud Storage bucket.
-
-  * `inline`
-
-Inline content.
-
-  * `repository`
-
-A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
-
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
-
-
-
-
-type object (optional)
-
-No description provided.
-
-Always set to `"remote"`.
-
-input Content or array (Content) or array (Step) or string (optional)
+input Content or array (Content) or array (Step) or string (required)
 
 The input for the interaction.
 
-labels object (optional)
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
 
-The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
-
-previous_interaction_id string (optional)
-
-The ID of the previous interaction, if any.
+Configuration parameters for the agent interaction.
 
 response_format ResponseFormat or array (ResponseFormat) (optional)
 
@@ -2631,26 +2210,11 @@ AudioResponseFormat
 
 Configuration for audio output format.
 
-bit_rate integer (optional)
+type object (required)
 
-Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+No description provided.
 
-delivery enum (string) (optional)
-
-The delivery mode for the audio output.
-
-Possible values:
-
-  * `inline`
-
-Audio data is returned inline in the response.
-
-  * `uri`
-
-Audio data is returned as a URI.
-
-
-
+Always set to `"audio"`.
 
 mime_type enum (string) (optional)
 
@@ -2685,19 +2249,70 @@ Mu-law audio format.
 
 
 
+delivery enum (string) (optional)
+
+The delivery mode for the audio output.
+
+Possible values:
+
+  * `inline`
+
+Audio data is returned inline in the response.
+
+  * `uri`
+
+Audio data is returned as a URI.
+
+
+
+
 sample_rate integer (optional)
 
 Sample rate in Hz.
+
+bit_rate integer (optional)
+
+Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+ImageResponseFormat
+
+Configuration for image output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"audio"`.
+Always set to `"image"`.
 
-ImageResponseFormat
+mime_type enum (string) (optional)
 
-Configuration for image output format.
+The MIME type of the image output.
+
+Possible values:
+
+  * `image/jpeg`
+
+JPEG image format.
+
+
+
+
+delivery enum (string) (optional)
+
+The delivery mode for the image output.
+
+Possible values:
+
+  * `inline`
+
+Image data is returned inline in the response.
+
+  * `uri`
+
+Image data is returned as a URI.
+
+
+
 
 aspect_ratio enum (string) (optional)
 
@@ -2764,23 +2379,6 @@ Possible values:
 
 
 
-delivery enum (string) (optional)
-
-The delivery mode for the image output.
-
-Possible values:
-
-  * `inline`
-
-Image data is returned inline in the response.
-
-  * `uri`
-
-Image data is returned as a URI.
-
-
-
-
 image_size enum (string) (optional)
 
 The size of the image output.
@@ -2806,28 +2404,15 @@ Possible values:
 
 
 
-mime_type enum (string) (optional)
+TextResponseFormat
 
-The MIME type of the image output.
-
-Possible values:
-
-  * `image/jpeg`
-
-JPEG image format.
-
-
-
+Configuration for text output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"image"`.
-
-TextResponseFormat
-
-Configuration for text output format.
+Always set to `"text"`.
 
 mime_type enum (string) (optional)
 
@@ -2848,34 +2433,17 @@ Plain text output format.
 
 schema object (optional)
 
-The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
-
-type object (required)
-
-No description provided.
-
-Always set to `"text"`.
+The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
 VideoResponseFormat
 
 Configuration for video output format.
 
-aspect_ratio enum (string) (optional)
+type object (required)
 
-The aspect ratio for the video output.
+No description provided.
 
-Possible values:
-
-  * `16:9`
-
-16:9 aspect ratio.
-
-  * `9:16`
-
-9:16 aspect ratio.
-
-
-
+Always set to `"video"`.
 
 delivery enum (string) (optional)
 
@@ -2894,13 +2462,26 @@ Video data is returned as a URI.
 
 
 
+aspect_ratio enum (string) (optional)
+
+The aspect ratio for the video output.
+
+Possible values:
+
+  * `16:9`
+
+16:9 aspect ratio.
+
+  * `9:16`
+
+9:16 aspect ratio.
+
+
+
+
 duration string (optional)
 
 The duration for the video output.
-
-gcs_uri string (optional)
-
-The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
 
 resolution enum (string) (optional)
 
@@ -2927,143 +2508,146 @@ Possible values:
 
 
 
+environment EnvironmentConfig or string (optional)
+
+The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+Configuration for a custom environment.
+
+#### Fields
+
 type object (required)
 
 No description provided.
 
-Always set to `"video"`.
+Always set to `"remote"`.
 
-safety_settings array (SafetySetting) (optional)
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
-Safety settings for the interaction.
+Network configuration for the environment.
 
-A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+Network egress configuration for the environment.
 
 #### Fields
 
-method enum (string) (optional)
+allowlist array (EgressRule) or enum (string) (optional)
 
-Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-Possible values:
-
-  * `severity`
-
-The harm block method uses both probability and severity scores.
-
-  * `probability`
-
-The harm block method uses the probability score.
-
-
-
-
-threshold enum (string) (optional)
-
-Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
 Possible values:
 
-  * `block_low_and_above`
+  * `disabled`
 
-Block content with a low harm probability or higher.
-
-  * `block_medium_and_above`
-
-Block content with a medium harm probability or higher.
-
-  * `block_only_high`
-
-Block content with a high harm probability.
-
-  * `block_none`
-
-Do not block any content, regardless of its harm probability.
-
-  * `off`
-
-Turn off the safety filter entirely.
+All network egress is blocked.
 
 
 
 
-type HarmCategory (optional)
+sources array (Source) (optional)
 
-Required. The type of harm category to be blocked.
+No description provided.
 
-#### Possible values
+A source to be mounted into the environment.
 
-  * `hate_speech`
+#### Fields
 
-Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+type enum (string) (optional)
 
-  * `dangerous_content`
+No description provided.
 
-Content that promotes, facilitates, or enables dangerous activities.
+Possible values:
 
-  * `harassment`
+  * `gcs`
 
-Abusive, threatening, or content intended to bully, torment, or ridicule.
+A Cloud Storage bucket.
 
-  * `sexually_explicit`
+  * `inline`
 
-Content that contains sexually explicit material.
+Inline content.
 
-  * `image_hate`
+  * `repository`
 
-Images that contain hate speech.
-
-  * `image_dangerous_content`
-
-Images that contain dangerous content.
-
-  * `image_harassment`
-
-Images that contain harassment.
-
-  * `image_sexually_explicit`
-
-Images that contain sexually explicit content.
-
-  * `jailbreak`
-
-Prompts designed to bypass safety filters.
+A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
 
 
 
-service_tier ServiceTier (optional)
+source string (optional)
 
-The service tier for the interaction.
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-#### Possible values
+target string (optional)
 
-  * `flex`
+Where the source should appear in the environment.
 
-Flex service tier.
+content string (optional)
 
-  * `standard`
+The inline content if `type` is `INLINE`.
 
-Standard service tier.
+encoding string (optional)
 
-  * `priority`
+Optional encoding for inline content (e.g. `base64`).
 
-Priority service tier.
+environment_id string (optional)
 
-  * `deferred`
+Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-Deferred service tier.
+env object or string (optional)
+
+Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+object
+
+string
+
+A direct string value.
+
+id string (optional)
+
+Required. Output only. A unique identifier for the interaction completion.
+
+status enum (string) (optional)
+
+Required. Output only. The status of the interaction.
+
+Possible values:
+
+  * `in_progress`
+
+The interaction is in progress.
+
+  * `requires_action`
+
+The interaction requires action/input from the user.
+
+  * `completed`
+
+The interaction is completed.
+
+  * `failed`
+
+The interaction failed.
+
+  * `cancelled`
+
+The interaction was cancelled.
+
+  * `incomplete`
+
+The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
 
 
 
-store boolean (optional)
+created string (optional)
 
-Input only. Whether to store the response and request for later retrieval.
+Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-stream boolean (optional)
+updated string (optional)
 
-Input only. Whether the interaction will be streamed.
+Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 system_instruction string (optional)
 
@@ -3090,6 +2674,41 @@ Always set to `"code_execution"`.
 ComputerUse
 
 A tool that can be used by the model to interact with the computer.
+
+type object (required)
+
+No description provided.
+
+Always set to `"computer_use"`.
+
+environment enum (string) (optional)
+
+The environment being operated.
+
+Possible values:
+
+  * `browser`
+
+Operates in a web browser.
+
+  * `mobile`
+
+Operates in a mobile environment.
+
+  * `desktop`
+
+Operates in a desktop environment.
+
+
+
+
+excluded_predefined_functions array (string) (optional)
+
+The list of predefined functions that are excluded from the model call.
+
+enable_prompt_injection_detection boolean (optional)
+
+Whether enable the prompt injection detection check on computer-use request.
 
 disabled_safety_policies array (enum (string)) (optional)
 
@@ -3128,56 +2747,9 @@ Safety policy for legal terms and agreements.
 
 
 
-enable_prompt_injection_detection boolean (optional)
-
-Whether enable the prompt injection detection check on computer-use request.
-
-environment enum (string) (optional)
-
-The environment being operated.
-
-Possible values:
-
-  * `browser`
-
-Operates in a web browser.
-
-  * `mobile`
-
-Operates in a mobile environment.
-
-  * `desktop`
-
-Operates in a desktop environment.
-
-
-
-
-excluded_predefined_functions array (string) (optional)
-
-The list of predefined functions that are excluded from the model call.
-
-type object (required)
-
-No description provided.
-
-Always set to `"computer_use"`.
-
 FileSearch
 
 A tool that can be used by the model to search files.
-
-file_search_store_names array (string) (optional)
-
-The file search store names to search.
-
-metadata_filter string (optional)
-
-Metadata filter to apply to the semantic retrieval documents and chunks.
-
-top_k integer (optional)
-
-The number of semantic retrieval chunks to retrieve.
 
 type object (required)
 
@@ -3185,21 +2757,21 @@ No description provided.
 
 Always set to `"file_search"`.
 
+file_search_store_names array (string) (optional)
+
+The file search store names to search.
+
+top_k integer (optional)
+
+The number of semantic retrieval chunks to retrieve.
+
+metadata_filter string (optional)
+
+Metadata filter to apply to the semantic retrieval documents and chunks.
+
 Function
 
 A tool that can be used by the model.
-
-description string (optional)
-
-A description of the function.
-
-name string (optional)
-
-The name of the function.
-
-parameters object (optional)
-
-The JSON Schema for the function's parameters.
 
 type object (required)
 
@@ -3207,9 +2779,27 @@ No description provided.
 
 Always set to `"function"`.
 
+name string (optional)
+
+The name of the function.
+
+description string (optional)
+
+A description of the function.
+
+parameters object (optional)
+
+The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
 GoogleMaps
 
 A tool that can be used by the model to call Google Maps.
+
+type object (required)
+
+No description provided.
+
+Always set to `"google_maps"`.
 
 enable_widget boolean (optional)
 
@@ -3223,15 +2813,15 @@ longitude number (optional)
 
 The longitude of the user's location.
 
+GoogleSearch
+
+A tool that can be used by the model to search Google.
+
 type object (required)
 
 No description provided.
 
-Always set to `"google_maps"`.
-
-GoogleSearch
-
-A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 
 search_types array (enum (string)) (optional)
 
@@ -3247,22 +2837,30 @@ Setting this field enables web search. Only text results are returned.
 
 Setting this field enables image search. Image bytes are returned.
 
-  * `enterprise_web_search`
-
-Setting this field enables enterprise web search.
 
 
 
+McpServer
+
+A MCPServer is a server that can be called by the model to perform actions.
 
 type object (required)
 
 No description provided.
 
-Always set to `"google_search"`.
+Always set to `"mcp_server"`.
 
-McpServer
+url string (optional)
 
-A MCPServer is a server that can be called by the model to perform actions.
+The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+name string (optional)
+
+The name of the MCPServer.
+
+headers object (optional)
+
+Optional: Fields for authentication headers, timeouts, etc., if needed.
 
 allowed_tools array (AllowedTools) (optional)
 
@@ -3301,176 +2899,6 @@ tools array (string) (optional)
 
 The names of the allowed tools.
 
-headers object (optional)
-
-Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-name string (optional)
-
-The name of the MCPServer.
-
-type object (required)
-
-No description provided.
-
-Always set to `"mcp_server"`.
-
-url string (optional)
-
-The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
-Retrieval
-
-A tool that can be used by the model to retrieve files.
-
-exa_ai_search_config ExaAISearchConfig (optional)
-
-Used to specify configuration for ExaAISearch.
-
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Required. The API key for ExaAiSearch.
-
-custom_config object (optional)
-
-Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-parallel_ai_search_config ParallelAISearchConfig (optional)
-
-Used to specify configuration for ParallelAISearch.
-
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Optional. The API key for ParallelAiSearch.
-
-custom_config object (optional)
-
-Optional. Custom configs for ParallelAiSearch.
-
-rag_store_config RagStoreConfig (optional)
-
-Used to specify configuration for RagStore.
-
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional)
-
-Optional. The representation of the rag source.
-
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional)
-
-Optional. RagCorpora resource name.
-
-rag_file_ids array (string) (optional)
-
-Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-rag_retrieval_config RagRetrievalConfig (optional)
-
-Optional. The retrieval config for the Rag query.
-
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional)
-
-Optional. Config for filters.
-
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional)
-
-Optional. String for metadata filtering.
-
-vector_distance_threshold number (optional)
-
-Optional. Only returns contexts with vector distance smaller than the threshold.
-
-vector_similarity_threshold number (optional)
-
-Optional. Only returns contexts with vector similarity larger than the threshold.
-
-hybrid_search HybridSearch (optional)
-
-Optional. Config for Hybrid Search.
-
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional)
-
-Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-ranking Ranking (optional)
-
-Optional. Config for ranking and reranking.
-
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-rank_service RankService (optional)
-
-Config for Rank Service.
-
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-ranking_config object (optional)
-
-No description provided.
-
-Always set to `"rank_service"`.
-
-top_k integer (optional)
-
-Optional. The number of contexts to retrieve.
-
-retrieval_types array (enum (string)) (optional)
-
-The types of file retrieval to enable.
-
-Possible values:
-
-  * `rag_store`
-  * `exa_ai_search`
-  * `parallel_ai_search`
-
-
-
-type object (required)
-
-No description provided.
-
-Always set to `"retrieval"`.
-
 UrlContext
 
 A tool that can be used by the model to fetch URL context.
@@ -3480,6 +2908,35 @@ type object (required)
 No description provided.
 
 Always set to `"url_context"`.
+
+previous_interaction_id string (optional)
+
+The ID of the previous interaction, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+service_tier ServiceTier (optional)
+
+The service tier for the interaction.
+
+#### Possible values
+
+  * `flex`
+
+Flex service tier.
+
+  * `standard`
+
+Standard service tier.
+
+  * `priority`
+
+Priority service tier.
+
+
+
 
 webhook_config WebhookConfig (optional)
 
@@ -3497,6 +2954,129 @@ user_metadata object (optional)
 
 Optional. The user metadata that will be returned on each event emission to the webhooks.
 
+safety_settings array (SafetySetting) (optional)
+
+Safety settings for the interaction.
+
+A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+
+#### Fields
+
+type HarmCategory (required)
+
+Required. The type of harm category to be blocked.
+
+#### Possible values
+
+  * `hate_speech`
+
+Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+
+  * `dangerous_content`
+
+Content that promotes, facilitates, or enables dangerous activities.
+
+  * `harassment`
+
+Abusive, threatening, or content intended to bully, torment, or ridicule.
+
+  * `sexually_explicit`
+
+Content that contains sexually explicit material.
+
+  * `jailbreak`
+
+Prompts designed to bypass safety filters.
+
+
+
+
+threshold enum (string) (required)
+
+Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+Possible values:
+
+  * `block_low_and_above`
+
+Block content with a low harm probability or higher.
+
+  * `block_medium_and_above`
+
+Block content with a medium harm probability or higher.
+
+  * `block_only_high`
+
+Block content with a high harm probability.
+
+  * `off`
+
+Turn off the safety filter entirely.
+
+
+
+
+method enum (string) (optional)
+
+Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+Possible values:
+
+  * `severity`
+
+The harm block method uses both probability and severity scores.
+
+  * `probability`
+
+The harm block method uses the probability score.
+
+
+
+
+labels object (optional)
+
+The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+id string (required)
+
+Required. Output only. Identifier. The ID of the trigger.
+
+display_name string (optional)
+
+Optional. The display name of the trigger.
+
+environment_id string (optional)
+
+Optional. The environment ID for the trigger execution.
+
+max_consecutive_failures integer (optional)
+
+Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+
+execution_timeout_seconds integer (optional)
+
+Optional. The execution timeout for the triggered interaction.
+
+consecutive_failure_count integer (optional)
+
+Output only. The number of consecutive failures that have occurred since the last successful execution.
+
+create_time string (optional)
+
+Output only. The time when the trigger was created.
+
+update_time string (optional)
+
+Output only. The time when the trigger was last updated.
+
+last_run_time string (optional)
+
+Output only. The time when the trigger was last run.
+
+next_run_time string (optional)
+
+Output only. The time when the trigger is scheduled to run next.
+
 last_pause_time string (optional)
 
 Output only. The time when the trigger was last paused.
@@ -3505,25 +3085,9 @@ last_resume_time string (optional)
 
 Output only. The time when the trigger was last resumed.
 
-last_run_time string (optional)
-
-Output only. The time when the trigger was last run.
-
-max_consecutive_failures integer (optional)
-
-Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
-
-next_run_time string (optional)
-
-Output only. The time when the trigger is scheduled to run next.
-
 previous_interaction_id string (optional)
 
 Output only. The ID of the last interaction created by this trigger.
-
-schedule string (optional)
-
-Required. The cron schedule on which the trigger should run. Standard cron format.
 
 status enum (string) (optional)
 
@@ -3546,107 +3110,104 @@ The trigger has entered an error state due to consecutive failures.
 
 
 
-time_zone string (optional)
-
-Required. Time zone in which the schedule should be interpreted.
-
-update_time string (optional)
-
-Output only. The time when the trigger was last updated.
-
 ### Example
 
 ####  Example Response
     
     
     {
-      "consecutive_failure_count": 0,
-      "create_time": "string",
-      "display_name": "string",
-      "environment_id": "string",
-      "execution_timeout_seconds": 0,
-      "id": "string",
+      "schedule": "string",
+      "time_zone": "string",
       "interaction": {
         "agent": "deep-research-pro-preview-12-2025",
-        "agent_config": {
-          "max_total_tokens": "string",
-          "model": "string",
-          "type": {}
+        "input": {
+          "type": {},
+          "data": "string",
+          "uri": "string",
+          "channels": 0,
+          "sample_rate": 0,
+          "mime_type": "audio/wav"
         },
-        "background": true,
+        "agent_config": {
+          "type": {},
+          "model": "string",
+          "max_total_tokens": "string"
+        },
+        "response_format": {
+          "type": {},
+          "mime_type": "audio/mp3",
+          "delivery": "inline",
+          "sample_rate": 0,
+          "bit_rate": 0
+        },
         "environment": {
-          "env": {},
-          "environment_id": "string",
+          "type": {},
           "network": {
             "allowlist": [
               {
-                "domain": "github.com",
-                "transform": [
-                  {
-                    "Authorization": "Bearer your-token"
-                  }
-                ]
-              },
-              {
-                "domain": "*.googleapis.com"
+                "domain": "...",
+                "transform": "...",
+                "credential": "..."
               }
             ]
           },
           "sources": [
             {
-              "content": "string",
-              "encoding": "string",
+              "type": "gcs",
               "source": "string",
               "target": "string",
-              "type": "gcs"
+              "content": "string",
+              "encoding": "string"
             }
           ],
-          "type": {}
+          "environment_id": "string",
+          "env": {}
         },
-        "input": {
-          "type": "audio",
-          "data": "BASE64_ENCODED_AUDIO",
-          "mime_type": "audio/wav"
-        },
-        "labels": {},
-        "previous_interaction_id": "string",
-        "response_format": {
-          "type": "audio",
-          "sample_rate": 24000
-        },
-        "safety_settings": [
-          {
-            "method": "severity",
-            "threshold": "block_low_and_above",
-            "type": "hate_speech"
-          }
-        ],
-        "service_tier": "flex",
-        "store": true,
-        "stream": true,
+        "id": "string",
+        "status": "in_progress",
+        "created": "string",
+        "updated": "string",
         "system_instruction": "string",
         "tools": [
           {
             "type": {}
           }
         ],
+        "previous_interaction_id": "string",
+        "environment_id": "string",
+        "service_tier": "flex",
         "webhook_config": {
           "uris": [
             "string"
           ],
           "user_metadata": {}
-        }
+        },
+        "safety_settings": [
+          {
+            "type": "hate_speech",
+            "threshold": "block_low_and_above",
+            "method": "severity"
+          }
+        ],
+        "labels": {},
+        "stream": true,
+        "store": true,
+        "background": true
       },
+      "id": "string",
+      "display_name": "string",
+      "environment_id": "string",
+      "max_consecutive_failures": 0,
+      "execution_timeout_seconds": 0,
+      "consecutive_failure_count": 0,
+      "create_time": "string",
+      "update_time": "string",
+      "last_run_time": "string",
+      "next_run_time": "string",
       "last_pause_time": "string",
       "last_resume_time": "string",
-      "last_run_time": "string",
-      "max_consecutive_failures": 0,
-      "next_run_time": "string",
       "previous_interaction_id": "string",
-      "schedule": "string",
-      "status": "active",
-      "time_zone": "string",
-      "update_time": "string"
+      "status": "active"
     }
 
 ## ListTriggerExecutions
@@ -3662,6 +3223,14 @@ Lists executions for a trigger.
 
 ### Path / Query Parameters
 
+triggerId string (required)
+
+Required. The trigger ID to list executions from.
+
+filter string (optional)
+
+Optional. Filter expression.
+
 page_size integer (optional)
 
 The maximum number of executions to return per page.
@@ -3670,17 +3239,9 @@ page_token string (optional)
 
 A page token from a previous ListTriggerExecutions call.
 
-triggerId string (required)
-
-Required. The trigger ID to list executions from.
-
 ### Response
 
 If successful, the response body contains data with the following structure:
-
-next_page_token string (optional)
-
-A page token, received from a previous `ListTriggerExecutions` call. Provide this to retrieve the subsequent page.
 
 trigger_executions array (TriggerExecution) (optional)
 
@@ -3690,25 +3251,13 @@ An execution instance of a trigger.
 
 #### Fields
 
-end_time string (optional)
-
-Output only. The time when the execution finished.
-
-environment_id string (optional)
-
-Output only. The environment ID used for the execution.
-
-error string (optional)
-
-Output only. The error message if the execution failed.
-
-id string (optional)
+id string (required)
 
 Required. Output only. Identifier. The ID of the trigger execution.
 
-interaction_id string (optional)
+trigger_id string (required)
 
-Output only. The ID of the interaction created by this execution, if any.
+Required. Output only. Identifier. The ID of the trigger that created this execution.
 
 scheduled_time string (optional)
 
@@ -3717,6 +3266,10 @@ Output only. The time when the execution was scheduled to run.
 start_time string (optional)
 
 Output only. The time when the execution started.
+
+end_time string (optional)
+
+Output only. The time when the execution finished.
 
 status enum (string) (optional)
 
@@ -3747,9 +3300,21 @@ The execution timed out.
 
 
 
-trigger_id string (optional)
+interaction_id string (optional)
 
-Required. Output only. Identifier. The ID of the trigger that created this execution.
+Output only. The ID of the interaction created by this execution, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID used for the execution.
+
+error string (optional)
+
+Output only. The error message if the execution failed.
+
+next_page_token string (optional)
+
+A page token, received from a previous `ListTriggerExecutions` call. Provide this to retrieve the subsequent page.
 
 ### Example
 
@@ -3757,20 +3322,20 @@ Required. Output only. Identifier. The ID of the trigger that created this execu
     
     
     {
-      "next_page_token": "string",
       "trigger_executions": [
         {
-          "end_time": "string",
-          "environment_id": "string",
-          "error": "string",
           "id": "string",
-          "interaction_id": "string",
+          "trigger_id": "string",
           "scheduled_time": "string",
           "start_time": "string",
+          "end_time": "string",
           "status": "in_progress",
-          "trigger_id": "string"
+          "interaction_id": "string",
+          "environment_id": "string",
+          "error": "string"
         }
-      ]
+      ],
+      "next_page_token": "string"
     }
 
 ## UpdateTrigger
@@ -3795,9 +3360,13 @@ Required. Resource name of the trigger.
 
 The request body contains data with the following structure:
 
-display_name string (optional)
+trigger TriggerUpdate (required)
 
-Optional. The display name of the trigger.
+Required. The trigger to update.
+
+Represents the fields of a Trigger that can be updated.
+
+#### Fields
 
 status enum (string) (optional)
 
@@ -3820,43 +3389,39 @@ The trigger has entered an error state due to consecutive failures.
 
 
 
-### Response
-
-If successful, the response body contains data with the following structure:
-
-consecutive_failure_count integer (optional)
-
-Output only. The number of consecutive failures that have occurred since the last successful execution.
-
-create_time string (optional)
-
-Output only. The time when the trigger was created.
-
 display_name string (optional)
 
 Optional. The display name of the trigger.
 
-environment_id string (optional)
+id string (required)
 
-Optional. The environment ID for the trigger execution.
+Required. The ID of the trigger to update.
 
-execution_timeout_seconds integer (optional)
+update_mask string (optional)
 
-Optional. The execution timeout for the triggered interaction.
+Optional. The update mask applies to the resource.
 
-id string (optional)
+### Response
 
-Required. Output only. Identifier. The ID of the trigger.
+If successful, the response body contains data with the following structure:
 
-interaction AgentInteraction (optional)
+schedule string (required)
+
+Required. The cron schedule on which the trigger should run. Standard cron format.
+
+time_zone string (required)
+
+Required. Time zone in which the schedule should be interpreted.
+
+interaction CreateAgentInteractionParams (required)
 
 Required. The interaction request template to be executed.
 
-Interaction for generating the completion using agents.
+Parameters for creating agent interactions
 
 #### Fields
 
-agent AgentOption (optional)
+agent AgentOption (required)
 
 The name of the `Agent` used for generating the interaction.
 
@@ -3883,117 +3448,13 @@ Use the Antigravity managed agent to perform multi-step tasks that require reaso
 
 
 
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
-
-Configuration parameters for the agent interaction.
-
-background boolean (optional)
-
-Input only. Whether to run the model interaction in the background.
-
-environment EnvironmentConfig or string (optional)
-
-The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-Configuration for a custom environment.
-
-#### Fields
-
-env object (optional)
-
-Environment variables to set in the sandbox environment.
-
-environment_id string (optional)
-
-Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
-network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
-
-Network configuration for the environment.
-
-Network egress configuration for the environment.
-
-#### Fields
-
-allowlist array (EgressRule) or enum (string) (optional)
-
-List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
-
-Possible values:
-
-  * `disabled`
-
-All network egress is blocked.
-
-
-
-
-sources array (Source) (optional)
-
-No description provided.
-
-A source to be mounted into the environment.
-
-#### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
-type enum (string) (optional)
-
-No description provided.
-
-Possible values:
-
-  * `gcs`
-
-A Cloud Storage bucket.
-
-  * `inline`
-
-Inline content.
-
-  * `repository`
-
-A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
-
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
-
-
-
-
-type object (optional)
-
-No description provided.
-
-Always set to `"remote"`.
-
-input Content or array (Content) or array (Step) or string (optional)
+input Content or array (Content) or array (Step) or string (required)
 
 The input for the interaction.
 
-labels object (optional)
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
 
-The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
-
-previous_interaction_id string (optional)
-
-The ID of the previous interaction, if any.
+Configuration parameters for the agent interaction.
 
 response_format ResponseFormat or array (ResponseFormat) (optional)
 
@@ -4005,26 +3466,11 @@ AudioResponseFormat
 
 Configuration for audio output format.
 
-bit_rate integer (optional)
+type object (required)
 
-Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+No description provided.
 
-delivery enum (string) (optional)
-
-The delivery mode for the audio output.
-
-Possible values:
-
-  * `inline`
-
-Audio data is returned inline in the response.
-
-  * `uri`
-
-Audio data is returned as a URI.
-
-
-
+Always set to `"audio"`.
 
 mime_type enum (string) (optional)
 
@@ -4059,19 +3505,70 @@ Mu-law audio format.
 
 
 
+delivery enum (string) (optional)
+
+The delivery mode for the audio output.
+
+Possible values:
+
+  * `inline`
+
+Audio data is returned inline in the response.
+
+  * `uri`
+
+Audio data is returned as a URI.
+
+
+
+
 sample_rate integer (optional)
 
 Sample rate in Hz.
+
+bit_rate integer (optional)
+
+Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+ImageResponseFormat
+
+Configuration for image output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"audio"`.
+Always set to `"image"`.
 
-ImageResponseFormat
+mime_type enum (string) (optional)
 
-Configuration for image output format.
+The MIME type of the image output.
+
+Possible values:
+
+  * `image/jpeg`
+
+JPEG image format.
+
+
+
+
+delivery enum (string) (optional)
+
+The delivery mode for the image output.
+
+Possible values:
+
+  * `inline`
+
+Image data is returned inline in the response.
+
+  * `uri`
+
+Image data is returned as a URI.
+
+
+
 
 aspect_ratio enum (string) (optional)
 
@@ -4138,23 +3635,6 @@ Possible values:
 
 
 
-delivery enum (string) (optional)
-
-The delivery mode for the image output.
-
-Possible values:
-
-  * `inline`
-
-Image data is returned inline in the response.
-
-  * `uri`
-
-Image data is returned as a URI.
-
-
-
-
 image_size enum (string) (optional)
 
 The size of the image output.
@@ -4180,28 +3660,15 @@ Possible values:
 
 
 
-mime_type enum (string) (optional)
+TextResponseFormat
 
-The MIME type of the image output.
-
-Possible values:
-
-  * `image/jpeg`
-
-JPEG image format.
-
-
-
+Configuration for text output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"image"`.
-
-TextResponseFormat
-
-Configuration for text output format.
+Always set to `"text"`.
 
 mime_type enum (string) (optional)
 
@@ -4222,34 +3689,17 @@ Plain text output format.
 
 schema object (optional)
 
-The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
-
-type object (required)
-
-No description provided.
-
-Always set to `"text"`.
+The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
 VideoResponseFormat
 
 Configuration for video output format.
 
-aspect_ratio enum (string) (optional)
+type object (required)
 
-The aspect ratio for the video output.
+No description provided.
 
-Possible values:
-
-  * `16:9`
-
-16:9 aspect ratio.
-
-  * `9:16`
-
-9:16 aspect ratio.
-
-
-
+Always set to `"video"`.
 
 delivery enum (string) (optional)
 
@@ -4268,13 +3718,26 @@ Video data is returned as a URI.
 
 
 
+aspect_ratio enum (string) (optional)
+
+The aspect ratio for the video output.
+
+Possible values:
+
+  * `16:9`
+
+16:9 aspect ratio.
+
+  * `9:16`
+
+9:16 aspect ratio.
+
+
+
+
 duration string (optional)
 
 The duration for the video output.
-
-gcs_uri string (optional)
-
-The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
 
 resolution enum (string) (optional)
 
@@ -4301,143 +3764,146 @@ Possible values:
 
 
 
+environment EnvironmentConfig or string (optional)
+
+The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+Configuration for a custom environment.
+
+#### Fields
+
 type object (required)
 
 No description provided.
 
-Always set to `"video"`.
+Always set to `"remote"`.
 
-safety_settings array (SafetySetting) (optional)
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
-Safety settings for the interaction.
+Network configuration for the environment.
 
-A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+Network egress configuration for the environment.
 
 #### Fields
 
-method enum (string) (optional)
+allowlist array (EgressRule) or enum (string) (optional)
 
-Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-Possible values:
-
-  * `severity`
-
-The harm block method uses both probability and severity scores.
-
-  * `probability`
-
-The harm block method uses the probability score.
-
-
-
-
-threshold enum (string) (optional)
-
-Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
 Possible values:
 
-  * `block_low_and_above`
+  * `disabled`
 
-Block content with a low harm probability or higher.
-
-  * `block_medium_and_above`
-
-Block content with a medium harm probability or higher.
-
-  * `block_only_high`
-
-Block content with a high harm probability.
-
-  * `block_none`
-
-Do not block any content, regardless of its harm probability.
-
-  * `off`
-
-Turn off the safety filter entirely.
+All network egress is blocked.
 
 
 
 
-type HarmCategory (optional)
+sources array (Source) (optional)
 
-Required. The type of harm category to be blocked.
+No description provided.
 
-#### Possible values
+A source to be mounted into the environment.
 
-  * `hate_speech`
+#### Fields
 
-Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+type enum (string) (optional)
 
-  * `dangerous_content`
+No description provided.
 
-Content that promotes, facilitates, or enables dangerous activities.
+Possible values:
 
-  * `harassment`
+  * `gcs`
 
-Abusive, threatening, or content intended to bully, torment, or ridicule.
+A Cloud Storage bucket.
 
-  * `sexually_explicit`
+  * `inline`
 
-Content that contains sexually explicit material.
+Inline content.
 
-  * `image_hate`
+  * `repository`
 
-Images that contain hate speech.
-
-  * `image_dangerous_content`
-
-Images that contain dangerous content.
-
-  * `image_harassment`
-
-Images that contain harassment.
-
-  * `image_sexually_explicit`
-
-Images that contain sexually explicit content.
-
-  * `jailbreak`
-
-Prompts designed to bypass safety filters.
+A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
 
 
 
-service_tier ServiceTier (optional)
+source string (optional)
 
-The service tier for the interaction.
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-#### Possible values
+target string (optional)
 
-  * `flex`
+Where the source should appear in the environment.
 
-Flex service tier.
+content string (optional)
 
-  * `standard`
+The inline content if `type` is `INLINE`.
 
-Standard service tier.
+encoding string (optional)
 
-  * `priority`
+Optional encoding for inline content (e.g. `base64`).
 
-Priority service tier.
+environment_id string (optional)
 
-  * `deferred`
+Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-Deferred service tier.
+env object or string (optional)
+
+Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+object
+
+string
+
+A direct string value.
+
+id string (optional)
+
+Required. Output only. A unique identifier for the interaction completion.
+
+status enum (string) (optional)
+
+Required. Output only. The status of the interaction.
+
+Possible values:
+
+  * `in_progress`
+
+The interaction is in progress.
+
+  * `requires_action`
+
+The interaction requires action/input from the user.
+
+  * `completed`
+
+The interaction is completed.
+
+  * `failed`
+
+The interaction failed.
+
+  * `cancelled`
+
+The interaction was cancelled.
+
+  * `incomplete`
+
+The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
 
 
 
-store boolean (optional)
+created string (optional)
 
-Input only. Whether to store the response and request for later retrieval.
+Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-stream boolean (optional)
+updated string (optional)
 
-Input only. Whether the interaction will be streamed.
+Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 system_instruction string (optional)
 
@@ -4464,6 +3930,41 @@ Always set to `"code_execution"`.
 ComputerUse
 
 A tool that can be used by the model to interact with the computer.
+
+type object (required)
+
+No description provided.
+
+Always set to `"computer_use"`.
+
+environment enum (string) (optional)
+
+The environment being operated.
+
+Possible values:
+
+  * `browser`
+
+Operates in a web browser.
+
+  * `mobile`
+
+Operates in a mobile environment.
+
+  * `desktop`
+
+Operates in a desktop environment.
+
+
+
+
+excluded_predefined_functions array (string) (optional)
+
+The list of predefined functions that are excluded from the model call.
+
+enable_prompt_injection_detection boolean (optional)
+
+Whether enable the prompt injection detection check on computer-use request.
 
 disabled_safety_policies array (enum (string)) (optional)
 
@@ -4502,56 +4003,9 @@ Safety policy for legal terms and agreements.
 
 
 
-enable_prompt_injection_detection boolean (optional)
-
-Whether enable the prompt injection detection check on computer-use request.
-
-environment enum (string) (optional)
-
-The environment being operated.
-
-Possible values:
-
-  * `browser`
-
-Operates in a web browser.
-
-  * `mobile`
-
-Operates in a mobile environment.
-
-  * `desktop`
-
-Operates in a desktop environment.
-
-
-
-
-excluded_predefined_functions array (string) (optional)
-
-The list of predefined functions that are excluded from the model call.
-
-type object (required)
-
-No description provided.
-
-Always set to `"computer_use"`.
-
 FileSearch
 
 A tool that can be used by the model to search files.
-
-file_search_store_names array (string) (optional)
-
-The file search store names to search.
-
-metadata_filter string (optional)
-
-Metadata filter to apply to the semantic retrieval documents and chunks.
-
-top_k integer (optional)
-
-The number of semantic retrieval chunks to retrieve.
 
 type object (required)
 
@@ -4559,21 +4013,21 @@ No description provided.
 
 Always set to `"file_search"`.
 
+file_search_store_names array (string) (optional)
+
+The file search store names to search.
+
+top_k integer (optional)
+
+The number of semantic retrieval chunks to retrieve.
+
+metadata_filter string (optional)
+
+Metadata filter to apply to the semantic retrieval documents and chunks.
+
 Function
 
 A tool that can be used by the model.
-
-description string (optional)
-
-A description of the function.
-
-name string (optional)
-
-The name of the function.
-
-parameters object (optional)
-
-The JSON Schema for the function's parameters.
 
 type object (required)
 
@@ -4581,9 +4035,27 @@ No description provided.
 
 Always set to `"function"`.
 
+name string (optional)
+
+The name of the function.
+
+description string (optional)
+
+A description of the function.
+
+parameters object (optional)
+
+The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
 GoogleMaps
 
 A tool that can be used by the model to call Google Maps.
+
+type object (required)
+
+No description provided.
+
+Always set to `"google_maps"`.
 
 enable_widget boolean (optional)
 
@@ -4597,15 +4069,15 @@ longitude number (optional)
 
 The longitude of the user's location.
 
+GoogleSearch
+
+A tool that can be used by the model to search Google.
+
 type object (required)
 
 No description provided.
 
-Always set to `"google_maps"`.
-
-GoogleSearch
-
-A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 
 search_types array (enum (string)) (optional)
 
@@ -4621,22 +4093,30 @@ Setting this field enables web search. Only text results are returned.
 
 Setting this field enables image search. Image bytes are returned.
 
-  * `enterprise_web_search`
-
-Setting this field enables enterprise web search.
 
 
 
+McpServer
+
+A MCPServer is a server that can be called by the model to perform actions.
 
 type object (required)
 
 No description provided.
 
-Always set to `"google_search"`.
+Always set to `"mcp_server"`.
 
-McpServer
+url string (optional)
 
-A MCPServer is a server that can be called by the model to perform actions.
+The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+name string (optional)
+
+The name of the MCPServer.
+
+headers object (optional)
+
+Optional: Fields for authentication headers, timeouts, etc., if needed.
 
 allowed_tools array (AllowedTools) (optional)
 
@@ -4675,176 +4155,6 @@ tools array (string) (optional)
 
 The names of the allowed tools.
 
-headers object (optional)
-
-Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-name string (optional)
-
-The name of the MCPServer.
-
-type object (required)
-
-No description provided.
-
-Always set to `"mcp_server"`.
-
-url string (optional)
-
-The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
-Retrieval
-
-A tool that can be used by the model to retrieve files.
-
-exa_ai_search_config ExaAISearchConfig (optional)
-
-Used to specify configuration for ExaAISearch.
-
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Required. The API key for ExaAiSearch.
-
-custom_config object (optional)
-
-Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-parallel_ai_search_config ParallelAISearchConfig (optional)
-
-Used to specify configuration for ParallelAISearch.
-
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Optional. The API key for ParallelAiSearch.
-
-custom_config object (optional)
-
-Optional. Custom configs for ParallelAiSearch.
-
-rag_store_config RagStoreConfig (optional)
-
-Used to specify configuration for RagStore.
-
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional)
-
-Optional. The representation of the rag source.
-
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional)
-
-Optional. RagCorpora resource name.
-
-rag_file_ids array (string) (optional)
-
-Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-rag_retrieval_config RagRetrievalConfig (optional)
-
-Optional. The retrieval config for the Rag query.
-
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional)
-
-Optional. Config for filters.
-
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional)
-
-Optional. String for metadata filtering.
-
-vector_distance_threshold number (optional)
-
-Optional. Only returns contexts with vector distance smaller than the threshold.
-
-vector_similarity_threshold number (optional)
-
-Optional. Only returns contexts with vector similarity larger than the threshold.
-
-hybrid_search HybridSearch (optional)
-
-Optional. Config for Hybrid Search.
-
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional)
-
-Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-ranking Ranking (optional)
-
-Optional. Config for ranking and reranking.
-
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-rank_service RankService (optional)
-
-Config for Rank Service.
-
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-ranking_config object (optional)
-
-No description provided.
-
-Always set to `"rank_service"`.
-
-top_k integer (optional)
-
-Optional. The number of contexts to retrieve.
-
-retrieval_types array (enum (string)) (optional)
-
-The types of file retrieval to enable.
-
-Possible values:
-
-  * `rag_store`
-  * `exa_ai_search`
-  * `parallel_ai_search`
-
-
-
-type object (required)
-
-No description provided.
-
-Always set to `"retrieval"`.
-
 UrlContext
 
 A tool that can be used by the model to fetch URL context.
@@ -4854,6 +4164,35 @@ type object (required)
 No description provided.
 
 Always set to `"url_context"`.
+
+previous_interaction_id string (optional)
+
+The ID of the previous interaction, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+service_tier ServiceTier (optional)
+
+The service tier for the interaction.
+
+#### Possible values
+
+  * `flex`
+
+Flex service tier.
+
+  * `standard`
+
+Standard service tier.
+
+  * `priority`
+
+Priority service tier.
+
+
+
 
 webhook_config WebhookConfig (optional)
 
@@ -4871,6 +4210,129 @@ user_metadata object (optional)
 
 Optional. The user metadata that will be returned on each event emission to the webhooks.
 
+safety_settings array (SafetySetting) (optional)
+
+Safety settings for the interaction.
+
+A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+
+#### Fields
+
+type HarmCategory (required)
+
+Required. The type of harm category to be blocked.
+
+#### Possible values
+
+  * `hate_speech`
+
+Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+
+  * `dangerous_content`
+
+Content that promotes, facilitates, or enables dangerous activities.
+
+  * `harassment`
+
+Abusive, threatening, or content intended to bully, torment, or ridicule.
+
+  * `sexually_explicit`
+
+Content that contains sexually explicit material.
+
+  * `jailbreak`
+
+Prompts designed to bypass safety filters.
+
+
+
+
+threshold enum (string) (required)
+
+Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+Possible values:
+
+  * `block_low_and_above`
+
+Block content with a low harm probability or higher.
+
+  * `block_medium_and_above`
+
+Block content with a medium harm probability or higher.
+
+  * `block_only_high`
+
+Block content with a high harm probability.
+
+  * `off`
+
+Turn off the safety filter entirely.
+
+
+
+
+method enum (string) (optional)
+
+Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+Possible values:
+
+  * `severity`
+
+The harm block method uses both probability and severity scores.
+
+  * `probability`
+
+The harm block method uses the probability score.
+
+
+
+
+labels object (optional)
+
+The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+id string (required)
+
+Required. Output only. Identifier. The ID of the trigger.
+
+display_name string (optional)
+
+Optional. The display name of the trigger.
+
+environment_id string (optional)
+
+Optional. The environment ID for the trigger execution.
+
+max_consecutive_failures integer (optional)
+
+Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+
+execution_timeout_seconds integer (optional)
+
+Optional. The execution timeout for the triggered interaction.
+
+consecutive_failure_count integer (optional)
+
+Output only. The number of consecutive failures that have occurred since the last successful execution.
+
+create_time string (optional)
+
+Output only. The time when the trigger was created.
+
+update_time string (optional)
+
+Output only. The time when the trigger was last updated.
+
+last_run_time string (optional)
+
+Output only. The time when the trigger was last run.
+
+next_run_time string (optional)
+
+Output only. The time when the trigger is scheduled to run next.
+
 last_pause_time string (optional)
 
 Output only. The time when the trigger was last paused.
@@ -4879,25 +4341,9 @@ last_resume_time string (optional)
 
 Output only. The time when the trigger was last resumed.
 
-last_run_time string (optional)
-
-Output only. The time when the trigger was last run.
-
-max_consecutive_failures integer (optional)
-
-Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
-
-next_run_time string (optional)
-
-Output only. The time when the trigger is scheduled to run next.
-
 previous_interaction_id string (optional)
 
 Output only. The ID of the last interaction created by this trigger.
-
-schedule string (optional)
-
-Required. The cron schedule on which the trigger should run. Standard cron format.
 
 status enum (string) (optional)
 
@@ -4920,107 +4366,104 @@ The trigger has entered an error state due to consecutive failures.
 
 
 
-time_zone string (optional)
-
-Required. Time zone in which the schedule should be interpreted.
-
-update_time string (optional)
-
-Output only. The time when the trigger was last updated.
-
 ### Example
 
 ####  Example Response
     
     
     {
-      "consecutive_failure_count": 0,
-      "create_time": "string",
-      "display_name": "string",
-      "environment_id": "string",
-      "execution_timeout_seconds": 0,
-      "id": "string",
+      "schedule": "string",
+      "time_zone": "string",
       "interaction": {
         "agent": "deep-research-pro-preview-12-2025",
-        "agent_config": {
-          "max_total_tokens": "string",
-          "model": "string",
-          "type": {}
+        "input": {
+          "type": {},
+          "data": "string",
+          "uri": "string",
+          "channels": 0,
+          "sample_rate": 0,
+          "mime_type": "audio/wav"
         },
-        "background": true,
+        "agent_config": {
+          "type": {},
+          "model": "string",
+          "max_total_tokens": "string"
+        },
+        "response_format": {
+          "type": {},
+          "mime_type": "audio/mp3",
+          "delivery": "inline",
+          "sample_rate": 0,
+          "bit_rate": 0
+        },
         "environment": {
-          "env": {},
-          "environment_id": "string",
+          "type": {},
           "network": {
             "allowlist": [
               {
-                "domain": "github.com",
-                "transform": [
-                  {
-                    "Authorization": "Bearer your-token"
-                  }
-                ]
-              },
-              {
-                "domain": "*.googleapis.com"
+                "domain": "...",
+                "transform": "...",
+                "credential": "..."
               }
             ]
           },
           "sources": [
             {
-              "content": "string",
-              "encoding": "string",
+              "type": "gcs",
               "source": "string",
               "target": "string",
-              "type": "gcs"
+              "content": "string",
+              "encoding": "string"
             }
           ],
-          "type": {}
+          "environment_id": "string",
+          "env": {}
         },
-        "input": {
-          "type": "audio",
-          "data": "BASE64_ENCODED_AUDIO",
-          "mime_type": "audio/wav"
-        },
-        "labels": {},
-        "previous_interaction_id": "string",
-        "response_format": {
-          "type": "audio",
-          "sample_rate": 24000
-        },
-        "safety_settings": [
-          {
-            "method": "severity",
-            "threshold": "block_low_and_above",
-            "type": "hate_speech"
-          }
-        ],
-        "service_tier": "flex",
-        "store": true,
-        "stream": true,
+        "id": "string",
+        "status": "in_progress",
+        "created": "string",
+        "updated": "string",
         "system_instruction": "string",
         "tools": [
           {
             "type": {}
           }
         ],
+        "previous_interaction_id": "string",
+        "environment_id": "string",
+        "service_tier": "flex",
         "webhook_config": {
           "uris": [
             "string"
           ],
           "user_metadata": {}
-        }
+        },
+        "safety_settings": [
+          {
+            "type": "hate_speech",
+            "threshold": "block_low_and_above",
+            "method": "severity"
+          }
+        ],
+        "labels": {},
+        "stream": true,
+        "store": true,
+        "background": true
       },
+      "id": "string",
+      "display_name": "string",
+      "environment_id": "string",
+      "max_consecutive_failures": 0,
+      "execution_timeout_seconds": 0,
+      "consecutive_failure_count": 0,
+      "create_time": "string",
+      "update_time": "string",
+      "last_run_time": "string",
+      "next_run_time": "string",
       "last_pause_time": "string",
       "last_resume_time": "string",
-      "last_run_time": "string",
-      "max_consecutive_failures": 0,
-      "next_run_time": "string",
       "previous_interaction_id": "string",
-      "schedule": "string",
-      "status": "active",
-      "time_zone": "string",
-      "update_time": "string"
+      "status": "active"
     }
 
 ## DeleteTrigger
@@ -5054,39 +4497,23 @@ A trigger configuration that is scheduled to run an agent.
 
 #### Fields
 
-consecutive_failure_count integer (optional)
+schedule string (required)
 
-Output only. The number of consecutive failures that have occurred since the last successful execution.
+Required. The cron schedule on which the trigger should run. Standard cron format.
 
-create_time string (optional)
+time_zone string (required)
 
-Output only. The time when the trigger was created.
+Required. Time zone in which the schedule should be interpreted.
 
-display_name string (optional)
-
-Optional. The display name of the trigger.
-
-environment_id string (optional)
-
-Optional. The environment ID for the trigger execution.
-
-execution_timeout_seconds integer (optional)
-
-Optional. The execution timeout for the triggered interaction.
-
-id string (optional)
-
-Required. Output only. Identifier. The ID of the trigger.
-
-interaction AgentInteraction (optional)
+interaction CreateAgentInteractionParams (required)
 
 Required. The interaction request template to be executed.
 
-Interaction for generating the completion using agents.
+Parameters for creating agent interactions
 
 #### Fields
 
-agent AgentOption (optional)
+agent AgentOption (required)
 
 The name of the `Agent` used for generating the interaction.
 
@@ -5113,117 +4540,13 @@ Use the Antigravity managed agent to perform multi-step tasks that require reaso
 
 
 
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
-
-Configuration parameters for the agent interaction.
-
-background boolean (optional)
-
-Input only. Whether to run the model interaction in the background.
-
-environment EnvironmentConfig or string (optional)
-
-The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-Configuration for a custom environment.
-
-#### Fields
-
-env object (optional)
-
-Environment variables to set in the sandbox environment.
-
-environment_id string (optional)
-
-Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
-network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
-
-Network configuration for the environment.
-
-Network egress configuration for the environment.
-
-#### Fields
-
-allowlist array (EgressRule) or enum (string) (optional)
-
-List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
-
-Possible values:
-
-  * `disabled`
-
-All network egress is blocked.
-
-
-
-
-sources array (Source) (optional)
-
-No description provided.
-
-A source to be mounted into the environment.
-
-#### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
-type enum (string) (optional)
-
-No description provided.
-
-Possible values:
-
-  * `gcs`
-
-A Cloud Storage bucket.
-
-  * `inline`
-
-Inline content.
-
-  * `repository`
-
-A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
-
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
-
-
-
-
-type object (optional)
-
-No description provided.
-
-Always set to `"remote"`.
-
-input Content or array (Content) or array (Step) or string (optional)
+input Content or array (Content) or array (Step) or string (required)
 
 The input for the interaction.
 
-labels object (optional)
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional)
 
-The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
-
-previous_interaction_id string (optional)
-
-The ID of the previous interaction, if any.
+Configuration parameters for the agent interaction.
 
 response_format ResponseFormat or array (ResponseFormat) (optional)
 
@@ -5235,26 +4558,11 @@ AudioResponseFormat
 
 Configuration for audio output format.
 
-bit_rate integer (optional)
+type object (required)
 
-Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+No description provided.
 
-delivery enum (string) (optional)
-
-The delivery mode for the audio output.
-
-Possible values:
-
-  * `inline`
-
-Audio data is returned inline in the response.
-
-  * `uri`
-
-Audio data is returned as a URI.
-
-
-
+Always set to `"audio"`.
 
 mime_type enum (string) (optional)
 
@@ -5289,19 +4597,70 @@ Mu-law audio format.
 
 
 
+delivery enum (string) (optional)
+
+The delivery mode for the audio output.
+
+Possible values:
+
+  * `inline`
+
+Audio data is returned inline in the response.
+
+  * `uri`
+
+Audio data is returned as a URI.
+
+
+
+
 sample_rate integer (optional)
 
 Sample rate in Hz.
+
+bit_rate integer (optional)
+
+Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+ImageResponseFormat
+
+Configuration for image output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"audio"`.
+Always set to `"image"`.
 
-ImageResponseFormat
+mime_type enum (string) (optional)
 
-Configuration for image output format.
+The MIME type of the image output.
+
+Possible values:
+
+  * `image/jpeg`
+
+JPEG image format.
+
+
+
+
+delivery enum (string) (optional)
+
+The delivery mode for the image output.
+
+Possible values:
+
+  * `inline`
+
+Image data is returned inline in the response.
+
+  * `uri`
+
+Image data is returned as a URI.
+
+
+
 
 aspect_ratio enum (string) (optional)
 
@@ -5368,23 +4727,6 @@ Possible values:
 
 
 
-delivery enum (string) (optional)
-
-The delivery mode for the image output.
-
-Possible values:
-
-  * `inline`
-
-Image data is returned inline in the response.
-
-  * `uri`
-
-Image data is returned as a URI.
-
-
-
-
 image_size enum (string) (optional)
 
 The size of the image output.
@@ -5410,28 +4752,15 @@ Possible values:
 
 
 
-mime_type enum (string) (optional)
+TextResponseFormat
 
-The MIME type of the image output.
-
-Possible values:
-
-  * `image/jpeg`
-
-JPEG image format.
-
-
-
+Configuration for text output format.
 
 type object (required)
 
 No description provided.
 
-Always set to `"image"`.
-
-TextResponseFormat
-
-Configuration for text output format.
+Always set to `"text"`.
 
 mime_type enum (string) (optional)
 
@@ -5452,34 +4781,17 @@ Plain text output format.
 
 schema object (optional)
 
-The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
-
-type object (required)
-
-No description provided.
-
-Always set to `"text"`.
+The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
 VideoResponseFormat
 
 Configuration for video output format.
 
-aspect_ratio enum (string) (optional)
+type object (required)
 
-The aspect ratio for the video output.
+No description provided.
 
-Possible values:
-
-  * `16:9`
-
-16:9 aspect ratio.
-
-  * `9:16`
-
-9:16 aspect ratio.
-
-
-
+Always set to `"video"`.
 
 delivery enum (string) (optional)
 
@@ -5498,13 +4810,26 @@ Video data is returned as a URI.
 
 
 
+aspect_ratio enum (string) (optional)
+
+The aspect ratio for the video output.
+
+Possible values:
+
+  * `16:9`
+
+16:9 aspect ratio.
+
+  * `9:16`
+
+9:16 aspect ratio.
+
+
+
+
 duration string (optional)
 
 The duration for the video output.
-
-gcs_uri string (optional)
-
-The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
 
 resolution enum (string) (optional)
 
@@ -5531,143 +4856,146 @@ Possible values:
 
 
 
+environment EnvironmentConfig or string (optional)
+
+The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+Configuration for a custom environment.
+
+#### Fields
+
 type object (required)
 
 No description provided.
 
-Always set to `"video"`.
+Always set to `"remote"`.
 
-safety_settings array (SafetySetting) (optional)
+network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
-Safety settings for the interaction.
+Network configuration for the environment.
 
-A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+Network egress configuration for the environment.
 
 #### Fields
 
-method enum (string) (optional)
+allowlist array (EgressRule) or enum (string) (optional)
 
-Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-Possible values:
-
-  * `severity`
-
-The harm block method uses both probability and severity scores.
-
-  * `probability`
-
-The harm block method uses the probability score.
-
-
-
-
-threshold enum (string) (optional)
-
-Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
 Possible values:
 
-  * `block_low_and_above`
+  * `disabled`
 
-Block content with a low harm probability or higher.
-
-  * `block_medium_and_above`
-
-Block content with a medium harm probability or higher.
-
-  * `block_only_high`
-
-Block content with a high harm probability.
-
-  * `block_none`
-
-Do not block any content, regardless of its harm probability.
-
-  * `off`
-
-Turn off the safety filter entirely.
+All network egress is blocked.
 
 
 
 
-type HarmCategory (optional)
+sources array (Source) (optional)
 
-Required. The type of harm category to be blocked.
+No description provided.
 
-#### Possible values
+A source to be mounted into the environment.
 
-  * `hate_speech`
+#### Fields
 
-Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+type enum (string) (optional)
 
-  * `dangerous_content`
+No description provided.
 
-Content that promotes, facilitates, or enables dangerous activities.
+Possible values:
 
-  * `harassment`
+  * `gcs`
 
-Abusive, threatening, or content intended to bully, torment, or ridicule.
+A Cloud Storage bucket.
 
-  * `sexually_explicit`
+  * `inline`
 
-Content that contains sexually explicit material.
+Inline content.
 
-  * `image_hate`
+  * `repository`
 
-Images that contain hate speech.
-
-  * `image_dangerous_content`
-
-Images that contain dangerous content.
-
-  * `image_harassment`
-
-Images that contain harassment.
-
-  * `image_sexually_explicit`
-
-Images that contain sexually explicit content.
-
-  * `jailbreak`
-
-Prompts designed to bypass safety filters.
+A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
 
 
 
-service_tier ServiceTier (optional)
+source string (optional)
 
-The service tier for the interaction.
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-#### Possible values
+target string (optional)
 
-  * `flex`
+Where the source should appear in the environment.
 
-Flex service tier.
+content string (optional)
 
-  * `standard`
+The inline content if `type` is `INLINE`.
 
-Standard service tier.
+encoding string (optional)
 
-  * `priority`
+Optional encoding for inline content (e.g. `base64`).
 
-Priority service tier.
+environment_id string (optional)
 
-  * `deferred`
+Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-Deferred service tier.
+env object or string (optional)
+
+Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+object
+
+string
+
+A direct string value.
+
+id string (optional)
+
+Required. Output only. A unique identifier for the interaction completion.
+
+status enum (string) (optional)
+
+Required. Output only. The status of the interaction.
+
+Possible values:
+
+  * `in_progress`
+
+The interaction is in progress.
+
+  * `requires_action`
+
+The interaction requires action/input from the user.
+
+  * `completed`
+
+The interaction is completed.
+
+  * `failed`
+
+The interaction failed.
+
+  * `cancelled`
+
+The interaction was cancelled.
+
+  * `incomplete`
+
+The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
 
 
 
-store boolean (optional)
+created string (optional)
 
-Input only. Whether to store the response and request for later retrieval.
+Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-stream boolean (optional)
+updated string (optional)
 
-Input only. Whether the interaction will be streamed.
+Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 system_instruction string (optional)
 
@@ -5694,6 +5022,41 @@ Always set to `"code_execution"`.
 ComputerUse
 
 A tool that can be used by the model to interact with the computer.
+
+type object (required)
+
+No description provided.
+
+Always set to `"computer_use"`.
+
+environment enum (string) (optional)
+
+The environment being operated.
+
+Possible values:
+
+  * `browser`
+
+Operates in a web browser.
+
+  * `mobile`
+
+Operates in a mobile environment.
+
+  * `desktop`
+
+Operates in a desktop environment.
+
+
+
+
+excluded_predefined_functions array (string) (optional)
+
+The list of predefined functions that are excluded from the model call.
+
+enable_prompt_injection_detection boolean (optional)
+
+Whether enable the prompt injection detection check on computer-use request.
 
 disabled_safety_policies array (enum (string)) (optional)
 
@@ -5732,56 +5095,9 @@ Safety policy for legal terms and agreements.
 
 
 
-enable_prompt_injection_detection boolean (optional)
-
-Whether enable the prompt injection detection check on computer-use request.
-
-environment enum (string) (optional)
-
-The environment being operated.
-
-Possible values:
-
-  * `browser`
-
-Operates in a web browser.
-
-  * `mobile`
-
-Operates in a mobile environment.
-
-  * `desktop`
-
-Operates in a desktop environment.
-
-
-
-
-excluded_predefined_functions array (string) (optional)
-
-The list of predefined functions that are excluded from the model call.
-
-type object (required)
-
-No description provided.
-
-Always set to `"computer_use"`.
-
 FileSearch
 
 A tool that can be used by the model to search files.
-
-file_search_store_names array (string) (optional)
-
-The file search store names to search.
-
-metadata_filter string (optional)
-
-Metadata filter to apply to the semantic retrieval documents and chunks.
-
-top_k integer (optional)
-
-The number of semantic retrieval chunks to retrieve.
 
 type object (required)
 
@@ -5789,21 +5105,21 @@ No description provided.
 
 Always set to `"file_search"`.
 
+file_search_store_names array (string) (optional)
+
+The file search store names to search.
+
+top_k integer (optional)
+
+The number of semantic retrieval chunks to retrieve.
+
+metadata_filter string (optional)
+
+Metadata filter to apply to the semantic retrieval documents and chunks.
+
 Function
 
 A tool that can be used by the model.
-
-description string (optional)
-
-A description of the function.
-
-name string (optional)
-
-The name of the function.
-
-parameters object (optional)
-
-The JSON Schema for the function's parameters.
 
 type object (required)
 
@@ -5811,9 +5127,27 @@ No description provided.
 
 Always set to `"function"`.
 
+name string (optional)
+
+The name of the function.
+
+description string (optional)
+
+A description of the function.
+
+parameters object (optional)
+
+The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
 GoogleMaps
 
 A tool that can be used by the model to call Google Maps.
+
+type object (required)
+
+No description provided.
+
+Always set to `"google_maps"`.
 
 enable_widget boolean (optional)
 
@@ -5827,15 +5161,15 @@ longitude number (optional)
 
 The longitude of the user's location.
 
+GoogleSearch
+
+A tool that can be used by the model to search Google.
+
 type object (required)
 
 No description provided.
 
-Always set to `"google_maps"`.
-
-GoogleSearch
-
-A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 
 search_types array (enum (string)) (optional)
 
@@ -5851,22 +5185,30 @@ Setting this field enables web search. Only text results are returned.
 
 Setting this field enables image search. Image bytes are returned.
 
-  * `enterprise_web_search`
-
-Setting this field enables enterprise web search.
 
 
 
+McpServer
+
+A MCPServer is a server that can be called by the model to perform actions.
 
 type object (required)
 
 No description provided.
 
-Always set to `"google_search"`.
+Always set to `"mcp_server"`.
 
-McpServer
+url string (optional)
 
-A MCPServer is a server that can be called by the model to perform actions.
+The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+name string (optional)
+
+The name of the MCPServer.
+
+headers object (optional)
+
+Optional: Fields for authentication headers, timeouts, etc., if needed.
 
 allowed_tools array (AllowedTools) (optional)
 
@@ -5905,176 +5247,6 @@ tools array (string) (optional)
 
 The names of the allowed tools.
 
-headers object (optional)
-
-Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-name string (optional)
-
-The name of the MCPServer.
-
-type object (required)
-
-No description provided.
-
-Always set to `"mcp_server"`.
-
-url string (optional)
-
-The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
-Retrieval
-
-A tool that can be used by the model to retrieve files.
-
-exa_ai_search_config ExaAISearchConfig (optional)
-
-Used to specify configuration for ExaAISearch.
-
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Required. The API key for ExaAiSearch.
-
-custom_config object (optional)
-
-Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-parallel_ai_search_config ParallelAISearchConfig (optional)
-
-Used to specify configuration for ParallelAISearch.
-
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional)
-
-Optional. The API key for ParallelAiSearch.
-
-custom_config object (optional)
-
-Optional. Custom configs for ParallelAiSearch.
-
-rag_store_config RagStoreConfig (optional)
-
-Used to specify configuration for RagStore.
-
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional)
-
-Optional. The representation of the rag source.
-
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional)
-
-Optional. RagCorpora resource name.
-
-rag_file_ids array (string) (optional)
-
-Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-rag_retrieval_config RagRetrievalConfig (optional)
-
-Optional. The retrieval config for the Rag query.
-
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional)
-
-Optional. Config for filters.
-
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional)
-
-Optional. String for metadata filtering.
-
-vector_distance_threshold number (optional)
-
-Optional. Only returns contexts with vector distance smaller than the threshold.
-
-vector_similarity_threshold number (optional)
-
-Optional. Only returns contexts with vector similarity larger than the threshold.
-
-hybrid_search HybridSearch (optional)
-
-Optional. Config for Hybrid Search.
-
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional)
-
-Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-ranking Ranking (optional)
-
-Optional. Config for ranking and reranking.
-
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-rank_service RankService (optional)
-
-Config for Rank Service.
-
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional)
-
-Optional. The model name of the rank service.
-
-ranking_config object (optional)
-
-No description provided.
-
-Always set to `"rank_service"`.
-
-top_k integer (optional)
-
-Optional. The number of contexts to retrieve.
-
-retrieval_types array (enum (string)) (optional)
-
-The types of file retrieval to enable.
-
-Possible values:
-
-  * `rag_store`
-  * `exa_ai_search`
-  * `parallel_ai_search`
-
-
-
-type object (required)
-
-No description provided.
-
-Always set to `"retrieval"`.
-
 UrlContext
 
 A tool that can be used by the model to fetch URL context.
@@ -6084,6 +5256,35 @@ type object (required)
 No description provided.
 
 Always set to `"url_context"`.
+
+previous_interaction_id string (optional)
+
+The ID of the previous interaction, if any.
+
+environment_id string (optional)
+
+Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+service_tier ServiceTier (optional)
+
+The service tier for the interaction.
+
+#### Possible values
+
+  * `flex`
+
+Flex service tier.
+
+  * `standard`
+
+Standard service tier.
+
+  * `priority`
+
+Priority service tier.
+
+
+
 
 webhook_config WebhookConfig (optional)
 
@@ -6101,6 +5302,129 @@ user_metadata object (optional)
 
 Optional. The user metadata that will be returned on each event emission to the webhooks.
 
+safety_settings array (SafetySetting) (optional)
+
+Safety settings for the interaction.
+
+A safety setting that affects the safety-blocking behavior. A SafetySetting consists of a harm category and a threshold for that category.
+
+#### Fields
+
+type HarmCategory (required)
+
+Required. The type of harm category to be blocked.
+
+#### Possible values
+
+  * `hate_speech`
+
+Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+
+  * `dangerous_content`
+
+Content that promotes, facilitates, or enables dangerous activities.
+
+  * `harassment`
+
+Abusive, threatening, or content intended to bully, torment, or ridicule.
+
+  * `sexually_explicit`
+
+Content that contains sexually explicit material.
+
+  * `jailbreak`
+
+Prompts designed to bypass safety filters.
+
+
+
+
+threshold enum (string) (required)
+
+Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+Possible values:
+
+  * `block_low_and_above`
+
+Block content with a low harm probability or higher.
+
+  * `block_medium_and_above`
+
+Block content with a medium harm probability or higher.
+
+  * `block_only_high`
+
+Block content with a high harm probability.
+
+  * `off`
+
+Turn off the safety filter entirely.
+
+
+
+
+method enum (string) (optional)
+
+Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+Possible values:
+
+  * `severity`
+
+The harm block method uses both probability and severity scores.
+
+  * `probability`
+
+The harm block method uses the probability score.
+
+
+
+
+labels object (optional)
+
+The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+id string (required)
+
+Required. Output only. Identifier. The ID of the trigger.
+
+display_name string (optional)
+
+Optional. The display name of the trigger.
+
+environment_id string (optional)
+
+Optional. The environment ID for the trigger execution.
+
+max_consecutive_failures integer (optional)
+
+Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
+
+execution_timeout_seconds integer (optional)
+
+Optional. The execution timeout for the triggered interaction.
+
+consecutive_failure_count integer (optional)
+
+Output only. The number of consecutive failures that have occurred since the last successful execution.
+
+create_time string (optional)
+
+Output only. The time when the trigger was created.
+
+update_time string (optional)
+
+Output only. The time when the trigger was last updated.
+
+last_run_time string (optional)
+
+Output only. The time when the trigger was last run.
+
+next_run_time string (optional)
+
+Output only. The time when the trigger is scheduled to run next.
+
 last_pause_time string (optional)
 
 Output only. The time when the trigger was last paused.
@@ -6109,25 +5433,9 @@ last_resume_time string (optional)
 
 Output only. The time when the trigger was last resumed.
 
-last_run_time string (optional)
-
-Output only. The time when the trigger was last run.
-
-max_consecutive_failures integer (optional)
-
-Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
-
-next_run_time string (optional)
-
-Output only. The time when the trigger is scheduled to run next.
-
 previous_interaction_id string (optional)
 
 Output only. The ID of the last interaction created by this trigger.
-
-schedule string (optional)
-
-Required. The cron schedule on which the trigger should run. Standard cron format.
 
 status enum (string) (optional)
 
@@ -6149,19 +5457,3 @@ The trigger has entered an error state due to consecutive failures.
 
 
 
-
-time_zone string (optional)
-
-Required. Time zone in which the schedule should be interpreted.
-
-update_time string (optional)
-
-Output only. The time when the trigger was last updated.
-
-Send feedback 
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-10-13 UTC.
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-10-13 UTC."],[],[]] 

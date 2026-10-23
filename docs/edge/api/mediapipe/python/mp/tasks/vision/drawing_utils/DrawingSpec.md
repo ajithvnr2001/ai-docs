@@ -1,38 +1,52 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:14.870466+00:00
+title: mp.tasks.vision.drawing_utils.DrawingSpec
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:43.952208+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/
+# mp.tasks.vision.drawing_utils.DrawingSpec
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=5375017056324003561&q=EgQoUFpcGLjNxNYGIjAASfQHt0NPyPtJaZ-_LODL79h8h_MuHyqgaFgQrI39jq8YCkJivauD5bRd_gRt90gyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/drawing_utils.py#L40-L47)
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/&q=EgQoUFpcGLjNxNYGIjAASfQHt0NPyPtJaZ-_LODL79h8h_MuHyqgaFgQrI39jq8YCkJivauD5bRd_gRt90gyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils.DrawingSpec`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec)
+    
+    
+    mp.tasks.vision.drawing_utils.DrawingSpec(
+        color: tuple[int, int, int] = [mp.tasks.vision.drawing_utils.WHITE_COLOR](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils#WHITE_COLOR),
+        thickness: int = 2,
+        circle_radius: int = 2
+    )
+    
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:12Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec/  
+| 
 
+## Attributes  
+  
+---  
+  
+`color` |  Dataclass field   
+`thickness` |  Dataclass field   
+`circle_radius` |  Dataclass field   
+  
+## Methods
+
+### `__eq__`
+    
+    
+    __eq__(
+        other
+    )
+    
+
+## Class Variables  
+  
+---  
+  
+circle_radius |  `2`  
+color |  `(224, 224, 224)`  
+thickness |  `2`

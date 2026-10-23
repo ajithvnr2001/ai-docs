@@ -2,7 +2,7 @@
 """Coder: incremental update without recrawling (ai.google.dev).
 Usage:
   python3 coder_update.py --check-only
-  python3 coder_update.py --run --concurrency 10
+  python3 coder_update.py --run --concurrency 4
 """
 import argparse, json, re, asyncio, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))

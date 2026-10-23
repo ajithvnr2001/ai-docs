@@ -1,38 +1,22 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:32.345466+00:00
+title: tf.lite.OpsSet
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:32.632480+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/
+# tf.lite.OpsSet
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17194462361334866836&q=EgQoUFpcGMnNxNYGIjAT7LfJr8koD6ghoX2gzvLgoloUbiWj4NuAvd8dEG3epQudg-9PPrJAgUJDccS7N0wyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/python/convert.py#L153-L200) Enum class defining the sets of ops available to generate TFLite models. | 
 
-* * *
-**About this page**  
+## Class Variables  
   
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/&q=EgQoUFpcGMnNxNYGIjAT7LfJr8koD6ghoX2gzvLgoloUbiWj4NuAvd8dEG3epQudg-9PPrJAgUJDccS7N0wyA2NyUloBQw)  
+---  
   
-
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
-
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:29Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet/  
-
+EXPERIMENTAL_STABLEHLO_OPS |  `<OpsSet.EXPERIMENTAL_STABLEHLO_OPS: 'EXPERIMENTAL_STABLEHLO_OPS'>`  
+EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8 |  `<OpsSet.EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8: 'EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8'>`  
+SELECT_TF_OPS |  `<OpsSet.SELECT_TF_OPS: 'SELECT_TF_OPS'>`  
+TFLITE_BUILTINS |  `<OpsSet.TFLITE_BUILTINS: 'TFLITE_BUILTINS'>`  
+TFLITE_BUILTINS_INT8 |  `<OpsSet.TFLITE_BUILTINS_INT8: 'TFLITE_BUILTINS_INT8'>`

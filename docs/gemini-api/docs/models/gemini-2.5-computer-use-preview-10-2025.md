@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025
-title: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:15.917087+00:00
+title: Gemini 2.5 computer use model
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:35.509330+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025
+# Gemini 2.5 computer use model
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=7831519453289307385&q=EgQoUFpcGPXNxNYGIjB2i_Q1a9Io6ptiOtCiCX_K8CklMkTQAWIXQ9UirY4KPcl3o8g5PE7lvOwYdFLM-iYyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)  
-  
-  
-  
-  
+An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments. Gemini 2.5 Computer Use is best for browser automation, multi-step software tasks, and UI testing that requires visual reasoning and precise cursor control.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025&q=EgQoUFpcGPXNxNYGIjB2i_Q1a9Io6ptiOtCiCX_K8CklMkTQAWIXQ9UirY4KPcl3o8g5PE7lvOwYdFLM-iYyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:13Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025  
+## gemini-2.5-computer-use-preview-10-2025
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `gemini-2.5-computer-use-preview-10-2025`  
+saveSupported data types |  **Input** Image, text **Output** Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 128,000 **Output token limit** 64,000  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Shut down: `gemini-2.5-computer-use-preview-10-2025`
+
+  
+calendar_monthLatest update | October 2025

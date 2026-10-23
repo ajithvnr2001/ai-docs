@@ -2,13 +2,14 @@
 url: https://ai.google.dev/api/agents.md.txt
 title: agents
 method: httpx-raw-text
-fetched_at: 2026-10-15T19:16:01.394132+00:00
+fetched_at: 2026-10-23T12:00:15.190966+00:00
 ---
 
 # agents
 
 > Source: https://ai.google.dev/api/agents.md.txt
 
+<!-- mdformat off(generated) -->
 <!-- disableFinding(G3DOC_JINJA) -->
 <!-- disableFinding(HEADING_FUNCTION) -->
 <!-- disableFinding(LINE_OVER_80) -->
@@ -30,23 +31,22 @@ Agents are systems that leverage Gemini models, a set of tools, and reasoning ca
 
 Creates a new Agent (Typed version for SDK).
 
+#### Parameters
+- **parent** (`string`) *(Required)* Required. The parent resource where this agent will be created. Format: `projects/{project}/locations/{location}`
+
 
 #### Request Body
 - **agent_config** (`AntigravityAgentConfig`) Configuration parameters for the agent.
-  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
-
-  - **model** (`string`)   The model to use for agent reasoning.
-
   - **type** (`object`) *(Required)*
     Value: `antigravity`
+  - **model** (`string`)   The model to use for agent reasoning.
 
-- **base_agent** (`string`) The base agent to extend.
+  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
+
 
 - **base_environment** (`EnvironmentConfig or string`) The environment configuration for the agent.
-  - **env** (`object`)   Environment variables to set in the sandbox environment.
-
-  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
+  - **type** (`object`) *(Required)*
+    Value: `remote`
   - **network** (`EnvironmentNetworkEgressAllowlist or enum (string)`)   Network configuration for the environment.
     Possible values:
     - `disabled`: All network egress is blocked.
@@ -56,36 +56,34 @@ Creates a new Agent (Typed version for SDK).
 
 
   - **sources** (`array (Source)`)
-    - **content** (`string`)     The inline content if `type` is `INLINE`.
-
-    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
-
-    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-    - **target** (`string`)     Where the source should appear in the environment.
-
     - **type** (`enum (string)`)
       Possible values:
       - `gcs`: A Cloud Storage bucket.
       - `inline`: Inline content.
       - `repository`: A generic repository. The protocol prefix in the source URL
 identifies the provider (e.g., github://, gcs://).
-      - `skill_registry`: A skill resource from the Skill Registry Service.
-Skill: projects/{project}/locations/{location}/skills/{skill}
-SkillRevision:
-projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-Support mounting all skills under a project:
-projects/{project}/locations/{location}/skills.
+
+    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+    - **target** (`string`)     Where the source should appear in the environment.
+
+    - **content** (`string`)     The inline content if `type` is `INLINE`.
+
+    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
 
 
-  - **type** (`object`) *(Required)*
-    Value: `remote`
+  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-- **description** (`string`) Agent description for developers to quickly read and understand.
+  - **env** (`object or string`)   Environment variables to set in the sandbox environment.
+
 
 - **id** (`string`) The unique identifier for the agent.
 
+- **base_agent** (`string`) The base agent to extend.
+
 - **system_instruction** (`string`) System instruction for the agent.
+
+- **description** (`string`) Agent description for developers to quickly read and understand.
 
 - **tools** (`array (AgentTool)`) The tools available to the agent.
   **Possible Types:**
@@ -93,24 +91,31 @@ projects/{project}/locations/{location}/skills.
   - **type** (`object`) *(Required)*
     Value: `code_execution`
   - **Function**: A tool that can be used by the model.
-  - **description** (`string`)   A description of the function.
-
-  - **name** (`string`)   The name of the function.
-
-  - **parameters** (`object`)   The JSON Schema for the function's parameters.
-
   - **type** (`object`) *(Required)*
     Value: `function`
+  - **name** (`string`)   The name of the function.
+
+  - **description** (`string`)   A description of the function.
+
+  - **parameters** (`object`)   The JSON Schema for the function's parameters.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
   - **GoogleSearch**: A tool that can be used by the model to search Google.
+  - **type** (`object`) *(Required)*
+    Value: `google_search`
   - **search_types** (`array (enum (string))`)   The types of search grounding to enable.
     Possible values:
     - `web_search`: Setting this field enables web search. Only text results are returned.
     - `image_search`: Setting this field enables image search. Image bytes are returned.
-    - `enterprise_web_search`: Setting this field enables enterprise web search.
 
-  - **type** (`object`) *(Required)*
-    Value: `google_search`
   - **McpServer**: A MCPServer is a server that can be called by the model to perform actions.
+  - **type** (`object`) *(Required)*
+    Value: `mcp_server`
+  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+  - **name** (`string`)   The name of the MCPServer.
+
+  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
+
   - **allowed_tools** (`array (AllowedTools)`)   The allowed tools.
     - **mode** (`enum (string)`)     The mode of the tool choice.
       Possible values:
@@ -121,14 +126,6 @@ projects/{project}/locations/{location}/skills.
 
     - **tools** (`array (string)`)     The names of the allowed tools.
 
-
-  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-  - **name** (`string`)   The name of the MCPServer.
-
-  - **type** (`object`) *(Required)*
-    Value: `mcp_server`
-  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
 
   - **UrlContext**: A tool that can be used by the model to fetch URL context.
   - **type** (`object`) *(Required)*
@@ -137,20 +134,16 @@ projects/{project}/locations/{location}/skills.
 
 #### Response
 - **agent_config** (`AntigravityAgentConfig`) Configuration parameters for the agent.
-  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
-
-  - **model** (`string`)   The model to use for agent reasoning.
-
   - **type** (`object`) *(Required)*
     Value: `antigravity`
+  - **model** (`string`)   The model to use for agent reasoning.
 
-- **base_agent** (`string`) The base agent to extend.
+  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
+
 
 - **base_environment** (`EnvironmentConfig or string`) The environment configuration for the agent.
-  - **env** (`object`)   Environment variables to set in the sandbox environment.
-
-  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
+  - **type** (`object`) *(Required)*
+    Value: `remote`
   - **network** (`EnvironmentNetworkEgressAllowlist or enum (string)`)   Network configuration for the environment.
     Possible values:
     - `disabled`: All network egress is blocked.
@@ -160,36 +153,34 @@ projects/{project}/locations/{location}/skills.
 
 
   - **sources** (`array (Source)`)
-    - **content** (`string`)     The inline content if `type` is `INLINE`.
-
-    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
-
-    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-    - **target** (`string`)     Where the source should appear in the environment.
-
     - **type** (`enum (string)`)
       Possible values:
       - `gcs`: A Cloud Storage bucket.
       - `inline`: Inline content.
       - `repository`: A generic repository. The protocol prefix in the source URL
 identifies the provider (e.g., github://, gcs://).
-      - `skill_registry`: A skill resource from the Skill Registry Service.
-Skill: projects/{project}/locations/{location}/skills/{skill}
-SkillRevision:
-projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-Support mounting all skills under a project:
-projects/{project}/locations/{location}/skills.
+
+    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+    - **target** (`string`)     Where the source should appear in the environment.
+
+    - **content** (`string`)     The inline content if `type` is `INLINE`.
+
+    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
 
 
-  - **type** (`object`) *(Required)*
-    Value: `remote`
+  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-- **description** (`string`) Agent description for developers to quickly read and understand.
+  - **env** (`object or string`)   Environment variables to set in the sandbox environment.
+
 
 - **id** (`string`) The unique identifier for the agent.
 
+- **base_agent** (`string`) The base agent to extend.
+
 - **system_instruction** (`string`) System instruction for the agent.
+
+- **description** (`string`) Agent description for developers to quickly read and understand.
 
 - **tools** (`array (AgentTool)`) The tools available to the agent.
   **Possible Types:**
@@ -197,24 +188,31 @@ projects/{project}/locations/{location}/skills.
   - **type** (`object`) *(Required)*
     Value: `code_execution`
   - **Function**: A tool that can be used by the model.
-  - **description** (`string`)   A description of the function.
-
-  - **name** (`string`)   The name of the function.
-
-  - **parameters** (`object`)   The JSON Schema for the function's parameters.
-
   - **type** (`object`) *(Required)*
     Value: `function`
+  - **name** (`string`)   The name of the function.
+
+  - **description** (`string`)   A description of the function.
+
+  - **parameters** (`object`)   The JSON Schema for the function's parameters.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
   - **GoogleSearch**: A tool that can be used by the model to search Google.
+  - **type** (`object`) *(Required)*
+    Value: `google_search`
   - **search_types** (`array (enum (string))`)   The types of search grounding to enable.
     Possible values:
     - `web_search`: Setting this field enables web search. Only text results are returned.
     - `image_search`: Setting this field enables image search. Image bytes are returned.
-    - `enterprise_web_search`: Setting this field enables enterprise web search.
 
-  - **type** (`object`) *(Required)*
-    Value: `google_search`
   - **McpServer**: A MCPServer is a server that can be called by the model to perform actions.
+  - **type** (`object`) *(Required)*
+    Value: `mcp_server`
+  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+  - **name** (`string`)   The name of the MCPServer.
+
+  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
+
   - **allowed_tools** (`array (AllowedTools)`)   The allowed tools.
     - **mode** (`enum (string)`)     The mode of the tool choice.
       Possible values:
@@ -225,14 +223,6 @@ projects/{project}/locations/{location}/skills.
 
     - **tools** (`array (string)`)     The names of the allowed tools.
 
-
-  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-  - **name** (`string`)   The name of the MCPServer.
-
-  - **type** (`object`) *(Required)*
-    Value: `mcp_server`
-  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
 
   - **UrlContext**: A tool that can be used by the model to fetch URL context.
   - **type** (`object`) *(Required)*
@@ -804,11 +794,11 @@ Response:
 Lists all Agents.
 
 #### Parameters
+- **parent** (`string`) *(Required)* Required. The parent resource to list agents from. Format: `projects/{project}/locations/{location}`
+
 - **page_size** (`integer`)
 
 - **page_token** (`string`)
-
-- **parent** (`string`) Required. The parent resource to list agents from. Format: `projects/{project}/locations/{location}`
 
 
 
@@ -932,20 +922,16 @@ Gets a specific Agent.
 
 #### Response
 - **agent_config** (`AntigravityAgentConfig`) Configuration parameters for the agent.
-  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
-
-  - **model** (`string`)   The model to use for agent reasoning.
-
   - **type** (`object`) *(Required)*
     Value: `antigravity`
+  - **model** (`string`)   The model to use for agent reasoning.
 
-- **base_agent** (`string`) The base agent to extend.
+  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
+
 
 - **base_environment** (`EnvironmentConfig or string`) The environment configuration for the agent.
-  - **env** (`object`)   Environment variables to set in the sandbox environment.
-
-  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
+  - **type** (`object`) *(Required)*
+    Value: `remote`
   - **network** (`EnvironmentNetworkEgressAllowlist or enum (string)`)   Network configuration for the environment.
     Possible values:
     - `disabled`: All network egress is blocked.
@@ -955,36 +941,34 @@ Gets a specific Agent.
 
 
   - **sources** (`array (Source)`)
-    - **content** (`string`)     The inline content if `type` is `INLINE`.
-
-    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
-
-    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-    - **target** (`string`)     Where the source should appear in the environment.
-
     - **type** (`enum (string)`)
       Possible values:
       - `gcs`: A Cloud Storage bucket.
       - `inline`: Inline content.
       - `repository`: A generic repository. The protocol prefix in the source URL
 identifies the provider (e.g., github://, gcs://).
-      - `skill_registry`: A skill resource from the Skill Registry Service.
-Skill: projects/{project}/locations/{location}/skills/{skill}
-SkillRevision:
-projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-Support mounting all skills under a project:
-projects/{project}/locations/{location}/skills.
+
+    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+    - **target** (`string`)     Where the source should appear in the environment.
+
+    - **content** (`string`)     The inline content if `type` is `INLINE`.
+
+    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
 
 
-  - **type** (`object`) *(Required)*
-    Value: `remote`
+  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-- **description** (`string`) Agent description for developers to quickly read and understand.
+  - **env** (`object or string`)   Environment variables to set in the sandbox environment.
+
 
 - **id** (`string`) The unique identifier for the agent.
 
+- **base_agent** (`string`) The base agent to extend.
+
 - **system_instruction** (`string`) System instruction for the agent.
+
+- **description** (`string`) Agent description for developers to quickly read and understand.
 
 - **tools** (`array (AgentTool)`) The tools available to the agent.
   **Possible Types:**
@@ -992,24 +976,31 @@ projects/{project}/locations/{location}/skills.
   - **type** (`object`) *(Required)*
     Value: `code_execution`
   - **Function**: A tool that can be used by the model.
-  - **description** (`string`)   A description of the function.
-
-  - **name** (`string`)   The name of the function.
-
-  - **parameters** (`object`)   The JSON Schema for the function's parameters.
-
   - **type** (`object`) *(Required)*
     Value: `function`
+  - **name** (`string`)   The name of the function.
+
+  - **description** (`string`)   A description of the function.
+
+  - **parameters** (`object`)   The JSON Schema for the function's parameters.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
   - **GoogleSearch**: A tool that can be used by the model to search Google.
+  - **type** (`object`) *(Required)*
+    Value: `google_search`
   - **search_types** (`array (enum (string))`)   The types of search grounding to enable.
     Possible values:
     - `web_search`: Setting this field enables web search. Only text results are returned.
     - `image_search`: Setting this field enables image search. Image bytes are returned.
-    - `enterprise_web_search`: Setting this field enables enterprise web search.
 
-  - **type** (`object`) *(Required)*
-    Value: `google_search`
   - **McpServer**: A MCPServer is a server that can be called by the model to perform actions.
+  - **type** (`object`) *(Required)*
+    Value: `mcp_server`
+  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+  - **name** (`string`)   The name of the MCPServer.
+
+  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
+
   - **allowed_tools** (`array (AllowedTools)`)   The allowed tools.
     - **mode** (`enum (string)`)     The mode of the tool choice.
       Possible values:
@@ -1020,14 +1011,6 @@ projects/{project}/locations/{location}/skills.
 
     - **tools** (`array (string)`)     The names of the allowed tools.
 
-
-  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-  - **name** (`string`)   The name of the MCPServer.
-
-  - **type** (`object`) *(Required)*
-    Value: `mcp_server`
-  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
 
   - **UrlContext**: A tool that can be used by the model to fetch URL context.
   - **type** (`object`) *(Required)*
@@ -1236,20 +1219,16 @@ New format:
 
 **Properties:**
 - **agent_config** (`AntigravityAgentConfig`) Configuration parameters for the agent.
-  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
-
-  - **model** (`string`)   The model to use for agent reasoning.
-
   - **type** (`object`) *(Required)*
     Value: `antigravity`
+  - **model** (`string`)   The model to use for agent reasoning.
 
-- **base_agent** (`string`) The base agent to extend.
+  - **max_total_tokens** (`string`)   Max total tokens for the agent run.
+
 
 - **base_environment** (`EnvironmentConfig or string`) The environment configuration for the agent.
-  - **env** (`object`)   Environment variables to set in the sandbox environment.
-
-  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
+  - **type** (`object`) *(Required)*
+    Value: `remote`
   - **network** (`EnvironmentNetworkEgressAllowlist or enum (string)`)   Network configuration for the environment.
     Possible values:
     - `disabled`: All network egress is blocked.
@@ -1259,36 +1238,34 @@ New format:
 
 
   - **sources** (`array (Source)`)
-    - **content** (`string`)     The inline content if `type` is `INLINE`.
-
-    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
-
-    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-    - **target** (`string`)     Where the source should appear in the environment.
-
     - **type** (`enum (string)`)
       Possible values:
       - `gcs`: A Cloud Storage bucket.
       - `inline`: Inline content.
       - `repository`: A generic repository. The protocol prefix in the source URL
 identifies the provider (e.g., github://, gcs://).
-      - `skill_registry`: A skill resource from the Skill Registry Service.
-Skill: projects/{project}/locations/{location}/skills/{skill}
-SkillRevision:
-projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-Support mounting all skills under a project:
-projects/{project}/locations/{location}/skills.
+
+    - **source** (`string`)     The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+    - **target** (`string`)     Where the source should appear in the environment.
+
+    - **content** (`string`)     The inline content if `type` is `INLINE`.
+
+    - **encoding** (`string`)     Optional encoding for inline content (e.g. `base64`).
 
 
-  - **type** (`object`) *(Required)*
-    Value: `remote`
+  - **environment_id** (`string`)   Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-- **description** (`string`) Agent description for developers to quickly read and understand.
+  - **env** (`object or string`)   Environment variables to set in the sandbox environment.
+
 
 - **id** (`string`) The unique identifier for the agent.
 
+- **base_agent** (`string`) The base agent to extend.
+
 - **system_instruction** (`string`) System instruction for the agent.
+
+- **description** (`string`) Agent description for developers to quickly read and understand.
 
 - **tools** (`array (AgentTool)`) The tools available to the agent.
   **Possible Types:**
@@ -1296,24 +1273,31 @@ projects/{project}/locations/{location}/skills.
   - **type** (`object`) *(Required)*
     Value: `code_execution`
   - **Function**: A tool that can be used by the model.
-  - **description** (`string`)   A description of the function.
-
-  - **name** (`string`)   The name of the function.
-
-  - **parameters** (`object`)   The JSON Schema for the function's parameters.
-
   - **type** (`object`) *(Required)*
     Value: `function`
+  - **name** (`string`)   The name of the function.
+
+  - **description** (`string`)   A description of the function.
+
+  - **parameters** (`object`)   The JSON Schema for the function's parameters.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
   - **GoogleSearch**: A tool that can be used by the model to search Google.
+  - **type** (`object`) *(Required)*
+    Value: `google_search`
   - **search_types** (`array (enum (string))`)   The types of search grounding to enable.
     Possible values:
     - `web_search`: Setting this field enables web search. Only text results are returned.
     - `image_search`: Setting this field enables image search. Image bytes are returned.
-    - `enterprise_web_search`: Setting this field enables enterprise web search.
 
-  - **type** (`object`) *(Required)*
-    Value: `google_search`
   - **McpServer**: A MCPServer is a server that can be called by the model to perform actions.
+  - **type** (`object`) *(Required)*
+    Value: `mcp_server`
+  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+  - **name** (`string`)   The name of the MCPServer.
+
+  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
+
   - **allowed_tools** (`array (AllowedTools)`)   The allowed tools.
     - **mode** (`enum (string)`)     The mode of the tool choice.
       Possible values:
@@ -1325,68 +1309,10 @@ projects/{project}/locations/{location}/skills.
     - **tools** (`array (string)`)     The names of the allowed tools.
 
 
-  - **headers** (`object`)   Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-  - **name** (`string`)   The name of the MCPServer.
-
-  - **type** (`object`) *(Required)*
-    Value: `mcp_server`
-  - **url** (`string`)   The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
   - **UrlContext**: A tool that can be used by the model to fetch URL context.
   - **type** (`object`) *(Required)*
     Value: `url_context`
 
-
-**JSON Representation:**
-
-```json
-{
-  "agent_config": {
-    "max_total_tokens": "string",
-    "model": "string",
-    "type": {}
-  },
-  "base_agent": "string",
-  "base_environment": {
-    "env": {},
-    "environment_id": "string",
-    "network": {
-      "allowlist": [
-        {
-          "domain": "github.com",
-          "transform": [
-            {
-              "Authorization": "Bearer your-token"
-            }
-          ]
-        },
-        {
-          "domain": "*.googleapis.com"
-        }
-      ]
-    },
-    "sources": [
-      {
-        "content": "string",
-        "encoding": "string",
-        "source": "string",
-        "target": "string",
-        "type": "gcs"
-      }
-    ],
-    "type": {}
-  },
-  "description": "string",
-  "id": "string",
-  "system_instruction": "string",
-  "tools": [
-    {
-      "type": {}
-    }
-  ]
-}
-```
 
 
 

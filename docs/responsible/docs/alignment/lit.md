@@ -1,38 +1,31 @@
 ---
 url: https://ai.google.dev/responsible/docs/alignment/lit/
-title: https://ai.google.dev/responsible/docs/alignment/lit/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:29.739725+00:00
+title: Prompt debugging with LIT
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:07.066105+00:00
 ---
 
-# https://ai.google.dev/responsible/docs/alignment/lit/
+# Prompt debugging with LIT
 
 > Source: https://ai.google.dev/responsible/docs/alignment/lit/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=6205239943964852655&q=EgQoUFpcGL3OxNYGIjBpZ3yZ8ulwn5AtvcXqI0HwNTMdui3gvtQiezCuS_pmmxv2ZJjGnR_A2fwfKqq5arsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/responsible/docs/alignment/lit/)  
-  
-  
-  
-  
+Any responsible approach to applying artificial intelligence (AI) should include [safety policies](https://ai.google.dev/responsible/docs/design#define-policies), [transparency artifacts](https://ai.google.dev/responsible/docs/design#transparency-artifacts), and [safeguards](https://ai.google.dev/responsible/docs/safeguards), but being responsible with AI means more than following checklists.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/responsible/docs/alignment/lit/&q=EgQoUFpcGL3OxNYGIjBpZ3yZ8ulwn5AtvcXqI0HwNTMdui3gvtQiezCuS_pmmxv2ZJjGnR_A2fwfKqq5arsyA2NyUloBQw)  
-  
+GenAI products are relatively new and the behaviors of an application can vary more than earlier forms of software. For this reason, you should probe the models being used to examine examples of the model's behavior, and investigate surprises.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Prompting is the ubiquitous interface for interacting with GenAI, and engineering those prompts is as much art as it is science. However, there are tools that can help you empirically improve prompts for LLMs, such as the [Learning Interpretability Tool](https://pair-code.github.io/lit/) (LIT). LIT is an open-source tool for visually understanding and debugging AI models, that can be used as a [debugger for prompt engineering work](https://pair-code.github.io/lit/documentation/components.html#sequence-salience). Follow along with the [provided tutorial](https://pair-code.github.io/lit/tutorials/sequence-salience/) using the Colab or Codelab.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:26Z  
-URL: https://ai.google.dev/responsible/docs/alignment/lit/  
+**Analyze Gemma Models with LIT**
 
+|  [ ![](https://ai.google.dev/static/site-assets/images/docs/codelabs_logo.png)Start Codelab](https://codelabs.developers.google.com/codelabs/responsible-ai/lit-gemma) |  [ ![](https://ai.google.dev/static/site-assets/images/docs/colab_logo_32px.png)Start Google Colab](https://colab.research.google.com/github/google-gemini/gemma-cookbook/blob/main/responsible/lit_gemma.ipynb)  
+---|---|---  
+  
+![Animation of Learning Interpretability Tool \(LIT\) user interface](https://storage.googleapis.com/generativeai-downloads/images/lit_ui.gif)
+
+_Figure 1._ The LIT's user interface: the Datapoint Editor at the top allows users to edit their prompts. At the bottom, the LM Salience module allows them to check saliency results.
+
+You can use LIT on your [local machine](https://pair-code.github.io/lit/documentation/getting_started.html#installation), in [Colab](https://colab.research.google.com/github/google-gemini/gemma-cookbook/blob/main/responsible/lit_gemma.ipynb), or on [Google Cloud](https://codelabs.developers.google.com/codelabs/responsible-ai/lit-on-gcp).
+
+## Include non-technical teams in model probing and exploration
+
+Interpretability is meant to be a team effort, spanning expertise across policy, legal, and more. LIT's visual medium and interactive ability to examine salience and explore examples can help different stakeholders share and communicate findings. This approach can enables more diversity of perspective in model exploration, probing, and debugging. Exposing your teammates to these technical methods can enhance their understanding of how models work. In addition, a more diverse set of expertise in early model testing can also help uncover undesirable outcomes that can be improved.

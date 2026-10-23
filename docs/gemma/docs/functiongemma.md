@@ -1,38 +1,31 @@
 ---
 url: https://ai.google.dev/gemma/docs/functiongemma/
-title: https://ai.google.dev/gemma/docs/functiongemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:10.435341+00:00
+title: FunctionGemma model overview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:51.226043+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/functiongemma/
+# FunctionGemma model overview
 
 > Source: https://ai.google.dev/gemma/docs/functiongemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2423544797567197799&q=EgQoUFpcGKvOxNYGIjA-qhvhdiD4yi5zMeFJLC9uf-UIdnjljND-FEBp9NYV1I3ZnTDYbPXeMBdM9HkzSpMyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/functiongemma/)  
-  
-  
-  
-  
+FunctionGemma is a specialized version of our Gemma 3 270M model tuned for function calling. It is designed as a strong base for further training into custom, fast, private, local agents that translate natural language into executable API actions.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/functiongemma/&q=EgQoUFpcGKvOxNYGIjA-qhvhdiD4yi5zMeFJLC9uf-UIdnjljND-FEBp9NYV1I3ZnTDYbPXeMBdM9HkzSpMyA2NyUloBQw)  
-  
+## When to choose FunctionGemma
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+FunctionGemma is the bridge between natural language and software execution. It is the right tool if:
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:07Z  
-URL: https://ai.google.dev/gemma/docs/functiongemma/  
+  * **You have a defined API surface:** Your application has a defined set of actions (e.g., smart home, media, navigation).
+  * **You are ready to fine-tune:** You need the consistent, deterministic behavior that comes from fine-tuning on specific data, rather than the variability of zero-shot prompting.
+  * **You prioritize local-first deployment:** Your application requires near-instant latency and total data privacy, running efficiently within the compute and battery limits of edge devices.
+  * **You are building compound systems:** You need a lightweight edge model to handle local actions, allowing your system to process common commands on-device and only query larger models (like Gemma 3 27B) for more complex tasks.
 
+
+
+[Get it on Hugging Face](https://huggingface.co/google/functiongemma-270m-it) [Get it on Kaggle](https://www.kaggle.com/models/google/functiongemma) [Access it on Vertex](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/functiongemma)
+
+As with other Gemma models, FunctionGemma is provided with open weights and licensed for responsible [commercial use](https://ai.google.dev/gemma/terms), allowing you to fine tune and deploy it in your own projects and applications.
+
+[Formatting and best practices](https://ai.google.dev/gemma/docs/functiongemma/formatting-and-best-practices) [Try FunctionGemma](https://ai.google.dev/gemma/docs/functiongemma/function-calling-with-hf)
+
+[Fine-tune FunctionGemma](https://ai.google.dev/gemma/docs/functiongemma/finetuning-with-functiongemma) [Fine-tune the Mobile Actions demo](https://ai.google.dev/gemma/docs/mobile-actions)

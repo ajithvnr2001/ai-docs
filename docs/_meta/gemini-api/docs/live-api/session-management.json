@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/live-api/session-management/",
   "file": "gemini-api/docs/live-api/session-management.md",
-  "title": "https://ai.google.dev/gemini-api/docs/live-api/session-management/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:08.548234+00:00",
-  "html_len": 3130,
-  "md_len": 1854,
-  "depth": 0
+  "title": "Session management with Live API",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:16.200019+00:00"
 }

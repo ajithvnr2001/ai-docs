@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/models/generative-models/",
   "file": "gemini-api/docs/models/generative-models.md",
-  "title": "https://ai.google.dev/gemini-api/docs/models/generative-models/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:20:25.891527+00:00",
-  "html_len": 3117,
-  "md_len": 1838,
-  "depth": 1
+  "title": "Prompt design strategies",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:46:30.589197+00:00"
 }

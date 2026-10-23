@@ -1,38 +1,34 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/caching/
-title: https://ai.google.dev/gemini-api/docs/caching/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:46.141512+00:00
+title: Context caching
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:56.706564+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/caching/
+# Context caching
 
 > Source: https://ai.google.dev/gemini-api/docs/caching/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=9269067081613995117&q=EgQoUFpcGNbNxNYGIjAOyNvaOT6SjVQftUjJA1t4TeJLCDo7KeQ7MqK0pvvEspnUrXb_RIap-CkiVcc0DSkyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/caching/)  
-  
-  
-  
-  
+In a typical AI workflow, you might pass the same input tokens over and over to a model. The Gemini API offers implicit caching to optimize performance and costs.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/caching/&q=EgQoUFpcGNbNxNYGIjAOyNvaOT6SjVQftUjJA1t4TeJLCDo7KeQ7MqK0pvvEspnUrXb_RIap-CkiVcc0DSkyA2NyUloBQw)  
-  
+## Implicit caching
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Implicit caching is enabled by default for all Gemini 2.5 and newer models. It is supported for both [stateful](https://ai.google.dev/gemini-api/docs/text-generation#multi-turn-conversations) (using `previous_interaction_id`) and [stateless](https://ai.google.dev/gemini-api/docs/text-generation#stateless-conversations) conversation modes. We automatically pass on cost savings if your request hits caches. You don't need to configure anything to turn it on. The following table lists the minimum input token count for each model:
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:42Z  
-URL: https://ai.google.dev/gemini-api/docs/caching/  
+Model | Min token limit  
+---|---  
+Gemini 4 Argon | 4,096  
+Gemini 3.8 Flash | 4,096  
+Gemini 3.6 Flash | 4,096  
+Gemini 3.1 Pro Preview | 4,096  
+Gemini 2.5 Flash | 2,048  
+Gemini 2.5 Pro | 2,048  
+  
+To increase the chance of an implicit cache hit:
 
+  * Try putting large and common contents at the beginning of your prompt
+  * Try to send requests with similar prefix in a short amount of time
+
+
+
+You can see the number of tokens which were cache hits in the response object's `usage.total_cached_tokens` (Python and JavaScript) field.

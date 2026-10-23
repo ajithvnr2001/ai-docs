@@ -13,6 +13,7 @@ import os
 import re
 import json
 import time
+import threading
 import hashlib
 import importlib.util
 from pathlib import Path
@@ -38,6 +39,65 @@ OUT_ROOT.mkdir(parents=True, exist_ok=True)
 (OUT_ROOT / "_subdomains").mkdir(exist_ok=True, parents=True)
 (OUT_ROOT / "_llms").mkdir(exist_ok=True, parents=True)
 (OUT_ROOT / "_meta").mkdir(exist_ok=True, parents=True)
+
+# ---------- anti-bot handling ----------
+# Google's edge serves an OAuth interstitial (302) or a CAPTCHA page to cold
+# clients. A warm cookie jar from a normal docs page makes requests succeed.
+UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+WARM_URL = BASE_URL + "/gemini-api/docs"
+_BLOCK_RE = re.compile(
+    r"please type the characters|please enable images|google\.com/sorry/image|"
+    r"ai\.google\.dev/oauth2authorize|our systems have detected unusual traffic|"
+    r"sign in - google accounts",
+    re.I,
+)
+_COOKIE = {"data": {}, "ts": 0.0}
+_COOKIE_LOCK = threading.Lock()
+_COOKIE_TTL = 600
+
+
+def get_cookies(force=False):
+    """Return a warm ai.google.dev cookie jar, refreshing it periodically."""
+    now = time.time()
+    with _COOKIE_LOCK:
+        if not force and _COOKIE["data"] and now - _COOKIE["ts"] < _COOKIE_TTL:
+            return dict(_COOKIE["data"])
+        try:
+            with httpx.Client(follow_redirects=True, timeout=30,
+                              headers={"User-Agent": UA}) as c:
+                r = c.get(WARM_URL)
+                if r.status_code == 200:
+                    _COOKIE["data"] = dict(c.cookies)
+                    _COOKIE["ts"] = now
+        except Exception:
+            pass
+        return dict(_COOKIE["data"])
+
+
+def is_block_page(html, title=""):
+    """True when a response is an anti-bot CAPTCHA / OAuth interstitial."""
+    if not html:
+        return False
+    if _BLOCK_RE.search(html[:300000]):
+        return True
+    t = (title or "").strip().lower()
+    return t in {"redirecting...", "sign in - google accounts"} or "sign in - google accounts" in t
+
+
+def is_404_page(html, title=""):
+    """True when the response is a 404 page served with HTTP 200."""
+    t = (title or "").strip()
+    if re.search(r"\b404\b", t) and re.search(r"not\s+found", t, re.I):
+        return True
+    if not html:
+        return False
+    head = html[:30000]
+    if re.search(r"<h1[^>]*>\s*404\b", head, re.I):
+        return True
+    if "The requested URL" in head and "was not found" in head:
+        return True
+    return False
 
 # ---------- load ScrapeGraphAI utils directly from cloned repo (bypass broken langchain imports) ----------
 def load_module_from_file(name, filepath):
@@ -86,11 +146,31 @@ async def get_crawler():
     if _crawler is None:
         from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode  # noqa
         from crawl4ai.async_webcrawler import BrowserConfig
-        browser_cfg = BrowserConfig(headless=True, verbose=False)
+        cookies = get_cookies()
+        browser_cfg = BrowserConfig(
+            headless=True, verbose=False, user_agent=UA,
+            cookies=[{"name": k, "value": v, "domain": "ai.google.dev", "path": "/",
+                      "secure": True, "sameSite": "None"}
+                     for k, v in cookies.items()
+                     if not k.startswith(("__Host-", "__Secure-"))] if cookies else None,
+        )
         _crawler = AsyncWebCrawler(config=browser_cfg)
         await _crawler.start()
         print("[crawl4ai] AsyncWebCrawler started")
     return _crawler
+
+# Shared httpx client (cookie-warmed) used by the final fallback.
+_httpx_client = None
+async def get_httpx_client():
+    global _httpx_client
+    if _httpx_client is None:
+        _httpx_client = httpx.AsyncClient(
+            follow_redirects=True, timeout=30, headers={"User-Agent": UA})
+        try:
+            await _httpx_client.get(WARM_URL)
+        except Exception:
+            pass
+    return _httpx_client
 
 # ---------- helpers ----------
 ALLOWED_ROOT_SUFFIXES = (".google.dev", ".google.com")
@@ -117,7 +197,7 @@ def normalize_url(u, base=BASE_URL):
         return None
     # skip binary assets
     low = p.path.lower()
-    for ext in (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".ico", ".css", ".js", ".woff", ".woff2", ".ttf", ".mp4", ".webm", ".zip", ".pdf"):
+    for ext in (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".ico", ".css", ".js", ".woff", ".woff2", ".ttf", ".mp4", ".webm", ".zip", ".pdf", ".xml", ".aep", ".bin", ".gz", ".tar"):
         if low.endswith(ext):
             # allow .pdf? skip for now to keep docs focused, but record
             return None
@@ -126,6 +206,9 @@ def normalize_url(u, base=BASE_URL):
     #      /zaraz/history/versions/index -> /zaraz/history/versions/
     #      /zaraz/history/versions.md -> /zaraz/history/versions/
     path = p.path
+    # Google site-verification token files are not documentation
+    if re.fullmatch(r"/google[0-9a-f]{16,}/?", path):
+        return None
     if path.endswith("/index.md"):
         path = path[:-len("/index.md")] + "/"
     elif path.endswith("/index"):
@@ -183,19 +266,39 @@ def url_to_relpath(url):
     else:
         return Path("_subdomains") / host / (rel + ".md")
 
+def _page_title(soup):
+    """Prefer the page h1 over the site-wide <title> suffix."""
+    h1 = soup.find("h1")
+    if h1:
+        t = re.sub(r"\s+", " ", h1.get_text(" ", strip=True)).strip()
+        if t:
+            return t
+    if soup.title and soup.title.string:
+        t = soup.title.string.strip()
+        t = re.sub(r"\s*\|\s*(Google AI for Developers|Gemini API|Google for Developers)\s*$", "", t)
+        return re.sub(r"\s+", " ", t).strip(" |")
+    return ""
+
+
 def extract_main_content_html(html, base_url):
-    """Strip nav/header/footer, keep main article. Fallback to body."""
+    """Keep the docs article body (DevSite-aware), fallback to main/body.
+
+    DevSite's <main> includes the global nav/sidebar; div.devsite-article-body
+    is the actual article and preserves images, tables and code samples.
+    """
     soup = BeautifulSoup(html, "lxml")
     for tag in soup(["script", "style", "noscript", "svg"]):
         tag.decompose()
-    # Cloudflare docs use <main id="main-content"> or <article>
-    main = soup.find("main") or soup.find("article") or soup.find("div", {"id": "main-content"})
+    title = _page_title(soup)
+    main = (soup.select_one("div.devsite-article-body")
+            or soup.find("article")
+            or soup.find("main")
+            or soup.find("div", {"id": "main-content"}))
     if main:
-        # remove nav/aside inside main that is TOC
-        return str(main), soup.title.string.strip() if soup.title and soup.title.string else ""
-    # fallback: body
+        for tag in main.select("nav, aside, .devsite-toc, .devsite-feedback"):
+            tag.decompose()
+        return str(main), title
     body = soup.find("body")
-    title = soup.title.string.strip() if soup.title and soup.title.string else ""
     if body:
         return str(body), title
     return html, title
@@ -214,43 +317,34 @@ def scrapegraph_markdown(html, url):
 # ---------- fetch with Scrapling (sync -> thread) ----------
 def scrapling_fetch_sync(url):
     t0 = time.time()
-    page = Fetcher.get(url, stealthy_headers=True, follow_redirects=True, timeout=25)
-    dt = time.time() - t0
-    if page.status != 200:
-        raise RuntimeError(f"scrapling status {page.status}")
-    html = page.html_content
-    if not html or len(html) < 500:
-        raise RuntimeError("scrapling empty html")
-    # links via css
-    links = []
-    try:
-        for a in page.css("a"):
-            href = a.attrib.get("href", "")
-            if href:
-                links.append(href)
-    except Exception:
-        pass
-    # title
-    title = ""
-    try:
-        t = page.css("title::text")
-        if t:
-            title = str(t[0]).strip()
-    except Exception:
-        pass
-    if not title:
+    for attempt in range(2):
+        cookies = get_cookies(force=attempt > 0)
         try:
-            h1 = page.css("h1::text")
-            if h1:
-                title = str(h1[0]).strip()
+            page = Fetcher.get(url, stealthy_headers=True, follow_redirects=True,
+                               timeout=25, **({"cookies": cookies} if cookies else {}))
         except Exception:
-            pass
-    # text length check
-    try:
-        txt = page.text or ""
-    except Exception:
-        txt = ""
-    return {"html": html, "links": links, "title": title, "text_len": len(txt), "elapsed": dt}
+            if attempt == 0:
+                continue
+            raise
+        if page.status != 200:
+            raise RuntimeError(f"scrapling status {page.status}")
+        html = page.html_content
+        if not html or len(html) < 500:
+            raise RuntimeError("scrapling empty html")
+        if is_block_page(html):
+            _COOKIE["ts"] = 0.0
+            if attempt == 0:
+                continue
+            raise RuntimeError("scrapling blocked page (captcha/oauth)")
+        if is_404_page(html):
+            raise RuntimeError("scrapling 404 page")
+        soup = BeautifulSoup(html, "lxml")
+        title = _page_title(soup)
+        links = [a.get("href", "") for a in soup.find_all("a", href=True)]
+        text_len = len(soup.get_text(" ", strip=True))
+        return {"html": html, "links": links, "title": title,
+                "text_len": text_len, "elapsed": time.time() - t0}
+    raise RuntimeError("scrapling blocked page (captcha/oauth)")
 
 async def crawl4ai_fetch(url):
     crawler = await get_crawler()
@@ -267,6 +361,12 @@ async def crawl4ai_fetch(url):
         raise RuntimeError(f"crawl4ai failed: {getattr(res, 'error_message', 'unknown')}")
     html = res.html or ""
     md = res.markdown or ""
+    if getattr(res, "status_code", 200) and int(res.status_code) >= 400:
+        raise RuntimeError(f"crawl4ai status {res.status_code}")
+    if is_block_page(html) or is_block_page(md):
+        raise RuntimeError("crawl4ai blocked page (captcha/oauth)")
+    if is_404_page(html):
+        raise RuntimeError("crawl4ai 404 page")
     # res.links: dict with internal/external
     links = []
     try:
@@ -290,13 +390,21 @@ async def fetch_one(url):
     """Try Scrapling -> Crawl4AI -> httpx. Returns dict with markdown, html, title, links, method."""
     # 0) raw-text mirrors (*.md.txt): fetch body as-is, no rendering needed
     if url.endswith(".txt"):
-        async with httpx.AsyncClient(follow_redirects=True, timeout=25) as c:
+        c = await get_httpx_client()
+        resp = await c.get(url)
+        if is_block_page(resp.text):
+            try:
+                await c.get(WARM_URL)
+            except Exception:
+                pass
             resp = await c.get(url)
-            resp.raise_for_status()
-            body = resp.text
-            title = url.rsplit("/", 1)[-1].removesuffix(".md.txt").replace("-", " ").replace("_", " ")
-            md = f"# {title}\n\n> Source: {url}\n\n" + body
-            return {"url": url, "title": title, "html": "", "markdown": md, "links": [], "method": "httpx-raw-text"}
+        if is_block_page(resp.text):
+            raise RuntimeError(f"blocked raw text {url}")
+        resp.raise_for_status()
+        body = resp.text
+        title = url.rsplit("/", 1)[-1].removesuffix(".md.txt").replace("-", " ").replace("_", " ")
+        md = f"# {title}\n\n> Source: {url}\n\n" + body
+        return {"url": url, "title": title, "html": "", "markdown": md, "links": [], "method": "httpx-raw-text"}
     # 1) Scrapling
     try:
         r = await asyncio.to_thread(scrapling_fetch_sync, url)
@@ -334,20 +442,31 @@ async def fetch_one(url):
         return {"url": url, "title": title, "html": html, "markdown": md, "links": r["links"], "method": f"crawl4ai+scrapegraph ({last_err})"}
     except Exception as e2:
         last_err2 = f"{last_err} | crawl4ai: {e2}"
-    # 3) httpx fallback
+    # 3) httpx fallback (shared, cookie-warmed client)
     try:
-        async with httpx.AsyncClient(follow_redirects=True, timeout=25, headers={"User-Agent": "Mozilla/5.0 (compatible; docs-crawler)"}) as c:
+        c = await get_httpx_client()
+        resp = await c.get(url)
+        html = resp.text
+        if is_block_page(html):
+            try:
+                await c.get(WARM_URL)  # refresh cookies
+            except Exception:
+                pass
             resp = await c.get(url)
-            resp.raise_for_status()
             html = resp.text
-            main_html, parsed_title = extract_main_content_html(html, url)
-            md_body = scrapegraph_markdown(main_html, url)
-            title = parsed_title or url
-            header = f"# {title}\n\n> Source: {url}\n\n"
-            md = header + md_body
-            soup = BeautifulSoup(html, "lxml")
-            links = [a.get("href", "") for a in soup.find_all("a", href=True)]
-            return {"url": url, "title": title, "html": html, "markdown": md, "links": links, "method": f"httpx+scrapegraph ({last_err2})"}
+        if is_block_page(html):
+            raise RuntimeError("httpx blocked page (captcha/oauth)")
+        if is_404_page(html):
+            raise RuntimeError("httpx 404 page")
+        resp.raise_for_status()
+        main_html, parsed_title = extract_main_content_html(html, url)
+        md_body = scrapegraph_markdown(main_html, url)
+        title = parsed_title or url
+        header = f"# {title}\n\n> Source: {url}\n\n"
+        md = header + md_body
+        soup = BeautifulSoup(html, "lxml")
+        links = [a.get("href", "") for a in soup.find_all("a", href=True)]
+        return {"url": url, "title": title, "html": html, "markdown": md, "links": links, "method": f"httpx+scrapegraph ({last_err2})"}
     except Exception as e3:
         raise RuntimeError(f"all fetchers failed for {url}: {last_err2} | httpx: {e3}")
 
@@ -427,7 +546,7 @@ async def load_llms_urls():
     return sorted(urls), llms_files
 
 # ---------- main crawl ----------
-async def main(max_pages=15000, concurrency=12):
+async def main(max_pages=15000, concurrency=4):
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
     # load state
     visited = {}
@@ -603,6 +722,6 @@ if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-pages", type=int, default=15000)
-    ap.add_argument("--concurrency", type=int, default=12)
+    ap.add_argument("--concurrency", type=int, default=4)
     args = ap.parse_args()
     asyncio.run(main(max_pages=args.max_pages, concurrency=args.concurrency))

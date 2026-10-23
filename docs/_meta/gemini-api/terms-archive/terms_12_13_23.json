@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/terms-archive/terms_12_13_23/",
   "file": "gemini-api/terms-archive/terms_12_13_23.md",
-  "title": "https://ai.google.dev/gemini-api/terms-archive/terms_12_13_23/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:51.872670+00:00",
-  "html_len": 3114,
-  "md_len": 1834,
-  "depth": 0
+  "title": "Generative AI APIs Additional Terms of Service",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:45:31.401917+00:00"
 }

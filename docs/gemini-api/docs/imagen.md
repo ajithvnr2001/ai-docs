@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/imagen/
-title: https://ai.google.dev/gemini-api/docs/imagen/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:04.729446+00:00
+title: Generate images using Imagen
+method: httpx+scrapegraph (scrapling: scrapling thin content (761 chars), fallback to crawl4ai | crawl4ai: crawl4ai failed: Unexpected error in _crawl_web at line 632 in wrap_api_call (../../../usr/local/lib/python3.10/dist-packages/playwright/_impl/_connection.py):
+Error: BrowserContext.add_cookies: Protocol error (Storage.setCookies): Invalid cookie fields
+
+Code context:
+ 627           )
+ 628           self._api_zone.set(parsed_st)
+ 629           try:
+ 630               return await cb()
+ 631           except Exception as error:
+ 632 →             raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+ 633           finally:
+ 634               self._api_zone.set(None)
+ 635   
+ 636       def wrap_api_call_sync(
+ 637           self, cb: Callable[[], Any], is_internal: bool = False, title: str = None)
+fetched_at: 2026-10-23T11:44:14.736144+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/imagen/
+# Generate images using Imagen
 
 > Source: https://ai.google.dev/gemini-api/docs/imagen/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=4238034672913670346&q=EgQoUFpcGOrNxNYGIjDjE2ZxW8ILrAmEmkqi4VvSAtUYBXoWYkNDzv-Lb4y9pIWRsxVcPQY-E6Qn6A0h-1QyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/imagen/)  
-  
-  
-  
-  
+Imagen is Google's legacy image generation model. It is now shut down and no longer available in the Gemini API.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/imagen/&q=EgQoUFpcGOrNxNYGIjDjE2ZxW8ILrAmEmkqi4VvSAtUYBXoWYkNDzv-Lb4y9pIWRsxVcPQY-E6Qn6A0h-1QyA2NyUloBQw)  
-  
+## Migrate to Nano Banana
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Migrate to Nano Banana for image generation:
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:02Z  
-URL: https://ai.google.dev/gemini-api/docs/imagen/  
+  * **Model name** : Use `gemini-2.5-flash-image` (or Nano Banana 2 models such as `gemini-3.1-flash-image`) instead of Imagen model names.
+  * **Method** : Use `client.models.generate_content` instead of `client.models.generate_images`.
+  * **Response handling** : Nano Banana returns content parts containing image data instead of a specific image response object.
 
+
+
+See the [Image generation guide](https://ai.google.dev/gemini-api/docs/image-generation) for details and examples.

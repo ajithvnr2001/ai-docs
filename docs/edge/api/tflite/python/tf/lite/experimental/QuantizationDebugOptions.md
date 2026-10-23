@@ -1,38 +1,51 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:36.612828+00:00
+title: tf.lite.experimental.QuantizationDebugOptions
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:34.778663+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/
+# tf.lite.experimental.QuantizationDebugOptions
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=14728073355467483232&q=EgQoUFpcGMzNxNYGIjBA40UMa8Gzdz8utievVKlXpociDC-vR0jbZPPr8XaGOBjWlzVleZNE0wTdLjTam6IyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/tools/optimize/debugging/python/debugger.py#L56-L117) Debug options to set up a given QuantizationDebugger.
+    
+    
+    tf.lite.experimental.QuantizationDebugOptions(
+        layer_debug_metrics: Optional[Mapping[str, Callable[[np.ndarray], float]]] = None,
+        model_debug_metrics: Optional[Mapping[str, Callable[[Sequence[np.ndarray], Sequence[np.ndarray]],
+            float]]] = None,
+        layer_direct_compare_metrics: Optional[Mapping[str, Callable[[Sequence[np.ndarray], Sequence[np.ndarray],
+            float, int], float]]] = None,
+        denylisted_ops: Optional[List[str]] = None,
+        denylisted_nodes: Optional[List[str]] = None,
+        fully_quantize: bool = False
+    ) -> None
+    
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/&q=EgQoUFpcGMzNxNYGIjBA40UMa8Gzdz8utievVKlXpociDC-vR0jbZPPr8XaGOBjWlzVleZNE0wTdLjTam6IyA2NyUloBQw)  
-  
+### Used in the notebooks
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+| Used in the tutorials  
+---  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * [Inspecting Quantization Errors with Quantization Debugger](https://www.tensorflow.org/lite/performance/quantization_debugger)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:33Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions/  
-
+  
+  
+## Args  
+  
+---  
+  
+`layer_debug_metrics` |  a dict to specify layer debug functions {function_name_str: function} where the function accepts result of NumericVerify Op, which is value difference between float and dequantized op results. The function returns single scalar value.   
+`model_debug_metrics` |  a dict to specify model debug functions {function_name_str: function} where the function accepts outputs from two models, and returns single scalar value for a metric. (e.g. accuracy, IoU)   
+`layer_direct_compare_metrics` |  a dict to specify layer debug functions {function_name_str: function}. The signature is different from that of `layer_debug_metrics`, and this one gets passed (original float value, original quantized value, scale, zero point). The function's implementation is responsible for correctly dequantize the quantized value to compare. Use this one when comparing diff is not enough. (Note) quantized value is passed as int8, so cast to int32 is needed.   
+`denylisted_ops` |  a list of op names which is expected to be removed from quantization.   
+`denylisted_nodes` |  a list of op's output tensor names to be removed from quantization.   
+`fully_quantize` |  Bool indicating whether to fully quantize the model. Besides model body, the input/output will be quantized as well. Corresponding to mlir_quantize's fully_quantize parameter.   
+  
+## Raises  
+  
+---  
+  
+`ValueError` |  when there are duplicate keys 

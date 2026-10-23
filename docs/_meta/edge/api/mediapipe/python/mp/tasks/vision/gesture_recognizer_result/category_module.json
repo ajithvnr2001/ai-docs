@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/",
   "file": "edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module.md",
-  "title": "https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:31.635903+00:00",
-  "html_len": 3289,
-  "md_len": 2053,
-  "depth": 0
+  "title": "Module: mp.tasks.vision.gesture_recognizer_result.category_module",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:42:33.016434+00:00"
 }

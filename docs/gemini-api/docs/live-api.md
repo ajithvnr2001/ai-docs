@@ -1,38 +1,93 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/live-api/
-title: https://ai.google.dev/gemini-api/docs/live-api/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:06.624756+00:00
+title: Gemini Live API overview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:14.254106+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/live-api/
+# Gemini Live API overview
 
 > Source: https://ai.google.dev/gemini-api/docs/live-api/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=16145289037712119307&q=EgQoUFpcGOvNxNYGIjDvOt59GASaxrCNA_g_e3TRXNyDv0--8zdcuQ-DsLBQ2mUvwKQuIuVQqfL7rAdnoHAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/live-api/)  
-  
-  
-  
-  
+The Live API enables low-latency, real-time voice and vision interactions with Gemini. It processes continuous streams of audio, images, and text to deliver immediate, human-like spoken responses, creating a natural conversational experience for your users.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/live-api/&q=EgQoUFpcGOvNxNYGIjDvOt59GASaxrCNA_g_e3TRXNyDv0--8zdcuQ-DsLBQ2mUvwKQuIuVQqfL7rAdnoHAyA2NyUloBQw)  
-  
+![Live API Overview](https://ai.google.dev/static/gemini-api/docs/images/live-api-overview.png)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[ Try the Live API in Google AI Studiomic ](https://aistudio.google.com/live) [ Clone example apps from GitHubcode ](https://github.com/google-gemini/gemini-live-api-examples) [ Use coding agent skillsterminal ](https://ai.google.dev/gemini-api/docs/coding-agents)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:04Z  
-URL: https://ai.google.dev/gemini-api/docs/live-api/  
+## Use cases
 
+Live API can be used to build real-time voice agents for a variety of industries, including:
+
+  * **E-commerce and retail:** Shopping assistants that offer personalized recommendations and support agents that resolve customer issues.
+  * **Gaming:** Interactive non-player characters (NPCs), in-game help assistants, and real-time translation of in-game content.
+  * **Next-gen interfaces:** Voice- and video-enabled experiences in robotics, smart glasses, and vehicles.
+  * **Healthcare:** Health companions for patient support and education.
+  * **Financial services:** AI advisors for wealth management and investment guidance.
+  * **Education:** AI mentors and learner companions that provide personalized instruction and feedback.
+  * **Translation and localization:** Real-time, low-latency translation of spoken conversations, enabling seamless multilingual communication.
+  * **Live transcription and captioning:** Real-time speech-to-text streaming for live subtitles, meeting transcription, voice dictation, and customer call logging.
+
+
+
+## Key features
+
+Live API offers a comprehensive set of features for building robust voice agents:
+
+  * [**Multilingual support**](https://ai.google.dev/gemini-api/docs/live-guide#supported-languages): Converse in 70 supported languages.
+  * [**Barge-in**](https://ai.google.dev/gemini-api/docs/live-guide#interruptions): Users can interrupt the model at any time for responsive interactions.
+  * [**Tool use**](https://ai.google.dev/gemini-api/docs/live-tools): Integrates tools like function calling and Google Search for dynamic interactions.
+  * [**Audio transcriptions**](https://ai.google.dev/gemini-api/docs/live-guide#audio-transcription): Provides text transcripts of both user input and model output.
+  * [**Proactive audio**](https://ai.google.dev/gemini-api/docs/live-guide#proactive-audio): Lets you control when the model responds and in what contexts.
+  * [**Affective dialog**](https://ai.google.dev/gemini-api/docs/live-guide#affective-dialog): Adapts response style and tone to match the user's input expression.
+  * [**Live Transcription**](https://ai.google.dev/gemini-api/docs/live-api/live-transcribe): Real-time, continuous speech-to-text streaming with automatic language detection and custom vocabulary.
+  * [**Live Translation**](https://ai.google.dev/gemini-api/docs/live-api/live-translate): Real-time voice-to-voice translation in 70+ languages.
+
+
+
+## Technical specifications
+
+The following table outlines the technical specifications for the Live API:
+
+Category | Details  
+---|---  
+Input modalities | Audio (raw 16-bit PCM audio, 16kHz, little-endian), images (JPEG <= 1FPS), text  
+Output modalities | Audio (raw 16-bit PCM audio, 24kHz, little-endian)  
+Protocol | Stateful WebSocket connection (WSS)  
+  
+## Choose an implementation approach
+
+When integrating with Live API, you'll need to choose one of the following implementation approaches:
+
+  * **Server-to-server** : Your backend connects to the Live API using [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). Typically, your client sends stream data (audio, video, text) to your server, which then forwards it to the Live API.
+  * **Client-to-server** : Your frontend code connects directly to the Live API using [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to stream data, bypassing your backend.
+
+
+
+## Get started
+
+Select the guide that matches your development environment:
+
+Server-to-server 
+
+###  [ GenAI SDK tutorial ](https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk)
+
+Connect to the Gemini Live API using the GenAI SDK to build a real-time multimodal application with a Python backend. 
+
+Client-to-server 
+
+###  [ WebSocket tutorial ](https://ai.google.dev/gemini-api/docs/live-api/get-started-websocket)
+
+Connect to the Gemini Live API using WebSockets to build a real-time multimodal application with a JavaScript frontend and ephemeral tokens. 
+
+Agent development kit 
+
+###  [ ADK tutorial ](https://google.github.io/adk-docs/streaming/)
+
+Create an agent and use the Agent Development Kit (ADK) Streaming to enable voice and video communication. 
+
+## Partner integrations
+
+To streamline the development of real-time audio and video apps, you can use a third-party integration that supports the Gemini Live API over WebRTC or WebSockets. 
+
+[ LiveKit  Use the Gemini Live API with LiveKit Agents.  ](https://docs.livekit.io/agents/models/realtime/plugins/gemini/) [ Pipecat by Daily  Create a real-time AI chatbot using Gemini Live and Pipecat.  ](https://docs.pipecat.ai/guides/features/gemini-live) [ Fishjam by Software Mansion  Create live video and audio streaming applications with Fishjam.  ](https://docs.fishjam.io/tutorials/gemini-live-integration) [ Vision Agents by Stream  Build real-time voice and video AI applications with Vision Agents.  ](https://visionagents.ai/integrations/gemini) [ Voximplant  Connect inbound and outbound calls to Live API with Voximplant.  ](https://voximplant.com/products/gemini-client) [ Agora  Build real-time conversational AI applications with Agora.  ](https://docs.agora.io/en/conversational-ai/models/mllm/gemini) [ Firebase AI SDK  Get started with the Gemini Live API using Firebase AI Logic.  ](https://firebase.google.com/docs/ai-logic/live-api?api=dev)

@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/gemma/docs/integrations/llamacpp/
-title: https://ai.google.dev/gemma/docs/integrations/llamacpp/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:14.453094+00:00
+title: Run Gemma with Llama.cpp
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:53.270685+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/integrations/llamacpp/
+# Run Gemma with Llama.cpp
 
 > Source: https://ai.google.dev/gemma/docs/integrations/llamacpp/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=13350491110211425805&q=EgQoUFpcGK7OxNYGIjAPSXXOMZHL7gYUVZ3JrgD6Me4qGvqAOQaeiwLp2pijUuEvSa524rVtrvJQ2XmKsxoyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/integrations/llamacpp/)  
-  
-  
-  
-  
+`llama.cpp` is a popular open-source library designed for efficient local inference.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/integrations/llamacpp/&q=EgQoUFpcGK7OxNYGIjAPSXXOMZHL7gYUVZ3JrgD6Me4qGvqAOQaeiwLp2pijUuEvSa524rVtrvJQ2XmKsxoyA2NyUloBQw)  
-  
+## Quick start
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[Install](https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md) prebuilt version of llama.cpp
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:11Z  
-URL: https://ai.google.dev/gemma/docs/integrations/llamacpp/  
+Example command:
+    
+    
+    # Download and run a model directly from Hugging Face
+    llama-cli -hf ggml-org/gemma-4-E2B-it-GGUF --prompt "Write a poem about the Kraken."
+    
+    # Use System Prompt
+    llama-cli -hf ggml-org/gemma-4-E2B-it-GGUF -sys "You are Hong Gildong." -p "Who are you?"
+    
 
+To get started an run the model in a nice interface, you can start up a server with:
+    
+    
+    llama-server -hf ggml-org/gemma-4-E2B-it-GGUF
+    
+
+This creates a server that lets you access your model either from an interface (`http://localhost:8080`) or by accessing the OpenAI-endpoint (`http://localhost:8080/v1`).
+
+For more information and instructions on how to use `llama.cpp` with Gemma, refer to the official repository:
+
+[llama.cpp on GitHub](https://github.com/ggml-org/llama.cpp)

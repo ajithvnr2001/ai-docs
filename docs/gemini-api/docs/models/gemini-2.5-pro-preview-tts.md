@@ -1,38 +1,34 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts
-title: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:18.644528+00:00
+title: Gemini 2.5 Pro text-to-speech
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:35.618343+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts
+# Gemini 2.5 Pro text-to-speech
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3604299513643269887&q=EgQoUFpcGPfNxNYGIjDpChdjlKY9oL3tddX3Rc41hKx1mfYN-UnjbO9EVKhYzsQSmwZj2Ccmv8epKBP2GZoyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts)  
-  
-  
-  
-  
+Our premium engine for studio-quality speech synthesis, offering high-fidelity and sophisticated audio generation. Gemini 2.5 Pro TTS is best for long-form content, professional narrations, and complex creative workflows that require the highest level of vocal clarity and natural prosody.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts&q=EgQoUFpcGPfNxNYGIjDpChdjlKY9oL3tddX3Rc41hKx1mfYN-UnjbO9EVKhYzsQSmwZj2Ccmv8epKBP2GZoyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-pro-preview-tts)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:15Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts  
+Visit the [Text-to-Speech](https://ai.google.dev/gemini-api/docs/speech-generation) guide for full coverage of features and capabilities.
 
+## gemini-2.5-pro-preview-tts
+
+Property | Description  
+---|---  
+id_cardModel code | `gemini-2.5-pro-preview-tts`  
+saveSupported data types |  **Inputs** Text **Output** Audio  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 8,192 **Output token limit** 16,384  
+handymanCapabilities | **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not Supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Not supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Not supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Not supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * `gemini-2.5-pro-preview-tts`
+
+  
+calendar_monthLatest update | December 2025

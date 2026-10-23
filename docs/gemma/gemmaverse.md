@@ -1,38 +1,32 @@
 ---
 url: https://ai.google.dev/gemma/gemmaverse/
-title: https://ai.google.dev/gemma/gemmaverse/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:34.796515+00:00
+title: Explore Gemma models crafted by the community
+method: httpx+scrapegraph (scrapling: scrapling thin content (621 chars), fallback to crawl4ai | crawl4ai: crawl4ai failed: Unexpected error in _crawl_web at line 632 in wrap_api_call (../../../usr/local/lib/python3.10/dist-packages/playwright/_impl/_connection.py):
+Error: BrowserContext.add_cookies: Protocol error (Storage.setCookies): Invalid cookie fields
+
+Code context:
+ 627           )
+ 628           self._api_zone.set(parsed_st)
+ 629           try:
+ 630               return await cb()
+ 631           except Exception as error:
+ 632 →             raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+ 633           finally:
+ 634               self._api_zone.set(None)
+ 635   
+ 636       def wrap_api_call_sync(
+ 637           self, cb: Callable[[], Any], is_internal: bool = False, title: str = None)
+fetched_at: 2026-10-23T11:46:17.713103+00:00
 ---
 
-# https://ai.google.dev/gemma/gemmaverse/
+# Explore Gemma models crafted by the community
 
 > Source: https://ai.google.dev/gemma/gemmaverse/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=7261892121895640424&q=EgQoUFpcGMTOxNYGIjDHGiBrI4DEHsKwOR-CVYbLvjGOpV7TgKe9z-Z7hWj6ii9hVpBQ2VYbFIMhExBVcYkyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/gemmaverse/)  
-  
-  
-  
-  
+![](https://ai.google.dev/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg)![](https://ai.google.dev/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg)
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/gemmaverse/&q=EgQoUFpcGMTOxNYGIjDHGiBrI4DEHsKwOR-CVYbLvjGOpV7TgKe9z-Z7hWj6ii9hVpBQ2VYbFIMhExBVcYkyA2NyUloBQw)  
-  
+Your browser does not support the video tag.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+### Understanding the language of single-cell biology
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:32Z  
-URL: https://ai.google.dev/gemma/gemmaverse/  
-
+Based on Gemma and developed in collaboration with Yale University, [Cell2Sentence-Scale 27B](https://blog.google/technology/ai/google-gemma-ai-cancer-therapy-discovery/) helped discover a potential new pathway for cancer therapy.

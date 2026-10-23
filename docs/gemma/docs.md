@@ -1,38 +1,24 @@
 ---
 url: https://ai.google.dev/gemma/docs/
-title: https://ai.google.dev/gemma/docs/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:52.448080+00:00
+title: Gemma models overview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:33.573570+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/
+# Gemma models overview
 
 > Source: https://ai.google.dev/gemma/docs/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2822066370548177785&q=EgQoUFpcGJnOxNYGIjBASzqXxV8qbhiSBYddNcEfoIlasg9p8vniLM2eJ4hSwmVmvcrFJV8FPGjOiQXrvHAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/)  
-  
-  
-  
-  
+![Alt Gemma logo](https://ai.google.dev/gemma/images/gemma_sq.png) Gemma is a family of lightweight, state-of-the-art open models built from the same research and technology used to create the [Gemini](https://deepmind.google/technologies/gemini/#introduction) models. Developed by Google DeepMind and other teams across Google, Gemma is named after the Latin _gemma_ , meaning precious stone. The Gemma model weights are supported by developer tools that promote innovation, collaboration, and the responsible use of artificial intelligence (AI). You can get multiple variations of Gemma for general and specific use cases:
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/&q=EgQoUFpcGJnOxNYGIjBASzqXxV8qbhiSBYddNcEfoIlasg9p8vniLM2eJ4hSwmVmvcrFJV8FPGjOiQXrvHAyA2NyUloBQw)  
-  
+  * [**Gemma 4**](https://ai.google.dev/gemma/docs/core): Solve a wide variety of generative AI tasks with text, audio and image input, support for over 140 languages, and long 128K and up to 256K context window.
+  * [**EmbeddingGemma 2**](https://ai.google.dev/gemma/docs/embeddinggemma): Produce numerical representations of text, images, audio, and video for downstream tasks like multimodal Retrieval-Augmented Generation (RAG), semantic search, and zero-shot classification.
+  * [**ShieldGemma 2**](https://ai.google.dev/gemma/docs/shieldgemma): Evaluate the safety of generative AI models' input and output against defined policies.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:50Z  
-URL: https://ai.google.dev/gemma/docs/  
 
+Many more Gemma variants are available from Google and our AI developer community. Check them out on [Kaggle Models](https://www.kaggle.com/models?query=gemma) and [Hugging Face](https://huggingface.co/models?search=google/gemma). Get inspired by what our community members have built with Gemma in the [Gemmaverse](https://ai.google.dev/gemma/gemmaverse).
+
+The Gemma models are available to run in your applications and on your hardware, mobile devices, or hosted services. You can also customize these models using tuning techniques so that they excel at performing specific tasks that matter to you and your users. Gemma models draw inspiration and technological lineage from the Gemini family of models, and are made for the AI development community to extend and take further.
+
+Ready to begin? **[Get started](https://ai.google.dev/gemma/docs/get_started)** with Gemma models!

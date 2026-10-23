@@ -1,38 +1,35 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview
-title: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:24.246809+00:00
+title: Gemini 3.5 Live translate
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:41.762803+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview
+# Gemini 3.5 Live translate
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=4694239185259328179&q=EgQoUFpcGPzNxNYGIjBj62MfdwvOkNDtQgHPqODNGEsC8T07jOURG2NCFwk9dTBzt19Sjh1LPmxnuhmGJP8yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview)  
-  
-  
-  
-  
+Gemini 3.5 Live Translate is our low-latency, audio-to-audio model optimized for real-time translation of spoken conversations. It enables seamless, bidirectional translation with high accuracy and natural voice output.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview&q=EgQoUFpcGPzNxNYGIjBj62MfdwvOkNDtQgHPqODNGEsC8T07jOURG2NCFwk9dTBzt19Sjh1LPmxnuhmGJP8yA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com/live?model=gemini-3.5-live-translate-preview)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:21Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview  
+Visit the [Live Translation](https://ai.google.dev/gemini-api/docs/live-api/live-translate) guide for full coverage of features and capabilities.
 
+## gemini-3.5-live-translate-preview
+
+Property | Description  
+---|---  
+id_cardModel code |  `gemini-3.5-live-translate-preview`  
+saveSupported data types |  **Inputs** Audio (speech) **Output** Audio (translated speech) and Text (transcript)  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 131,072 **Output token limit** 65,536  
+handymanCapabilities | **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Not supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Supported **[Live translation](https://ai.google.dev/gemini-api/docs/live-api/live-translate)** Supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Not supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Not supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Not supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details.
+
+  * Preview: `gemini-3.5-live-translate-preview`
+
+  
+calendar_monthLatest update | June 2026  
+id_cardModel card | [Model card](https://deepmind.google/models/model-cards/gemini-3-5-audio/)

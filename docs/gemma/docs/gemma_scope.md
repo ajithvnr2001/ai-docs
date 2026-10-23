@@ -1,38 +1,54 @@
 ---
 url: https://ai.google.dev/gemma/docs/gemma_scope/
-title: https://ai.google.dev/gemma/docs/gemma_scope/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:14.142640+00:00
+title: Gemma Scope
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:52.864027+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/gemma_scope/
+# Gemma Scope
 
 > Source: https://ai.google.dev/gemma/docs/gemma_scope/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=16939230807882689990&q=EgQoUFpcGK7OxNYGIjDKlM-IVKToMrkiqWcfifbl25siqAZrn3rIuJ8eaUWTh1tQcoeTkyECTuzLYZ-3NPAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/gemma_scope/)  
-  
-  
-  
-  
+##  Gemma Scope 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/gemma_scope/&q=EgQoUFpcGK7OxNYGIjDKlM-IVKToMrkiqWcfifbl25siqAZrn3rIuJ8eaUWTh1tQcoeTkyECTuzLYZ-3NPAyA2NyUloBQw)  
-  
+### Analyze Gemma 3 with Gemma Scope 2
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Gemma Scope 2 is a comprehensive, open suite of interpretability tools designed for the **Gemma 3** model collection. This tool allows you to examine the behavior of individual layers. It allows researchers to analyze complex language model behaviors and debug emergent behaviors such as jailbreaks or hallucinations. 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:10Z  
-URL: https://ai.google.dev/gemma/docs/gemma_scope/  
+This toolkit acts as a microscope for the model, providing **Sparse Autoencoders (SAEs)** and **Transcoders** trained on every layer of the Gemma 3 family. 
 
+**Looking for the previous version?**   
+The original [Gemma Scope (for Gemma 2)](https://deepmind.google/discover/blog/gemma-scope-helping-the-safety-community-shed-light-on-the-inner-workings-of-language-models/) remains available for researchers working with the Gemma 2 family of models. 
+
+  * biotech 
+
+####  Model behavior evaluation 
+
+Use SAEs and Transcoders to analyze complex internal behaviors and multi-step algorithms in Gemma 3. 
+
+  * tune 
+
+####  Chatbot safety & debugging 
+
+Analyze specific chat behaviors, refusal mechanisms, and chain-of-thought faithfulness to build safer AI agents. 
+
+
+
+
+##  Learn more 
+
+###  [ Read the Gemma Scope 2 Blog ](https://deepmind.google/blog/gemma-scope-2-helping-the-ai-safety-community-deepen-understanding-of-complex-language-model-behavior)
+
+Read about the new architecture, training data, and capabilities of Gemma Scope 2. 
+
+###  [ Download from Hugging Face ](https://huggingface.co/collections/google/gemma-scope-2)
+
+Access the weights, code, and documentation for the Gemma 3 interpretability suite. 
+
+###  [ Run in Colab ](https://colab.sandbox.google.com/drive/1NhWjg7n0nhfW--CjtsOdw5A5J_-Bzn4r?usp=sharing)
+
+Try the interactive tutorial to visualize features and modify model behavior. 
+
+###  [ Previous Version (Scope Gemma for Gemma 2) ](https://huggingface.co/collections/google/gemma-scope-release)
+
+Access the blog and resources for the original Gemma Scope for Gemma 2. 

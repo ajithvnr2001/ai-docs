@@ -1,38 +1,64 @@
 ---
 url: https://ai.google.dev/gemma/docs/core/prompt-structure/
-title: https://ai.google.dev/gemma/docs/core/prompt-structure/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:05.042099+00:00
+title: Gemma formatting and system instructions
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:44.411014+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/core/prompt-structure/
+# Gemma formatting and system instructions
 
 > Source: https://ai.google.dev/gemma/docs/core/prompt-structure/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=18290864234342012016&q=EgQoUFpcGKXOxNYGIjDbIC26zLrQ8fAzGOmSmTJ6AASxtYGs3a1MVlJE-su0T1j1cEamHaN2lLS9gYYIrKMyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/core/prompt-structure/)  
-  
-  
-  
-  
+Gemma instruction-tuned (IT) models are trained with a specific _formatter_ that annotates all instruction tuning examples with extra information, both at training and inference time. The formatter has two purposes:
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/core/prompt-structure/&q=EgQoUFpcGKXOxNYGIjDbIC26zLrQ8fAzGOmSmTJ6AASxtYGs3a1MVlJE-su0T1j1cEamHaN2lLS9gYYIrKMyA2NyUloBQw)  
-  
+  1. Indicating roles in a conversation, such as the _system_ , _user_ , or _assistant_ roles.
+  2. Delineating turns in a conversation, especially in a multi-turn conversation.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:01Z  
-URL: https://ai.google.dev/gemma/docs/core/prompt-structure/  
 
+Below, we specify the control tokens used by Gemma and their use cases. Note that the control tokens are reserved in and specific to our tokenizer.
+
+  * Token to indicate a user turn: `user`
+  * Token to indicate a model turn: `model`
+  * Token to indicate the beginning of dialogue turn: `<start_of_turn>`
+  * Token to indicate the end of dialogue turn: `<end_of_turn>`
+
+
+
+Here's an example dialogue:
+    
+    
+    <start_of_turn>user
+    knock knock<end_of_turn>
+    <start_of_turn>model
+    who is there<end_of_turn>
+    <start_of_turn>user
+    Gemma<end_of_turn>
+    <start_of_turn>model
+    Gemma who?<end_of_turn>
+    
+
+The token `"<end_of_turn>\n"` is the turn separator, and the prompt prefix is `"<start_of_turn>model\n"`. This means that if you'd like to prompt the model with a question like, "What is Cramer's Rule?", you should instead feed the model as follows:
+    
+    
+    "<start_of_turn>user
+    What is Cramer's Rule?<end_of_turn>
+    <start_of_turn>model"
+    
+
+Note that if you want to finetune the pretrained Gemma models with your own data, you can use any such schema for control tokens, as long as it's consistent between your training and inference use cases.
+
+## System instructions
+
+Gemma's instruction-tuned models are designed to work with only two roles: `user` and `model`. Therefore, the `system` role or a system turn is not supported.
+
+Instead of using a separate system role, provide system-level instructions directly within the initial user prompt. The model instruction following capabilities allow Gemma to interpret the instructions effectively. For example:
+    
+    
+    <start_of_turn>user
+    Only reply like a pirate.
+    
+    What is the answer to life the universe and everything?<end_of_turn>
+    <start_of_turn>model
+    Arrr, 'tis 42,<end_of_turn>
+    

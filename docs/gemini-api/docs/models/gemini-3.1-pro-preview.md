@@ -1,38 +1,42 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
-title: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:22.996454+00:00
+title: Gemini 3.1 Pro preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:40.534764+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
+# Gemini 3.1 Pro preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=14809670166903084571&q=EgQoUFpcGPzNxNYGIjAsElJx9rQepMrl66pgssLsQu9iufDvs1wc5aa_B3jw_SyTfrsEuQSH241Vi_9O7SgyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview)  
-  
-  
-  
-  
+Built to refine the performance and reliability of the Gemini 3 Pro series, Gemini 3.1 Pro Preview provides better thinking, improved token efficiency, and a more grounded, factually consistent experience. It's optimized for software engineering behavior and usability, as well as agentic workflows requiring precise tool usage and reliable multi-step execution across real-world domains.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview&q=EgQoUFpcGPzNxNYGIjAsElJx9rQepMrl66pgssLsQu9iufDvs1wc5aa_B3jw_SyTfrsEuQSH241Vi_9O7SgyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:20Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview  
+Visit the [Gemini 3 Developer Guide](https://ai.google.dev/gemini-api/docs/latest-model) page for full coverage of features and capabilities.
 
+## gemini-3.1-pro-preview
+
+Property | Description  
+---|---  
+id_cardModel code | `gemini-3.1-pro-preview`  
+saveSupported data types |  **Inputs** Text, Image, Video, Audio, and PDF **Output** Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 1,048,576 **Output token limit** 65,536  
+handymanCapabilities |  **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Not supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Supported (AI Studio only) **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Preview: `gemini-3.1-pro-preview`
+  * Preview: `gemini-3.1-pro-preview-customtools` *
+
+  
+calendar_monthLatest update | February 2026  
+id_cardModel card | [Model card](https://deepmind.google/models/model-cards/gemini-3-1-pro/)  
+  
+#### gemini-3.1-pro-preview-customtools
+
+* _For those building with a mix of bash and custom tools, Gemini 3.1 Pro Preview comes with a separate endpoint available via the API called`gemini-3.1-pro-preview-customtools`. This endpoint is better at prioritizing your custom tools (for example `view_file` or `search_code`)._
+
+_Note that while`gemini-3.1-pro-preview-customtools` is optimized for agentic workflows that use custom tools and bash, you may see quality fluctuations in some use cases which don't benefit from such tools._

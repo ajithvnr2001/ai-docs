@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:12.132439+00:00
+title: mp.tasks.vision.drawing_styles.face_landmarker.running_mode_lib.validate_running_mode
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:39.810182+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/
+# mp.tasks.vision.drawing_styles.face_landmarker.running_mode_lib.validate_running_mode
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3239806767604894507&q=EgQoUFpcGLLNxNYGIjBFI_U2d_YpGDqcOcqt6H0ng6dAT8e2u6WpvTPL34D1IYM3mRJG3-nJcno48ZO5jl4yA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/core/vision_task_running_mode.py#L55-L79) Validates the running mode of the mediapipe vision task.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/&q=EgQoUFpcGLLNxNYGIjBFI_U2d_YpGDqcOcqt6H0ng6dAT8e2u6WpvTPL34D1IYM3mRJG3-nJcno48ZO5jl4yA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils.face_landmarker.running_mode_lib.validate_running_mode`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode), [`mp.tasks.vision.drawing_styles.hand_landmarker.vision_task_running_mode.validate_running_mode`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode), [`mp.tasks.vision.drawing_styles.pose_landmarker.running_mode_lib.validate_running_mode`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode), [`mp.tasks.vision.drawing_utils.face_landmarker.running_mode_lib.validate_running_mode`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode)
+    
+    
+    mp.tasks.vision.drawing_styles.face_landmarker.running_mode_lib.validate_running_mode(
+        running_mode: [mp.tasks.vision.RunningMode](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/RunningMode),
+        packet_callback: Optional[Callable[[Mapping[str, Any]], None]] = None
+    ) -> None
+    
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:06Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib/validate_running_mode/  
+| 
 
+## Args  
+  
+---  
+  
+`running_mode` |  The running mode of the mediapipe vision task.   
+`packet_callback` |  The user-defined result callback.   
+  
+## Raises  
+  
+---  
+  
+`ValueError` |  If packet callback is provided in image or video mode or missing in live stream mode. 

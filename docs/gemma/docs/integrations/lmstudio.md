@@ -1,38 +1,91 @@
 ---
 url: https://ai.google.dev/gemma/docs/integrations/lmstudio/
-title: https://ai.google.dev/gemma/docs/integrations/lmstudio/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:15.092180+00:00
+title: Run Gemma with LM Studio
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:54.948703+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/integrations/lmstudio/
+# Run Gemma with LM Studio
 
 > Source: https://ai.google.dev/gemma/docs/integrations/lmstudio/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1886620409762413194&q=EgQoUFpcGK7OxNYGIjDvhrejVx2GKHGtVR_BbvF1dqZq2lj-sZWqLLC-Mu_xEdhGUwVBRP5gyAfANLpeX98yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/integrations/lmstudio/)  
-  
-  
-  
-  
+[LM Studio](https://lmstudio.ai) is a friendly yet powerful desktop application for experimenting & developing with local AI models directly on your computer. LM Studio supports Gemma models in both GGUF (llama.cpp) and MLX formats for fast and efficient inference, completely locally on your machine.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/integrations/lmstudio/&q=EgQoUFpcGK7OxNYGIjDvhrejVx2GKHGtVR_BbvF1dqZq2lj-sZWqLLC-Mu_xEdhGUwVBRP5gyAfANLpeX98yA2NyUloBQw)  
-  
+## Setup
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+This section guides you through requesting model access, downloading and installing LM Studio software, and loading a Gemma model into LM Studio.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:11Z  
-URL: https://ai.google.dev/gemma/docs/integrations/lmstudio/  
+### Download and Install LM Studio
 
+Download the installer for macOS, Windows, or Linux from the [LM Studio website](https://lmstudio.ai/download).
+
+After completing the download and running the installer, open the LM Studio application and click around to familiarize yourself with the interface. To download models, press Cmd + Shift + M on Mac, or Ctrl + Shift + M on PC.
+
+## Download Gemma models to run locally
+
+Gemma models are highly popular with local LLM users thanks to their minimal memory footprint and powerful capabilities, including text generation, instruction following, tool use, and in some cases image understanding. Explore staff picked models within the app or in https://lmstudio.ai/models and find Gemma models that fit your machine. You can also search and download Gemma models from within the LM Studio app, or by using the lms CLI ([learn more](https://lmstudio.ai/docs/cli/local-models/get)).
+
+**Using LM Studio's in-app model downloader**
+
+  1. Open the LM Studio app and search for any model by presssing ⌘ + Shift + M on Mac, or Ctrl + Shift + M on PC.
+  2. Search for "Gemma"
+  3. Pick a result that looks interesting and LM Studio will suggest the suitable variant for your hardware.
+  4. Click **Download**. After the download finishes, load the model to use it in a new chat.
+
+
+
+## Advanced: Use your own converted GGUF Gemma model file
+
+If you had converted a Gemma model to GGUF yourself, you can use LM Studio's CLI `lms` to load your model into LM Studio.
+
+  1. Use:
+
+
+    
+    
+    lms import <path/to/model.gguf>
+    
+
+  1. LM Studio will automatically detect the model and it will populate in the application under "My Models."
+  2. Adjust context length and hardware settings as needed.
+
+
+
+If `lms import` does not work automatically, you are still able to manually import models into your LM Studio. Read more about LM Studio's model directory structure at "[Import Models](https://lmstudio.ai/docs/app/advanced/import-model)".
+
+Once the model has completed loading (as indicated by the progress bar), you may start chatting away in LM Studio!
+
+## Serve the model through LM Studio's server
+
+**Serve via LM Studio's GUI**
+
+In the LM Studio application, head to the Developer tab and then press Cmd / Ctrl + L to open the model loader. Here you can view a list of downloaded models and select one to load. LM Studio will by default select the load parameters that optimizes model performance on your hardware.
+
+**Serve via LM Studio's CLI**
+
+If you prefer to work in the terminal, use LM Studio's CLI to interact with your models. See a list of commands at "[lms](https://lmstudio.ai/docs/cli)".
+
+First, load a Gemma model you downloaded by running:
+    
+    
+    lms load <model_key>
+    ``` You can find the model_key by first running
+    `lms ls` to list your locally downloaded models.
+    
+    Next, turn on LM Studio's local API server by running:
+    
+    ```bash
+    lms server start
+    
+
+Now you're ready to go! Use LM Studio's REST APIs to use Gemma models programmatically from your own code.
+
+Learn more about how to do this <https://lmstudio.ai/docs/developer>.
+
+## Appendix
+
+**Getting a model from Hugging Face**
+
+First, enable LM Studio under your [Local Apps Settings](https://huggingface.co/settings/local-apps) in Hugging Face.
+
+On the model card, click the "Use this model" drop-down and select LM Studio. This will run the model directly in LM Studio if you already have it, or show you a download option if you don't.

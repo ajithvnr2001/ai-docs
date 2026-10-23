@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/speech-generation/",
   "file": "gemini-api/docs/generate-content/speech-generation.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/speech-generation/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:58.902057+00:00",
-  "html_len": 3157,
-  "md_len": 1888,
-  "depth": 0
+  "title": "Text-to-speech generation (TTS)",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:46.825646+00:00"
 }

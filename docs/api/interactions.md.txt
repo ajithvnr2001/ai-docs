@@ -2,13 +2,14 @@
 url: https://ai.google.dev/api/interactions.md.txt
 title: interactions
 method: httpx-raw-text
-fetched_at: 2026-10-15T19:16:01.398032+00:00
+fetched_at: 2026-10-23T12:00:16.419262+00:00
 ---
 
 # interactions
 
 > Source: https://ai.google.dev/api/interactions.md.txt
 
+<!-- mdformat off(generated) -->
 <!-- disableFinding(G3DOC_JINJA) -->
 <!-- disableFinding(HEADING_FUNCTION) -->
 <!-- disableFinding(LINE_OVER_80) -->
@@ -26,7 +27,7 @@ The Gemini Interactions API allows developers to build generative AI application
 
 ## Interactions
 
-### CreateInteraction
+### Creating an interaction
 
 `POST https://generativelanguage.googleapis.com/v1beta/interactions`
 
@@ -60,7 +61,6 @@ Creates a new interaction.
   - `gemini-3.6-flash`: Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
   - `gemini-3.7-flash`: Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
   - `gemini-3.8-flash`: Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-  - `gemini-4-argon`: Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
   - `gemini-3.8-flash-tts`: Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
   - `gemini-3.8-flash-lite-tts`: Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
   - `lyria-3-clip-preview`: Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -78,34 +78,17 @@ Creates a new interaction.
   - `deep-research-max-preview-04-2026`: Gemini Deep Research Max Agent
   - `antigravity-preview-05-2026`: Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 
-- **input** (`<a href="#Resource:Content">Content</a> or array (<a href="#Resource:Content">Content</a>) or array (<a href="#Resource:Step">Step</a>) or string`) The inputs for the interaction (common to both Model and Agent).
-
-- **system_instruction** (`string`) System instruction for the interaction.
-
-- **tools** (`array (<a href="#Resource:Tool">Tool</a>)`) A list of tool declarations the model may call during interaction.
-
-- **response_format** (`<a href="#Resource:ResponseFormat">ResponseFormat</a> or array (<a href="#Resource:ResponseFormat">ResponseFormat</a>)`) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
-
-- **stream** (`boolean`) Input only. Whether the interaction will be streamed.
-
-- **store** (`boolean`) Input only. Whether to store the response and request for later retrieval.
-
-- **background** (`boolean`) Input only. Whether to run the model interaction in the background.
+- **input** (`<a href="#Resource:Content">Content</a> or array (<a href="#Resource:Content">Content</a>) or array (<a href="#Resource:Step">Step</a>) or string`) *(Required)* The inputs for the interaction (common to both Model and Agent).
 
 - **generation_config** (`GenerationConfig`) <strong>Model Configuration</strong><br>Configuration parameters for the model interaction. <br><em>Alternative to `agent_config`. Only applicable when `model` is set.</em>
-  - **max_output_tokens** (`integer`)   The maximum number of tokens to include in the response.
+  - **tool_choice** (`<a href="#Resource:ToolChoiceConfig">ToolChoiceConfig</a> or enum (string)`)   The tool choice configuration.
+    Possible values:
+    - `auto`: Auto tool choice.
+    - `any`: Any tool choice.
+    - `none`: No tool choice.
+    - `validated`: Validated tool choice.
 
   - **seed** (`integer`)   Seed used in decoding for reproducibility.
-
-  - **speech_config** (`SpeakerConfig or array (SpeechConfig)`)   Optional. Speech and multi-speaker configuration.
-    - **speakers** (`array (SpeechConfig)`)     Individual speaker configurations.
-      - **language** (`string`)       The language of the speech.
-
-      - **speaker** (`string`)       The speaker's name, it should match the speaker name given in the prompt.
-
-      - **voice** (`string`)       The voice of the speaker.
-
-
 
   - **stop_sequences** (`array (string)`)   A list of character sequences that will stop output interaction.
 
@@ -121,34 +104,7 @@ Creates a new interaction.
     - `auto`: Auto thinking summaries.
     - `none`: No thinking summaries.
 
-  - **tool_choice** (`<a href="#Resource:ToolChoiceConfig">ToolChoiceConfig</a> or enum (string)`)   The tool choice configuration.
-    Possible values:
-    - `auto`: Auto tool choice.
-    - `any`: Any tool choice.
-    - `none`: No tool choice.
-    - `validated`: Validated tool choice.
-
-  - **transcription_config** (`TranscriptionConfig`)   Optional. Configuration for speech recognition (transcription). If present, ASR is enabled.
-    - **custom_vocabulary** (`array (string)`)     Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
-
-    - **language_codes** (`array (string)`)     Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
-
-    - **mode** (`TranscriptionMode or enum (string)`)     Discriminated transcription mode options or enum.
-      Possible values:
-      - `verbatim`: Verbatim transcription mode.
-      - `smart`: Smart transcription mode.
-      **Possible Types:**
-      - **SmartTranscriptionMode**: Configuration for smart transcription mode.
-      - **type** (`object`) *(Required)*
-        Value: `smart`
-      - **VerbatimTranscriptionMode**: Configuration for verbatim transcription mode.
-      - **diarization_mode** (`string`)       Optional. Configures speaker diarization. Supported values: "speaker".
-
-      - **timestamp_granularities** (`array (string)`)       Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
-
-      - **type** (`object`) *(Required)*
-        Value: `verbatim`
-
+  - **max_output_tokens** (`integer`)   The maximum number of tokens to include in the response.
 
   - **video_config** (`VideoConfig`)   Configuration for video generation.
     - **task** (`enum (string)`)     Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
@@ -162,29 +118,64 @@ frame.
       - `extend`: Extends an existing input video.
 
 
+  - **transcription_config** (`TranscriptionConfig`)   Optional. Configuration for speech recognition (transcription). If present, ASR is enabled.
+    - **mode** (`TranscriptionMode or enum (string)`)     Discriminated transcription mode options or enum.
+      Possible values:
+      - `verbatim`: Verbatim transcription mode.
+      - `smart`: Smart transcription mode.
+      **Possible Types:**
+      - **SmartTranscriptionMode**: Configuration for smart transcription mode.
+      - **type** (`object`) *(Required)*
+        Value: `smart`
+      - **VerbatimTranscriptionMode**: Configuration for verbatim transcription mode.
+      - **type** (`object`) *(Required)*
+        Value: `verbatim`
+      - **timestamp_granularities** (`array (string)`)       Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
 
-- **agent_config** (`AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig`) <strong>Agent Configuration</strong><br>Configuration for the agent. <br><em>Alternative to `generation_config`. Only applicable when `agent` is set.</em>
+      - **diarization_mode** (`string`)       Optional. Configures speaker diarization. Supported values: "speaker".
+
+
+    - **language_codes** (`array (string)`)     Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+
+    - **custom_vocabulary** (`array (string)`)     Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
+
+
+  - **structured_speech_config** (`SpeakerConfig or array (SpeechConfig)`)   Speech and multi-speaker configuration.
+    - **speakers** (`array (SpeechConfig)`)     Individual speaker configurations.
+      - **voice** (`string`)       The voice of the speaker.
+
+      - **language** (`string`)       The language of the speech.
+
+      - **speaker** (`string`)       The speaker's name, it should match the speaker name given in the prompt.
+
+
+
+
+- **agent_config** (`AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig`) <strong>Agent Configuration</strong><br>Configuration for the agent. <br><em>Alternative to `generation_config`. Only applicable when `agent` is set.</em>
+
+- **response_format** (`<a href="#Resource:ResponseFormat">ResponseFormat</a> or array (<a href="#Resource:ResponseFormat">ResponseFormat</a>)`) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 
 - **environment** (`<a href="#Resource:EnvironmentConfig">EnvironmentConfig</a> or string`) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 
-- **labels** (`object`) The labels with user-defined metadata for the request.  Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+- **system_instruction** (`string`) System instruction for the interaction.
+
+- **tools** (`array (<a href="#Resource:Tool">Tool</a>)`) A list of tool declarations the model may call during interaction.
 
 - **previous_interaction_id** (`string`) The ID of the previous interaction, if any.
 
+- **service_tier** (`ServiceTier`) The service tier for the interaction.
+  Possible values:
+  - `flex`: Flex service tier.
+  - `standard`: Standard service tier.
+  - `priority`: Priority service tier.
+
+- **webhook_config** (`WebhookConfig`) Optional. Webhook configuration for receiving notifications when the interaction completes.
+  - **uris** (`array (string)`)   Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
+
+  - **user_metadata** (`object`)   Optional. The user metadata that will be returned on each event emission to the webhooks.
+
+
 - **safety_settings** (`array (SafetySetting)`) Safety settings for the interaction.
-  - **method** (`enum (string)`)   Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-    Possible values:
-    - `severity`: The harm block method uses both probability and severity scores.
-    - `probability`: The harm block method uses the probability score.
-
-  - **threshold** (`enum (string)`) *(Required)*   Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
-    Possible values:
-    - `block_low_and_above`: Block content with a low harm probability or higher.
-    - `block_medium_and_above`: Block content with a medium harm probability or higher.
-    - `block_only_high`: Block content with a high harm probability.
-    - `block_none`: Do not block any content, regardless of its harm probability.
-    - `off`: Turn off the safety filter entirely.
-
   - **type** (`HarmCategory`) *(Required)*   Required. The type of harm category to be blocked.
     Possible values:
     - `hate_speech`: Content that promotes violence or incites hatred against individuals or
@@ -192,25 +183,28 @@ groups based on certain attributes.
     - `dangerous_content`: Content that promotes, facilitates, or enables dangerous activities.
     - `harassment`: Abusive, threatening, or content intended to bully, torment, or ridicule.
     - `sexually_explicit`: Content that contains sexually explicit material.
-    - `image_hate`: Images that contain hate speech.
-    - `image_dangerous_content`: Images that contain dangerous content.
-    - `image_harassment`: Images that contain harassment.
-    - `image_sexually_explicit`: Images that contain sexually explicit content.
     - `jailbreak`: Prompts designed to bypass safety filters.
 
+  - **threshold** (`enum (string)`) *(Required)*   Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+    Possible values:
+    - `block_low_and_above`: Block content with a low harm probability or higher.
+    - `block_medium_and_above`: Block content with a medium harm probability or higher.
+    - `block_only_high`: Block content with a high harm probability.
+    - `off`: Turn off the safety filter entirely.
 
-- **service_tier** (`ServiceTier`) The service tier for the interaction.
-  Possible values:
-  - `flex`: Flex service tier.
-  - `standard`: Standard service tier.
-  - `priority`: Priority service tier.
-  - `deferred`: Deferred service tier.
+  - **method** (`enum (string)`)   Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+    Possible values:
+    - `severity`: The harm block method uses both probability and severity scores.
+    - `probability`: The harm block method uses the probability score.
 
-- **webhook_config** (`WebhookConfig`) Optional. Webhook configuration for receiving notifications when the interaction completes.
-  - **uris** (`array (string)`)   Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
 
-  - **user_metadata** (`object`)   Optional. The user metadata that will be returned on each event emission to the webhooks.
+- **labels** (`object`) The labels with user-defined metadata for the request.  Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
 
+- **stream** (`boolean`) Input only. Whether the interaction will be streamed.
+
+- **store** (`boolean`) Input only. Whether to store the response and request for later retrieval.
+
+- **background** (`boolean`) Input only. Whether to run the model interaction in the background.
 
 
 #### Response
@@ -226,7 +220,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "input": "Hello, how are you?"
   }'
 ```
@@ -237,7 +231,7 @@ from google import genai
 
 client = genai.Client()
 interaction = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     input="Hello, how are you?",
 )
 print(interaction.output_text)
@@ -249,7 +243,7 @@ import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   input: 'Hello, how are you?',
 });
 console.log(interaction.output_text);
@@ -267,7 +261,7 @@ import com.google.genai.gaos.models.interactions.InteractionsInput;
 Client client = new Client();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .input(InteractionsInput.of("Hello, how are you?"))
         .build();
 CreateInteractionResponse response =
@@ -298,7 +292,7 @@ func main() {
     }
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Hello, how are you?")),
     })
 
@@ -358,7 +352,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "input": [
       { "type": "user_input", "content": [{ "type": "text", "text": "Hello!" }] },
       { "type": "model_output", "content": [{ "type": "text", "text": "Hi there! How can I help you today?" }] },
@@ -373,7 +367,7 @@ from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     input=[
         {
             "type": "user_input",
@@ -403,7 +397,7 @@ import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   input: [
     {type: 'user_input', content: [{type: 'text', text: 'Hello'}]},
     {
@@ -451,7 +445,7 @@ List<Step> conversation =
             .build());
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .input(InteractionsInput.ofStep(conversation))
         .build();
 CreateInteractionResponse response =
@@ -506,7 +500,7 @@ func main() {
     }
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput(history)),
     })
 
@@ -566,7 +560,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "input": [
       {
         "type": "text",
@@ -587,7 +581,7 @@ from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     input=[
         {"type": "text", "text": "What is in this picture?"},
         {
@@ -606,7 +600,7 @@ import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   input: [
     {type: 'text', text: 'What is in this picture?'},
     {type: 'image', data: 'BASE64_ENCODED_IMAGE', mime_type: 'image/png'},
@@ -638,7 +632,7 @@ List<Content> content =
             .build());
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .input(InteractionsInput.ofContent(content))
         .build();
 CreateInteractionResponse response =
@@ -679,7 +673,7 @@ func main() {
     }
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
     })
 
@@ -743,7 +737,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [
       {
         "type": "function",
@@ -773,7 +767,7 @@ from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{
         "type": "function",
         "name": "get_weather",
@@ -802,7 +796,7 @@ import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [
     {
       type: 'function',
@@ -855,7 +849,7 @@ Function functionTool =
         .build();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(functionTool))
         .input(InteractionsInput.of("What is the weather like in Boston, MA?"))
         .build();
@@ -907,7 +901,7 @@ func main() {
     tool := gaos_interactions.NewTool(function)
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -1878,15 +1872,16 @@ func main() {
 ```
 ---
 
-### cancelInteractionById
+### Canceling an interaction
 
-`POST https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId}/cancel`
+`POST https://generativelanguage.googleapis.com/v1beta/interactions/{id}/cancel`
 
-Cancels an interaction by id. This only applies to background interactions
-that are still running.
+Cancels an interaction by id. This only applies to background interactions that are still running.
 
 #### Parameters
-- **interactionsId** (`string`) *(Required)* Required. The name of the interaction to cancel.
+- **api_version** (`string`) *(Required)* API version for request routing.
+
+- **id** (`string`) *(Required)* The unique identifier of the interaction to cancel.
 
 
 
@@ -1911,7 +1906,7 @@ client = genai.Client()
 
 # Start a background interaction so it stays in-progress.
 created = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     input="Write a long essay about the history of computing.",
     tools=[{"type": "computer_use"}],
     background=True,
@@ -1930,7 +1925,7 @@ const ai = new GoogleGenAI({});
 
 // Start a background interaction so it stays in-progress.
 const created = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   input: 'Write a long essay about the history of computing.',
   tools: [{type: 'computer_use'}],
   background: true,
@@ -1958,7 +1953,7 @@ Client client = new Client();
 // Start a background interaction so it stays in-progress.
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .input(InteractionsInput.of("Write a long essay about the history of computing."))
         .tools(List.of(new ComputerUse()))
         .background(true)
@@ -2017,43 +2012,31 @@ Response:
 
 ```json
 {
-  "agent": "deep-research-pro-preview-12-2025",
-  "created": "2026-06-22T04:55:47Z",
-  "id": "v1_ChdVc0E0YXJTYk1zYlV6N0lQcXRXVG1BYxIXVXNBNGFyU2JNc2JVejdJUHF0V1RtQWM",
+  "created": "2025-11-26T12:25:15Z",
+  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
+  "model": "gemini-3.6-flash",
   "object": "interaction",
   "status": "cancelled",
-  "steps": [
-    {
-      "type": "user_input",
-      "content": [
-        {
-          "type": "text",
-          "text": "Research the history of the Google TPUs with a focus on 2025 specs."
-        }
-      ]
-    }
-  ],
-  "updated": "2026-06-22T04:55:47Z"
+  "updated": "2025-11-26T12:25:15Z"
 }
 ```
 ---
 
-### getInteractionById
+### Retrieving an interaction
 
-`GET https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId}`
+`GET https://generativelanguage.googleapis.com/v1beta/interactions/{id}`
 
-Retrieves the full details of a single interaction based on its
-`Interaction.id`.
+Retrieves the full details of a single interaction based on its `Interaction.id`.
 
 #### Parameters
-- **include_input** (`boolean`) If true, includes the input in the response.
+- **api_version** (`string`) *(Required)* API version for request routing.
 
-- **interactionsId** (`string`) *(Required)* Required. The name of the interaction to retrieve.
+- **id** (`string`) *(Required)* The unique identifier of the interaction to retrieve.
 
-- **last_event_id** (`string`) If set, resumes the interaction stream from the chunk after the event marked by the event id. Can only be used if `stream` is true.
+- **last_event_id** (`string`) Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if `stream` is true.
 
-- **stream** (`boolean`) If true, streams the interaction events as Server-Sent Events.
-
+- **stream** (`boolean`) If set to true, the generated content will be streamed incrementally.
+  Default: `False`
 
 
 #### Response
@@ -2168,13 +2151,17 @@ Response:
 ```
 ---
 
-### deleteInteraction
+### Deleting an interaction
 
-`DELETE https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId}`
+`DELETE https://generativelanguage.googleapis.com/v1beta/interactions/{id}`
 
 Deletes the interaction by id.
 
 #### Parameters
+- **api_version** (`string`) *(Required)* API version for request routing.
+
+- **id** (`string`) *(Required)* The unique identifier of the interaction to delete.
+
 - **interactionsId** (`string`) *(Required)* Required. The name of the interaction to delete.
 
 
@@ -2269,105 +2256,23 @@ func main() {
 The Interaction resource.
 
 **Properties:**
-- **agent** (`AgentOption`) The name of the `Agent` used for generating the interaction.
+- **id** (`string`) *(Required)* Required. Output only. A unique identifier for the interaction completion.
+
+- **status** (`enum (string)`) *(Required)* Required. Output only. The status of the interaction.
   Possible values:
-  - `deep-research-pro-preview-12-2025`: Gemini Deep Research Agent
-  - `deep-research-preview-04-2026`: Gemini Deep Research Agent
-  - `deep-research-max-preview-04-2026`: Gemini Deep Research Max Agent
-  - `antigravity-preview-05-2026`: Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+  - `in_progress`: The interaction is in progress.
+  - `requires_action`: The interaction requires action/input from the user.
+  - `completed`: The interaction is completed.
+  - `failed`: The interaction failed.
+  - `cancelled`: The interaction was cancelled.
+  - `incomplete`: The interaction is completed, but contains incomplete results (e.g.
+hitting max_tokens).
 
-- **agent_config** (`AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig`) Configuration parameters for the agent interaction.
+- **created** (`string`) *(Required)* Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-- **background** (`boolean`) Input only. Whether to run the model interaction in the background.
+- **updated** (`string`) *(Required)* Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-- **created** (`string`) Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-
-- **environment** (`<a href="#Resource:EnvironmentConfig">EnvironmentConfig</a> or string`) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-
-- **environment_id** (`string`) Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
-
-- **errors** (`array (Error)`) Output only. Diagnostic faults / platform errors recorded on the interaction.
-  - **code** (`string`)   A URI that identifies the error type.
-
-  - **message** (`string`)   A human-readable error message.
-
-
-- **generation_config** (`GenerationConfig`) Input only. Configuration parameters for the model interaction.
-  - **max_output_tokens** (`integer`)   The maximum number of tokens to include in the response.
-
-  - **seed** (`integer`)   Seed used in decoding for reproducibility.
-
-  - **speech_config** (`SpeakerConfig or array (SpeechConfig)`)   Optional. Speech and multi-speaker configuration.
-    - **speakers** (`array (SpeechConfig)`)     Individual speaker configurations.
-      - **language** (`string`)       The language of the speech.
-
-      - **speaker** (`string`)       The speaker's name, it should match the speaker name given in the prompt.
-
-      - **voice** (`string`)       The voice of the speaker.
-
-
-
-  - **stop_sequences** (`array (string)`)   A list of character sequences that will stop output interaction.
-
-  - **thinking_level** (`ThinkingLevel`)   The level of thought tokens that the model should generate.
-    Possible values:
-    - `minimal`: Little to no thinking.
-    - `low`: Low thinking level.
-    - `medium`: Medium thinking level.
-    - `high`: High thinking level.
-
-  - **thinking_summaries** (`ThinkingSummaries`)   Whether to include thought summaries in the response.
-    Possible values:
-    - `auto`: Auto thinking summaries.
-    - `none`: No thinking summaries.
-
-  - **tool_choice** (`<a href="#Resource:ToolChoiceConfig">ToolChoiceConfig</a> or enum (string)`)   The tool choice configuration.
-    Possible values:
-    - `auto`: Auto tool choice.
-    - `any`: Any tool choice.
-    - `none`: No tool choice.
-    - `validated`: Validated tool choice.
-
-  - **transcription_config** (`TranscriptionConfig`)   Optional. Configuration for speech recognition (transcription). If present, ASR is enabled.
-    - **custom_vocabulary** (`array (string)`)     Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
-
-    - **language_codes** (`array (string)`)     Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
-
-    - **mode** (`TranscriptionMode or enum (string)`)     Discriminated transcription mode options or enum.
-      Possible values:
-      - `verbatim`: Verbatim transcription mode.
-      - `smart`: Smart transcription mode.
-      **Possible Types:**
-      - **SmartTranscriptionMode**: Configuration for smart transcription mode.
-      - **type** (`object`) *(Required)*
-        Value: `smart`
-      - **VerbatimTranscriptionMode**: Configuration for verbatim transcription mode.
-      - **diarization_mode** (`string`)       Optional. Configures speaker diarization. Supported values: "speaker".
-
-      - **timestamp_granularities** (`array (string)`)       Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
-
-      - **type** (`object`) *(Required)*
-        Value: `verbatim`
-
-
-  - **video_config** (`VideoConfig`)   Configuration for video generation.
-    - **task** (`enum (string)`)     Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
-      Possible values:
-      - `text_to_video`: Generates video solely from a text prompt.
-      - `image_to_video`: Generates video from one or two source images. The first image defines
-the starting frame, and the optional second image defines the ending
-frame.
-      - `reference_to_video`: Generates video using reference media (such as images, audio, or video).
-      - `edit`: Modifies an existing input video.
-      - `extend`: Extends an existing input video.
-
-
-
-- **id** (`string`) Required. Output only. A unique identifier for the interaction completion.
-  Default: ``
-- **input** (`<a href="#Resource:Content">Content</a> or array (<a href="#Resource:Content">Content</a>) or array (<a href="#Resource:Step">Step</a>) or string`) The input for the interaction.
-
-- **labels** (`object`) The labels with user-defined metadata for the request.  Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+- **steps** (`array (<a href="#Resource:Step">Step</a>)`) *(Required)* Required. Output only. The steps that make up the interaction, when included in the response.
 
 - **model** (`ModelOption`) The name of the `Model` used for generating the interaction.
   Possible values:
@@ -2395,7 +2300,6 @@ frame.
   - `gemini-3.6-flash`: Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
   - `gemini-3.7-flash`: Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
   - `gemini-3.8-flash`: Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-  - `gemini-4-argon`: Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
   - `gemini-3.8-flash-tts`: Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
   - `gemini-3.8-flash-lite-tts`: Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
   - `lyria-3-clip-preview`: Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -2406,92 +2310,89 @@ frame.
   - `gemini-omni-1.1-flash`: Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
   - `gemini-omni-flash-preview`: Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
 
-- **previous_interaction_id** (`string`) The ID of the previous interaction, if any.
+- **generation_config** (`GenerationConfig`) Input only. Configuration parameters for the model interaction.
+  - **tool_choice** (`<a href="#Resource:ToolChoiceConfig">ToolChoiceConfig</a> or enum (string)`)   The tool choice configuration.
+    Possible values:
+    - `auto`: Auto tool choice.
+    - `any`: Any tool choice.
+    - `none`: No tool choice.
+    - `validated`: Validated tool choice.
+
+  - **seed** (`integer`)   Seed used in decoding for reproducibility.
+
+  - **stop_sequences** (`array (string)`)   A list of character sequences that will stop output interaction.
+
+  - **thinking_level** (`ThinkingLevel`)   The level of thought tokens that the model should generate.
+    Possible values:
+    - `minimal`: Little to no thinking.
+    - `low`: Low thinking level.
+    - `medium`: Medium thinking level.
+    - `high`: High thinking level.
+
+  - **thinking_summaries** (`ThinkingSummaries`)   Whether to include thought summaries in the response.
+    Possible values:
+    - `auto`: Auto thinking summaries.
+    - `none`: No thinking summaries.
+
+  - **max_output_tokens** (`integer`)   The maximum number of tokens to include in the response.
+
+  - **video_config** (`VideoConfig`)   Configuration for video generation.
+    - **task** (`enum (string)`)     Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
+      Possible values:
+      - `text_to_video`: Generates video solely from a text prompt.
+      - `image_to_video`: Generates video from one or two source images. The first image defines
+the starting frame, and the optional second image defines the ending
+frame.
+      - `reference_to_video`: Generates video using reference media (such as images, audio, or video).
+      - `edit`: Modifies an existing input video.
+      - `extend`: Extends an existing input video.
+
+
+  - **transcription_config** (`TranscriptionConfig`)   Optional. Configuration for speech recognition (transcription). If present, ASR is enabled.
+    - **mode** (`TranscriptionMode or enum (string)`)     Discriminated transcription mode options or enum.
+      Possible values:
+      - `verbatim`: Verbatim transcription mode.
+      - `smart`: Smart transcription mode.
+      **Possible Types:**
+      - **SmartTranscriptionMode**: Configuration for smart transcription mode.
+      - **type** (`object`) *(Required)*
+        Value: `smart`
+      - **VerbatimTranscriptionMode**: Configuration for verbatim transcription mode.
+      - **type** (`object`) *(Required)*
+        Value: `verbatim`
+      - **timestamp_granularities** (`array (string)`)       Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
+
+      - **diarization_mode** (`string`)       Optional. Configures speaker diarization. Supported values: "speaker".
+
+
+    - **language_codes** (`array (string)`)     Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+
+    - **custom_vocabulary** (`array (string)`)     Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
+
+
+  - **structured_speech_config** (`SpeakerConfig or array (SpeechConfig)`)   Speech and multi-speaker configuration.
+    - **speakers** (`array (SpeechConfig)`)     Individual speaker configurations.
+      - **voice** (`string`)       The voice of the speaker.
+
+      - **language** (`string`)       The language of the speech.
+
+      - **speaker** (`string`)       The speaker's name, it should match the speaker name given in the prompt.
+
+
+
+
+- **input** (`<a href="#Resource:Content">Content</a> or array (<a href="#Resource:Content">Content</a>) or array (<a href="#Resource:Step">Step</a>) or string`) The input for the interaction.
 
 - **response_format** (`<a href="#Resource:ResponseFormat">ResponseFormat</a> or array (<a href="#Resource:ResponseFormat">ResponseFormat</a>)`) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 
-- **safety_settings** (`array (SafetySetting)`) Safety settings for the interaction.
-  - **method** (`enum (string)`)   Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-    Possible values:
-    - `severity`: The harm block method uses both probability and severity scores.
-    - `probability`: The harm block method uses the probability score.
-
-  - **threshold** (`enum (string)`) *(Required)*   Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
-    Possible values:
-    - `block_low_and_above`: Block content with a low harm probability or higher.
-    - `block_medium_and_above`: Block content with a medium harm probability or higher.
-    - `block_only_high`: Block content with a high harm probability.
-    - `block_none`: Do not block any content, regardless of its harm probability.
-    - `off`: Turn off the safety filter entirely.
-
-  - **type** (`HarmCategory`) *(Required)*   Required. The type of harm category to be blocked.
-    Possible values:
-    - `hate_speech`: Content that promotes violence or incites hatred against individuals or
-groups based on certain attributes.
-    - `dangerous_content`: Content that promotes, facilitates, or enables dangerous activities.
-    - `harassment`: Abusive, threatening, or content intended to bully, torment, or ridicule.
-    - `sexually_explicit`: Content that contains sexually explicit material.
-    - `image_hate`: Images that contain hate speech.
-    - `image_dangerous_content`: Images that contain dangerous content.
-    - `image_harassment`: Images that contain harassment.
-    - `image_sexually_explicit`: Images that contain sexually explicit content.
-    - `jailbreak`: Prompts designed to bypass safety filters.
-
-
-- **service_tier** (`ServiceTier`) The service tier for the interaction.
-  Possible values:
-  - `flex`: Flex service tier.
-  - `standard`: Standard service tier.
-  - `priority`: Priority service tier.
-  - `deferred`: Deferred service tier.
-
-- **status** (`enum (string)`) *(Required)* Required. Output only. The status of the interaction.
-  Possible values:
-  - `in_progress`: The interaction is in progress.
-  - `requires_action`: The interaction requires action/input from the user.
-  - `completed`: The interaction is completed.
-  - `failed`: The interaction failed.
-  - `cancelled`: The interaction was cancelled.
-  - `incomplete`: The interaction is completed, but contains incomplete results (e.g.
-hitting max_tokens).
-  - `queued`: The interaction is queued, waiting for processing (e.g. waiting for
-off-peak capacity).
-
-- **steps** (`array (<a href="#Resource:Step">Step</a>)`) Required. Output only. The steps that make up the interaction, when included in the response.
-
-- **store** (`boolean`) Input only. Whether to store the response and request for later retrieval.
-
-- **stream** (`boolean`) Input only. Whether the interaction will be streamed.
+- **environment** (`<a href="#Resource:EnvironmentConfig">EnvironmentConfig</a> or string`) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 
 - **system_instruction** (`string`) System instruction for the interaction.
 
 - **tools** (`array (<a href="#Resource:Tool">Tool</a>)`) A list of tool declarations the model may call during interaction.
 
-- **updated** (`string`) Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-
 - **usage** (`Usage`) Output only. Statistics on the interaction request's token usage.
-  - **cached_tokens_by_modality** (`array (ModalityTokens)`)   A breakdown of cached token usage by modality.
-    - **modality** (`ResponseModality`)     The modality associated with the token count.
-      Possible values:
-      - `text`: Indicates the model should return text.
-      - `image`: Indicates the model should return images.
-      - `audio`: Indicates the model should return audio.
-      - `video`: Indicates the model should return video.
-      - `document`: Indicates the model should return documents.
-
-    - **tokens** (`integer`)     Number of tokens for the modality.
-
-
-  - **grounding_tool_count** (`array (GroundingToolCount)`)   Grounding tool count.
-    - **count** (`integer`)     The number of grounding tool counts.
-
-    - **type** (`enum (string)`)     The grounding tool type associated with the count.
-      Possible values:
-      - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-      - `google_maps`: Grounding with Google Maps.
-      - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+  - **total_input_tokens** (`integer`)   Number of tokens in the prompt (context).
 
   - **input_tokens_by_modality** (`array (ModalityTokens)`)   A breakdown of input token usage by modality.
     - **modality** (`ResponseModality`)     The modality associated with the token count.
@@ -2505,6 +2406,22 @@ for Enterprise.
     - **tokens** (`integer`)     Number of tokens for the modality.
 
 
+  - **total_cached_tokens** (`integer`)   Number of tokens in the cached part of the prompt (the cached content).
+
+  - **cached_tokens_by_modality** (`array (ModalityTokens)`)   A breakdown of cached token usage by modality.
+    - **modality** (`ResponseModality`)     The modality associated with the token count.
+      Possible values:
+      - `text`: Indicates the model should return text.
+      - `image`: Indicates the model should return images.
+      - `audio`: Indicates the model should return audio.
+      - `video`: Indicates the model should return video.
+      - `document`: Indicates the model should return documents.
+
+    - **tokens** (`integer`)     Number of tokens for the modality.
+
+
+  - **total_output_tokens** (`integer`)   Total number of tokens across all the generated responses.
+
   - **output_tokens_by_modality** (`array (ModalityTokens)`)   A breakdown of output token usage by modality.
     - **modality** (`ResponseModality`)     The modality associated with the token count.
       Possible values:
@@ -2516,6 +2433,8 @@ for Enterprise.
 
     - **tokens** (`integer`)     Number of tokens for the modality.
 
+
+  - **total_tool_use_tokens** (`integer`)   Number of tokens present in tool-use prompt(s).
 
   - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)   A breakdown of tool-use token usage by modality.
     - **modality** (`ResponseModality`)     The modality associated with the token count.
@@ -2529,18 +2448,30 @@ for Enterprise.
     - **tokens** (`integer`)     Number of tokens for the modality.
 
 
-  - **total_cached_tokens** (`integer`)   Number of tokens in the cached part of the prompt (the cached content).
-
-  - **total_input_tokens** (`integer`)   Number of tokens in the prompt (context).
-
-  - **total_output_tokens** (`integer`)   Total number of tokens across all the generated responses.
-
   - **total_thought_tokens** (`integer`)   Number of tokens of thoughts for thinking models.
 
   - **total_tokens** (`integer`)   Total token count for the interaction request (prompt + responses + other internal tokens).
 
-  - **total_tool_use_tokens** (`integer`)   Number of tokens present in tool-use prompt(s).
+  - **grounding_tool_count** (`array (GroundingToolCount)`)   Grounding tool count.
+    - **type** (`enum (string)`)     The grounding tool type associated with the count.
+      Possible values:
+      - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+      - `google_maps`: Grounding with Google Maps.
 
+    - **count** (`integer`)     The number of grounding tool counts.
+
+
+
+- **previous_interaction_id** (`string`) The ID of the previous interaction, if any.
+
+- **environment_id** (`string`) Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+- **service_tier** (`ServiceTier`) The service tier for the interaction.
+  Possible values:
+  - `flex`: Flex service tier.
+  - `standard`: Standard service tier.
+  - `priority`: Priority service tier.
 
 - **webhook_config** (`WebhookConfig`) Optional. Webhook configuration for receiving notifications when the interaction completes.
   - **uris** (`array (string)`)   Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
@@ -2548,48 +2479,56 @@ for Enterprise.
   - **user_metadata** (`object`)   Optional. The user metadata that will be returned on each event emission to the webhooks.
 
 
+- **safety_settings** (`array (SafetySetting)`) Safety settings for the interaction.
+  - **type** (`HarmCategory`) *(Required)*   Required. The type of harm category to be blocked.
+    Possible values:
+    - `hate_speech`: Content that promotes violence or incites hatred against individuals or
+groups based on certain attributes.
+    - `dangerous_content`: Content that promotes, facilitates, or enables dangerous activities.
+    - `harassment`: Abusive, threatening, or content intended to bully, torment, or ridicule.
+    - `sexually_explicit`: Content that contains sexually explicit material.
+    - `jailbreak`: Prompts designed to bypass safety filters.
 
-**JSON Representation:**
+  - **threshold** (`enum (string)`) *(Required)*   Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+    Possible values:
+    - `block_low_and_above`: Block content with a low harm probability or higher.
+    - `block_medium_and_above`: Block content with a medium harm probability or higher.
+    - `block_only_high`: Block content with a high harm probability.
+    - `off`: Turn off the safety filter entirely.
 
-```json
-{
-  "created": "2025-12-04T15:01:45Z",
-  "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-        }
-      ]
-    }
-  ],
-  "updated": "2025-12-04T15:01:45Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 7
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 7,
-    "total_output_tokens": 23,
-    "total_thought_tokens": 49,
-    "total_tokens": 79,
-    "total_tool_use_tokens": 0
-  }
-}
-```
+  - **method** (`enum (string)`)   Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+    Possible values:
+    - `severity`: The harm block method uses both probability and severity scores.
+    - `probability`: The harm block method uses the probability score.
+
+
+- **labels** (`object`) The labels with user-defined metadata for the request.  Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+- **errors** (`array (Error)`) Output only. Diagnostic faults / platform errors recorded on the interaction.
+  - **code** (`string`)   A URI that identifies the error type.
+
+  - **message** (`string`)   A human-readable error message.
+
+
+- **stream** (`boolean`) Input only. Whether the interaction will be streamed.
+
+- **store** (`boolean`) Input only. Whether to store the response and request for later retrieval.
+
+- **background** (`boolean`) Input only. Whether to run the model interaction in the background.
+
+- **agent** (`AgentOption`) The name of the `Agent` used for generating the interaction.
+  Possible values:
+  - `deep-research-pro-preview-12-2025`: Gemini Deep Research Agent
+  - `deep-research-preview-04-2026`: Gemini Deep Research Agent
+  - `deep-research-max-preview-04-2026`: Gemini Deep Research Max Agent
+  - `antigravity-preview-05-2026`: Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+
+- **agent_config** (`AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig`) Configuration parameters for the agent interaction.
+
+- **max_total_tokens** (`string`) Max total tokens for the agent run.
+
 
 **Examples**
-**Example**
-
 ```json
 {
   "created": "2025-12-04T15:01:45Z",
@@ -2634,9 +2573,15 @@ The content of the response.
 **Polymorphic Types:**
 - **AudioContent**
     - An audio content block.
+     - **type** (`object`) *(Required)*
+   Value: `audio`
+     - **data** (`string`)  The audio content.
+
+     - **uri** (`string`)  The URI of the audio.
+
      - **channels** (`integer`)  The number of audio channels.
 
-     - **data** (`string`)  The audio content.
+     - **sample_rate** (`integer`)  The sample rate of the audio.
 
      - **mime_type** (`enum (string)`)  The mime type of the audio.
    Possible values:
@@ -2652,13 +2597,7 @@ The content of the response.
    - `audio/opus`: OPUS audio format
    - `audio/alaw`: ALAW audio format
    - `audio/mulaw`: MULAW audio format
-   - `audio/webm`: WebM audio format
-
-     - **sample_rate** (`integer`)  The sample rate of the audio.
-
-     - **type** (`object`) *(Required)*
-   Value: `audio`
-     - **uri** (`string`)  The URI of the audio.
+   - `audio/webm`: WEBM audio format
 
     **Examples**
     **Audio**
@@ -2676,16 +2615,16 @@ The content of the response.
 
 - **DocumentContent**
     - A document content block.
+     - **type** (`object`) *(Required)*
+   Value: `document`
      - **data** (`string`)  The document content.
+
+     - **uri** (`string`)  The URI of the document.
 
      - **mime_type** (`enum (string)`)  The mime type of the document.
    Possible values:
    - `application/pdf`: PDF document format
    - `text/csv`: CSV document format
-
-     - **type** (`object`) *(Required)*
-   Value: `document`
-     - **uri** (`string`)  The URI of the document.
 
     **Examples**
     **Document**
@@ -2703,7 +2642,18 @@ The content of the response.
 
 - **ImageContent**
     - An image content block.
+     - **type** (`object`) *(Required)*
+   Value: `image`
      - **data** (`string`)  The image content.
+
+     - **uri** (`string`)  The URI of the image.
+
+     - **resolution** (`MediaResolution`)  The resolution of the media.
+   Possible values:
+   - `low`: Low resolution.
+   - `medium`: Medium resolution.
+   - `high`: High resolution.
+   - `ultra_high`: Ultra high resolution.
 
      - **mime_type** (`enum (string)`)  The mime type of the image.
    Possible values:
@@ -2715,17 +2665,6 @@ The content of the response.
    - `image/gif`: GIF image format
    - `image/bmp`: BMP image format
    - `image/tiff`: TIFF image format
-
-     - **resolution** (`MediaResolution`)  The resolution of the media.
-   Possible values:
-   - `low`: Low resolution.
-   - `medium`: Medium resolution.
-   - `high`: High resolution.
-   - `ultra_high`: Ultra high resolution.
-
-     - **type** (`object`) *(Required)*
-   Value: `image`
-     - **uri** (`string`)  The URI of the image.
 
     **Examples**
     **Image**
@@ -2743,72 +2682,80 @@ The content of the response.
 
 - **TextContent**
     - A text content block.
+     - **text** (`string`) *(Required)*  Required. The text content.
+
+     - **type** (`object`) *(Required)*
+   Value: `text`
      - **annotations** (`array (Annotation)`)  Citation information for model-generated content.
    **Possible Types:**
    - **FileCitation**: A file citation annotation.
-   - **custom_metadata** (`object`)    User provided metadata about the retrieved context.
-
+   - **type** (`object`) *(Required)*
+     Value: `file_citation`
    - **document_uri** (`string`)    The URI of the file.
-
-   - **end_index** (`integer`)    End of the attributed segment, exclusive.
 
    - **file_name** (`string`)    The name of the file.
 
-   - **media_id** (`string`)    Media ID in-case of image citations, if applicable.
+   - **source** (`string`)    Source attributed for a portion of the text.
+
+   - **custom_metadata** (`object`)    User provided metadata about the retrieved context.
 
    - **page_number** (`integer`)    Page number of the cited document, if applicable.
 
-   - **source** (`string`)    Source attributed for a portion of the text.
+   - **media_id** (`string`)    Media ID in-case of image citations, if applicable.
 
    - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-   - **type** (`object`) *(Required)*
-     Value: `file_citation`
-   - **PlaceCitation**: A place citation annotation.
    - **end_index** (`integer`)    End of the attributed segment, exclusive.
+
+   - **PlaceCitation**: A place citation annotation.
+   - **type** (`object`) *(Required)*
+     Value: `place_citation`
+   - **place_id** (`string`)    The ID of the place, in `places/{place_id}` format.
 
    - **name** (`string`)    Title of the place.
 
-   - **place_id** (`string`)    The ID of the place, in `places/{place_id}` format.
+   - **url** (`string`)    URI reference of the place.
 
    - **review_snippets** (`array (ReviewSnippet)`)    Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-     - **review_id** (`string`)      The ID of the review snippet.
-
      - **title** (`string`)      Title of the review.
 
      - **url** (`string`)      A link that corresponds to the user review on Google Maps.
 
+     - **review_id** (`string`)      The ID of the review snippet.
+
 
    - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-   - **type** (`object`) *(Required)*
-     Value: `place_citation`
-   - **url** (`string`)    URI reference of the place.
-
-   - **SpeechAnnotation**: Speech annotation for text content.
    - **end_index** (`integer`)    End of the attributed segment, exclusive.
 
+   - **SpeechAnnotation**: Speech annotation for text content.
+   - **type** (`object`) *(Required)*
+     Value: `speech_metadata`
    - **speaker** (`string`)    The speaker to associate with this turn.
-
-   - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
    - **style** (`string`)    Style instruction for the speech synthesis.
 
-   - **type** (`object`) *(Required)*
-     Value: `speech_metadata`
-   - **UrlCitation**: A URL citation annotation.
-   - **end_index** (`integer`)    End of the attributed segment, exclusive.
-
    - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-   - **title** (`string`)    The title of the URL.
+   - **end_index** (`integer`)    End of the attributed segment, exclusive.
 
+   - **UrlCitation**: A URL citation annotation.
    - **type** (`object`) *(Required)*
      Value: `url_citation`
    - **url** (`string`)    The URL.
 
-   - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+   - **title** (`string`)    The title of the URL.
+
+   - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
+
    - **end_index** (`integer`)    End of the attributed segment, exclusive.
+
+   - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+   - **type** (`object`) *(Required)*
+     Value: `word_info`
+   - **text** (`string`)    The transcribed word.
+
+   - **start_offset** (`string`)    Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
    - **end_offset** (`string`)    End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
@@ -2816,17 +2763,9 @@ The content of the response.
 
    - **start_index** (`integer`)    Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-   - **start_offset** (`string`)    Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+   - **end_index** (`integer`)    End of the attributed segment, exclusive.
 
-   - **text** (`string`)    The transcribed word.
 
-   - **type** (`object`) *(Required)*
-     Value: `word_info`
-
-     - **text** (`string`) *(Required)*  Required. The text content.
-
-     - **type** (`object`) *(Required)*
-   Value: `text`
     **Examples**
     **Text**
 
@@ -2842,7 +2781,33 @@ The content of the response.
 
 - **VideoContent**
     - A video content block.
+     - **type** (`object`) *(Required)*
+   Value: `video`
      - **data** (`string`)  The video content.
+
+     - **uri** (`string`)  The URI of the video.
+
+     - **processing** (`MediaProcessing or enum (string)`)  How the model processes this video for understanding.
+       Can be a string (`"static"` | `"agentic"`) or a `StaticMediaProcessing` object:
+       - `agentic`: Model-driven dynamic navigation.
+       - `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields:
+         - **type** (`string`) *(Required)*
+           Value: `static`
+         - **start_offset** (`string`)  Optional. Segment start time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "10.5s". Must be non-negative.
+
+         - **end_offset** (`string`)  Optional. Segment end time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "30s". Must be non-negative and greater than `start_offset` if `start_offset` is set.
+
+         - **fps** (`number`)  Optional. Video frame-rate sampling density.
+
+
+     - **resolution** (`MediaResolution`)  The resolution of the media.
+   Possible values:
+   - `low`: Low resolution.
+   - `medium`: Medium resolution.
+   - `high`: High resolution.
+   - `ultra_high`: Ultra high resolution.
+
+     - **name** (`string`)  A user-defined name for this content block. Can be referenced by the model in the final response.
 
      - **mime_type** (`enum (string)`)  The mime type of the video.
    Possible values:
@@ -2855,32 +2820,6 @@ The content of the response.
    - `video/webm`: WebM video format
    - `video/wmv`: WMV video format
    - `video/3gpp`: 3GPP video format
-
-     - **name** (`string`)  A user-defined name for this content block. Can be referenced by the model in the final response.
-
-     - **processing** (`MediaProcessing or enum (string)`)  How the model processes this video for understanding.
-       Can be a string (`"static"` | `"agentic"`) or a `StaticMediaProcessing` object:
-       - `agentic`: Model-driven dynamic navigation.
-       - `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields:
-         - **end_offset** (`string`)  Optional. Segment end time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "30s". Must be non-negative and greater than `start_offset` if `start_offset` is set.
-
-         - **fps** (`number`)  Optional. Video frame-rate sampling density.
-
-         - **start_offset** (`string`)  Optional. Segment start time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "10.5s". Must be non-negative.
-
-         - **type** (`string`) *(Required)*
-           Value: `static`
-
-     - **resolution** (`MediaResolution`)  The resolution of the media.
-   Possible values:
-   - `low`: Low resolution.
-   - `medium`: Medium resolution.
-   - `high`: High resolution.
-   - `ultra_high`: Ultra high resolution.
-
-     - **type** (`object`) *(Required)*
-   Value: `video`
-     - **uri** (`string`)  The URI of the video.
 
     **Examples**
     **Video**
@@ -2895,16 +2834,6 @@ The content of the response.
 ```
 
 
-**JSON Representation:**
-
-```json
-{
-  "type": "audio",
-  "data": "BASE64_ENCODED_AUDIO",
-  "mime_type": "audio/wav"
-}
-```
-
 
 ### Tool { #Resource:Tool }
 A tool that can be used by the model.
@@ -2917,12 +2846,12 @@ A tool that can be used by the model.
     **Examples**
     **code_execution**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "code_execution"
     }],
@@ -2933,12 +2862,12 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **code_execution**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{"type": "code_execution"}],
     input="Calculate the first 10 Fibonacci numbers",
 )
@@ -2948,12 +2877,12 @@ print(response.output_text)
 
     **code_execution**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [{type: 'code_execution'}],
   input: 'Calculate the first 10 Fibonacci numbers',
 });
@@ -2963,7 +2892,7 @@ console.log(interaction.output_text);
 
     **code_execution**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.interactions.CodeExecution;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
@@ -2975,7 +2904,7 @@ import com.google.genai.gaos.models.interactions.InteractionsInput;
 Client client = new Client();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(new CodeExecution()))
         .input(InteractionsInput.of("Calculate the first 10 Fibonacci numbers"))
         .build();
@@ -2989,7 +2918,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **code_execution**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3011,7 +2940,7 @@ func main() {
     tool := gaos_interactions.NewTool(gaos_interactions.CodeExecution{})
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Calculate the first 10 Fibonacci numbers")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3035,6 +2964,18 @@ func main() {
 
 - **ComputerUse**
     - A tool that can be used by the model to interact with the computer.
+     - **type** (`object`) *(Required)*
+   Value: `computer_use`
+     - **environment** (`enum (string)`)  The environment being operated.
+   Possible values:
+   - `browser`: Operates in a web browser.
+   - `mobile`: Operates in a mobile environment.
+   - `desktop`: Operates in a desktop environment.
+
+     - **excluded_predefined_functions** (`array (string)`)  The list of predefined functions that are excluded from the model call.
+
+     - **enable_prompt_injection_detection** (`boolean`)  Whether enable the prompt injection detection check on computer-use request.
+
      - **disabled_safety_policies** (`array (enum (string))`)  Optional. Disabled safety policies for computer use.
    Possible values:
    - `financial_transactions`: Safety policy for financial transactions.
@@ -3045,22 +2986,10 @@ func main() {
    - `user_consent_management`: Safety policy for user consent management.
    - `legal_terms_and_agreements`: Safety policy for legal terms and agreements.
 
-     - **enable_prompt_injection_detection** (`boolean`)  Whether enable the prompt injection detection check on computer-use request.
-
-     - **environment** (`enum (string)`)  The environment being operated.
-   Possible values:
-   - `browser`: Operates in a web browser.
-   - `mobile`: Operates in a mobile environment.
-   - `desktop`: Operates in a desktop environment.
-
-     - **excluded_predefined_functions** (`array (string)`)  The list of predefined functions that are excluded from the model call.
-
-     - **type** (`object`) *(Required)*
-   Value: `computer_use`
     **Examples**
     **computer_use**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -3076,7 +3005,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **computer_use**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
@@ -3091,7 +3020,7 @@ print(response.output_text)
 
     **computer_use**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
@@ -3106,7 +3035,7 @@ console.log(interaction.output_text);
 
     **computer_use**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.interactions.ComputerUse;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
@@ -3132,7 +3061,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **computer_use**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3178,23 +3107,23 @@ func main() {
 
 - **FileSearch**
     - A tool that can be used by the model to search files.
+     - **type** (`object`) *(Required)*
+   Value: `file_search`
      - **file_search_store_names** (`array (string)`)  The file search store names to search.
-
-     - **metadata_filter** (`string`)  Metadata filter to apply to the semantic retrieval documents and chunks.
 
      - **top_k** (`integer`)  The number of semantic retrieval chunks to retrieve.
 
-     - **type** (`object`) *(Required)*
-   Value: `file_search`
+     - **metadata_filter** (`string`)  Metadata filter to apply to the semantic retrieval documents and chunks.
+
     **Examples**
     **file_search**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "file_search",
       "file_search_store_names": ["fileSearchStores/m64d1sevsr4y-xfyawui3fxqg"]
@@ -3206,7 +3135,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **file_search**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
@@ -3215,7 +3144,7 @@ client = genai.Client()
 store = client.file_search_stores.create()
 
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[
         {"type": "file_search", "file_search_store_names": [store.name]}
     ],
@@ -3227,7 +3156,7 @@ print(response.output_text)
 
     **file_search**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
@@ -3239,7 +3168,7 @@ if (!store.name) {
 }
 
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [
     {
       type: 'file_search',
@@ -3254,7 +3183,7 @@ console.log(interaction.output_text);
 
     **file_search**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.types.CreateFileSearchStoreConfig;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
@@ -3275,7 +3204,7 @@ String storeName = store.name().orElseThrow();
 FileSearch tool = FileSearch.builder().fileSearchStoreNames(List.of(storeName)).build();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(tool))
         .input(InteractionsInput.of("What documents are available?"))
         .build();
@@ -3289,7 +3218,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **file_search**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3314,7 +3243,7 @@ func main() {
     })
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What documents are available?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3338,23 +3267,23 @@ func main() {
 
 - **Function**
     - A tool that can be used by the model.
-     - **description** (`string`)  A description of the function.
-
-     - **name** (`string`)  The name of the function.
-
-     - **parameters** (`object`)  The JSON Schema for the function's parameters.
-
      - **type** (`object`) *(Required)*
    Value: `function`
+     - **name** (`string`)  The name of the function.
+
+     - **description** (`string`)  A description of the function.
+
+     - **parameters** (`object`)  The JSON Schema for the function's parameters.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
     **Examples**
     **function_calling**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "function",
       "name": "get_weather",
@@ -3377,12 +3306,12 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **function_calling**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{
         "type": "function",
         "name": "get_weather",
@@ -3408,12 +3337,12 @@ print(response.steps[-1])
 
     **function_calling**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [
     {
       type: 'function',
@@ -3439,7 +3368,7 @@ console.log(interaction.steps.at(-1));
 
     **function_calling**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
@@ -3468,7 +3397,7 @@ Function functionTool =
         .build();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(functionTool))
         .input(InteractionsInput.of("What is the weather like in Boston?"))
         .build();
@@ -3485,7 +3414,7 @@ if (!steps.isEmpty()) {
 
     **function_calling**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3522,7 +3451,7 @@ func main() {
     tool := gaos_interactions.NewTool(function)
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3551,23 +3480,23 @@ func main() {
 
 - **GoogleMaps**
     - A tool that can be used by the model to call Google Maps.
+     - **type** (`object`) *(Required)*
+   Value: `google_maps`
      - **enable_widget** (`boolean`)  Whether to return a widget context token in the tool call result of the response.
 
      - **latitude** (`number`)  The latitude of the user's location.
 
      - **longitude** (`number`)  The longitude of the user's location.
 
-     - **type** (`object`) *(Required)*
-   Value: `google_maps`
     **Examples**
     **google_maps**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "google_maps",
       "latitude": 37.7749,
@@ -3580,12 +3509,12 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **google_maps**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[
         {"type": "google_maps", "latitude": 37.7749, "longitude": -122.4194}
     ],
@@ -3597,12 +3526,12 @@ print(response.output_text)
 
     **google_maps**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [
     {
       type: 'google_maps',
@@ -3618,7 +3547,7 @@ console.log(interaction.output_text);
 
     **google_maps**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
@@ -3631,7 +3560,7 @@ Client client = new Client();
 GoogleMaps tool = GoogleMaps.builder().latitude(37.7749).longitude(-122.4194).build();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(tool))
         .input(InteractionsInput.of("What is the best food near me?"))
         .build();
@@ -3645,7 +3574,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **google_maps**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3670,7 +3599,7 @@ func main() {
     })
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the best food near me?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3694,23 +3623,22 @@ func main() {
 
 - **GoogleSearch**
     - A tool that can be used by the model to search Google.
+     - **type** (`object`) *(Required)*
+   Value: `google_search`
      - **search_types** (`array (enum (string))`)  The types of search grounding to enable.
    Possible values:
    - `web_search`: Setting this field enables web search. Only text results are returned.
    - `image_search`: Setting this field enables image search. Image bytes are returned.
-   - `enterprise_web_search`: Setting this field enables enterprise web search.
 
-     - **type** (`object`) *(Required)*
-   Value: `google_search`
     **Examples**
     **google_search**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "google_search"
     }],
@@ -3721,12 +3649,12 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **google_search**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{"type": "google_search"}],
     input="Who is the current president of France?",
 )
@@ -3736,12 +3664,12 @@ print(response.output_text)
 
     **google_search**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [{type: 'google_search'}],
   input: 'Who is the current president of France?',
 });
@@ -3751,7 +3679,7 @@ console.log(interaction.output_text);
 
     **google_search**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
@@ -3763,7 +3691,7 @@ import com.google.genai.gaos.models.interactions.InteractionsInput;
 Client client = new Client();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(new GoogleSearch()))
         .input(InteractionsInput.of("Who is the current president of France?"))
         .build();
@@ -3777,7 +3705,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **google_search**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3799,7 +3727,7 @@ func main() {
     tool := gaos_interactions.NewTool(gaos_interactions.GoogleSearch{})
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Who is the current president of France?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3823,6 +3751,14 @@ func main() {
 
 - **McpServer**
     - A MCPServer is a server that can be called by the model to perform actions.
+     - **type** (`object`) *(Required)*
+   Value: `mcp_server`
+     - **url** (`string`)  The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+     - **name** (`string`)  The name of the MCPServer.
+
+     - **headers** (`object`)  Optional: Fields for authentication headers, timeouts, etc., if needed.
+
      - **allowed_tools** (`array (AllowedTools)`)  The allowed tools.
    - **mode** (`enum (string)`)    The mode of the tool choice.
      Possible values:
@@ -3834,23 +3770,15 @@ func main() {
    - **tools** (`array (string)`)    The names of the allowed tools.
 
 
-     - **headers** (`object`)  Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-     - **name** (`string`)  The name of the MCPServer.
-
-     - **type** (`object`) *(Required)*
-   Value: `mcp_server`
-     - **url** (`string`)  The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-
     **Examples**
     **mcp_server**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "mcp_server",
       "name": "weather_service",
@@ -3863,14 +3791,14 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **mcp_server**
 
-```{ { sample.lang }}
+```python
 import os
 
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{
         "type": "mcp_server",
         "name": "weather_service",
@@ -3884,12 +3812,12 @@ print(response.output_text)
 
     **mcp_server**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [
     {
       type: 'mcp_server',
@@ -3905,7 +3833,7 @@ console.log(interaction.output_text);
 
     **mcp_server**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
@@ -3922,7 +3850,7 @@ MCPServer mcpTool =
         .build();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(mcpTool))
         .input(
             InteractionsInput.of(
@@ -3938,7 +3866,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **mcp_server**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -3965,7 +3893,7 @@ func main() {
     tool := gaos_interactions.NewTool(mcpServer)
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Today is 12-05-2025, what is the temperature today in London?")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -3987,63 +3915,6 @@ func main() {
 ```
 
 
-- **Retrieval**
-    - A tool that can be used by the model to retrieve files.
-     - **exa_ai_search_config** (`ExaAISearchConfig`)  Used to specify configuration for ExaAISearch.
-   - **api_key** (`string`) *(Required)*    Required. The API key for ExaAiSearch.
-
-   - **custom_config** (`object`)    Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-
-
-     - **parallel_ai_search_config** (`ParallelAISearchConfig`)  Used to specify configuration for ParallelAISearch.
-   - **api_key** (`string`)    Optional. The API key for ParallelAiSearch.
-
-   - **custom_config** (`object`)    Optional. Custom configs for ParallelAiSearch.
-
-
-     - **rag_store_config** (`RagStoreConfig`)  Used to specify configuration for RagStore.
-   - **rag_resources** (`array (RagResource)`)    Optional. The representation of the rag source.
-     - **rag_corpus** (`string`)      Optional. RagCorpora resource name.
-
-     - **rag_file_ids** (`array (string)`)      Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-
-
-   - **rag_retrieval_config** (`RagRetrievalConfig`)    Optional. The retrieval config for the Rag query.
-     - **filter** (`Filter`)      Optional. Config for filters.
-       - **metadata_filter** (`string`)        Optional. String for metadata filtering.
-
-       - **vector_distance_threshold** (`number`)        Optional. Only returns contexts with vector distance smaller than the threshold.
-
-       - **vector_similarity_threshold** (`number`)        Optional. Only returns contexts with vector similarity larger than the threshold.
-
-
-     - **hybrid_search** (`HybridSearch`)      Optional. Config for Hybrid Search.
-       - **alpha** (`number`)        Optional. Alpha value controls the weight between dense and sparse vector search results.
-
-
-     - **ranking** (`Ranking`)      Optional. Config for ranking and reranking.
-       - **model_name** (`string`)        Optional. The model name of the rank service.
-
-       - **rank_service** (`RankService`)        Config for Rank Service.
-         - **model_name** (`string`)          Optional. The model name of the rank service.
-
-
-       - **ranking_config** (`object`) *(Required)*
-         Value: `rank_service`
-
-     - **top_k** (`integer`)      Optional. The number of contexts to retrieve.
-
-
-
-     - **retrieval_types** (`array (enum (string))`)  The types of file retrieval to enable.
-   Possible values:
-   - `rag_store`
-   - `exa_ai_search`
-   - `parallel_ai_search`
-
-     - **type** (`object`) *(Required)*
-   Value: `retrieval`
-
 - **UrlContext**
     - A tool that can be used by the model to fetch URL context.
      - **type** (`object`) *(Required)*
@@ -4051,12 +3922,12 @@ func main() {
     **Examples**
     **url_context**
 
-```{ { sample.lang }}
+```sh
 curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-3.6-flash",
+    "model": "gemini-flash-latest",
     "tools": [{
       "type": "url_context"
     }],
@@ -4067,12 +3938,12 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
 
     **url_context**
 
-```{ { sample.lang }}
+```python
 from google import genai
 
 client = genai.Client()
 response = client.interactions.create(
-    model="gemini-3.6-flash",
+    model="gemini-flash-latest",
     tools=[{"type": "url_context"}],
     input="Summarize https://www.example.com",
 )
@@ -4082,12 +3953,12 @@ print(response.output_text)
 
     **url_context**
 
-```{ { sample.lang }}
+```javascript
 import {GoogleGenAI} from '@google/genai';
 
 const ai = new GoogleGenAI({});
 const interaction = await ai.interactions.create({
-  model: 'gemini-3.6-flash',
+  model: 'gemini-flash-latest',
   tools: [{type: 'url_context'}],
   input: 'Summarize https://www.example.com',
 });
@@ -4097,7 +3968,7 @@ console.log(interaction.output_text);
 
     **url_context**
 
-```{ { sample.lang }}
+```java
 import com.google.genai.Client;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
@@ -4109,7 +3980,7 @@ import com.google.genai.gaos.models.interactions.URLContext;
 Client client = new Client();
 CreateModelInteraction params =
     CreateModelInteraction.builder()
-        .model("gemini-3.6-flash")
+        .model("gemini-flash-latest")
         .tools(List.of(new URLContext()))
         .input(InteractionsInput.of("Summarize https://www.example.com"))
         .build();
@@ -4123,7 +3994,7 @@ System.out.println(interaction.outputText().orElse(""));
 
     **url_context**
 
-```{ { sample.lang }}
+```go
 package main
 
 import (
@@ -4145,7 +4016,7 @@ func main() {
     tool := gaos_interactions.NewTool(gaos_interactions.URLContext{})
 
     body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-        Model: gaos_interactions.Model("gemini-3.6-flash"),
+        Model: gaos_interactions.Model("gemini-flash-latest"),
         Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Summarize https://www.example.com")),
         Tools: []gaos_interactions.Tool{tool},
     })
@@ -4167,21 +4038,15 @@ func main() {
 ```
 
 
-**JSON Representation:**
 
-```json
-{
-  "type": {}
-}
-```
-
-
-### InteractionSseStreamEvent { #Resource:InteractionSseStreamEvent }
+### InteractionSseEvent { #Resource:InteractionSseEvent }
 
 
 **Polymorphic Types:**
 - **ErrorEvent**
     -
+     - **event_type** (`object`) *(Required)*
+   Value: `error`
      - **error** (`Error`)
    - **code** (`string`)    A URI that identifies the error type.
 
@@ -4190,8 +4055,6 @@ func main() {
 
      - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
-     - **event_type** (`object`) *(Required)*
-   Value: `error`
     **Examples**
     **Error Event**
 
@@ -4212,29 +4075,8 @@ func main() {
     - Signals that the Interaction completed. Sent when the Interaction receives
 Complete/Cancel or naturally terminates. No more input can be sent to the
 Interaction after this.
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
-
-     - **event_type** (`object`) *(Required)*
-   Value: `interaction.completed`
      - **interaction** (`InteractionSseEventInteraction`) *(Required)*  Required. Partial completed interaction resource emitted at the end of the stream.
-   - **agent** (`string`)    The agent to interact with.
-
-   - **continuation_token** (`string`)    Output only. Opaque token to resume a long decode when status is incomplete.
-
-   - **created** (`string`)    Output only. The time at which the response was created in ISO 8601 format.
-
    - **id** (`string`) *(Required)*    Required. Output only. A unique identifier for the interaction completion.
-
-   - **model** (`string`)    The model that will complete your prompt.
-
-   - **object** (`string`)    Output only. The resource type.
-
-   - **service_tier** (`ServiceTier`)    The service tier for the interaction.
-     Possible values:
-     - `flex`: Flex service tier.
-     - `standard`: Standard service tier.
-     - `priority`: Priority service tier.
-     - `deferred`: Deferred service tier.
 
    - **status** (`enum (string)`) *(Required)*    Required. Output only. The status of the interaction.
      Possible values:
@@ -4245,33 +4087,14 @@ Interaction after this.
      - `cancelled`: The interaction was cancelled.
      - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
-   - **steps** (`array (<a href="#Resource:Step">Step</a>)`)    Output only. The steps that make up the interaction, if included in this event.
+   - **model** (`string`)    The model that will complete your prompt.
+
+   - **created** (`string`)    Output only. The time at which the response was created in ISO 8601 format.
 
    - **updated** (`string`)    Output only. The time at which the response was last updated in ISO 8601 format.
 
    - **usage** (`Usage`)    Output only. Statistics on the interaction request's token usage.
-     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
-       - **modality** (`ResponseModality`)        The modality associated with the token count.
-         Possible values:
-         - `text`: Indicates the model should return text.
-         - `image`: Indicates the model should return images.
-         - `audio`: Indicates the model should return audio.
-         - `video`: Indicates the model should return video.
-         - `document`: Indicates the model should return documents.
-
-       - **tokens** (`integer`)        Number of tokens for the modality.
-
-
-     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
-       - **count** (`integer`)        The number of grounding tool counts.
-
-       - **type** (`enum (string)`)        The grounding tool type associated with the count.
-         Possible values:
-         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-         - `google_maps`: Grounding with Google Maps.
-         - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
 
      - **input_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of input token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -4285,6 +4108,22 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
+     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
+
+     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
+       - **modality** (`ResponseModality`)        The modality associated with the token count.
+         Possible values:
+         - `text`: Indicates the model should return text.
+         - `image`: Indicates the model should return images.
+         - `audio`: Indicates the model should return audio.
+         - `video`: Indicates the model should return video.
+         - `document`: Indicates the model should return documents.
+
+       - **tokens** (`integer`)        Number of tokens for the modality.
+
+
+     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
+
      - **output_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of output token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
          Possible values:
@@ -4296,6 +4135,8 @@ for Enterprise.
 
        - **tokens** (`integer`)        Number of tokens for the modality.
 
+
+     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
 
      - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of tool-use token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -4309,19 +4150,39 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
-     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
-
-     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
-
-     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
-
      - **total_thought_tokens** (`integer`)      Number of tokens of thoughts for thinking models.
 
      - **total_tokens** (`integer`)      Total token count for the interaction request (prompt + responses + other internal tokens).
 
-     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
+     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
+       - **type** (`enum (string)`)        The grounding tool type associated with the count.
+         Possible values:
+         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+         - `google_maps`: Grounding with Google Maps.
+
+       - **count** (`integer`)        The number of grounding tool counts.
 
 
+
+   - **service_tier** (`ServiceTier`)    The service tier for the interaction.
+     Possible values:
+     - `flex`: Flex service tier.
+     - `standard`: Standard service tier.
+     - `priority`: Priority service tier.
+
+   - **steps** (`array (<a href="#Resource:Step">Step</a>)`)    Output only. The steps that make up the interaction, if included in this event.
+
+   - **agent** (`string`)    The agent to interact with.
+
+   - **continuation_token** (`string`)    Opaque token to resume a long decode. Output: set when status is INCOMPLETE and decoding can be resumed. Input: pass the latest token back unchanged in CreateInteraction to continue decoding.
+
+   - **object** (`string`)    Output only. The resource type.
+
+
+     - **event_type** (`object`) *(Required)*
+   Value: `interaction.completed`
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
     **Examples**
     **Interaction Completed**
@@ -4342,32 +4203,30 @@ for Enterprise.
 }
 ```
 
+    **Interaction Completed**
+
+
+
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.completed",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z"
+  }
+}
+```
+
 
 - **InteractionCreatedEvent**
     - Server response confirming that a new interaction was created.
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
-
-     - **event_type** (`object`) *(Required)*
-   Value: `interaction.created`
      - **interaction** (`InteractionSseEventInteraction`) *(Required)*  Required. Partial interaction resource emitted when the stream is created.
-   - **agent** (`string`)    The agent to interact with.
-
-   - **continuation_token** (`string`)    Output only. Opaque token to resume a long decode when status is incomplete.
-
-   - **created** (`string`)    Output only. The time at which the response was created in ISO 8601 format.
-
    - **id** (`string`) *(Required)*    Required. Output only. A unique identifier for the interaction completion.
-
-   - **model** (`string`)    The model that will complete your prompt.
-
-   - **object** (`string`)    Output only. The resource type.
-
-   - **service_tier** (`ServiceTier`)    The service tier for the interaction.
-     Possible values:
-     - `flex`: Flex service tier.
-     - `standard`: Standard service tier.
-     - `priority`: Priority service tier.
-     - `deferred`: Deferred service tier.
 
    - **status** (`enum (string)`) *(Required)*    Required. Output only. The status of the interaction.
      Possible values:
@@ -4378,33 +4237,14 @@ for Enterprise.
      - `cancelled`: The interaction was cancelled.
      - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
 
-   - **steps** (`array (<a href="#Resource:Step">Step</a>)`)    Output only. The steps that make up the interaction, if included in this event.
+   - **model** (`string`)    The model that will complete your prompt.
+
+   - **created** (`string`)    Output only. The time at which the response was created in ISO 8601 format.
 
    - **updated** (`string`)    Output only. The time at which the response was last updated in ISO 8601 format.
 
    - **usage** (`Usage`)    Output only. Statistics on the interaction request's token usage.
-     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
-       - **modality** (`ResponseModality`)        The modality associated with the token count.
-         Possible values:
-         - `text`: Indicates the model should return text.
-         - `image`: Indicates the model should return images.
-         - `audio`: Indicates the model should return audio.
-         - `video`: Indicates the model should return video.
-         - `document`: Indicates the model should return documents.
-
-       - **tokens** (`integer`)        Number of tokens for the modality.
-
-
-     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
-       - **count** (`integer`)        The number of grounding tool counts.
-
-       - **type** (`enum (string)`)        The grounding tool type associated with the count.
-         Possible values:
-         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-         - `google_maps`: Grounding with Google Maps.
-         - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
 
      - **input_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of input token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -4418,6 +4258,22 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
+     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
+
+     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
+       - **modality** (`ResponseModality`)        The modality associated with the token count.
+         Possible values:
+         - `text`: Indicates the model should return text.
+         - `image`: Indicates the model should return images.
+         - `audio`: Indicates the model should return audio.
+         - `video`: Indicates the model should return video.
+         - `document`: Indicates the model should return documents.
+
+       - **tokens** (`integer`)        Number of tokens for the modality.
+
+
+     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
+
      - **output_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of output token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
          Possible values:
@@ -4429,6 +4285,8 @@ for Enterprise.
 
        - **tokens** (`integer`)        Number of tokens for the modality.
 
+
+     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
 
      - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of tool-use token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -4442,19 +4300,39 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
-     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
-
-     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
-
-     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
-
      - **total_thought_tokens** (`integer`)      Number of tokens of thoughts for thinking models.
 
      - **total_tokens** (`integer`)      Total token count for the interaction request (prompt + responses + other internal tokens).
 
-     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
+     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
+       - **type** (`enum (string)`)        The grounding tool type associated with the count.
+         Possible values:
+         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+         - `google_maps`: Grounding with Google Maps.
+
+       - **count** (`integer`)        The number of grounding tool counts.
 
 
+
+   - **service_tier** (`ServiceTier`)    The service tier for the interaction.
+     Possible values:
+     - `flex`: Flex service tier.
+     - `standard`: Standard service tier.
+     - `priority`: Priority service tier.
+
+   - **steps** (`array (<a href="#Resource:Step">Step</a>)`)    Output only. The steps that make up the interaction, if included in this event.
+
+   - **agent** (`string`)    The agent to interact with.
+
+   - **continuation_token** (`string`)    Opaque token to resume a long decode. Output: set when status is INCOMPLETE and decoding can be resumed. Input: pass the latest token back unchanged in CreateInteraction to continue decoding.
+
+   - **object** (`string`)    Output only. The resource type.
+
+
+     - **event_type** (`object`) *(Required)*
+   Value: `interaction.created`
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
     **Examples**
     **Interaction Created**
@@ -4475,15 +4353,26 @@ for Enterprise.
 }
 ```
 
+    **Interaction Created**
+
+
+
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.created",
+  "interaction": {
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
+    "status": "in_progress"
+  }
+}
+```
+
 
 - **InteractionStatusUpdate**
     -
-     - **continuation_token** (`string`)  An optional opaque continuation token used to resume decoding from the latest checkpoint after a disconnected stream.
-
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
-
-     - **event_type** (`object`) *(Required)*
-   Value: `interaction.status_update`
      - **interaction_id** (`string`) *(Required)*
 
      - **status** (`enum (string)`) *(Required)*
@@ -4495,32 +4384,13 @@ for Enterprise.
    - `cancelled`: The interaction was cancelled.
    - `incomplete`: The interaction is completed, but contains incomplete results (e.g.
 hitting max_tokens).
-   - `queued`: The interaction is queued, waiting for processing (e.g. waiting for
-off-peak capacity).
+
+     - **event_type** (`object`) *(Required)*
+   Value: `interaction.status_update`
+     - **continuation_token** (`string`)  An optional opaque continuation token used to resume decoding from the latest checkpoint after a disconnected stream.
 
      - **usage** (`Usage`)  Model usage statistics up to this checkpoint.
-   - **cached_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of cached token usage by modality.
-     - **modality** (`ResponseModality`)      The modality associated with the token count.
-       Possible values:
-       - `text`: Indicates the model should return text.
-       - `image`: Indicates the model should return images.
-       - `audio`: Indicates the model should return audio.
-       - `video`: Indicates the model should return video.
-       - `document`: Indicates the model should return documents.
-
-     - **tokens** (`integer`)      Number of tokens for the modality.
-
-
-   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
-     - **count** (`integer`)      The number of grounding tool counts.
-
-     - **type** (`enum (string)`)      The grounding tool type associated with the count.
-       Possible values:
-       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-       - `google_maps`: Grounding with Google Maps.
-       - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
 
    - **input_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of input token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
@@ -4534,6 +4404,22 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
+   - **total_cached_tokens** (`integer`)    Number of tokens in the cached part of the prompt (the cached content).
+
+   - **cached_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of cached token usage by modality.
+     - **modality** (`ResponseModality`)      The modality associated with the token count.
+       Possible values:
+       - `text`: Indicates the model should return text.
+       - `image`: Indicates the model should return images.
+       - `audio`: Indicates the model should return audio.
+       - `video`: Indicates the model should return video.
+       - `document`: Indicates the model should return documents.
+
+     - **tokens** (`integer`)      Number of tokens for the modality.
+
+
+   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
+
    - **output_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of output token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
        Possible values:
@@ -4545,6 +4431,8 @@ for Enterprise.
 
      - **tokens** (`integer`)      Number of tokens for the modality.
 
+
+   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
 
    - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of tool-use token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
@@ -4558,18 +4446,22 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
-   - **total_cached_tokens** (`integer`)    Number of tokens in the cached part of the prompt (the cached content).
-
-   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
-
-   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
-
    - **total_thought_tokens** (`integer`)    Number of tokens of thoughts for thinking models.
 
    - **total_tokens** (`integer`)    Total token count for the interaction request (prompt + responses + other internal tokens).
 
-   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
+   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
+     - **type** (`enum (string)`)      The grounding tool type associated with the count.
+       Possible values:
+       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+       - `google_maps`: Grounding with Google Maps.
 
+     - **count** (`integer`)      The number of grounding tool counts.
+
+
+
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
     **Examples**
     **Interaction Status Update**
@@ -4587,17 +4479,21 @@ for Enterprise.
 
 - **StepDelta**
     -
+     - **index** (`integer`) *(Required)*
+
      - **delta** (`StepDeltaData`) *(Required)*
    **Possible Types:**
    - **ArgumentsDelta**:
-   - **arguments** (`string`)
-
    - **type** (`object`) *(Required)*
      Value: `arguments_delta`
-   - **AudioDelta**:
-   - **channels** (`integer`)    The number of audio channels.
+   - **arguments** (`string`)
 
+   - **AudioDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `audio`
    - **data** (`string`)
+
+   - **uri** (`string`)
 
    - **mime_type** (`enum (string)`)
      Possible values:
@@ -4617,90 +4513,91 @@ for Enterprise.
 
    - **sample_rate** (`integer`)    The sample rate of the audio.
 
-   - **type** (`object`) *(Required)*
-     Value: `audio`
-   - **uri** (`string`)
+   - **channels** (`integer`)    The number of audio channels.
 
    - **CodeExecutionCallDelta**:
    - **arguments** (`CodeExecutionCallArguments`) *(Required)*
-     - **code** (`string`)      The code to be executed.
-
      - **language** (`enum (string)`)      Programming language of the `code`.
        Possible values:
        - `python`: Python >= 3.10, with numpy and simpy available.
+       - `bash`: Bash. Only available for Gemini 3.0 model or above.
 
+     - **code** (`string`)      The code to be executed.
 
-   - **signature** (`string`)    A signature hash for backend validation.
 
    - **type** (`object`) *(Required)*
      Value: `code_execution_call`
-   - **CodeExecutionResultDelta**:
-   - **is_error** (`boolean`)
-
-   - **result** (`string`) *(Required)*
-
    - **signature** (`string`)    A signature hash for backend validation.
+
+   - **CodeExecutionResultDelta**:
+   - **result** (`string`) *(Required)*
 
    - **type** (`object`) *(Required)*
      Value: `code_execution_result`
+   - **is_error** (`boolean`)
+
+   - **signature** (`string`)    A signature hash for backend validation.
+
    - **DocumentDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `document`
    - **data** (`string`)
+
+   - **uri** (`string`)
 
    - **mime_type** (`enum (string)`)
      Possible values:
      - `application/pdf`: PDF document format
      - `text/csv`: CSV document format
 
-   - **type** (`object`) *(Required)*
-     Value: `document`
-   - **uri** (`string`)
-
    - **FileSearchCallDelta**:
-   - **signature** (`string`)    A signature hash for backend validation.
-
    - **type** (`object`) *(Required)*
      Value: `file_search_call`
+   - **signature** (`string`)    A signature hash for backend validation.
+
    - **FileSearchResultDelta**:
    - **result** (`array (FileSearchResult)`) *(Required)*
 
-   - **signature** (`string`)    A signature hash for backend validation.
-
    - **type** (`object`) *(Required)*
      Value: `file_search_result`
+   - **signature** (`string`)    A signature hash for backend validation.
+
    - **FunctionResultDelta**:
-   - **is_error** (`boolean`)
-
-   - **name** (`string`)
-
    - **result** (`array (<a href="#Resource:ImageContent">ImageContent</a> or <a href="#Resource:TextContent">TextContent</a>) or object or string`) *(Required)*
 
    - **type** (`object`) *(Required)*
      Value: `function_result`
+   - **name** (`string`)
+
+   - **is_error** (`boolean`)
+
    - **GoogleMapsCallDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `google_maps_call`
    - **arguments** (`GoogleMapsCallArguments`)    The arguments to pass to the Google Maps tool.
      - **queries** (`array (string)`)      The queries to be executed.
 
 
    - **signature** (`string`)    A signature hash for backend validation.
 
-   - **type** (`object`) *(Required)*
-     Value: `google_maps_call`
    - **GoogleMapsResultDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `google_maps_result`
    - **result** (`array (GoogleMapsResult)`)    The results of the Google Maps.
      - **places** (`array (Places)`)      The places that were found.
-       - **name** (`string`)        Title of the place.
-
        - **place_id** (`string`)        The ID of the place, in `places/{place_id}` format.
 
-       - **review_snippets** (`array (ReviewSnippet)`)        Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-         - **review_id** (`string`)          The ID of the review snippet.
+       - **name** (`string`)        Title of the place.
 
+       - **url** (`string`)        URI reference of the place.
+
+       - **review_snippets** (`array (ReviewSnippet)`)        Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
          - **title** (`string`)          Title of the review.
 
          - **url** (`string`)          A link that corresponds to the user review on Google Maps.
 
+         - **review_id** (`string`)          The ID of the review snippet.
 
-       - **url** (`string`)        URI reference of the place.
 
 
      - **widget_context_token** (`string`)      Resource name of the Google Maps widget context token.
@@ -4708,30 +4605,32 @@ for Enterprise.
 
    - **signature** (`string`)    A signature hash for backend validation.
 
-   - **type** (`object`) *(Required)*
-     Value: `google_maps_result`
    - **GoogleSearchCallDelta**:
    - **arguments** (`GoogleSearchCallArguments`) *(Required)*
      - **queries** (`array (string)`)      Web search queries for the following-up web search.
 
 
-   - **signature** (`string`)    A signature hash for backend validation.
-
    - **type** (`object`) *(Required)*
      Value: `google_search_call`
-   - **GoogleSearchResultDelta**:
-   - **is_error** (`boolean`)
+   - **signature** (`string`)    A signature hash for backend validation.
 
+   - **GoogleSearchResultDelta**:
    - **result** (`array (GoogleSearchResult)`) *(Required)*
      - **search_suggestions** (`string`)      Web content snippet that can be embedded in a web page or an app webview.
 
 
-   - **signature** (`string`)    A signature hash for backend validation.
-
    - **type** (`object`) *(Required)*
      Value: `google_search_result`
+   - **is_error** (`boolean`)
+
+   - **signature** (`string`)    A signature hash for backend validation.
+
    - **ImageDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `image`
    - **data** (`string`)
+
+   - **uri** (`string`)
 
    - **mime_type** (`enum (string)`)
      Possible values:
@@ -4751,127 +4650,107 @@ for Enterprise.
      - `high`: High resolution.
      - `ultra_high`: Ultra high resolution.
 
-   - **type** (`object`) *(Required)*
-     Value: `image`
-   - **uri** (`string`)
-
    - **McpServerToolCallDelta**:
-   - **arguments** (`object`) *(Required)*
-
    - **name** (`string`) *(Required)*
 
    - **server_name** (`string`) *(Required)*
 
+   - **arguments** (`object`) *(Required)*
+
    - **type** (`object`) *(Required)*
      Value: `mcp_server_tool_call`
    - **McpServerToolResultDelta**:
-   - **name** (`string`)
-
    - **result** (`array (<a href="#Resource:ImageContent">ImageContent</a> or <a href="#Resource:TextContent">TextContent</a>) or object or string`) *(Required)*
-
-   - **server_name** (`string`)
 
    - **type** (`object`) *(Required)*
      Value: `mcp_server_tool_result`
-   - **ProcessingCallDelta**: Streaming delta for a server-initiated media processing step.
-   - **signature** (`string`)    A signature hash for backend validation.
+   - **name** (`string`)
 
+   - **server_name** (`string`)
+
+   - **ProcessingCallDelta**: Streaming delta for a server-initiated media processing step.
    - **type** (`object`) *(Required)*
      Value: `processing_call`
-   - **ProcessingResultDelta**: Streaming delta for the result of a server-initiated media processing step.
    - **signature** (`string`)    A signature hash for backend validation.
 
+   - **ProcessingResultDelta**: Streaming delta for the result of a server-initiated media processing step.
    - **type** (`object`) *(Required)*
      Value: `processing_result`
-   - **RetrievalCallDelta**: Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search, etc. RetrievalType decides which tool is used.
-   - **arguments** (`RetrievalStepArguments`) *(Required)*    Required. The arguments to pass to the Retrieval tool.
-     - **queries** (`array (string)`)      Queries for Retrieval information.
-
-
-   - **retrieval_type** (`enum (string)`)    The type of retrieval tools.
-     Possible values:
-     - `rag_store`: The type of retrieval tools.
-     - `exa_ai_search`: The type of retrieval tools.
-     - `parallel_ai_search`: The type of retrieval tools.
-
    - **signature** (`string`)    A signature hash for backend validation.
 
-   - **type** (`object`) *(Required)*
-     Value: `retrieval_call`
-   - **RetrievalResultDelta**: Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search, etc. ToolResultDelta.type
-   - **is_error** (`boolean`)    Whether the retrieval resulted in an error.
-
-   - **signature** (`string`)    A signature hash for backend validation.
-
-   - **type** (`object`) *(Required)*
-     Value: `retrieval_result`
    - **TextAnnotationDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `text_annotation_delta`
    - **annotations** (`array (Annotation)`)    Citation information for model-generated content.
      **Possible Types:**
      - **FileCitation**: A file citation annotation.
-     - **custom_metadata** (`object`)      User provided metadata about the retrieved context.
-
+     - **type** (`object`) *(Required)*
+       Value: `file_citation`
      - **document_uri** (`string`)      The URI of the file.
-
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
 
      - **file_name** (`string`)      The name of the file.
 
-     - **media_id** (`string`)      Media ID in-case of image citations, if applicable.
+     - **source** (`string`)      Source attributed for a portion of the text.
+
+     - **custom_metadata** (`object`)      User provided metadata about the retrieved context.
 
      - **page_number** (`integer`)      Page number of the cited document, if applicable.
 
-     - **source** (`string`)      Source attributed for a portion of the text.
+     - **media_id** (`string`)      Media ID in-case of image citations, if applicable.
 
      - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-     - **type** (`object`) *(Required)*
-       Value: `file_citation`
-     - **PlaceCitation**: A place citation annotation.
      - **end_index** (`integer`)      End of the attributed segment, exclusive.
+
+     - **PlaceCitation**: A place citation annotation.
+     - **type** (`object`) *(Required)*
+       Value: `place_citation`
+     - **place_id** (`string`)      The ID of the place, in `places/{place_id}` format.
 
      - **name** (`string`)      Title of the place.
 
-     - **place_id** (`string`)      The ID of the place, in `places/{place_id}` format.
+     - **url** (`string`)      URI reference of the place.
 
      - **review_snippets** (`array (ReviewSnippet)`)      Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-       - **review_id** (`string`)        The ID of the review snippet.
-
        - **title** (`string`)        Title of the review.
 
        - **url** (`string`)        A link that corresponds to the user review on Google Maps.
 
+       - **review_id** (`string`)        The ID of the review snippet.
+
 
      - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-     - **type** (`object`) *(Required)*
-       Value: `place_citation`
-     - **url** (`string`)      URI reference of the place.
-
-     - **SpeechAnnotation**: Speech annotation for text content.
      - **end_index** (`integer`)      End of the attributed segment, exclusive.
 
+     - **SpeechAnnotation**: Speech annotation for text content.
+     - **type** (`object`) *(Required)*
+       Value: `speech_metadata`
      - **speaker** (`string`)      The speaker to associate with this turn.
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
      - **style** (`string`)      Style instruction for the speech synthesis.
 
-     - **type** (`object`) *(Required)*
-       Value: `speech_metadata`
-     - **UrlCitation**: A URL citation annotation.
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
      - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-     - **title** (`string`)      The title of the URL.
+     - **end_index** (`integer`)      End of the attributed segment, exclusive.
 
+     - **UrlCitation**: A URL citation annotation.
      - **type** (`object`) *(Required)*
        Value: `url_citation`
      - **url** (`string`)      The URL.
 
-     - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+     - **title** (`string`)      The title of the URL.
+
+     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
+
      - **end_index** (`integer`)      End of the attributed segment, exclusive.
+
+     - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+     - **type** (`object`) *(Required)*
+       Value: `word_info`
+     - **text** (`string`)      The transcribed word.
+
+     - **start_offset** (`string`)      Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
      - **end_offset** (`string`)      End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
@@ -4879,43 +4758,37 @@ for Enterprise.
 
      - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-     - **start_offset** (`string`)      Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+     - **end_index** (`integer`)      End of the attributed segment, exclusive.
 
-     - **text** (`string`)      The transcribed word.
 
-     - **type** (`object`) *(Required)*
-       Value: `word_info`
-
-   - **type** (`object`) *(Required)*
-     Value: `text_annotation_delta`
    - **TextDelta**:
    - **text** (`string`) *(Required)*
 
    - **type** (`object`) *(Required)*
      Value: `text`
    - **ThoughtSignatureDelta**:
-   - **signature** (`string`)    Signature to match the backend source to be part of the generation.
-
    - **type** (`object`) *(Required)*
      Value: `thought_signature`
-   - **ThoughtSummaryDelta**:
-   - **content** (`<a href="#Resource:Content">Content</a>`)    A new summary item to be added to the thought.
+   - **signature** (`string`)    Signature to match the backend source to be part of the generation.
 
+   - **ThoughtSummaryDelta**:
    - **type** (`object`) *(Required)*
      Value: `thought_summary`
+   - **content** (`<a href="#Resource:Content">Content</a>`)    A new summary item to be added to the thought.
+
    - **UrlContextCallDelta**:
    - **arguments** (`UrlContextCallArguments`) *(Required)*
      - **urls** (`array (string)`)      The URLs to fetch.
 
 
-   - **signature** (`string`)    A signature hash for backend validation.
-
    - **type** (`object`) *(Required)*
      Value: `url_context_call`
-   - **UrlContextResultDelta**:
-   - **is_error** (`boolean`)
+   - **signature** (`string`)    A signature hash for backend validation.
 
+   - **UrlContextResultDelta**:
    - **result** (`array (UrlContextResult)`) *(Required)*
+     - **url** (`string`)      The URL that was fetched.
+
      - **status** (`enum (string)`)      The status of the URL retrieval.
        Possible values:
        - `success`: Url retrieval is successful.
@@ -4923,15 +4796,19 @@ for Enterprise.
        - `paywall`: Url retrieval is failed because the content is behind paywall.
        - `unsafe`: Url retrieval is failed because the content is unsafe.
 
-     - **url** (`string`)      The URL that was fetched.
-
-
-   - **signature** (`string`)    A signature hash for backend validation.
 
    - **type** (`object`) *(Required)*
      Value: `url_context_result`
+   - **is_error** (`boolean`)
+
+   - **signature** (`string`)    A signature hash for backend validation.
+
    - **VideoDelta**:
+   - **type** (`object`) *(Required)*
+     Value: `video`
    - **data** (`string`)
+
+   - **uri** (`string`)
 
    - **mime_type** (`enum (string)`)
      Possible values:
@@ -4953,41 +4830,14 @@ for Enterprise.
      - `high`: High resolution.
      - `ultra_high`: Ultra high resolution.
 
-   - **type** (`object`) *(Required)*
-     Value: `video`
-   - **uri** (`string`)
-
-
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
      - **event_type** (`object`) *(Required)*
    Value: `step.delta`
-     - **index** (`integer`) *(Required)*
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
      - **metadata** (`StepDeltaMetadata`)
    - **total_usage** (`Usage`)    Statistics on the interaction request's token usage.
-     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
-       - **modality** (`ResponseModality`)        The modality associated with the token count.
-         Possible values:
-         - `text`: Indicates the model should return text.
-         - `image`: Indicates the model should return images.
-         - `audio`: Indicates the model should return audio.
-         - `video`: Indicates the model should return video.
-         - `document`: Indicates the model should return documents.
-
-       - **tokens** (`integer`)        Number of tokens for the modality.
-
-
-     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
-       - **count** (`integer`)        The number of grounding tool counts.
-
-       - **type** (`enum (string)`)        The grounding tool type associated with the count.
-         Possible values:
-         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-         - `google_maps`: Grounding with Google Maps.
-         - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
 
      - **input_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of input token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -5001,6 +4851,22 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
+     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
+
+     - **cached_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of cached token usage by modality.
+       - **modality** (`ResponseModality`)        The modality associated with the token count.
+         Possible values:
+         - `text`: Indicates the model should return text.
+         - `image`: Indicates the model should return images.
+         - `audio`: Indicates the model should return audio.
+         - `video`: Indicates the model should return video.
+         - `document`: Indicates the model should return documents.
+
+       - **tokens** (`integer`)        Number of tokens for the modality.
+
+
+     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
+
      - **output_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of output token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
          Possible values:
@@ -5012,6 +4878,8 @@ for Enterprise.
 
        - **tokens** (`integer`)        Number of tokens for the modality.
 
+
+     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
 
      - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)      A breakdown of tool-use token usage by modality.
        - **modality** (`ResponseModality`)        The modality associated with the token count.
@@ -5025,17 +4893,19 @@ for Enterprise.
        - **tokens** (`integer`)        Number of tokens for the modality.
 
 
-     - **total_cached_tokens** (`integer`)      Number of tokens in the cached part of the prompt (the cached content).
-
-     - **total_input_tokens** (`integer`)      Number of tokens in the prompt (context).
-
-     - **total_output_tokens** (`integer`)      Total number of tokens across all the generated responses.
-
      - **total_thought_tokens** (`integer`)      Number of tokens of thoughts for thinking models.
 
      - **total_tokens** (`integer`)      Total token count for the interaction request (prompt + responses + other internal tokens).
 
-     - **total_tool_use_tokens** (`integer`)      Number of tokens present in tool-use prompt(s).
+     - **grounding_tool_count** (`array (GroundingToolCount)`)      Grounding tool count.
+       - **type** (`enum (string)`)        The grounding tool type associated with the count.
+         Possible values:
+         - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+         - `google_maps`: Grounding with Google Maps.
+
+       - **count** (`integer`)        The number of grounding tool counts.
+
 
 
 
@@ -5058,13 +4928,13 @@ for Enterprise.
 
 - **StepStart**
     -
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
-
-     - **event_type** (`object`) *(Required)*
-   Value: `step.start`
      - **index** (`integer`) *(Required)*
 
      - **step** (`<a href="#Resource:Step">Step</a>`) *(Required)*
+
+     - **event_type** (`object`) *(Required)*
+   Value: `step.start`
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
     **Examples**
     **Step Start**
@@ -5084,35 +4954,84 @@ for Enterprise.
 
 - **StepStop**
     -
-     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
+     - **index** (`integer`) *(Required)*
 
      - **event_type** (`object`) *(Required)*
    Value: `step.stop`
-     - **index** (`integer`) *(Required)*
+     - **usage** (`Usage`)  Cumulative model usage stats from the start of the session.
+   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
+
+   - **input_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of input token usage by modality.
+     - **modality** (`ResponseModality`)      The modality associated with the token count.
+       Possible values:
+       - `text`: Indicates the model should return text.
+       - `image`: Indicates the model should return images.
+       - `audio`: Indicates the model should return audio.
+       - `video`: Indicates the model should return video.
+       - `document`: Indicates the model should return documents.
+
+     - **tokens** (`integer`)      Number of tokens for the modality.
+
+
+   - **total_cached_tokens** (`integer`)    Number of tokens in the cached part of the prompt (the cached content).
+
+   - **cached_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of cached token usage by modality.
+     - **modality** (`ResponseModality`)      The modality associated with the token count.
+       Possible values:
+       - `text`: Indicates the model should return text.
+       - `image`: Indicates the model should return images.
+       - `audio`: Indicates the model should return audio.
+       - `video`: Indicates the model should return video.
+       - `document`: Indicates the model should return documents.
+
+     - **tokens** (`integer`)      Number of tokens for the modality.
+
+
+   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
+
+   - **output_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of output token usage by modality.
+     - **modality** (`ResponseModality`)      The modality associated with the token count.
+       Possible values:
+       - `text`: Indicates the model should return text.
+       - `image`: Indicates the model should return images.
+       - `audio`: Indicates the model should return audio.
+       - `video`: Indicates the model should return video.
+       - `document`: Indicates the model should return documents.
+
+     - **tokens** (`integer`)      Number of tokens for the modality.
+
+
+   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
+
+   - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of tool-use token usage by modality.
+     - **modality** (`ResponseModality`)      The modality associated with the token count.
+       Possible values:
+       - `text`: Indicates the model should return text.
+       - `image`: Indicates the model should return images.
+       - `audio`: Indicates the model should return audio.
+       - `video`: Indicates the model should return video.
+       - `document`: Indicates the model should return documents.
+
+     - **tokens** (`integer`)      Number of tokens for the modality.
+
+
+   - **total_thought_tokens** (`integer`)    Number of tokens of thoughts for thinking models.
+
+   - **total_tokens** (`integer`)    Total token count for the interaction request (prompt + responses + other internal tokens).
+
+   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
+     - **type** (`enum (string)`)      The grounding tool type associated with the count.
+       Possible values:
+       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+       - `google_maps`: Grounding with Google Maps.
+
+     - **count** (`integer`)      The number of grounding tool counts.
+
+
 
      - **step_usage** (`Usage`)  Model usage stats for this specific step.
-   - **cached_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of cached token usage by modality.
-     - **modality** (`ResponseModality`)      The modality associated with the token count.
-       Possible values:
-       - `text`: Indicates the model should return text.
-       - `image`: Indicates the model should return images.
-       - `audio`: Indicates the model should return audio.
-       - `video`: Indicates the model should return video.
-       - `document`: Indicates the model should return documents.
-
-     - **tokens** (`integer`)      Number of tokens for the modality.
-
-
-   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
-     - **count** (`integer`)      The number of grounding tool counts.
-
-     - **type** (`enum (string)`)      The grounding tool type associated with the count.
-       Possible values:
-       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-       - `google_maps`: Grounding with Google Maps.
-       - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
+   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
 
    - **input_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of input token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
@@ -5126,44 +5045,8 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
-   - **output_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of output token usage by modality.
-     - **modality** (`ResponseModality`)      The modality associated with the token count.
-       Possible values:
-       - `text`: Indicates the model should return text.
-       - `image`: Indicates the model should return images.
-       - `audio`: Indicates the model should return audio.
-       - `video`: Indicates the model should return video.
-       - `document`: Indicates the model should return documents.
-
-     - **tokens** (`integer`)      Number of tokens for the modality.
-
-
-   - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of tool-use token usage by modality.
-     - **modality** (`ResponseModality`)      The modality associated with the token count.
-       Possible values:
-       - `text`: Indicates the model should return text.
-       - `image`: Indicates the model should return images.
-       - `audio`: Indicates the model should return audio.
-       - `video`: Indicates the model should return video.
-       - `document`: Indicates the model should return documents.
-
-     - **tokens** (`integer`)      Number of tokens for the modality.
-
-
    - **total_cached_tokens** (`integer`)    Number of tokens in the cached part of the prompt (the cached content).
 
-   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
-
-   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
-
-   - **total_thought_tokens** (`integer`)    Number of tokens of thoughts for thinking models.
-
-   - **total_tokens** (`integer`)    Total token count for the interaction request (prompt + responses + other internal tokens).
-
-   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
-
-
-     - **usage** (`Usage`)  Cumulative model usage stats from the start of the session.
    - **cached_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of cached token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
        Possible values:
@@ -5176,28 +5059,7 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
-   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
-     - **count** (`integer`)      The number of grounding tool counts.
-
-     - **type** (`enum (string)`)      The grounding tool type associated with the count.
-       Possible values:
-       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
-for Enterprise.
-       - `google_maps`: Grounding with Google Maps.
-       - `retrieval`: Grounding with customer's data, for example, VertexAISearch.
-
-
-   - **input_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of input token usage by modality.
-     - **modality** (`ResponseModality`)      The modality associated with the token count.
-       Possible values:
-       - `text`: Indicates the model should return text.
-       - `image`: Indicates the model should return images.
-       - `audio`: Indicates the model should return audio.
-       - `video`: Indicates the model should return video.
-       - `document`: Indicates the model should return documents.
-
-     - **tokens** (`integer`)      Number of tokens for the modality.
-
+   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
 
    - **output_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of output token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
@@ -5211,6 +5073,8 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
+   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
+
    - **tool_use_tokens_by_modality** (`array (ModalityTokens)`)    A breakdown of tool-use token usage by modality.
      - **modality** (`ResponseModality`)      The modality associated with the token count.
        Possible values:
@@ -5223,18 +5087,22 @@ for Enterprise.
      - **tokens** (`integer`)      Number of tokens for the modality.
 
 
-   - **total_cached_tokens** (`integer`)    Number of tokens in the cached part of the prompt (the cached content).
-
-   - **total_input_tokens** (`integer`)    Number of tokens in the prompt (context).
-
-   - **total_output_tokens** (`integer`)    Total number of tokens across all the generated responses.
-
    - **total_thought_tokens** (`integer`)    Number of tokens of thoughts for thinking models.
 
    - **total_tokens** (`integer`)    Total token count for the interaction request (prompt + responses + other internal tokens).
 
-   - **total_tool_use_tokens** (`integer`)    Number of tokens present in tool-use prompt(s).
+   - **grounding_tool_count** (`array (GroundingToolCount)`)    Grounding tool count.
+     - **type** (`enum (string)`)      The grounding tool type associated with the count.
+       Possible values:
+       - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding
+for Enterprise.
+       - `google_maps`: Grounding with Google Maps.
 
+     - **count** (`integer`)      The number of grounding tool counts.
+
+
+
+     - **event_id** (`string`)  The event_id token to be used to resume the interaction stream, from this event.
 
     **Examples**
     **Step Stop**
@@ -5249,18 +5117,6 @@ for Enterprise.
 ```
 
 
-**JSON Representation:**
-
-```json
-{
-  "error": {
-    "code": "not_found",
-    "message": "Failed to get completed interaction: Result not found."
-  },
-  "event_type": "error"
-}
-```
-
 
 ### ResponseFormat { #Resource:ResponseFormat }
 
@@ -5268,13 +5124,8 @@ for Enterprise.
 **Polymorphic Types:**
 - **AudioResponseFormat**
     - Configuration for audio output format.
-     - **bit_rate** (`integer`)  Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
-
-     - **delivery** (`enum (string)`)  The delivery mode for the audio output.
-   Possible values:
-   - `inline`: Audio data is returned inline in the response.
-   - `uri`: Audio data is returned as a URI.
-
+     - **type** (`object`) *(Required)*
+   Value: `audio`
      - **mime_type** (`enum (string)`)  The MIME type of the audio output.
    Possible values:
    - `audio/mp3`: MP3 audio format.
@@ -5284,10 +5135,15 @@ for Enterprise.
    - `audio/alaw`: A-law audio format.
    - `audio/mulaw`: Mu-law audio format.
 
+     - **delivery** (`enum (string)`)  The delivery mode for the audio output.
+   Possible values:
+   - `inline`: Audio data is returned inline in the response.
+   - `uri`: Audio data is returned as a URI.
+
      - **sample_rate** (`integer`)  Sample rate in Hz.
 
-     - **type** (`object`) *(Required)*
-   Value: `audio`
+     - **bit_rate** (`integer`)  Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
     **Examples**
     **Audio Output**
 
@@ -5303,6 +5159,17 @@ for Enterprise.
 
 - **ImageResponseFormat**
     - Configuration for image output format.
+     - **type** (`object`) *(Required)*
+   Value: `image`
+     - **mime_type** (`enum (string)`)  The MIME type of the image output.
+   Possible values:
+   - `image/jpeg`: JPEG image format.
+
+     - **delivery** (`enum (string)`)  The delivery mode for the image output.
+   Possible values:
+   - `inline`: Image data is returned inline in the response.
+   - `uri`: Image data is returned as a URI.
+
      - **aspect_ratio** (`enum (string)`)  The aspect ratio for the image output.
    Possible values:
    - `1:1`: 1:1 aspect ratio.
@@ -5320,11 +5187,6 @@ for Enterprise.
    - `1:4`: 1:4 aspect ratio.
    - `4:1`: 4:1 aspect ratio.
 
-     - **delivery** (`enum (string)`)  The delivery mode for the image output.
-   Possible values:
-   - `inline`: Image data is returned inline in the response.
-   - `uri`: Image data is returned as a URI.
-
      - **image_size** (`enum (string)`)  The size of the image output.
    Possible values:
    - `512`: 512px image size.
@@ -5332,12 +5194,6 @@ for Enterprise.
    - `2K`: 2K image size.
    - `4K`: 4K image size.
 
-     - **mime_type** (`enum (string)`)  The MIME type of the image output.
-   Possible values:
-   - `image/jpeg`: JPEG image format.
-
-     - **type** (`object`) *(Required)*
-   Value: `image`
     **Examples**
     **Image Output**
 
@@ -5355,15 +5211,15 @@ for Enterprise.
 
 - **TextResponseFormat**
     - Configuration for text output format.
+     - **type** (`object`) *(Required)*
+   Value: `text`
      - **mime_type** (`enum (string)`)  The MIME type of the text output.
    Possible values:
    - `application/json`: JSON output format.
    - `text/plain`: Plain text output format.
 
-     - **schema** (`object`)  The JSON schema that the output should conform to. Only applicable when mime_type is application/json.
+     - **schema** (`object`)  The JSON schema that the output should conform to. Only applicable when mime_type is application/json.  Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
 
-     - **type** (`object`) *(Required)*
-   Value: `text`
     **Examples**
     **Text Output (JSON Schema)**
 
@@ -5397,19 +5253,19 @@ for Enterprise.
 
 - **VideoResponseFormat**
     - Configuration for video output format.
-     - **aspect_ratio** (`enum (string)`)  The aspect ratio for the video output.
-   Possible values:
-   - `16:9`: 16:9 aspect ratio.
-   - `9:16`: 9:16 aspect ratio.
-
+     - **type** (`object`) *(Required)*
+   Value: `video`
      - **delivery** (`enum (string)`)  The delivery mode for the video output.
    Possible values:
    - `inline`: Video data is returned inline in the response.
    - `uri`: Video data is returned as a URI.
 
-     - **duration** (`string`)  The duration for the video output.
+     - **aspect_ratio** (`enum (string)`)  The aspect ratio for the video output.
+   Possible values:
+   - `16:9`: 16:9 aspect ratio.
+   - `9:16`: 9:16 aspect ratio.
 
-     - **gcs_uri** (`string`)  The Cloud Storage URI to store the video output. Required for Vertex if delivery mode is URI.
+     - **duration** (`string`)  The duration for the video output.
 
      - **resolution** (`enum (string)`)  The video output resolution. Defaults to 720p.
    Possible values:
@@ -5418,8 +5274,6 @@ for Enterprise.
    - `1080p`: 1080p resolution.
    - `4k`: 4K resolution.
 
-     - **type** (`object`) *(Required)*
-   Value: `video`
     **Examples**
     **Video Output**
 
@@ -5434,15 +5288,6 @@ for Enterprise.
 ```
 
 
-**JSON Representation:**
-
-```json
-{
-  "type": "audio",
-  "sample_rate": 24000
-}
-```
-
 
 ### Step { #Resource:Step }
 A step in the interaction.
@@ -5451,19 +5296,20 @@ A step in the interaction.
 - **CodeExecutionCallStep**
     - Code execution call step.
      - **arguments** (`CodeExecutionCallStepArguments`) *(Required)*  Required. The arguments to pass to the code execution.
-   - **code** (`string`)    The code to be executed.
-
    - **language** (`enum (string)`)    Programming language of the `code`.
      Possible values:
      - `python`: Python >= 3.10, with numpy and simpy available.
+     - `bash`: Bash. Only available for Gemini 3.0 model or above.
+
+   - **code** (`string`)    The code to be executed.
 
 
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `code_execution_call`
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **CodeExecutionCallStep**
 
@@ -5473,8 +5319,7 @@ A step in the interaction.
 {
   "type": "code_execution_call",
   "arguments": {
-    "code": "print(sum(range(1, 11)))",
-    "language": "python"
+    "code": "print(sum(range(1, 11)))"
   },
   "id": "code_call_71021"
 }
@@ -5483,16 +5328,16 @@ A step in the interaction.
 
 - **CodeExecutionResultStep**
     - Code execution result step.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **is_error** (`boolean`)  Whether the code execution resulted in an error.
-
      - **result** (`string`) *(Required)*  Required. The output of the code execution.
 
-     - **signature** (`string`)  A signature hash for backend validation.
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `code_execution_result`
+     - **is_error** (`boolean`)  Whether the code execution resulted in an error.
+
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **CodeExecutionResultStep**
 
@@ -5511,10 +5356,10 @@ A step in the interaction.
     - File Search call step.
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `file_search_call`
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **FileSearchCallStep**
 
@@ -5532,10 +5377,10 @@ A step in the interaction.
     - File Search result step.
      - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `file_search_result`
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **FileSearchResultStep**
 
@@ -5551,11 +5396,11 @@ A step in the interaction.
 
 - **FunctionCallStep**
     - A function tool call step.
+     - **name** (`string`) *(Required)*  Required. The name of the tool to call.
+
      - **arguments** (`object`) *(Required)*  Required. The arguments to pass to the function.
 
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
-
-     - **name** (`string`) *(Required)*  Required. The name of the tool to call.
 
      - **type** (`object`) *(Required)*
    Value: `function_call`
@@ -5578,16 +5423,16 @@ A step in the interaction.
 
 - **FunctionResultStep**
     - Result of a function tool call.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **is_error** (`boolean`)  Whether the tool call resulted in an error.
-
-     - **name** (`string`)  The name of the tool that was called.
-
      - **result** (`array (<a href="#Resource:ImageContent">ImageContent</a> or <a href="#Resource:TextContent">TextContent</a>) or object or string`) *(Required)*  Required. The result of the tool call.
+
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `function_result`
+     - **name** (`string`)  The name of the tool that was called.
+
+     - **is_error** (`boolean`)  Whether the tool call resulted in an error.
+
     **Examples**
     **FunctionResultStep**
 
@@ -5610,16 +5455,16 @@ A step in the interaction.
 
 - **GoogleMapsCallStep**
     - Google Maps call step.
+     - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
+
+     - **type** (`object`) *(Required)*
+   Value: `google_maps_call`
      - **arguments** (`GoogleMapsCallStepArguments`)  The arguments to pass to the Google Maps tool.
    - **queries** (`array (string)`)    The queries to be executed.
 
 
-     - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
-
      - **signature** (`string`)  A signature hash for backend validation.
 
-     - **type** (`object`) *(Required)*
-   Value: `google_maps_call`
     **Examples**
     **GoogleMapsCallStep**
 
@@ -5629,9 +5474,8 @@ A step in the interaction.
 {
   "type": "google_maps_call",
   "arguments": {
-    "queries": [
-      "parks near San Francisco"
-    ]
+    "latitude": 37.7749,
+    "longitude": -122.4194
   },
   "id": "maps_call_39201"
 }
@@ -5640,32 +5484,32 @@ A step in the interaction.
 
 - **GoogleMapsResultStep**
     - Google Maps result step.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
      - **result** (`array (GoogleMapsResultItem)`) *(Required)*
    - **places** (`array (GoogleMapsResultPlaces)`)
-     - **name** (`string`)
-
      - **place_id** (`string`)
 
-     - **review_snippets** (`array (ReviewSnippet)`)
-       - **review_id** (`string`)        The ID of the review snippet.
+     - **name** (`string`)
 
+     - **url** (`string`)
+
+     - **review_snippets** (`array (ReviewSnippet)`)
        - **title** (`string`)        Title of the review.
 
        - **url** (`string`)        A link that corresponds to the user review on Google Maps.
 
+       - **review_id** (`string`)        The ID of the review snippet.
 
-     - **url** (`string`)
 
 
    - **widget_context_token** (`string`)
 
 
-     - **signature** (`string`)  A signature hash for backend validation.
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `google_maps_result`
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **GoogleMapsResultStep**
 
@@ -5677,13 +5521,9 @@ A step in the interaction.
   "call_id": "maps_call_39201",
   "result": [
     {
-      "places": [
-        {
-          "url": "https://maps.google.com/?cid=12345",
-          "name": "Golden Gate Park",
-          "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M"
-        }
-      ]
+      "name": "Golden Gate Park",
+      "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
+      "rating": 4.8
     }
   ]
 }
@@ -5698,16 +5538,15 @@ A step in the interaction.
 
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
+     - **type** (`object`) *(Required)*
+   Value: `google_search_call`
      - **search_type** (`enum (string)`)  The type of search grounding enabled.
    Possible values:
    - `web_search`: Setting this field enables web search. Only text results are returned.
    - `image_search`: Setting this field enables image search. Image bytes are returned.
-   - `enterprise_web_search`: Setting this field enables enterprise web search.
 
      - **signature** (`string`)  A signature hash for backend validation.
 
-     - **type** (`object`) *(Required)*
-   Value: `google_search_call`
     **Examples**
     **GoogleSearchCallStep**
 
@@ -5717,9 +5556,7 @@ A step in the interaction.
 {
   "type": "google_search_call",
   "arguments": {
-    "queries": [
-      "Who won the men's 100m in Paris 2024?"
-    ]
+    "query": "Who won the men's 100m in Paris 2024?"
   },
   "id": "search_call_19201"
 }
@@ -5728,18 +5565,18 @@ A step in the interaction.
 
 - **GoogleSearchResultStep**
     - Google Search result step.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **is_error** (`boolean`)  Whether the Google Search resulted in an error.
-
      - **result** (`array (GoogleSearchResultItem)`) *(Required)*  Required. The results of the Google Search.
    - **search_suggestions** (`string`)    Web content snippet that can be embedded in a web page or an app webview.
 
 
-     - **signature** (`string`)  A signature hash for backend validation.
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `google_search_result`
+     - **is_error** (`boolean`)  Whether the Google Search resulted in an error.
+
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **GoogleSearchResultStep**
 
@@ -5751,7 +5588,9 @@ A step in the interaction.
   "call_id": "search_call_19201",
   "result": [
     {
-      "search_suggestions": "<div class=\"container\">...</div>"
+      "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
+      "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
+      "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
     }
   ]
 }
@@ -5760,13 +5599,13 @@ A step in the interaction.
 
 - **McpServerToolCallStep**
     - MCPServer tool call step.
-     - **arguments** (`object`) *(Required)*  Required. The JSON object of arguments for the function.
-
-     - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
-
      - **name** (`string`) *(Required)*  Required. The name of the tool which was called.
 
      - **server_name** (`string`) *(Required)*  Required. The name of the used MCP server.
+
+     - **arguments** (`object`) *(Required)*  Required. The JSON object of arguments for the function.
+
+     - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
      - **type** (`object`) *(Required)*
    Value: `mcp_server_tool_call`
@@ -5791,16 +5630,16 @@ A step in the interaction.
 
 - **McpServerToolResultStep**
     - MCPServer tool result step.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **name** (`string`)  Name of the tool which is called for this specific tool call.
-
      - **result** (`array (<a href="#Resource:ImageContent">ImageContent</a> or <a href="#Resource:TextContent">TextContent</a>) or object or string`) *(Required)*  Required. The output from the MCP server call. Can be simple text or rich content.
 
-     - **server_name** (`string`)  The name of the used MCP server.
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `mcp_server_tool_result`
+     - **name** (`string`)  Name of the tool which is called for this specific tool call.
+
+     - **server_name** (`string`)  The name of the used MCP server.
+
     **Examples**
     **McpServerToolResultStep**
 
@@ -5821,10 +5660,10 @@ A step in the interaction.
 
 - **ModelOutputStep**
     - Output generated by the model.
-     - **content** (`array (<a href="#Resource:Content">Content</a>)`)
-
      - **type** (`object`) *(Required)*
    Value: `model_output`
+     - **content** (`array (<a href="#Resource:Content">Content</a>)`)
+
     **Examples**
     **ModelOutputStep**
 
@@ -5848,173 +5687,28 @@ A step in the interaction.
 understanding).
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `processing_call`
+     - **signature** (`string`)  A signature hash for backend validation.
+
 
 - **ProcessingResultStep**
     - The result of a server-initiated media processing step.
      - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `processing_result`
-
-- **RetrievalCallStep**
-    - Retrieval call step.
-Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc. RetrievalType decides which tool is used.
-     - **arguments** (`RetrievalStepArguments`) *(Required)*  Required. The arguments to pass to the retrieval tool.
-   - **queries** (`array (string)`)    Queries for Retrieval information.
-
-
-     - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
-
-     - **retrieval_type** (`enum (string)`)  The type of retrieval tools.
-   Possible values:
-   - `rag_store`: The type of retrieval tools.
-   - `exa_ai_search`: The type of retrieval tools.
-   - `parallel_ai_search`: The type of retrieval tools.
-
      - **signature** (`string`)  A signature hash for backend validation.
 
-     - **type** (`object`) *(Required)*
-   Value: `retrieval_call`
-
-- **RetrievalResultStep**
-    - Vertex Retrieval result step.
-Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **is_error** (`boolean`)  Whether the retrieval resulted in an error.
-
-     - **signature** (`string`)  A signature hash for backend validation.
-
-     - **type** (`object`) *(Required)*
-   Value: `retrieval_result`
 
 - **ThoughtStep**
     - A thought step.
-     - **signature** (`string`)  A signature hash for backend validation.
-
-     - **summary** (`array (ThoughtContent)`)  A summary of the thought.
-   **Possible Types:**
-   - **ImageContent**: An image content block.
-   - **data** (`string`)    The image content.
-
-   - **mime_type** (`enum (string)`)    The mime type of the image.
-     Possible values:
-     - `image/png`: PNG image format
-     - `image/jpeg`: JPEG image format
-     - `image/webp`: WebP image format
-     - `image/heic`: HEIC image format
-     - `image/heif`: HEIF image format
-     - `image/gif`: GIF image format
-     - `image/bmp`: BMP image format
-     - `image/tiff`: TIFF image format
-
-   - **resolution** (`MediaResolution`)    The resolution of the media.
-     Possible values:
-     - `low`: Low resolution.
-     - `medium`: Medium resolution.
-     - `high`: High resolution.
-     - `ultra_high`: Ultra high resolution.
-
-   - **type** (`object`) *(Required)*
-     Value: `image`
-   - **uri** (`string`)    The URI of the image.
-
-   - **TextContent**: A text content block.
-   - **annotations** (`array (Annotation)`)    Citation information for model-generated content.
-     **Possible Types:**
-     - **FileCitation**: A file citation annotation.
-     - **custom_metadata** (`object`)      User provided metadata about the retrieved context.
-
-     - **document_uri** (`string`)      The URI of the file.
-
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
-     - **file_name** (`string`)      The name of the file.
-
-     - **media_id** (`string`)      Media ID in-case of image citations, if applicable.
-
-     - **page_number** (`integer`)      Page number of the cited document, if applicable.
-
-     - **source** (`string`)      Source attributed for a portion of the text.
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
-
-     - **type** (`object`) *(Required)*
-       Value: `file_citation`
-     - **PlaceCitation**: A place citation annotation.
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
-     - **name** (`string`)      Title of the place.
-
-     - **place_id** (`string`)      The ID of the place, in `places/{place_id}` format.
-
-     - **review_snippets** (`array (ReviewSnippet)`)      Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-       - **review_id** (`string`)        The ID of the review snippet.
-
-       - **title** (`string`)        Title of the review.
-
-       - **url** (`string`)        A link that corresponds to the user review on Google Maps.
-
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
-
-     - **type** (`object`) *(Required)*
-       Value: `place_citation`
-     - **url** (`string`)      URI reference of the place.
-
-     - **SpeechAnnotation**: Speech annotation for text content.
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
-     - **speaker** (`string`)      The speaker to associate with this turn.
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
-
-     - **style** (`string`)      Style instruction for the speech synthesis.
-
-     - **type** (`object`) *(Required)*
-       Value: `speech_metadata`
-     - **UrlCitation**: A URL citation annotation.
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
-
-     - **title** (`string`)      The title of the URL.
-
-     - **type** (`object`) *(Required)*
-       Value: `url_citation`
-     - **url** (`string`)      The URL.
-
-     - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
-     - **end_index** (`integer`)      End of the attributed segment, exclusive.
-
-     - **end_offset** (`string`)      End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
-
-     - **speaker** (`string`)      Optional. Speaker label for this word (e.g. "spk_1", "spk_2"). Present when diarization_mode is set in TranscriptionConfig.
-
-     - **start_index** (`integer`)      Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
-
-     - **start_offset** (`string`)      Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
-
-     - **text** (`string`)      The transcribed word.
-
-     - **type** (`object`) *(Required)*
-       Value: `word_info`
-
-   - **text** (`string`) *(Required)*    Required. The text content.
-
-   - **type** (`object`) *(Required)*
-     Value: `text`
-
      - **type** (`object`) *(Required)*
    Value: `thought`
+     - **signature** (`string`)  A signature hash for backend validation.
+
+     - **summary** (`array (<a href="#Resource:Content">Content</a>)`)  A summary of the thought.
+
     **Examples**
     **ThoughtStep**
 
@@ -6042,10 +5736,10 @@ etc.
 
      - **id** (`string`) *(Required)*  Required. A unique ID for this specific tool call.
 
-     - **signature** (`string`)  A signature hash for backend validation.
-
      - **type** (`object`) *(Required)*
    Value: `url_context_call`
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **UrlContextCallStep**
 
@@ -6066,11 +5760,9 @@ etc.
 
 - **UrlContextResultStep**
     - URL context result step.
-     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
-
-     - **is_error** (`boolean`)  Whether the URL context resulted in an error.
-
      - **result** (`array (UrlContextResult)`) *(Required)*  Required. The results of the URL context.
+   - **url** (`string`)    The URL that was fetched.
+
    - **status** (`enum (string)`)    The status of the URL retrieval.
      Possible values:
      - `success`: Url retrieval is successful.
@@ -6078,13 +5770,15 @@ etc.
      - `paywall`: Url retrieval is failed because the content is behind paywall.
      - `unsafe`: Url retrieval is failed because the content is unsafe.
 
-   - **url** (`string`)    The URL that was fetched.
 
-
-     - **signature** (`string`)  A signature hash for backend validation.
+     - **call_id** (`string`) *(Required)*  Required. ID to match the ID from the function call block.
 
      - **type** (`object`) *(Required)*
    Value: `url_context_result`
+     - **is_error** (`boolean`)  Whether the URL context resulted in an error.
+
+     - **signature** (`string`)  A signature hash for backend validation.
+
     **Examples**
     **UrlContextResultStep**
 
@@ -6096,8 +5790,9 @@ etc.
   "call_id": "url_call_10219",
   "result": [
     {
+      "title": "Example Domain",
       "url": "https://www.example.com",
-      "status": "success"
+      "snippet": "This domain is for use in illustrative examples in documents."
     }
   ]
 }
@@ -6106,10 +5801,10 @@ etc.
 
 - **UserInputStep**
     - Input provided by the user.
-     - **content** (`array (<a href="#Resource:Content">Content</a>)`)
-
      - **type** (`object`) *(Required)*
    Value: `user_input`
+     - **content** (`array (<a href="#Resource:Content">Content</a>)`)
+
     **Examples**
     **UserInputStep**
 
@@ -6128,91 +5823,38 @@ etc.
 ```
 
 
-**JSON Representation:**
-
-```json
-{
-  "type": "code_execution_call",
-  "arguments": {
-    "code": "print(sum(range(1, 11)))",
-    "language": "python"
-  },
-  "id": "code_call_71021"
-}
-```
-
 
 ### EnvironmentConfig { #Resource:EnvironmentConfig }
 Configuration for a custom environment.
 
 **Properties:**
-- **env** (`object`) Environment variables to set in the sandbox environment.
-
-- **environment_id** (`string`) Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-
+- **type** (`object`) *(Required)*
+  Value: `remote`
 - **network** (`<a href="#Resource:EnvironmentNetworkEgressAllowlist">EnvironmentNetworkEgressAllowlist</a> or enum (string)`) Network configuration for the environment.
   Possible values:
   - `disabled`: All network egress is blocked.
 
 - **sources** (`array (Source)`)
-  - **content** (`string`)   The inline content if `type` is `INLINE`.
-
-  - **encoding** (`string`)   Optional encoding for inline content (e.g. `base64`).
-
-  - **source** (`string`)   The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-  - **target** (`string`)   Where the source should appear in the environment.
-
   - **type** (`enum (string)`)
     Possible values:
     - `gcs`: A Cloud Storage bucket.
     - `inline`: Inline content.
     - `repository`: A generic repository. The protocol prefix in the source URL
 identifies the provider (e.g., github://, gcs://).
-    - `skill_registry`: A skill resource from the Skill Registry Service.
-Skill: projects/{project}/locations/{location}/skills/{skill}
-SkillRevision:
-projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-Support mounting all skills under a project:
-projects/{project}/locations/{location}/skills.
+
+  - **source** (`string`)   The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+  - **target** (`string`)   Where the source should appear in the environment.
+
+  - **content** (`string`)   The inline content if `type` is `INLINE`.
+
+  - **encoding** (`string`)   Optional encoding for inline content (e.g. `base64`).
 
 
-- **type** (`object`) *(Required)*
-  Value: `remote`
+- **environment_id** (`string`) Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
 
-**JSON Representation:**
+- **env** (`object or string`) Environment variables to set in the sandbox environment.
 
-```json
-{
-  "env": {},
-  "environment_id": "string",
-  "network": {
-    "allowlist": [
-      {
-        "domain": "github.com",
-        "transform": [
-          {
-            "Authorization": "Bearer your-token"
-          }
-        ]
-      },
-      {
-        "domain": "*.googleapis.com"
-      }
-    ]
-  },
-  "sources": [
-    {
-      "content": "string",
-      "encoding": "string",
-      "source": "string",
-      "target": "string",
-      "type": "gcs"
-    }
-  ],
-  "type": {}
-}
-```
 
 **Examples**
 **Inline Sources**
@@ -6297,26 +5939,6 @@ Network egress configuration for the environment.
   - `disabled`: All network egress is blocked.
 
 
-**JSON Representation:**
-
-```json
-{
-  "allowlist": [
-    {
-      "domain": "github.com",
-      "transform": [
-        {
-          "Authorization": "Bearer your-token"
-        }
-      ]
-    },
-    {
-      "domain": "*.googleapis.com"
-    }
-  ]
-}
-```
-
 **Examples**
 **Network Allowlist**
 
@@ -6354,22 +5976,7 @@ The tool choice configuration containing allowed tools.
 
 
 
-**JSON Representation:**
-
-```json
-{
-  "allowed_tools": {
-    "mode": "any",
-    "tools": [
-      "my_tool"
-    ]
-  }
-}
-```
-
 **Examples**
-**Allowed Tools**
-
 ```json
 {
   "allowed_tools": {
@@ -6385,7 +5992,18 @@ The tool choice configuration containing allowed tools.
 An image content block.
 
 **Properties:**
+- **type** (`object`) *(Required)*
+  Value: `image`
 - **data** (`string`) The image content.
+
+- **uri** (`string`) The URI of the image.
+
+- **resolution** (`MediaResolution`) The resolution of the media.
+  Possible values:
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
 
 - **mime_type** (`enum (string)`) The mime type of the image.
   Possible values:
@@ -6398,27 +6016,6 @@ An image content block.
   - `image/bmp`: BMP image format
   - `image/tiff`: TIFF image format
 
-- **resolution** (`MediaResolution`) The resolution of the media.
-  Possible values:
-  - `low`: Low resolution.
-  - `medium`: Medium resolution.
-  - `high`: High resolution.
-  - `ultra_high`: Ultra high resolution.
-
-- **type** (`object`) *(Required)*
-  Value: `image`
-- **uri** (`string`) The URI of the image.
-
-
-**JSON Representation:**
-
-```json
-{
-  "type": "image",
-  "data": "BASE64_ENCODED_IMAGE",
-  "mime_type": "image/png"
-}
-```
 
 **Examples**
 **Image**
@@ -6435,72 +6032,80 @@ An image content block.
 A text content block.
 
 **Properties:**
+- **text** (`string`) *(Required)* Required. The text content.
+
+- **type** (`object`) *(Required)*
+  Value: `text`
 - **annotations** (`array (Annotation)`) Citation information for model-generated content.
   **Possible Types:**
   - **FileCitation**: A file citation annotation.
-  - **custom_metadata** (`object`)   User provided metadata about the retrieved context.
-
+  - **type** (`object`) *(Required)*
+    Value: `file_citation`
   - **document_uri** (`string`)   The URI of the file.
-
-  - **end_index** (`integer`)   End of the attributed segment, exclusive.
 
   - **file_name** (`string`)   The name of the file.
 
-  - **media_id** (`string`)   Media ID in-case of image citations, if applicable.
+  - **source** (`string`)   Source attributed for a portion of the text.
+
+  - **custom_metadata** (`object`)   User provided metadata about the retrieved context.
 
   - **page_number** (`integer`)   Page number of the cited document, if applicable.
 
-  - **source** (`string`)   Source attributed for a portion of the text.
+  - **media_id** (`string`)   Media ID in-case of image citations, if applicable.
 
   - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-  - **type** (`object`) *(Required)*
-    Value: `file_citation`
-  - **PlaceCitation**: A place citation annotation.
   - **end_index** (`integer`)   End of the attributed segment, exclusive.
+
+  - **PlaceCitation**: A place citation annotation.
+  - **type** (`object`) *(Required)*
+    Value: `place_citation`
+  - **place_id** (`string`)   The ID of the place, in `places/{place_id}` format.
 
   - **name** (`string`)   Title of the place.
 
-  - **place_id** (`string`)   The ID of the place, in `places/{place_id}` format.
+  - **url** (`string`)   URI reference of the place.
 
   - **review_snippets** (`array (ReviewSnippet)`)   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-    - **review_id** (`string`)     The ID of the review snippet.
-
     - **title** (`string`)     Title of the review.
 
     - **url** (`string`)     A link that corresponds to the user review on Google Maps.
 
+    - **review_id** (`string`)     The ID of the review snippet.
+
 
   - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-  - **type** (`object`) *(Required)*
-    Value: `place_citation`
-  - **url** (`string`)   URI reference of the place.
-
-  - **SpeechAnnotation**: Speech annotation for text content.
   - **end_index** (`integer`)   End of the attributed segment, exclusive.
 
+  - **SpeechAnnotation**: Speech annotation for text content.
+  - **type** (`object`) *(Required)*
+    Value: `speech_metadata`
   - **speaker** (`string`)   The speaker to associate with this turn.
-
-  - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
   - **style** (`string`)   Style instruction for the speech synthesis.
 
-  - **type** (`object`) *(Required)*
-    Value: `speech_metadata`
-  - **UrlCitation**: A URL citation annotation.
-  - **end_index** (`integer`)   End of the attributed segment, exclusive.
-
   - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-  - **title** (`string`)   The title of the URL.
+  - **end_index** (`integer`)   End of the attributed segment, exclusive.
 
+  - **UrlCitation**: A URL citation annotation.
   - **type** (`object`) *(Required)*
     Value: `url_citation`
   - **url** (`string`)   The URL.
 
-  - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+  - **title** (`string`)   The title of the URL.
+
+  - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
+
   - **end_index** (`integer`)   End of the attributed segment, exclusive.
+
+  - **WordInfo**: Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+  - **type** (`object`) *(Required)*
+    Value: `word_info`
+  - **text** (`string`)   The transcribed word.
+
+  - **start_offset** (`string`)   Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
   - **end_offset** (`string`)   End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
 
@@ -6508,26 +6113,9 @@ A text content block.
 
   - **start_index** (`integer`)   Start of segment of the response that is attributed to this source.  Index indicates the start of the segment, measured in bytes.
 
-  - **start_offset** (`string`)   Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+  - **end_index** (`integer`)   End of the attributed segment, exclusive.
 
-  - **text** (`string`)   The transcribed word.
 
-  - **type** (`object`) *(Required)*
-    Value: `word_info`
-
-- **text** (`string`) *(Required)* Required. The text content.
-
-- **type** (`object`) *(Required)*
-  Value: `text`
-
-**JSON Representation:**
-
-```json
-{
-  "type": "text",
-  "text": "Hello, how are you?"
-}
-```
 
 **Examples**
 **Text**

@@ -1,38 +1,40 @@
 ---
 url: https://ai.google.dev/gemma/docs/integrations/mobile/
-title: https://ai.google.dev/gemma/docs/integrations/mobile/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:16.347067+00:00
+title: Deploy Gemma on mobile devices
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:56.133527+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/integrations/mobile/
+# Deploy Gemma on mobile devices
 
 > Source: https://ai.google.dev/gemma/docs/integrations/mobile/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=15786163390379502406&q=EgQoUFpcGLDOxNYGIjDA3WTX5Cknlg52F3Pp_5hygDElJ1PWHQG6T4ZDXZQIzYnIxbc4jn9JqqjYi6h1o70yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/integrations/mobile/)  
-  
-  
-  
-  
+This document outlines various methods and tools for deploying and running Gemma models on mobile devices, including using the Google AI Edge Gallery app and the MediaPipe LLM Inference API.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/integrations/mobile/&q=EgQoUFpcGLDOxNYGIjDA3WTX5Cknlg52F3Pp_5hygDElJ1PWHQG6T4ZDXZQIzYnIxbc4jn9JqqjYi6h1o70yA2NyUloBQw)  
-  
+For information on converting a fine-tuned Gemma model to a LiteRT version, see the [Conversion Guide](https://ai.google.dev/gemma/docs/conversions/hf-to-mediapipe-task).
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Google AI Edge Gallery app
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:12Z  
-URL: https://ai.google.dev/gemma/docs/integrations/mobile/  
+To see the LLM Inference APIs in action and test your Task Bundle model, you can use the [Google AI Edge Gallery app](https://github.com/google-ai-edge/gallery). This app provides a user interface for interacting with on-device LLMs, allowing you to:
 
+  * **Import Models:** Load your custom `.task` models into the app.
+  * **Configure Parameters:** Adjust settings like temperature and top-k.
+  * **Generate Text:** Input prompts and view the model's responses.
+  * **Test Performance:** Evaluate the model's speed and accuracy.
+
+
+
+For a detailed guide on how to use the Google AI Edge Gallery app, including instructions for importing your own models, refer to the app's [documentation](https://github.com/google-ai-edge/gallery/blob/main/README.md).
+
+## MediaPipe LLM
+
+You can run Gemma models on mobile devices with the [MediaPipe LLM Inference API](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference). The LLM Inference API acts as a wrapper for large language models, enabling you run Gemma models on-device for common text-to-text generation tasks like information retrieval, email drafting, and document summarization.
+
+The LLM Inference API is available on the following mobile platforms:
+
+  * [Android](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/android)
+  * [iOS](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/ios)
+
+
+
+To learn more, refer to the [MediaPipe LLM Inference documentation](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference).

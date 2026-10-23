@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/realtime-music-generation/",
   "file": "gemini-api/docs/realtime-music-generation.md",
-  "title": "https://ai.google.dev/gemini-api/docs/realtime-music-generation/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:34.094301+00:00",
-  "html_len": 3122,
-  "md_len": 1844,
-  "depth": 0
+  "title": "Real-time music generation using Lyria RealTime",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:59.073461+00:00"
 }

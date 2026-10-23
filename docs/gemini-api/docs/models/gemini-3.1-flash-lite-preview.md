@@ -1,38 +1,27 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview
-title: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:20.608797+00:00
+title: Gemini 3.1 Flash-Lite preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:39.696747+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview
+# Gemini 3.1 Flash-Lite preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=12934476116559683835&q=EgQoUFpcGPnNxNYGIjCPjqlvRCvWrqYpfj3J2Lus81z2bfanmvxusOUGBfsSAjxZfK4y-dkWqKfRE7nS8loyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview)  
-  
-  
-  
-  
+## gemini-3.1-flash-lite-preview
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview&q=EgQoUFpcGPnNxNYGIjCPjqlvRCvWrqYpfj3J2Lus81z2bfanmvxusOUGBfsSAjxZfK4y-dkWqKfRE7nS8loyA2NyUloBQw)  
-  
+Property | Description  
+---|---  
+id_cardModel code | `gemini-3.1-flash-lite-preview`  
+saveSupported data types |  **Inputs** Text, Image, Video, Audio, and PDF **Output** Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 1,048,576 **Output token limit** 65,536  
+handymanCapabilities | **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Not supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Supported **[Computer use](https://ai.google.dev/gemini-api/docs/computer-use)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * _Shut down_ : `gemini-3.1-flash-lite-preview`
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:18Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview  
-
+  
+calendar_monthLatest update | March 2026  
+id_cardModel card | [Model card](https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/)

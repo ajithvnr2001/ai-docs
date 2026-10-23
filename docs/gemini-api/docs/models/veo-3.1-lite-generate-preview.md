@@ -1,38 +1,25 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview
-title: https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:32.739853+00:00
+title: Veo 3.1 Lite preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:48.407516+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview
+# Veo 3.1 Lite preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=18216986402333935366&q=EgQoUFpcGIXOxNYGIjD1tMJeNkJD98q9sAFALcAtqEE1M8MMhYgk_irRMlLp2alCCKbOunmhQxtLXKn63qsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview)  
-  
-  
-  
-  
+Veo 3.1 Lite Preview is a high-efficiency, developer-first video model providing high-fidelity video generation, editing, and cinematic control. It leverages the state-of-the-art Veo 3.1 model to democratize professional-grade video AI by offering a scalable, programmable interface for creators and enterprises.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview&q=EgQoUFpcGIXOxNYGIjD1tMJeNkJD98q9sAFALcAtqEE1M8MMhYgk_irRMlLp2alCCKbOunmhQxtLXKn63qsyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Video generation](https://ai.google.dev/gemini-api/docs/video) page for full coverage of features and capabilities. Note that Veo 3.1 Lite Preview does not support [4K outputs](https://ai.google.dev/gemini-api/docs/veo#resolution) or [Extension](https://ai.google.dev/gemini-api/docs/veo#extending-veo-videos).
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:29Z  
-URL: https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview  
+## veo-3.1-lite-generate-preview
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `veo-3.1-lite-generate-preview`  
+saveSupported data types |  **Input** Text, Image **Output** Video with audio  
+token_autoLimits |  **Text input** 1,024 tokens **Output video** 1  
+calendar_monthLatest update | March 2026

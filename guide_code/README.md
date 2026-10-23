@@ -15,7 +15,7 @@ Flow (`coder_scrape.py`): `Fetcher.get(stealthy_headers=True)` → keep `<main>/
 ## 2. Full crawl
 
 ```bash
-python3 crawl_ai.py --max-pages 8000 --concurrency 15
+python3 crawl_ai.py --max-pages 8000 --concurrency 4
 ```
 
 Seeds = `sitemap_0_of_1.xml` (deduped) ; `normalize_url()` allows `ai.google.dev` + `aistudio/saif/discuss/developer.android/developer.chrome`, skips binary/`.json`/backtick/console; saves `docs/<path>.md` + `_meta/*.json`, appends `_index.jsonl`. Reference domains land in `docs/_subdomains/<host>/` (depth ≤ 1, login-walled hosts recorded as failed).
@@ -26,7 +26,7 @@ Seeds = `sitemap_0_of_1.xml` (deduped) ; `normalize_url()` allows `ai.google.dev
 python3 update_incremental.py --check-only
 python3 update_incremental.py
 python3 guide_code/coder_update.py --check-only
-python3 guide_code/coder_update.py --run --concurrency 10
+python3 guide_code/coder_update.py --run --concurrency 4
 ```
 
 ## 4. Verify

@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/
-title: https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:14.500381+00:00
+title: Deep Research Max preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:33.606684+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/
+# Deep Research Max preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3787646950596878779&q=EgQoUFpcGPTNxNYGIjDkuQAut1lIyOXRdeGagwL8aEaxFrU6EnHeEJQV3ks6_sTz8KA6lp2zxKvqwx49z_oyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/)  
-  
-  
-  
-  
+Maximum comprehensiveness for automated context gathering and synthesis. Deep Research Max is optimized for long-running, accuracy-critical investigations that synthesize complex information from hundreds of public web sources and private workspace data into comprehensive, cited reports. It supports collaborative planning, visualization, MCP servers, and File Search.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/&q=EgQoUFpcGPTNxNYGIjDkuQAut1lIyOXRdeGagwL8aEaxFrU6EnHeEJQV3ks6_sTz8KA6lp2zxKvqwx49z_oyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Deep Research](https://ai.google.dev/gemini-api/docs/deep-research) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:12Z  
-URL: https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026/  
+## deep-research-max-preview-04-2026
 
+Property | Description  
+---|---  
+id_cardAgent code |  **Interactions API** `deep-research-max-preview-04-2026`  
+saveSupported data types |  **Input** Text, Image, PDF, Audio, Video **Output** Text (Cited Reports), Images  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input context window** 1,048,576 **Output token limit** 65,536  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Preview: `deep-research-max-preview-04-2026`
+
+  
+calendar_monthLatest update | April 2026

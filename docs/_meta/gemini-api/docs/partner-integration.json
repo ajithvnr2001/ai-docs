@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/partner-integration/",
   "file": "gemini-api/docs/partner-integration.md",
-  "title": "https://ai.google.dev/gemini-api/docs/partner-integration/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:34.410119+00:00",
-  "html_len": 3098,
-  "md_len": 1814,
-  "depth": 0
+  "title": "Partner and library integrations",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:45:04.013350+00:00"
 }

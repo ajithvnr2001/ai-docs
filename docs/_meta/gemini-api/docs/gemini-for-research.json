@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/gemini-for-research/",
   "file": "gemini-api/docs/gemini-for-research.md",
-  "title": "https://ai.google.dev/gemini-api/docs/gemini-for-research/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:50.098583+00:00",
-  "html_len": 3097,
-  "md_len": 1813,
-  "depth": 0
+  "title": "Accelerate discovery with Gemini for Research",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:16.915477+00:00"
 }

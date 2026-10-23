@@ -1,38 +1,19 @@
 ---
 url: https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/
-title: https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:30.765252+00:00
+title: Agile Classifiers: Customized content policy classifiers
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:09.782345+00:00
 ---
 
-# https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/
+# Agile Classifiers: Customized content policy classifiers
 
 > Source: https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2209009933128375420&q=EgQoUFpcGL_OxNYGIjDb8aiWxt_N4H3-0Z22oR7A-8Ir_oveiMesYU9HohaUofDrnumeu1V4ly-wV74yLkEyA2NyUloBQw&hl=en&continue=https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/)  
-  
-  
-  
-  
+[Agile classifiers](https://arxiv.org/pdf/2302.06541.pdf) is an efficient and flexible method for creating custom content policy classifiers by tuning models, such as Gemma, to fit your needs. They also allow you complete control over where and how they are deployed.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/&q=EgQoUFpcGL_OxNYGIjDb8aiWxt_N4H3-0Z22oR7A-8Ir_oveiMesYU9HohaUofDrnumeu1V4ly-wV74yLkEyA2NyUloBQw)  
-  
+**Gemma Agile Classifier Tutorials**
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+|  [ ![](https://ai.google.dev/static/site-assets/images/docs/codelabs_logo.png)Start Codelab](https://codelabs.developers.google.com/codelabs/responsible-ai/agile-classifiers) |  [ ![](https://ai.google.dev/static/site-assets/images/docs/colab_logo_32px.png)Start Google Colab](https://colab.research.google.com/github/google-gemini/gemma-cookbook/blob/main/responsible/agile_classifiers.ipynb)  
+---|---|---  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
-
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:28Z  
-URL: https://ai.google.dev/responsible/docs/safeguards/agile-classifiers/  
-
+The [codelab](https://codelabs.developers.google.com/codelabs/responsible-ai/agile-classifiers) and [tutorial](https://ai.google.dev/gemma/docs/agile_classifiers) use [LoRA](https://arxiv.org/abs/2106.09685) to fine-tune a Gemma model to act as a content policy classifier using the [KerasNLP](https://keras.io/keras_nlp/) library. Using only 200 examples from the [ETHOS dataset](https://paperswithcode.com/dataset/ethos), this classifier achieves an [F1 score](https://en.wikipedia.org/wiki/F-score) of 0.80 and [ROC-AUC score](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc#AUC) of 0.78, which compares favorably to state of the art [leaderboard results](https://paperswithcode.com/sota/hate-speech-detection-on-ethos-binary). When trained on the 800 examples, like the other classifiers on the leaderboard, the Gemma-based agile classifier achieves an F1 score of 83.74 and a ROC-AUC score of 88.17. You can adapt the tutorial instructions to further refine this classifier, or to create your own custom safety classifier safeguards.

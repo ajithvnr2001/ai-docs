@@ -1,38 +1,182 @@
 ---
 url: https://ai.google.dev/responsible/
-title: https://ai.google.dev/responsible/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:27.966615+00:00
+title: Responsible Generative AI Toolkit
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:07.325325+00:00
 ---
 
-# https://ai.google.dev/responsible/
+# Responsible Generative AI Toolkit
 
 > Source: https://ai.google.dev/responsible/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17154837370975930662&q=EgQoUFpcGLzOxNYGIjB58caq-IfhWST1BTFHB0oRlSg7oswAMdpMVK_2bT-J_blxUaqkXZx341G6YRnN-54yA2NyUloBQw&hl=en&continue=https://ai.google.dev/responsible/)  
-  
-  
-  
-  
+# Responsible Generative AI Toolkit
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/responsible/&q=EgQoUFpcGLzOxNYGIjB58caq-IfhWST1BTFHB0oRlSg7oswAMdpMVK_2bT-J_blxUaqkXZx341G6YRnN-54yA2NyUloBQw)  
-  
+Tools and guidance to design, build and evaluate open AI models responsibly.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+![Align your model icon](https://ai.google.dev/static/images/responsible/responsible-approach.svg) Responsible application design Define rules for model behaviour, create a safe and accountable application, and maintain transparent communication with users. ![Align your model icon](https://ai.google.dev/static/images/responsible/align-your-model.svg) Safety alignment Discover prompt-debugging techniques and guidance for fine-tuning and RLHF to align AI models with safety policies. ![Evaluate icon](https://ai.google.dev/static/images/responsible/evaluate.svg) Model evaluation Find guidance and data to conduct a robust model evaluation for safety, fairness, and factuality with the LLM Comparator. ![Framework flexible](https://ai.google.dev/static/images/responsible/protect-with-safeguard.svg) Safeguards Deploy safety classifiers, using off-the-shelf solutions or build your own with step-by-step tutorials.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:24Z  
-URL: https://ai.google.dev/responsible/  
+## Design a responsible approach
+
+Proactively identify potential risks of your application and define a system-level approach to build safe and responsible applications for users.
+
+![](https://ai.google.dev/static/images/responsible/responsible-approach.svg)
+
+Get started
+
+Define system-level policies
+
+Determine what type of content your application should and should not generate.
+
+  * [ Define policies ](https://ai.google.dev/responsible/docs/design#define-policies)
+  * [ See examples ](https://ai.google.dev/responsible/docs/design#hypothetical-policies)
+
+
+
+Design for safety
+
+Define your overall approach to implement risk mitigation techniques, considering technical and business tradeoffs.
+
+  * [ Learn more ](https://ai.google.dev/responsible/docs/design#design-safety)
+
+
+
+Be transparent
+
+Communicate your approach with artifacts like model cards.
+
+  * [ See Templates ](https://ai.google.dev/responsible/docs/design#transparency-artifacts)
+
+
+
+Secure AI systems
+
+Consider AI-specific security risks and remediation methods highlighted in the Secure AI Framework (SAIF).
+
+  * [ Google's Secure AI Framework ](https://safety.google/cybersecurity-advancements/saif/)
+  * [ Documentation ](https://ai.google.dev/responsible/docs/design#secure-ai)
+
+
+
+## Align your model
+
+Align your model with your specific safety policies using prompting and tuning techniques.
+
+![](https://ai.google.dev/static/images/responsible/align-your-model.svg)
+
+Get started
+
+Craft safer, more robust prompts
+
+Use the power of LLMs to help craft safer prompt templates with the Model Alignment library.
+
+  * [ Try now ](https://colab.research.google.com/github/pair-code/model-alignment/blob/main/notebooks/Gemma_for_Model_Alignment.ipynb)
+  * [ Model Alignment ](https://ai.google.dev/responsible/docs/alignment/model-alignment)
+
+
+
+Tune models for safety
+
+Control model behavior by tuning your model to align with your safety and content policies.
+
+  * [ Learn about Tuning ](https://ai.google.dev/responsible/docs/alignment#tuning)
+  * [ Learn about Tuning SFT ](https://ai.google.dev/responsible/docs/alignment#tuning-sft)
+  * [ Learn about Tuning RLHF ](https://ai.google.dev/responsible/docs/alignment#tuning-rlhf)
+
+
+
+Investigate model prompts 
+
+Build safe and helpful prompts through iterative improvement with the Learning Interpretability Tool (LIT).
+
+Model prompts video
+
+  * [ Try now ](https://colab.research.google.com/github/google/generative-ai-docs/blob/main/site/en/gemma/docs/lit_gemma.ipynb)
+  * [ Learning Interpretability Tool ](https://ai.google.dev/responsible/docs/alignment/lit)
+
+
+
+## Evaluate your model
+
+Evaluate model risks on safety, fairness, and factual accuracy using our guidance and tooling.
+
+![](https://ai.google.dev/static/images/responsible/evaluate.svg)
+
+Get started
+
+LLM Comparator
+
+Conduct side-by-side evaluations with LLM Comparator to qualitatively assess differences in responses between models, different prompts for the same model, or even different tunings of a model
+
+LLM Comparator video
+
+  * [ Try demo ](https://pair-code.github.io/llm-comparator/)
+  * [ Learn about LLM Comparator  ](https://ai.google.dev/responsible/docs/evaluation#llm-comparator)
+
+
+
+Model evaluation guidelines
+
+Learn about red teaming best practices and evaluate your model against academic benchmarks to assess harms around safety, fairness, and factuality.
+
+  * [ Learn more ](https://ai.google.dev/responsible/docs/evaluation)
+  * [ See benchmarks ](https://ai.google.dev/responsible/docs/evaluation#benchmarks)
+  * [ See red teaming best practices ](https://ai.google.dev/responsible/docs/evaluation#red-teaming)
+
+
+
+## Protect with safeguards
+
+Filter your application's input and outputs, and protect users from undesirable outcomes.
+
+![](https://ai.google.dev/static/images/responsible/protect-with-safeguard.svg)
+
+Get started
+
+SynthID Text
+
+A tool for watermarking and detecting text generated by your model.
+
+  * [ SynthID text watermarking ](https://ai.google.dev/responsible/docs/safeguards/synthid)
+
+
+
+ShieldGemma
+
+A series of content safety classifiers, built on Gemma 2, available in three sizes: 2B, 9B, 27B.
+
+  * [ ShieldGemma content safety classifiers ](https://ai.google.dev/responsible/docs/safeguards/shieldgemma)
+
+
+
+Agile classifiers
+
+Create safety classifiers for your specific policies using parameter efficient tuning (PET) with relatively little training data
+
+  * [ Create safety classifiers ](https://ai.google.dev/responsible/docs/safeguards/agile-classifiers)
+
+
+
+Checks AI Safety
+
+Ensure AI safety compliance against your content policies with APIs and monitoring dashboards.
+
+  * [ Checks AI Safety ](https://checks.google.com/ai-safety/?utm_source=GenAITK&utm_medium=Link&utm_campaign=AI_Toolkit)
+
+
+
+Text moderation service
+
+Detect a list of safety attributes, including various potentially harmful categories and topics that may be considered sensitive with this Google Cloud Natural Language API available for free below a certain usage limit.
+
+  * [ Cloud Natural Language API ](https://cloud.google.com/natural-language/docs/moderating-text#:~:text=Text%20moderation%20analyzes%20a%20document,document%2C%20call%20the%20moderateText%20method.&text=Content%20that%20is%20rude%2C%20disrespectful%2C%20or%20unreasonable)
+  * [ Cloud Natural Language pricing ](https://cloud.google.com/natural-language/pricing)
+
+
+
+Perspective API
+
+Identify "toxic" comments with this free Google Jigsaw API to mitigate online toxicity and ensure healthy dialogue.
+
+  * [ Perspective API ](https://perspectiveapi.com/)
+
 

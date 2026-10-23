@@ -1,38 +1,62 @@
 ---
 url: https://ai.google.dev/gemma/docs/codegemma/
-title: https://ai.google.dev/gemma/docs/codegemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:59.053330+00:00
+title: CodeGemma
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:36.936144+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/codegemma/
+# CodeGemma
 
 > Source: https://ai.google.dev/gemma/docs/codegemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=11437699702026725843&q=EgQoUFpcGJ_OxNYGIjA7c_7pLUC9DqqGtQT5gBxafTyJMzDThlamu6wPDlk7OSf5YLeIPBboOOx_tRBbBnsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/codegemma/)  
-  
-  
-  
-  
+##  CodeGemma 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/codegemma/&q=EgQoUFpcGJ_OxNYGIjA7c_7pLUC9DqqGtQT5gBxafTyJMzDThlamu6wPDlk7OSf5YLeIPBboOOx_tRBbBnsyA2NyUloBQw)  
-  
+CodeGemma is a collection of powerful, lightweight models that can perform a variety of coding tasks like fill-in-the-middle code completion, code generation, natural language understanding, mathematical reasoning, and instruction following. 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+CodeGemma has 3 model variants: 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:56Z  
-URL: https://ai.google.dev/gemma/docs/codegemma/  
+  * A 7B pretrained variant that specializes in code completion and generation from code prefixes and/or suffixes
+  * A 7B instruction-tuned variant for natural language-to-code chat and instruction following
+  * A [**state of the art**](https://goo.gle/codegemma) 2B pretrained variant that provides up to 2x faster code completion
 
+CodeGemma models have several advantages: 
+
+
+
+
+  * tips_and_updates 
+
+####  Intelligent code completion and generation 
+
+Complete lines, functions, and even generate entire blocks of code, whether you're working locally or using Google Cloud resources. 
+
+  * fact_check 
+
+####  Enhanced accuracy 
+
+Trained on 500 billion tokens of primarily English language data from web documents, mathematics, and code, CodeGemma models generate code that's not only more syntactically correct but also semantically meaningful, reducing errors and debugging time. 
+
+  * code 
+
+####  Multi-language proficiency 
+
+Supports Python, JavaScript, Java, Kotlin, C++, C#, Rust, Go, and other languages. 
+
+  * merge 
+
+####  Streamlined workflows 
+
+Integrate a CodeGemma model into your development environment to write less boilerplate and focus on interesting and differentiated code that matters, faster. 
+
+
+
+
+##  More resources 
+
+###  [ View the model card ](https://ai.google.dev/gemma/docs/codegemma/model_card)
+
+CodeGemma's model card contains detailed information about the model, implementation information, evaluation information, model usage and limitations, and more. 
+
+###  [ View on Kaggle ](https://www.kaggle.com/models/google/codegemma)
+
+View more code, Colab notebooks, information, and discussions about CodeGemma on Kaggle. 

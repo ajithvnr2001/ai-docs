@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/
-title: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:27.807541+00:00
+title: Gemini Embedding 2 model
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:43.979464+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/
+# Gemini Embedding 2 model
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=5940840018446115291&q=EgQoUFpcGIDOxNYGIjC28-q-SP5mZJvH35vIfT2DHDn3MCgFNNXB8uiM8ZuVcRIKNSDlCUqUKwaTi6DdgrQyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/)  
-  
-  
-  
-  
+Our first multimodal embedding model, providing efficient numerical mapping of text, images, video, audio, and PDFs into a single unified embedding space. The Gemini Embedding 2 model is best for cross-modal semantic search, document retrieval, and recommendation systems that require fast, scalable similarity calculations across large multimodal datasets.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/&q=EgQoUFpcGIDOxNYGIjC28-q-SP5mZJvH35vIfT2DHDn3MCgFNNXB8uiM8ZuVcRIKNSDlCUqUKwaTi6DdgrQyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Embeddings](https://ai.google.dev/gemini-api/docs/embeddings) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:24Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2/  
+## gemini-embedding-2
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `gemini-embedding-2`  
+saveSupported data types |  **Input** Text, image, video, audio, PDF **Output** Text embeddings  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 8,192 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Stable: `gemini-embedding-2`
+
+  
+calendar_monthLatest update | April 2026

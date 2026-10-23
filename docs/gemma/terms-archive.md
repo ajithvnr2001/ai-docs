@@ -1,38 +1,31 @@
 ---
 url: https://ai.google.dev/gemma/terms-archive/
-title: https://ai.google.dev/gemma/terms-archive/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:26.186966+00:00
+title: Terms of Use archive
+method: httpx+scrapegraph (scrapling: scrapling thin content (315 chars), fallback to crawl4ai | crawl4ai: crawl4ai failed: Unexpected error in _crawl_web at line 632 in wrap_api_call (../../../usr/local/lib/python3.10/dist-packages/playwright/_impl/_connection.py):
+Error: BrowserContext.add_cookies: Protocol error (Storage.setCookies): Invalid cookie fields
+
+Code context:
+ 627           )
+ 628           self._api_zone.set(parsed_st)
+ 629           try:
+ 630               return await cb()
+ 631           except Exception as error:
+ 632 →             raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+ 633           finally:
+ 634               self._api_zone.set(None)
+ 635   
+ 636       def wrap_api_call_sync(
+ 637           self, cb: Callable[[], Any], is_internal: bool = False, title: str = None)
+fetched_at: 2026-10-23T11:46:06.103022+00:00
 ---
 
-# https://ai.google.dev/gemma/terms-archive/
+# Terms of Use archive
 
 > Source: https://ai.google.dev/gemma/terms-archive/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3911581363130358110&q=EgQoUFpcGLnOxNYGIjCWhDsT2Z7DrHZxJqJwM7PL-7SadywP9gG6MOpbUajpjTFp8o2LGZKAjgRrKXa_mCoyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/terms-archive/)  
-  
-  
-  
-  
+The following are links to previously published _Terms of Use_ documents:
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/terms-archive/&q=EgQoUFpcGLnOxNYGIjCWhDsT2Z7DrHZxJqJwM7PL-7SadywP9gG6MOpbUajpjTFp8o2LGZKAjgRrKXa_mCoyA2NyUloBQw)  
-  
+  * [April 1, 2024](https://ai.google.dev/gemma/terms-archive/terms_04_01_24)
+  * [February 21, 2024](https://ai.google.dev/gemma/terms-archive/terms_02_21_24)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
-
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:22Z  
-URL: https://ai.google.dev/gemma/terms-archive/  
 

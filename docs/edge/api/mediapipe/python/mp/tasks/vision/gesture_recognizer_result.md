@@ -1,38 +1,20 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:31.150512+00:00
+title: Module: mp.tasks.vision.gesture_recognizer_result
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:31.962150+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/
+# Module: mp.tasks.vision.gesture_recognizer_result
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1788022503446506967&q=EgQoUFpcGMfNxNYGIjDNTY4VJwEn6n5ygETVp8b6PV7SyLliDbWSTe-_7BfxkQaP50Ak0l3ilj3lKcu1DMgyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/gesture_recognizer_result.py) Gesture Recognizer Result data class.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/&q=EgQoUFpcGMfNxNYGIjDNTY4VJwEn6n5ygETVp8b6PV7SyLliDbWSTe-_7BfxkQaP50Ak0l3ilj3lKcu1DMgyA2NyUloBQw)  
-  
+## Modules
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[`category_module`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/category_module) module: Category data class. [`gesture_recognizer_result_c`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result_c) module: Gesture Recognizer Result C API types. [`landmark_module`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/landmark_module) module: Landmark data class.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:28Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/gesture_recognizer_result/  
+## Classes
 
+[`class GestureRecognizerResult`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/GestureRecognizerResult): The gesture recognition result from GestureRecognizer.

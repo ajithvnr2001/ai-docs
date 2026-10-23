@@ -1,38 +1,16 @@
 ---
 url: https://ai.google.dev/gemma/docs/integrations/web/
-title: https://ai.google.dev/gemma/docs/integrations/web/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:15.017050+00:00
+title: Deploy Gemma in web browsers
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:54.847739+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/integrations/web/
+# Deploy Gemma in web browsers
 
 > Source: https://ai.google.dev/gemma/docs/integrations/web/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=8154279273715296608&q=EgQoUFpcGLDOxNYGIjBRYunAtdXYXjRr8BC7EJS25hfWJYbAylS_dBqI08A3AcTPk4A1gt7rfyYVVh8uSIsyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/integrations/web/)  
-  
-  
-  
-  
+You can run Gemma models completely on-device with the [MediaPipe LLM Inference API](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference). The LLM Inference API acts as a wrapper for large language models, enabling you run Gemma models on-device for common text-to-text generation tasks like information retrieval, email drafting, and document summarization.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/integrations/web/&q=EgQoUFpcGLDOxNYGIjBRYunAtdXYXjRr8BC7EJS25hfWJYbAylS_dBqI08A3AcTPk4A1gt7rfyYVVh8uSIsyA2NyUloBQw)  
-  
+Try the LLM Inference API with [MediaPipe Studio](https://mediapipe-studio.webapps.google.com/demo/llm_inference), a web-based application for evaluating and customizing on-device models.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
-
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:12Z  
-URL: https://ai.google.dev/gemma/docs/integrations/web/  
-
+For more information on deploying Gemma to web browsers with the LLM Inference API, see the [LLM Inference guide for Web](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/web_js). To learn more about the MediaPipe LLM Inference capabilities, see the [LLM inference guide](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference).

@@ -1,38 +1,154 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/generate-content/
-title: https://ai.google.dev/gemini-api/docs/generate-content/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:50.876091+00:00
+title: Gemini API
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:43:22.642177+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/generate-content/
+# Gemini API
 
 > Source: https://ai.google.dev/gemini-api/docs/generate-content/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=5655856791467465669&q=EgQoUFpcGN3NxNYGIjAAal0a2cE9OnlaSHt0U0qimNV6Wt-udvhPiVRPMasT6svpmKqrrgvcZmSbHBHSVh4yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/generate-content/)  
-  
-  
-  
-  
+The Gemini API is the fastest path from prompt to production with Gemini, Veo, Nano Banana, and more. It lets you integrate these generative models into your applications to generate text and images, analyze multimodal inputs, and build conversational agents.
+
+### Python
+    
+    
+    from google import genai
+    
+    client = genai.Client()
+    
+    response = client.models.generate_content(
+        model="gemini-4-argon",
+        contents="Explain how AI works in a few words",
+    )
+    
+    print(response.text)
+    
+
+### JavaScript
+    
+    
+    import { GoogleGenAI } from "@google/genai";
+    
+    const ai = new GoogleGenAI({});
+    
+    async function main() {
+      const response = await ai.models.generateContent({
+        model: "gemini-4-argon",
+        contents: "Explain how AI works in a few words",
+      });
+      console.log(response.text);
+    }
+    
+    await main();
+    
+
+### Go
+    
+    
+    package main
+    
+    import (
+        "context"
+        "fmt"
+        "log"
+        "google.golang.org/genai"
+    )
+    
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+    
+        result, err := client.Models.GenerateContent(
+            ctx,
+            "gemini-4-argon",
+            genai.Text("Explain how AI works in a few words"),
+            nil,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(result.Text())
+    }
+    
+
+### Java
+    
+    
+    package com.example;
+    
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateContentResponse;
+    
+    public class GenerateTextFromTextInput {
+      public static void main(String[] args) {
+        Client client = new Client();
+    
+        GenerateContentResponse response =
+            client.models.generateContent(
+                "gemini-4-argon",
+                "Explain how AI works in a few words",
+                null);
+    
+        System.out.println(response.text());
+      }
+    }
+    
+
+### C#
+    
+    
+    using System.Threading.Tasks;
+    using Google.GenAI;
+    using Google.GenAI.Types;
+    
+    public class GenerateContentSimpleText {
+      public static async Task main() {
+        var client = new Client();
+        var response = await client.Models.GenerateContentAsync(
+          model: "gemini-4-argon", contents: "Explain how AI works in a few words"
+        );
+        Console.WriteLine(response.Candidates[0].Content.Parts[0].Text);
+      }
+    }
+    
+
+### REST
+    
+    
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-4-argon:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "Explain how AI works in a few words"
+              }
+            ]
+          }
+        ]
+      }'
+    
+
+[Start building](https://ai.google.dev/gemini-api/docs/generate-content/get-started)
 
 * * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/generate-content/&q=EgQoUFpcGN3NxNYGIjAAal0a2cE9OnlaSHt0U0qimNV6Wt-udvhPiVRPMasT6svpmKqrrgvcZmSbHBHSVh4yA2NyUloBQw)  
-  
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Meet the models
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:49Z  
-URL: https://ai.google.dev/gemini-api/docs/generate-content/  
+[View all](https://ai.google.dev/gemini-api/docs/models)
 
+[ auto_awesome Gemini 4 Argon New Our flagship reasoning model with a shared 1M context window and long decodes up to 1M tokens.  ](https://ai.google.dev/gemini-api/docs/models/gemini-4-argon) [ spark Gemini 3.6 Flash New Our latest model that balances speed with intelligence to deliver strong performance in agentic and multimodal tasks.  ](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [ graphic_eq Gemini 3.8 Flash TTS New Studio-grade text-to-speech model with expressive acting, custom Voice design, and Voice replication.  ](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts) [ spark Gemini 3.5 Flash-Lite New High-volume, cost-sensitive model optimized for low-latency high throughput subagent tasks.  ](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) [ spark Gemini 3.1 Flash-Lite  High-volume, cost-sensitive model with the performance and quality of the Gemini 3 series.  ](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [ spark Gemini 3 Flash  Frontier-class performance rivaling larger models at a fraction of the cost.  ](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [ 🍌 Nano Banana  State-of-the-art image generation and editing models.  ](https://ai.google.dev/gemini-api/docs/image-generation) [ video_library Gemini Omni Flash  Our state-of-the-art video generation and editing model.  ](https://ai.google.dev/gemini-api/docs/omni) [ spark Gemini Robotics  A vision-language model (VLM) that brings Gemini's agentic capabilities to robotics and enables advanced reasoning in the physical world.  ](https://ai.google.dev/gemini-api/docs/robotics-overview)
+
+## Explore Capabilities
+
+[ imagesmode Native Image Generation (Nano Banana)  Generate and edit highly contextual images natively with Gemini 2.5 Flash Image.  ](https://ai.google.dev/gemini-api/docs/image-generation) [ article Long Context  Input millions of tokens to Gemini models and derive understanding from unstructured images, videos, and documents.  ](https://ai.google.dev/gemini-api/docs/long-context) [ code Structured Outputs  Constrain Gemini to respond with JSON, a structured data format suitable for automated processing.  ](https://ai.google.dev/gemini-api/docs/structured-output) [ functions Function Calling  Build agentic workflows by connecting Gemini to external APIs and tools.  ](https://ai.google.dev/gemini-api/docs/function-calling) [ videocam Video Generation with Gemini Omni Flash  Create high-quality video content from text or image prompts with our state-of-the-art model.  ](https://ai.google.dev/gemini-api/docs/video) [ android_recorder Voice Agents with Live API  Build real-time voice applications and agents with the Live API.  ](https://ai.google.dev/gemini-api/docs/live-api) [ build Tools  Connect Gemini to the world through built-in tools like Google Search, URL Context, Google Maps, Code Execution and Computer Use.  ](https://ai.google.dev/gemini-api/docs/tools) [ stacks Document Understanding  Process up to 1000 pages of PDF files with full multimodal understanding or other text-based file types.  ](https://ai.google.dev/gemini-api/docs/document-processing) [ cognition_2 Thinking  Explore how thinking capabilities improve reasoning for complex tasks and agents.  ](https://ai.google.dev/gemini-api/docs/thinking)
+
+[ Google AI Studio  Test prompts, manage your API keys, monitor usage, and build prototypes.  ](https://aistudio.google.com) [ group Developer Community  Ask questions and find solutions from other developers and Google engineers.  ](https://discuss.ai.google.dev/c/gemini-api/4) [ menu_book API Reference  Find detailed information about the Gemini API in the official reference documentation.  ](https://ai.google.dev/api) [ sensors Status  Check the status of Gemini API, Google AI Studio, and our model services.  ](https://aistudio.google.com/status)

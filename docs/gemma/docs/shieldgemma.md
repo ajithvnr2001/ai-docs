@@ -1,38 +1,61 @@
 ---
 url: https://ai.google.dev/gemma/docs/shieldgemma/
-title: https://ai.google.dev/gemma/docs/shieldgemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:23.928095+00:00
+title: ShieldGemma
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:03.111285+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/shieldgemma/
+# ShieldGemma
 
 > Source: https://ai.google.dev/gemma/docs/shieldgemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=8588981393488086085&q=EgQoUFpcGLjOxNYGIjBz3x7_zvQKNxQcP8w_eFr7ad-siJTj2v67TYJkBHz2SdkvLBE57E4PN0N6OkJN6CAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/shieldgemma/)  
-  
-  
-  
-  
+##  ShieldGemma 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/shieldgemma/&q=EgQoUFpcGLjOxNYGIjBz3x7_zvQKNxQcP8w_eFr7ad-siJTj2v67TYJkBHz2SdkvLBE57E4PN0N6OkJN6CAyA2NyUloBQw)  
-  
+ShieldGemma is a set of instruction tuned models for evaluating the safety of text and images against a set of defined safety policies. You can use this model as part of a larger implementation of a generative AI application to help evaluate and prevent generative AI applications from violating safety policies. The ShieldGemma family of models is provided with open weights to allow you to fine-tune it for your specific use case. 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+ShieldGemma 2 is a 4B parameter model built to label images for safety. 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:20Z  
-URL: https://ai.google.dev/gemma/docs/shieldgemma/  
+ShieldGemma 1 is built on [Gemma 2](https://ai.google.dev/gemma/docs/core) in 2B, 9B, and 27B parameter sizes. 
 
+  * verified_user 
+
+####  Content safety evaluation 
+
+Evaluate the safety of prompt input and output responses against a set of defined safety policies. 
+
+  * [ build  ](https://huggingface.co/collections/google/shieldgemma-67d130ef8da6af884072a789)
+
+####  [ Tuneable, open models ](https://huggingface.co/collections/google/shieldgemma-67d130ef8da6af884072a789)
+
+ShieldGemma models are provided with open weights and can be fine-tuned for your specific use case. 
+
+
+
+
+##  ShieldGemma 2 
+
+###  [ View the model card ](https://ai.google.dev/gemma/docs/shieldgemma/model_card_2)
+
+ShieldGemma's 2 model card contains detailed information about the model implementation, evaluations, model usage and limitations, and more. 
+
+###  [ View on Kaggle ](https://www.kaggle.com/models/google/shieldgemma-2)
+
+View more code, Colab notebooks, information, and discussions about ShieldGemma on Kaggle. 
+
+###  [ View on HuggingFace ](https://huggingface.co/google/shieldgemma-2-4b-it)
+
+Run a working example for using ShieldGemma to evaluate images. 
+
+##  ShieldGemma 1 
+
+###  [ View the model card ](https://ai.google.dev/gemma/docs/shieldgemma/model_card)
+
+ShieldGemma's model card contains detailed information about the model implementation, evaluations, model usage and limitations, and more. 
+
+###  [ View on Kaggle ](https://www.kaggle.com/models/google/shieldgemma)
+
+View more code, Colab notebooks, information, and discussions about ShieldGemma on Kaggle. 
+
+###  [ Run in Colab ](https://colab.research.google.com/github/google-gemini/gemma-cookbook/blob/main/responsible/shieldgemma_on_keras.ipynb)
+
+Run a working example for using ShieldGemma to evaluate text prompt input and output. 

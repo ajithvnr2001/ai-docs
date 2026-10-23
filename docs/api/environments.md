@@ -1,31 +1,17 @@
 ---
 url: https://ai.google.dev/api/environments/
-title: Gemini Environments API \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Gemini Environments API
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:15:53.863257+00:00
+fetched_at: 2026-10-23T12:00:14.381485+00:00
 ---
 
-# Gemini Environments API  |  Gemini API  |  Google AI for Developers
+# Gemini Environments API
 
 > Source: https://ai.google.dev/api/environments/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Gemini Environments API
 
 Environments provide isolated execution contexts for running agent code, tools, and services securely.
 
 [View as markdown](https://ai.google.dev/static/api/environments.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
-
-This API is in Beta. Endpoints are under `/v1beta/`.
 
 ## CreateEnvironment
 
@@ -42,10 +28,6 @@ Creates an environment.
 
 The request body contains data with the following structure:
 
-from_environment string (optional)
-
-Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
-
 network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
 Network configuration for the environment.
@@ -75,22 +57,6 @@ A source to be mounted into the environment.
 
 #### Fields
 
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
-
 type enum (string) (optional)
 
 No description provided.
@@ -109,32 +75,36 @@ Inline content.
 
 A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
 
 
 
+source string (optional)
+
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+target string (optional)
+
+Where the source should appear in the environment.
+
+content string (optional)
+
+The inline content if `type` is `INLINE`.
+
+encoding string (optional)
+
+Optional encoding for inline content (e.g. `base64`).
+
+from_environment string (optional)
+
+Optional. The source environment to copy/fork from. Format: `environments/{environment_id}` or `{environment_id}`. When specified, `sources` and `env` must be empty.
 
 ### Response
 
 If successful, the response body contains data with the following structure:
 
-created string (optional)
-
-Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-
-file_count string (optional)
-
-Output only. The number of files in the environment, output only.
-
-id string (optional)
+id string (required)
 
 Required. Output only. The ID of the environment.
-
-last_accessed string (optional)
-
-Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
@@ -157,10 +127,6 @@ All network egress is blocked.
 
 
 
-size_bytes string (optional)
-
-Output only. The total size of the environment files in bytes, output only.
-
 sources array (Source) (optional)
 
 Sources to be mounted into the environment.
@@ -168,22 +134,6 @@ Sources to be mounted into the environment.
 A source to be mounted into the environment.
 
 #### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
 
 type enum (string) (optional)
 
@@ -203,12 +153,36 @@ Inline content.
 
 A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
 
 
 
+source string (optional)
+
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+target string (optional)
+
+Where the source should appear in the environment.
+
+content string (optional)
+
+The inline content if `type` is `INLINE`.
+
+encoding string (optional)
+
+Optional encoding for inline content (e.g. `base64`).
+
+created string (optional)
+
+Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+updated string (optional)
+
+Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+last_accessed string (optional)
+
+Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 status enum (string) (optional)
 
@@ -227,9 +201,13 @@ Output only. The status of the environment container.
 
 
 
-updated string (optional)
+file_count string (optional)
 
-Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+Output only. The number of files in the environment, output only.
+
+size_bytes string (optional)
+
+Output only. The total size of the environment files in bytes, output only.
 
 ### Create
 
@@ -307,18 +285,6 @@ Metadata for a file or directory within an environment.
 
 #### Fields
 
-created string (optional)
-
-Output only. The creation time of the file/directory.
-
-mime_type string (optional)
-
-Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT
-
-modified string (optional)
-
-Output only. The modification time of the file/directory.
-
 name string (optional)
 
 Output only. The name of the file or directory (e.g., "main.py" or "src").
@@ -326,10 +292,6 @@ Output only. The name of the file or directory (e.g., "main.py" or "src").
 path string (optional)
 
 Output only. The full relative path within the environment (e.g., "workspace/src/main.py").
-
-size_bytes string (optional)
-
-Output only. The size of the file/directory in bytes. NOLINT
 
 type enum (string) (optional)
 
@@ -347,6 +309,22 @@ A directory.
 
 
 
+
+size_bytes string (optional)
+
+Output only. The size of the file/directory in bytes. NOLINT
+
+mime_type string (optional)
+
+Output only. The MIME type of the file (e.g., "text/python", "image/png"). Empty for directories. NOLINT
+
+created string (optional)
+
+Output only. The creation time of the file/directory.
+
+modified string (optional)
+
+Output only. The modification time of the file/directory.
 
 next_page_token string (optional)
 
@@ -379,21 +357,9 @@ Required. Resource ID segment making up resource `name`. It identifies the resou
 
 If successful, the response body contains data with the following structure:
 
-created string (optional)
-
-Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-
-file_count string (optional)
-
-Output only. The number of files in the environment, output only.
-
-id string (optional)
+id string (required)
 
 Required. Output only. The ID of the environment.
-
-last_accessed string (optional)
-
-Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
@@ -416,10 +382,6 @@ All network egress is blocked.
 
 
 
-size_bytes string (optional)
-
-Output only. The total size of the environment files in bytes, output only.
-
 sources array (Source) (optional)
 
 Sources to be mounted into the environment.
@@ -427,22 +389,6 @@ Sources to be mounted into the environment.
 A source to be mounted into the environment.
 
 #### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
 
 type enum (string) (optional)
 
@@ -462,12 +408,36 @@ Inline content.
 
 A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
 
 
 
+source string (optional)
+
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+target string (optional)
+
+Where the source should appear in the environment.
+
+content string (optional)
+
+The inline content if `type` is `INLINE`.
+
+encoding string (optional)
+
+Optional encoding for inline content (e.g. `base64`).
+
+created string (optional)
+
+Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+updated string (optional)
+
+Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+last_accessed string (optional)
+
+Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 status enum (string) (optional)
 
@@ -486,9 +456,13 @@ Output only. The status of the environment container.
 
 
 
-updated string (optional)
+file_count string (optional)
 
-Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+Output only. The number of files in the environment, output only.
+
+size_bytes string (optional)
+
+Output only. The total size of the environment files in bytes, output only.
 
 ### Get
 
@@ -504,14 +478,6 @@ Starts a resumable upload session for a file in an environment workspace. Upload
 
 
 ### Path / Query Parameters
-
-extract boolean (optional)
-
-Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
-
-overwrite boolean (optional)
-
-Optional. Whether to overwrite the destination file if it already exists.
 
 X-Goog-Upload-Command string (required)
 
@@ -532,6 +498,14 @@ X-Goog-Upload-Protocol string (required)
 Resumable upload protocol selector.
 
 _Defaults to:`resumable`_
+
+extract boolean (optional)
+
+Optional. If true, treats the uploaded file as a tar/tar.gz archive and unpacks it into `path`.
+
+overwrite boolean (optional)
+
+Optional. Whether to overwrite the destination file if it already exists.
 
 ### Response
 
@@ -570,21 +544,9 @@ An execution environment for an agent.
 
 #### Fields
 
-created string (optional)
-
-Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-
-file_count string (optional)
-
-Output only. The number of files in the environment, output only.
-
-id string (optional)
+id string (required)
 
 Required. Output only. The ID of the environment.
-
-last_accessed string (optional)
-
-Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 network EnvironmentNetworkEgressAllowlist or enum (string) (optional)
 
@@ -607,10 +569,6 @@ All network egress is blocked.
 
 
 
-size_bytes string (optional)
-
-Output only. The total size of the environment files in bytes, output only.
-
 sources array (Source) (optional)
 
 Sources to be mounted into the environment.
@@ -618,22 +576,6 @@ Sources to be mounted into the environment.
 A source to be mounted into the environment.
 
 #### Fields
-
-content string (optional)
-
-The inline content if `type` is `INLINE`.
-
-encoding string (optional)
-
-Optional encoding for inline content (e.g. `base64`).
-
-source string (optional)
-
-The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
-
-target string (optional)
-
-Where the source should appear in the environment.
 
 type enum (string) (optional)
 
@@ -653,12 +595,36 @@ Inline content.
 
 A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
-  * `skill_registry`
-
-A skill resource from the Skill Registry Service. Skill: projects/{project}/locations/{location}/skills/{skill} SkillRevision: projects/{project}/locations/{location}/skills/{skill}/revisions/{revision} Support mounting all skills under a project: projects/{project}/locations/{location}/skills.
 
 
 
+source string (optional)
+
+The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+target string (optional)
+
+Where the source should appear in the environment.
+
+content string (optional)
+
+The inline content if `type` is `INLINE`.
+
+encoding string (optional)
+
+Optional encoding for inline content (e.g. `base64`).
+
+created string (optional)
+
+Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+updated string (optional)
+
+Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+
+last_accessed string (optional)
+
+Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
 status enum (string) (optional)
 
@@ -677,14 +643,10 @@ Output only. The status of the environment container.
 
 
 
-updated string (optional)
+file_count string (optional)
 
-Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+Output only. The number of files in the environment, output only.
 
-Send feedback 
+size_bytes string (optional)
 
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-10-13 UTC.
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-10-13 UTC."],[],[]] 
+Output only. The total size of the environment files in bytes, output only.

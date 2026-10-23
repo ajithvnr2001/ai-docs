@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:32.910892+00:00
+title: Module: tf.lite
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:32.884130+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/
+# Module: tf.lite
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=11099418702148061344&q=EgQoUFpcGMnNxNYGIjBzOOpBZ2Zz9Urupa334gExnOVQCIzNHdMiCEPi5PdSVXk9bOU87KmZsYk-jZNR1KAyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/)  
-  
-  
-  
-  
+Public API for tf._api.v2.lite namespace
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/&q=EgQoUFpcGMnNxNYGIjBzOOpBZ2Zz9Urupa334gExnOVQCIzNHdMiCEPi5PdSVXk9bOU87KmZsYk-jZNR1KAyA2NyUloBQw)  
-  
+## Modules
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[`experimental`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental) module: Public API for tf._api.v2.lite.experimental namespace
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:29Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/  
+## Classes
 
+[`class Interpreter`](https://ai.google.dev/edge/api/tflite/python/tf/lite/Interpreter): Interpreter interface for running TensorFlow Lite models.
+
+[`class OpsSet`](https://ai.google.dev/edge/api/tflite/python/tf/lite/OpsSet): Enum class defining the sets of ops available to generate TFLite models.
+
+[`class Optimize`](https://ai.google.dev/edge/api/tflite/python/tf/lite/Optimize): Enum defining the optimizations to apply when generating a tflite model.
+
+[`class RepresentativeDataset`](https://ai.google.dev/edge/api/tflite/python/tf/lite/RepresentativeDataset): Representative dataset used to optimize the model.
+
+[`class TFLiteConverter`](https://ai.google.dev/edge/api/tflite/python/tf/lite/TFLiteConverter): Converts a TensorFlow model into TensorFlow Lite model.
+
+[`class TargetSpec`](https://ai.google.dev/edge/api/tflite/python/tf/lite/TargetSpec): Specification of target device used to optimize the model.

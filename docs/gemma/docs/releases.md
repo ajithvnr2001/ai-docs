@@ -1,38 +1,199 @@
 ---
 url: https://ai.google.dev/gemma/docs/releases/
-title: https://ai.google.dev/gemma/docs/releases/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:21.741085+00:00
+title: Gemma releases
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:01.983234+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/releases/
+# Gemma releases
 
 > Source: https://ai.google.dev/gemma/docs/releases/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=6712943793985780772&q=EgQoUFpcGLfOxNYGIjDObZ6hhtwNPgHndnSIIq7g0ZIIP2ir7xcQ5h5Ag58eYIEpu8joEIDDe54yl6jRvS0yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/releases/)  
-  
-  
-  
-  
+This page documents releases for the Gemma family of models.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/releases/&q=EgQoUFpcGLfOxNYGIjDObZ6hhtwNPgHndnSIIq7g0ZIIP2ir7xcQ5h5Ag58eYIEpu8joEIDDe54yl6jRvS0yA2NyUloBQw)  
-  
+## October 6, 2026
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * Release of [EmbeddingGemma 2](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) in 740M parameter size.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:19Z  
-URL: https://ai.google.dev/gemma/docs/releases/  
+
+
+## June 3, 2026
+
+  * Release of [Gemma 4 12B Unified](https://ai.google.dev/gemma/docs/core).
+
+
+
+## April 16, 2026
+
+  * Release of [Gemma 4 - MTP](https://ai.google.dev/gemma/docs/mtp/overview) for E2B, E4B, 31B, and 26B A4B.
+
+
+
+## March 31, 2026
+
+  * Release of [Gemma 4](https://ai.google.dev/gemma/docs/core) in E2B, E4B, 31B and 26B A4B sizes.
+
+
+
+## January 15, 2026
+
+  * Release of [TranslateGemma](https://www.kaggle.com/models/google/translategemma) in 4B, 12B, and 27B parameter size.
+
+
+
+## January 13, 2026
+
+  * Release of [MedGemma 1.5](https://developers.google.com/health-ai-developer-foundations/medgemma) in 4B parameter size.
+
+
+
+## December 19, 2025
+
+  * Release of [Gemma Scope 2](https://ai.google.dev/gemma/docs/gemma_scope), an interpretability suite for Gemma 3 models.
+
+
+
+## December 18, 2025
+
+  * Release of [FunctionGemma](https://ai.google.dev/gemma/docs/functiongemma) in 270M parameter size.
+  * Release of [T5Gemma v2](https://blog.google/technology/developers/t5gemma-2/) in 270M-270M, 1B-1B, and 4B-4B parameter sizes.
+
+
+
+## September 13, 2025
+
+  * Release of [VaultGemma](https://www.kaggle.com/models/google/vaultgemma) in 1B parameter size.
+
+
+
+## September 4, 2025
+
+  * Release of [EmbeddingGemma](https://ai.google.dev/gemma/docs/embeddinggemma) in 300M parameter size.
+
+
+
+## August 14, 2025
+
+  * Release of [Gemma 3](https://ai.google.dev/gemma/docs/core/model_card_3) in 270M size.
+
+
+
+## July 9, 2025
+
+  * Release of [T5Gemma](https://developers.googleblog.com/en/t5gemma/) across different parameter sizes.
+  * Release of [MedGemma](https://developers.google.com/health-ai-developer-foundations/medgemma) 27B parameter multimodal model.
+
+
+
+## June 26, 2025
+
+  * Release of [Gemma 3n](https://ai.google.dev/gemma/docs/3n) in E2B and E4B sizes.
+
+
+
+## May 20, 2025
+
+  * Release of [MedGemma](https://developers.google.com/health-ai-developer-foundations/medgemma) in 4B and 27B parameter sizes.
+
+
+
+## March 10, 2025
+
+  * Release of [Gemma 3](https://ai.google.dev/gemma/docs/core/model_card_3) in 1B, 4B, 12B and 27B sizes.
+  * Release of [ShieldGemma 2](https://ai.google.dev/gemma/docs/shieldgemma).
+
+
+
+## February 19, 2025
+
+  * Release of [PaliGemma 2 mix](https://ai.google.dev/gemma/docs/paligemma/model-card-2) in 3B, 10B, and 28B parameter sizes.
+
+
+
+## December 5, 2024
+
+  * Release of [PaliGemma 2](https://ai.google.dev/gemma/docs/paligemma) in 3B, 10B, and 28B parameter sizes.
+
+
+
+## October 16, 2024
+
+  * Release of [Personal AI code assistant](https://ai.google.dev/gemma/docs/personal-code-assistant) developer guide.
+
+
+
+## October 15, 2024
+
+  * Release of [Gemma-APS](https://ai.google.dev/gemma/docs/gemma-aps) in 2B and 7B sizes.
+
+
+
+## October 8, 2024
+
+  * Release of [Business email assistant](https://ai.google.dev/gemma/docs/business-email-assistant) developer guide.
+
+
+
+## October 3, 2024
+
+  * Release of [Gemma 2 JPN](https://www.kaggle.com/models/google/gemma-2-2b-jpn-it) in 2B size.
+  * Release of [Spoken language tasks](https://ai.google.dev/gemma/docs/spoken-language/task-specific-tuning) developer guide.
+
+
+
+## September 12, 2024
+
+  * Release of [DataGemma](https://ai.google.dev/gemma/docs/datagemma) in 2B size.
+
+
+
+## July 31, 2024
+
+  * Release of [Gemma 2](https://ai.google.dev/gemma/docs/core/model_card_2) in 2B size.
+  * Initial release of [ShieldGemma](https://ai.google.dev/gemma/docs/shieldgemma).
+  * Initial release of [Gemma Scope](https://ai.google.dev/gemma/docs/gemma_scope).
+
+
+
+## June 27, 2024
+
+  * Initial release of [Gemma 2](https://ai.google.dev/gemma/docs/core/model_card_2) in 9B and 27B sizes.
+
+
+
+## June 11, 2024
+
+  * Release of [RecurrentGemma](https://ai.google.dev/gemma/docs/recurrentgemma) 9B variant.
+
+
+
+## May 14, 2024
+
+  * Initial release of [PaliGemma](https://ai.google.dev/gemma/docs/paligemma).
+
+
+
+## May 3, 2024
+
+  * Release of [CodeGemma](https://ai.google.dev/gemma/docs/codegemma) v1.1.
+
+
+
+## April 9, 2024
+
+  * Initial release of [CodeGemma](https://ai.google.dev/gemma/docs/codegemma).
+  * Initial release of [RecurrentGemma](https://ai.google.dev/gemma/docs/recurrentgemma).
+
+
+
+## April 5, 2024
+
+  * Release of [Gemma](https://ai.google.dev/gemma/docs/core/model_card) 1.1.
+
+
+
+## February 21, 2024
+
+  * Initial release of [Gemma](https://ai.google.dev/gemma/docs/core/model_card) in 2B and 7B sizes.
+
 

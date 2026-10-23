@@ -1,10 +1,7 @@
 {
   "url": "https://developer.chrome.com/docs/ai/built-in/",
   "file": "_subdomains/developer.chrome.com/docs/ai/built-in.md",
-  "title": "https://developer.chrome.com/docs/ai/built-in/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:19:43.470044+00:00",
-  "html_len": 3050,
-  "md_len": 1754,
-  "depth": 1
+  "title": "Built-in AI | AI in Chrome | Chrome for Developers",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:46:14.942043+00:00"
 }

@@ -1,38 +1,48 @@
 ---
 url: https://ai.google.dev/gemma/docs/integrations/mlx/
-title: https://ai.google.dev/gemma/docs/integrations/mlx/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:14.829676+00:00
+title: Run Gemma with MLX
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:54.797425+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/integrations/mlx/
+# Run Gemma with MLX
 
 > Source: https://ai.google.dev/gemma/docs/integrations/mlx/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17975955699509981840&q=EgQoUFpcGK7OxNYGIjB3xRuUgZm402m7b2mR0FN1LRYiUaGGb01nybsW1yQPMj9TvBYOjogjjdFNrUuY7-AyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/integrations/mlx/)  
-  
-  
-  
-  
+MLX is an array framework for machine learning on Apple silicon.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/integrations/mlx/&q=EgQoUFpcGK7OxNYGIjB3xRuUgZm402m7b2mR0FN1LRYiUaGGb01nybsW1yQPMj9TvBYOjogjjdFNrUuY7-AyA2NyUloBQw)  
-  
+## Quick start
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[Install](https://ml-explore.github.io/mlx/build/html/install.html) from the Python Package Index (PyPI)
+    
+    
+    pip install mlx mlx-lm mlx-vlm
+    
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:11Z  
-URL: https://ai.google.dev/gemma/docs/integrations/mlx/  
+Example command:
+    
+    
+    # Text Generation
+    mlx_lm.generate --model mlx-community/gemma-4-e2b-it-4bit --prompt "Who are you?"
+    
+    # Vision Task
+    mlx_vlm.generate --model mlx-community/gemma-4-e2b-it-4bit --prompt "Describe this image." --image <path_to_image>
+    
+
+You can start the server with:
+    
+    
+    mlx_vlm.server --port 8080
+    
+    # Preload a model at startup (Hugging Face repo or local path)
+    mlx_vlm.server --model mlx-community/gemma-4-e2b-it-4bit
+    
+
+This creates a server that lets you access your model with the OpenAI-compatible endpoint (`http://localhost:8080/v1`).
+
+For more information and instructions on how to use MLX with Gemma, refer to the official repository:
+
+  * [MLX on GitHub](https://github.com/ml-explore/mlx)
+  * [MLX Community on Hugging Face](https://huggingface.co/mlx-community)
+
 

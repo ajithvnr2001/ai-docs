@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
   "file": "gemini-api/docs/models/gemini-3.8-flash.md",
-  "title": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:25.810221+00:00",
-  "html_len": 3109,
-  "md_len": 1828,
-  "depth": 0
+  "title": "Gemini 3.8 Flash",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:43.201553+00:00"
 }

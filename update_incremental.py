@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
-"""Incremental update for ai.google.dev: crawl NEW docs AND refetch
-sitemap-updated pages (lastmod vs fetched_at, newest-first, capped).
+"""Incremental update for ai.google.dev.
+
+Three lanes:
+  1. NEW      - sitemap URLs not indexed yet
+  2. STALE    - pages whose sitemap lastmod is newer than our fetched_at
+  3. REPAIR   - pages currently holding an anti-bot CAPTCHA/OAuth interstitial
+
 Usage:
   python3 update_incremental.py --check-only
   python3 update_incremental.py
+  python3 update_incremental.py --repair-cap 1000
   python3 update_incremental.py --force URL
 """
 import argparse, json, os, re, pathlib, asyncio, sys
@@ -13,38 +19,92 @@ import crawl_ai as C
 
 DOCS = C.OUT_ROOT
 STATE = C.STATE_FILE
-REFRESH_CAP = 100  # max stale-page refetches per run (newest first)
+REFRESH_CAP = 100   # max stale-page refetches per run (newest first)
+REPAIR_CAP = 300    # max blocked-page repairs per run
+
+# Strong markers of a saved CAPTCHA/OAuth page (never legitimate docs text).
+BLOCK_RE = re.compile(
+    r"please type the characters|please enable images|google\.com/sorry/image|"
+    r"ai\.google\.dev/oauth2authorize|our systems have detected unusual traffic|"
+    r"sign in - google accounts",
+    re.I,
+)
 
 # Sitemap URLs whose origin is broken (verified by hand): excluded from auto-update
 # so the daily Action doesn't re-add an error page every run.
 KNOWN_BROKEN = {
     # serves Next.js "This page couldn't load" (was HTTP 500 at crawl time)
     "https://ai.google.dev/ms-agent-harness-dotnet/tutorials/ai-powered-textarea/step-2-setup-copilotkit/",
+    # still advertised in sitemap but returns 404
+    "https://ai.google.dev/edge/mediapipe/solutions/genai/rag/android/",
+    "https://ai.google.dev/palm_docs/deprecation/",
+    "https://ai.google.dev/robots.txt",
 }
 
 async def live_sitemaps():
-    import httpx
+    """Read sitemap.xml, follow its child sitemap(s), return canonical URLs + lastmod.
+
+    The index itself only contains one <loc> (the child sitemap); parsing it as
+    docs made new/stale detection a no-op. Child sitemaps are ~19 MB.
+    """
     out, lastmod = {}, {}
-    async with httpx.AsyncClient(follow_redirects=True, timeout=30) as c:
-        r = await c.get("https://ai.google.dev/sitemap.xml", timeout=30); r.raise_for_status()
-        locs = re.findall(r"<loc>([^<]+)</loc>", r.text)
-        out["docs"] = sorted({C.normalize_url(u) for u in locs if C.normalize_url(u)})
-        for u, d in re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", r.text):
-            n = C.normalize_url(u)
-            if n and (n not in lastmod or d > lastmod[n]): lastmod[n] = d
-    return out, lastmod
+    c = await C.get_httpx_client()
+
+    async def fetch(u):
+        r = await c.get(u, timeout=90)
+        if C.is_block_page(r.text):
+            try:
+                await c.get(C.WARM_URL)
+            except Exception:
+                pass
+            r = await c.get(u, timeout=90)
+        if C.is_block_page(r.text):
+            raise RuntimeError(f"blocked sitemap {u}")
+        r.raise_for_status()
+        return r.text
+
+    index_xml = await fetch("https://ai.google.dev/sitemap.xml")
+    child_locs = [urljoin("https://ai.google.dev/", m)
+                  for m in re.findall(r"<sitemap>\s*<loc>([^<]+)</loc>", index_xml)]
+    if not child_locs and "<urlset" in index_xml:
+        child_locs = ["https://ai.google.dev/sitemap.xml"]
+
+    urls, lm = set(), {}
+    for child in child_locs:
+        xml = index_xml if child.endswith("sitemap.xml") and "<urlset" in index_xml else await fetch(child)
+        for block in re.findall(r"<url>(.*?)</url>", xml, re.S):
+            loc = re.search(r"<loc>([^<]+)</loc>", block)
+            if not loc:
+                continue
+            n = C.normalize_url(loc.group(1))
+            if not n:
+                continue
+            urls.add(n)
+            d = re.search(r"<lastmod>([^<]+)</lastmod>", block)
+            if d and (n not in lm or d.group(1) > lm[n]):
+                lm[n] = d.group(1)
+    if not urls:
+        raise RuntimeError("sitemap had no <url> entries")
+    out["docs"] = sorted(urls)
+    return out, lm
 
 async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check-only", action="store_true")
     ap.add_argument("--force", default=None)
-    ap.add_argument("--concurrency", type=int, default=10)
+    ap.add_argument("--concurrency", type=int, default=4)
+    ap.add_argument("--repair-cap", type=int, default=REPAIR_CAP)
     a = ap.parse_args()
     idx = [json.loads(l) for l in open(DOCS / "_index.jsonl")] if (DOCS / "_index.jsonl").exists() else []
     indexed = set(r["url"] for r in idx)
     from urllib.parse import unquote
     idec = {unquote(u) for u in indexed}
-    live, lastmod = await live_sitemaps()
+    try:
+        live, lastmod = await live_sitemaps()
+    except Exception as e:
+        # Do not lose the repair lane when Google throttles the sitemap fetch.
+        print(f"sitemap fetch failed: {e}")
+        live, lastmod = {}, {}
     new = {}
     for k, urls in live.items():
         miss = [u for u in urls if u not in indexed and unquote(u) not in idec and ".json" not in u and "`" not in u and u not in KNOWN_BROKEN]
@@ -75,7 +135,24 @@ async def main():
     stale.sort(reverse=True)
     refresh = [u for _, u in stale[:REFRESH_CAP]]
     print(f"stale: {len(stale)}, refreshing newest {len(refresh)}")
-    targets = [a.force] if a.force else [u for v in new.values() for u in v] + refresh
+
+    # blocked repair lane: indexed pages that currently contain a CAPTCHA/OAuth page
+    blocked = []
+    for row in idx:
+        u, rel = row.get("url"), row.get("file")
+        if not u or not rel or u in KNOWN_BROKEN:
+            continue
+        fp = DOCS / rel
+        try:
+            if fp.exists() and BLOCK_RE.search(fp.read_text(errors="replace")[:30000]):
+                blocked.append(u)
+        except Exception:
+            continue
+    print(f"blocked: {len(blocked)}, repairing up to {a.repair_cap}")
+    in_other = set(refresh) | {u for v in new.values() for u in v}
+    repair = [u for u in blocked if u not in in_other][:a.repair_cap]
+    targets = ([a.force] if a.force
+               else [u for v in new.values() for u in v] + refresh + repair)
     refresh_urls = set(refresh)
     if not a.check_only:
         # daily verification stamp (committed even when nothing new)
@@ -84,6 +161,7 @@ async def main():
         stamp = {"date": now.strftime("%F"), "at": now.isoformat(),
                  "new": {k: len(v) for k, v in new.items()},
                  "refreshed": len(refresh), "stale_total": len(stale),
+                 "blocked_total": len(blocked), "repaired": len(repair),
                  "total_index": len(indexed) + (1 if a.force else 0)}
         (DOCS / "_last_verified.json").write_text(json.dumps(stamp, indent=2))
         try:
@@ -105,11 +183,11 @@ async def main():
                         print(f"readme date -> {stamp['date']} ({_rp})")
         except Exception as e:
             print("readme stamp skip:", e)
-        print(f"stamped {stamp['date']} (new={total_new} refresh={len(refresh)})")
+        print(f"stamped {stamp['date']} (new={total_new} refresh={len(refresh)} repair={len(repair)})")
     if a.check_only or not targets:
         print("check-only" if a.check_only else "no new docs — up to date")
         return
-    print(f"fetching {len(targets)} docs ({total_new} new + {len(refresh)} refresh)...")
+    print(f"fetching {len(targets)} docs ({total_new} new + {len(refresh)} refresh + {len(repair)} repair)...")
     st = json.load(open(STATE)) if STATE.exists() else {"visited": {}, "failed": {}}
     vs, failed = st.get("visited", {}), st.get("failed", {})
     from datetime import datetime, timezone
@@ -143,6 +221,7 @@ async def main():
                 else:
                     pos[url] = len(lines); lines.append(row)
                     print(f"[new] {url}")
+                failed.pop(url, None)
                 ok += 1
             except Exception as e:
                 failed[url] = str(e)[:300]; fail += 1; print(f"[fail] {url}: {e}")

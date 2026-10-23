@@ -1,38 +1,33 @@
 ---
 url: https://ai.google.dev/gemma/intended_use_statement/
-title: https://ai.google.dev/gemma/intended_use_statement/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:25.772175+00:00
+title: Intended Use Statement
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:04.294805+00:00
 ---
 
-# https://ai.google.dev/gemma/intended_use_statement/
+# Intended Use Statement
 
 > Source: https://ai.google.dev/gemma/intended_use_statement/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2034533642986684625&q=EgQoUFpcGLnOxNYGIjDbYz-xZsc3S_K7LX5gakhb8hK7FztZSFlBbVG2ff4tgQYnkVrzWkkrOdJ3a_yCJywyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/intended_use_statement/)  
-  
-  
-  
-  
+Gemma is a family of cutting-edge AI models that provide a base architecture and a set of pre-trained weights for a wide variety of AI-related tasks. Gemma is intended to be used by developers and researchers as a starting point for building and customizing their own model-based solutions across a variety of domains.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/intended_use_statement/&q=EgQoUFpcGLnOxNYGIjDbYz-xZsc3S_K7LX5gakhb8hK7FztZSFlBbVG2ff4tgQYnkVrzWkkrOdJ3a_yCJywyA2NyUloBQw)  
-  
+Gemma itself is not a finished product and does not perform specific tasks directly. It is a tool for building applications, and users are responsible for training and adapting Gemma to their specific intended use. Gemma is **not intended for any specific use case and is a general purpose starting point, for use by developers and/or researchers for their specific applications and use cases. Users are responsible for using and deploying Gemma and Gemma-based applications in a legal, responsible, and safe manner. Users are responsible for complying with all legal and regulatory requirements applicable to their specific applications and use cases.**
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Product Description:**
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:21Z  
-URL: https://ai.google.dev/gemma/intended_use_statement/  
+Gemma empowers developers and researchers to create bespoke solutions by training and fine-tuning models with their own data, controls, and domain-specific knowledge. This allows developers and researchers to create customized AI solutions tailored to specific tasks and industries.
+
+For example, users could potentially build products using Gemma to:
+
+  * Tutor K-12 students in mathematics.
+  * Create personalized trip planning applications.
+  * Analyze, label, or caption images.
+  * Generate reports based on medical data.
+  * Assist with administrative tasks in healthcare settings, such as summarizing notes or scheduling appointments.
+  * Develop tools for home finance management and analysis.
+  * Build applications for summarizing and analyzing text, such as books or articles.
+  * Create systems for code development and evaluation.
+  * Provide and adapt dialog applications for specific languages or cultures.
+  * Develop systems for assisting with writing tasks, such as essay composition.
+
 

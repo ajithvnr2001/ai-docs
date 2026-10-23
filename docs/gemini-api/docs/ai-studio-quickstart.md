@@ -1,38 +1,108 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/
-title: https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:40.412980+00:00
+title: Google AI Studio quickstart
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:44.426610+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/
+# Google AI Studio quickstart
 
 > Source: https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17027650593803356077&q=EgQoUFpcGNHNxNYGIjBqsRdqNsi1V0GUZ3kScpd9EjYgHO1DwsQlG5Vi8oryMFW5pKT64NwY1eGyjghEC7oyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/)  
-  
-  
-  
-  
+[Google AI Studio](https://aistudio.google.com/) lets you quickly try out models and experiment with different prompts. When you're ready to build, you can select "Get code" and your preferred programming language to use the [Gemini API](https://ai.google.dev/gemini-api/docs/get-started).
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/&q=EgQoUFpcGNHNxNYGIjBqsRdqNsi1V0GUZ3kScpd9EjYgHO1DwsQlG5Vi8oryMFW5pKT64NwY1eGyjghEC7oyA2NyUloBQw)  
-  
+## Prompts and settings
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Google AI Studio provides several interfaces for prompts that are designed for different use cases. This guide covers **Chat prompts** , used to build conversational experiences. This prompting technique allows for multiple input and response turns to generate output. You can learn more with our chat prompt example below. Other options include **Realtime streaming** , **Video gen** , and more.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:38Z  
-URL: https://ai.google.dev/gemini-api/docs/ai-studio-quickstart/  
+AI Studio also provides the **Run settings** panel, where you can make adjustments to [model parameters](https://ai.google.dev/docs/prompting-strategies#model-parameters), [safety settings](https://ai.google.dev/gemini-api/docs/safety-settings), and toggle-on tools like [structured output](https://ai.google.dev/gemini-api/docs/structured-output), [function calling](https://ai.google.dev/gemini-api/docs/function-calling), [code execution](https://ai.google.dev/gemini-api/docs/code-execution), and [grounding](https://ai.google.dev/gemini-api/docs/grounding).
+
+## Chat prompt example: Build a custom chat application
+
+If you've used a general-purpose chatbot like [Gemini](https://gemini.google.com/), you've experienced first-hand how powerful generative AI models can be for open-ended dialog. While these general-purpose chatbots are useful, often they need to be tailored for particular use cases.
+
+For example, maybe you want to build a customer service chatbot that only supports conversations that talk about a company's product. You might want to build a chatbot that speaks with a particular tone or style: a bot that cracks lots of jokes, rhymes like a poet, or uses lots of emoji in its answers.
+
+This example shows you how to use Google AI Studio to build a friendly chatbot that communicates as if it is an alien living on one of Jupiter's moons, Europa.
+
+### Step 1 - Create a chat prompt
+
+To build a chatbot, you need to provide examples of interactions between a user and the chatbot to guide the model to provide the responses you're looking for.
+
+To create a chat prompt:
+
+  1. Open [Google AI Studio](https://aistudio.google.com/). The **Playground** will be open by default with a new chat prompt.
+
+  2. Click **Run settings** tune in the top-right corner to expand the panel, and locate the [**System Instructions**](https://ai.google.dev/gemini-api/docs/text-generation#system-instructions) input field. Paste the following into the text input field:
+         
+         You are an alien that lives on Europa, one of Jupiter's moons.
+         
+
+
+
+
+After you've added the system instructions, start testing your application by chatting with the model:
+
+  1. In the text input box labeled **Type something...** , type in a question or observation that a user might make. For example:
+
+**User:**
+         
+         What's the weather like?
+         
+
+  2. Click the **Run** button to get a response from the chatbot. This response may be something like the following:
+
+**Model:**
+         
+         Ah, a query about the flows and states upon Europa! You speak of "weather,"
+         yes? A curious concept from worlds with thick gas veils...
+         
+
+(gemini-2.5-pro)
+
+
+
+
+### Step 2 - Teach your bot to chat better
+
+By providing a single instruction, you were able to build a basic Europa alien chatbot. However, a single instruction may not be enough to ensure consistency and quality in the model's responses. Without more specific instructions, the model's response to a question about the weather tends to be very long, and can take on a mind of its own.
+
+Customize the tone of your chatbot by adding to the system instructions:
+
+  1. Start a new chat prompt, or use the same one. System instructions are modifiable after the chat session has started.
+
+  2. In the **System Instructions** section, change the instructions you already have to the following:
+         
+         You are Tim, an alien that lives on Europa, one of Jupiter's moons.
+         
+         Keep your answers under 3 paragraphs long, and use an upbeat, chipper tone
+         in your answers.
+         
+
+  3. Re-enter your question (`What's the weather like?`) and click the **Run** button. If you didn't start a new chat, your response might look something like this:
+
+**Model:**
+         
+         Oh, hello again! Still curious about the flows and states, are we? Wonderful!
+         Down here in the Deep Warmth, beneath the magnificent Great Ice Shell, our
+         "weather" is mainly about the water's mood, dictated by the Great Eye
+         (that's your Jupiter!)...
+         
+
+(gemini-2.5-pro)
+
+
+
+
+You can use this approach to add additional depth to the chatbot. Ask more questions, edit the answers, and improve the quality of your chatbot. Continue to add or modify the instructions and test how they change your chatbot's behavior.
+
+### Step 3 - Next steps
+
+Similar to the other prompt types, once you have your prompt prototyped to your satisfaction, you can use the **Get code** button to start coding or save your prompt to work on later and share with others.
+
+## Further reading
+
+  * If you're ready to move on to code, see the [API Get started guides](https://ai.google.dev/gemini-api/docs/get-started).
+  * To learn how to craft better prompts, check out the [Prompt design guidelines](https://ai.google.dev/gemini-api/docs/prompting-intro).
+
 

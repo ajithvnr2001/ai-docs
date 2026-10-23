@@ -1,38 +1,31 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro
-title: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:19.425656+00:00
+title: Gemini 2.5 Pro
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:37.752037+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro
+# Gemini 2.5 Pro
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=18221196161926852063&q=EgQoUFpcGPfNxNYGIjBUE48jb_GCr-RSqa0mdV8kiybqj8k2MJLSqHf_un-2FZUreEAmGYncZwr19_3XSzkyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro)  
-  
-  
-  
-  
+Our state-of-the-art thinking model, capable of reasoning over complex problems in code, math, and STEM, as well as analyzing large datasets, codebases, and documents using long context.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro&q=EgQoUFpcGPfNxNYGIjBUE48jb_GCr-RSqa0mdV8kiybqj8k2MJLSqHf_un-2FZUreEAmGYncZwr19_3XSzkyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-pro)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## gemini-2.5-pro
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:16Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro  
+Property | Description  
+---|---  
+id_cardModel code | `gemini-2.5-pro`  
+saveSupported data types |  **Inputs** Audio, images, video, text, and PDF **Output** Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 1,048,576 **Output token limit** 65,536  
+handymanCapabilities |  **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Not supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
 
+  * `Stable: gemini-2.5-pro`
+
+  
+calendar_monthLatest update | June 2025  
+cognition_2Knowledge cutoff | January 2025

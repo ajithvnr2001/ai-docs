@@ -1,25 +1,13 @@
 ---
 url: https://ai.google.dev/api/files/
-title: Using files \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Using files
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:15:55.940995+00:00
+fetched_at: 2026-10-23T12:00:06.835506+00:00
 ---
 
-# Using files  |  Gemini API  |  Google AI for Developers
+# Using files
 
 > Source: https://ai.google.dev/api/files/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Using files
 
 The Gemini API supports uploading media files separately from the prompt input, allowing your media to be reused across multiple requests and multiple prompts. For more details, check out the [Prompting with media](https://ai.google.dev/gemini-api/docs/prompting_with_media) guide.
 
@@ -147,7 +135,7 @@ The request body must be empty.
     print(file_name)  # "files/*"
     
     myfile = client.files.get(name=file_name)
-    print(myfile)[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L137-L145)
+    print(myfile)[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L137-L145)
 
 ### Node.js
     
@@ -162,7 +150,7 @@ The request body must be empty.
     console.log(fileName);
     
     const fetchedFile = await ai.files.get({name: fileName});
-    console.log(fetchedFile);[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L176-L186)
+    console.log(fetchedFile);[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L176-L186)
 
 ### Go
     
@@ -191,7 +179,7 @@ The request body must be empty.
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(file)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L298-L322)
+    fmt.Println(file)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L298-L322)
 
 ### Shell
     
@@ -245,7 +233,7 @@ The request body must be empty.
     client = genai.Client()
     print("My files:")
     for f in client.files.list():
-      print("  ", f.name)[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L127-L132)
+      print("  ", f.name)[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L127-L132)
 
 ### Node.js
     
@@ -265,7 +253,7 @@ The request body must be empty.
       }
       if (!pager.hasNextPage()) break;
       page = await pager.nextPage();
-    }[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L154-L169)
+    }[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L154-L169)
 
 ### Go
     
@@ -285,7 +273,7 @@ The request body must be empty.
     }
     for _, f := range page.Items {
     	fmt.Println("  ", f.Name)
-    }[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L276-L291)
+    }[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L276-L291)
 
 ### Shell
     
@@ -356,13 +344,13 @@ The request body must be empty.
       )
       print(result)
     except genai.errors.ClientError:
-      pass[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L150-L163)
+      pass[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L150-L163)
 
 ### Node.js
     
     
     // The Gen AI SDK for TypeScript and JavaScript is in preview.
-    // Some features have not been implemented.[README.md](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/README.md#L20-L21)
+    // Some features have not been implemented.[README.md](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/README.md#L20-L21)
 
 ### Go
     
@@ -405,7 +393,7 @@ The request body must be empty.
     if err != nil {
     	return nil
     }
-    return fmt.Errorf("expected an error when using deleted file")[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L329-L367)
+    return fmt.Errorf("expected an error when using deleted file")[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L329-L367)
 
 ### Shell
     
@@ -514,7 +502,7 @@ Fields
             "Can you tell me about the instruments in this photo?",
         ],
     )
-    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L40-L54)
+    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L40-L54)
 
 ### Node.js
     
@@ -536,7 +524,7 @@ Fields
         'Can you tell me about the instruments in this photo?',
       ]),
     });
-    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L55-L72)
+    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L55-L72)
 
 ### Go
     
@@ -576,7 +564,7 @@ Fields
     	log.Fatal(err)
     }
     text := response.Text()
-    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L59-L94)
+    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L59-L94)
 
 ### Shell
     
@@ -645,7 +633,7 @@ Fields
     result = client.models.generate_content(
         model="gemini-3.8-flash", contents=[myfile, "Describe this audio clip"]
     )
-    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L59-L68)
+    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L59-L68)
 
 ### Node.js
     
@@ -666,7 +654,7 @@ Fields
         'Describe this audio clip',
       ]),
     });
-    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L79-L95)
+    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L79-L95)
 
 ### Go
     
@@ -705,7 +693,7 @@ Fields
     	log.Fatal(err)
     }
     text := response.Text()
-    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L101-L135)
+    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L101-L135)
 
 ### Shell
     
@@ -772,7 +760,7 @@ Fields
         model="gemini-3.8-flash",
         contents=[myfile, "\n\n", "Can you add a few more lines to this poem?"],
     )
-    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L25-L35)
+    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L25-L35)
 
 ### Node.js
     
@@ -793,7 +781,7 @@ Fields
         'Can you add a few more lines to this poem?',
       ]),
     });
-    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L32-L48)
+    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L32-L48)
 
 ### Go
     
@@ -834,7 +822,7 @@ Fields
     	log.Fatal(err)
     }
     text := response.Text()
-    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L16-L52)
+    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L16-L52)
 
 ### Shell
     
@@ -921,7 +909,7 @@ Fields
     result = client.models.generate_content(
         model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
     )
-    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L73-L91)
+    print(f"{result.text=}")[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L73-L91)
 
 ### Node.js
     
@@ -950,7 +938,7 @@ Fields
         'Describe this video clip',
       ]),
     });
-    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/javascript/files.js#L102-L126)
+    console.log('result.text=', result.text);[files.js](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/javascript/files.js#L102-L126)
 
 ### Go
     
@@ -1001,7 +989,7 @@ Fields
     	log.Fatal(err)
     }
     text := response.Text()
-    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L142-L188)
+    fmt.Printf("result.text=%s\n", text)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L142-L188)
 
 ### Shell
     
@@ -1077,7 +1065,7 @@ Fields
         model="gemini-3.8-flash",
         contents=["Give me a summary of this pdf file.", sample_pdf],
     )
-    print(response.text)[files.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/files.py#L96-L104)
+    print(response.text)[files.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/files.py#L96-L104)
 
 ### Go
     
@@ -1115,7 +1103,7 @@ Fields
     	log.Fatal(err)
     }
     text := response.Text()
-    fmt.Println(text)[files.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/files.go#L195-L228)
+    fmt.Println(text)[files.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/files.go#L195-L228)
 
 ### Response body
 
@@ -1157,12 +1145,4 @@ Fields
           ...
         }
       ]
-    }  
-  
-Send feedback 
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-08-28 UTC.
-
-Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-08-28 UTC."],[],[]] 
+    }

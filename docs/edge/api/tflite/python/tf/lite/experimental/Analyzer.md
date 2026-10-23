@@ -1,38 +1,71 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:34.833807+00:00
+title: tf.lite.experimental.Analyzer
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:34.167828+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/
+# tf.lite.experimental.Analyzer
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=11458655063910230286&q=EgQoUFpcGMvNxNYGIjASPk2T01k8skpY-NFxfoor4sbDjM_ALKenXHO9ssqRhV1Js-QTSz8LeAuVW0wKAPkyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/python/analyzer.py#L35-L107) Provides a collection of TFLite model analyzer tools.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/&q=EgQoUFpcGMvNxNYGIjASPk2T01k8skpY-NFxfoor4sbDjM_ALKenXHO9ssqRhV1Js-QTSz8LeAuVW0wKAPkyA2NyUloBQw)  
-  
+### Used in the notebooks
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
+| Used in the guide  
+---  
   
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * [TensorFlow Lite Model Analyzer](https://www.tensorflow.org/lite/guide/model_analyzer)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:32Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer/  
+  
+  
+#### Example:
+    
+    
+    model = tf.keras.applications.MobileNetV3Large()
+    fb_model = tf.lite.TFLiteConverterV2.from_keras_model(model).convert()
+    tf.lite.experimental.Analyzer.analyze(model_content=fb_model)
+    # === TFLite ModelAnalyzer ===
+    #
+    # Your TFLite model has ‘1’ subgraph(s). In the subgraph description below,
+    # T# represents the Tensor numbers. For example, in Subgraph#0, the MUL op
+    # takes tensor #0 and tensor #19 as input and produces tensor #136 as output.
+    #
+    # Subgraph#0 main(T#0) -> [T#263]
+    #   Op#0 MUL(T#0, T#19) -> [T#136]
+    #   Op#1 ADD(T#136, T#18) -> [T#137]
+    #   Op#2 CONV_2D(T#137, T#44, T#93) -> [T#138]
+    #   Op#3 HARD_SWISH(T#138) -> [T#139]
+    #   Op#4 DEPTHWISE_CONV_2D(T#139, T#94, T#24) -> [T#140]
+    #   ...
+    
 
+## Methods
+
+### `analyze`
+
+[View source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/lite/python/analyzer.py#L63-L107)
+    
+    
+    @staticmethod
+    analyze(
+        model_path=None, model_content=None, gpu_compatibility=False, **kwargs
+    )
+    
+
+Analyzes the given tflite_model with dumping model structure.
+
+This tool provides a way to understand users' TFLite flatbuffer model by dumping internal graph structure. It also provides additional features like checking GPU delegate compatibility.
+
+Args  
+---  
+  
+`model_path` |  TFLite flatbuffer model path.   
+`model_content` |  TFLite flatbuffer model object.   
+`gpu_compatibility` |  Whether to check GPU delegate compatibility.   
+`**kwargs` |  Experimental keyword arguments to analyze API.   
+  
+Returns  
+---  
+Print analyzed report via console output. 

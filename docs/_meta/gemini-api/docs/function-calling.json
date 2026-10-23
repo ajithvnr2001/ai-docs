@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/function-calling/",
   "file": "gemini-api/docs/function-calling.md",
-  "title": "https://ai.google.dev/gemini-api/docs/function-calling/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:49.836852+00:00",
-  "html_len": 3086,
-  "md_len": 1799,
-  "depth": 0
+  "title": "Function calling with the Gemini API",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:22.154970+00:00"
 }

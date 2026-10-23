@@ -1,38 +1,32 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/workspace/
-title: https://ai.google.dev/gemini-api/docs/workspace/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:45.369062+00:00
+title: Access Google AI Studio with your Workspace account
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:28.404420+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/workspace/
+# Access Google AI Studio with your Workspace account
 
 > Source: https://ai.google.dev/gemini-api/docs/workspace/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=9285837796325426203&q=EgQoUFpcGJLOxNYGIjC13VtZbH4aCoqlaE02jqfKEytyH7wqY6Gl-u2f6uUJpFQp8vmY4zbLx4rb_23ijUIyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/workspace/)  
-  
-  
-  
-  
+All [Google Workspace](https://workspace.google.com) users have access to AI Studio by default. If you're a Workspace user and you want to get started with AI Studio, check out the [AI Studio quickstart](https://ai.google.dev/gemini-api/docs/ai-studio-quickstart).
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/workspace/&q=EgQoUFpcGJLOxNYGIjC13VtZbH4aCoqlaE02jqfKEytyH7wqY6Gl-u2f6uUJpFQp8vmY4zbLx4rb_23ijUIyA2NyUloBQw)  
-  
+## Troubleshooting
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+If access to AI Studio is disabled for your Google Workspace account, you might see an error like the following:
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:43Z  
-URL: https://ai.google.dev/gemini-api/docs/workspace/  
+`We are sorry, but you do not have access to Google AI Studio. Please contact your Organization Administrator for access.`
 
+If you think you should have access to AI Studio, contact your Workspace administrator.
+
+## Enable AI Studio for Workspace users
+
+As a Google Workspace administrator, you can control who uses AI Studio:
+
+  * AI Studio is turned on by default for all editions.
+  * You can turn AI Studio off or on for sets of users across or within organizational units.
+  * Google Workspace for Education editions: Users under the age of 18 are restricted from using AI Studio with their Google Workspace for Education accounts. This is true even when the AI Studio setting is on. For details, go to [Control access to Google services by age](https://support.google.com/a/answer/10651918).
+
+
+
+To enable or disable AI Studio for users in your organization, see [Turn Google AI Studio on or off for users](https://support.google.com/a/answer/15004095).

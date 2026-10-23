@@ -1,10 +1,7 @@
 {
   "url": "https://developer.chrome.com/home/",
   "file": "_subdomains/developer.chrome.com/home.md",
-  "title": "https://developer.chrome.com/home/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:21:50.346854+00:00",
-  "html_len": 3001,
-  "md_len": 1693,
-  "depth": 2
+  "title": "Chrome for Developers",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:47:34.644488+00:00"
 }

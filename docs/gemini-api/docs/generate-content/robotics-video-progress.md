@@ -1,38 +1,101 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/
-title: https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:57.404375+00:00
+title: Video understanding
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:43:44.223723+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/
+# Video understanding
 
 > Source: https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=9192411194509746883&q=EgQoUFpcGOLNxNYGIjA-UxEIlI1oVK0x8621mj_fbDPqqGREXpkX74rvSWERwdv_qfbiFOFHQWXRDQYFT2YyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/)  
-  
-  
-  
-  
+Gemini Robotics ER 2 can track task progress from continuous video feeds using two capabilities:
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/&q=EgQoUFpcGOLNxNYGIjA-UxEIlI1oVK0x8621mj_fbDPqqGREXpkX74rvSWERwdv_qfbiFOFHQWXRDQYFT2YyA2NyUloBQw)  
-  
+  * Moment finding: identifies the precise timestamp where a key event occurs.
+  * Progress classification: assigns each video to one of five completion brackets (0–20%, 20–40%, 40–60%, 60–80%, 80–100%).
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:54Z  
-URL: https://ai.google.dev/gemini-api/docs/generate-content/robotics-video-progress/  
+
+## Moment finding
+
+Moment finding identifies the exact video frame where a critical event occurs — for example, when a cup is full or a knot is tied. Robots use this to verify success, sequence steps, and trigger corrections.
+
+The following example prompt asks the model to identify the completion moment for a given task in a video:
+    
+    
+    from google import genai
+    from google.genai import types
+    
+    client = genai.Client()
+    
+    with open("task_video.mp4", "rb") as f:
+        video_bytes = f.read()
+    
+    prompt = """
+    At what timestamp (in seconds) does the task reach successful completion?
+    Return a JSON object: {"completion_time_seconds": <float>}.
+    If the task is not completed, return {"completion_time_seconds": null}.
+    """
+    
+    response = client.models.generate_content(
+        model="gemini-robotics-er-2-preview",
+        contents=[
+            types.Part.from_bytes(data=video_bytes, mime_type="video/mp4"),
+            prompt,
+        ],
+    )
+    
+    print(response.text)
+    
+
+The following shows example frames from a moment-finding video, with the model identifying the task completion timestamp:
+
+![Example video frames showing the moment finding output with a timestamp overlay](https://ai.google.dev/static/gemini-api/docs/images/robotics/video-moment-finding.png)
+
+## Progress classification
+
+Progress classification assigns a video to one of five completion brackets: 0–20%, 20–40%, 40–60%, 60–80%, or 80–100%. This gives robots real-time situational awareness so they can adjust actions or retry failed steps without restarting an entire workflow.
+
+The following example prompt asks the model to classify the current progress level from a video:
+    
+    
+    from google import genai
+    from google.genai import types
+    
+    client = genai.Client()
+    
+    with open("task_video.mp4", "rb") as f:
+        video_bytes = f.read()
+    
+    prompt = """
+    Watch this video and classify the task progress level at the final frame.
+    Return a JSON object with the progress bracket:
+    {"progress_level": "0-20" | "20-40" | "40-60" | "60-80" | "80-100"}.
+    """
+    
+    response = client.models.generate_content(
+        model="gemini-robotics-er-2-preview",
+        contents=[
+            types.Part.from_bytes(data=video_bytes, mime_type="video/mp4"),
+            prompt,
+        ],
+    )
+    
+    print(response.text)
+    
+
+The following shows example frames from a progress classification video, with the model assigning a progress bracket:
+
+![Example video frames showing the progress classification output with a progress bracket label](https://ai.google.dev/static/gemini-api/docs/images/robotics/video-progress-classification.png)
+
+## Examples
+
+For full runnable examples including multi-step task tracking, see the [Robotics cookbook](https://github.com/google-gemini/robotics-samples/blob/main/Getting%20Started/gemini_robotics_er.ipynb).
+
+## What's next
+
+  * [Live API for robotics](https://ai.google.dev/gemini-api/docs/robotics-streaming) — real-time bidirectional streaming.
+  * [Task orchestration](https://ai.google.dev/gemini-api/docs/robotics-orchestration) — long-horizon tasks with spatial reasoning.
+  * [Gemini Robotics ER overview](https://ai.google.dev/gemini-api/docs/robotics-overview) — model comparison and capabilities.
+
 

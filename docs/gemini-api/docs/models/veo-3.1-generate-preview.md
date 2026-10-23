@@ -1,38 +1,25 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview
-title: https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:30.560366+00:00
+title: Veo 3.1
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:47.425365+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview
+# Veo 3.1
 
 > Source: https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=4573668674714626407&q=EgQoUFpcGIPOxNYGIjAG6VS8SWHfDOvXh_HG03BldRU7Tzdv04HVRPLmiIusCc1SdBxtMDvc0N_vOrsOr9QyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview)  
-  
-  
-  
-  
+A state-of-the-art cinematic engine designed for high-end creative storytelling and experimental video production. Veo 3.1 is best for professional-grade 4K output, natively synchronized audio generation, and complex camera movements that require the highest level of temporal consistency and artistic control.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview&q=EgQoUFpcGIPOxNYGIjAG6VS8SWHfDOvXh_HG03BldRU7Tzdv04HVRPLmiIusCc1SdBxtMDvc0N_vOrsOr9QyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Video generation](https://ai.google.dev/gemini-api/docs/video) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:28Z  
-URL: https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview  
+## veo-3.1-generate-preview
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `veo-3.1-generate-preview` `veo-3.1-fast-generate-preview`  
+saveSupported data types |  **Input** Text, Image **Output** Video with audio  
+token_autoLimits |  **Text input** 1,024 tokens **Output video** 1  
+calendar_monthLatest update | January 2026

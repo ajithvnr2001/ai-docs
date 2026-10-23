@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/latest-model/",
   "file": "gemini-api/docs/generate-content/latest-model.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/latest-model/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:55.737318+00:00",
-  "html_len": 3138,
-  "md_len": 1864,
-  "depth": 0
+  "title": "What's new in Gemini 4 Argon",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:35.477255+00:00"
 }

@@ -1,38 +1,46 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:30.196643+00:00
+title: mp.tasks.vision.drawing_utils.plot_landmarks
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:31.124227+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/
+# mp.tasks.vision.drawing_utils.plot_landmarks
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=3023581575999235992&q=EgQoUFpcGMfNxNYGIjBHNRW1FMEdn3CoTu02HScKdZz6d9p-hdLQOa4__efBRDKahi8Hb0YBv9hkX2eguncyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/drawing_utils.py#L268-L338) Plot the landmarks and the connections in matplotlib 3d.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/&q=EgQoUFpcGMfNxNYGIjBHNRW1FMEdn3CoTu02HScKdZz6d9p-hdLQOa4__efBRDKahi8Hb0YBv9hkX2eguncyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases** [`mp.tasks.vision.drawing_styles.drawing_utils.plot_landmarks`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks)
+    
+    
+    mp.tasks.vision.drawing_utils.plot_landmarks(
+        landmark_list: list[landmark_module.NormalizedLandmark],
+        connections: Optional[list[tuple[int, int]]] = None,
+        landmark_drawing_spec: [mp.tasks.vision.drawing_utils.DrawingSpec](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec) = [DrawingSpec(color=RED_COLOR, thickness=5)](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec),
+        connection_drawing_spec: [mp.tasks.vision.drawing_utils.DrawingSpec](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec) = [DrawingSpec(color=BLACK_COLOR, thickness=5)](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/DrawingSpec),
+        elevation: int = 10,
+        azimuth: int = 10
+    )
+    
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:27Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/plot_landmarks/  
+| 
 
+## Args  
+  
+---  
+  
+`landmark_list` |  A list of normalized landmarks to be plotted.   
+`connections` |  A list of landmark index tuples that specifies how landmarks to be connected.   
+`landmark_drawing_spec` |  A DrawingSpec object that specifies the landmarks' drawing settings such as color and line thickness.   
+`connection_drawing_spec` |  A DrawingSpec object that specifies the connections' drawing settings such as color and line thickness.   
+`elevation` |  The elevation from which to view the plot.   
+`azimuth` |  the azimuth angle to rotate the plot.   
+  
+## Raises  
+  
+---  
+  
+`ValueError` |  If any connection contains an invalid landmark index. 

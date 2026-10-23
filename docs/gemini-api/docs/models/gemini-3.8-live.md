@@ -1,38 +1,52 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live
-title: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:24.629030+00:00
+title: Gemini 3.8 Live
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:42.268167+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live
+# Gemini 3.8 Live
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1156572966435456936&q=EgQoUFpcGP7NxNYGIjCQPxSMWazfpL-mkA2nDq5UuniVF7_gmqVXXxeGKUkqVsqiGJZJ2VfTa9Ue5aaHwaQyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live)  
-  
-  
-  
-  
+Gemini 3.8 Live is the default option for most low-latency voice agent experiences and real-time dialogue without reasoning-induced delays. It supports interleaved reasoning, asynchronous function calling, full session client content updates, and built-in audio streaming.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live&q=EgQoUFpcGP7NxNYGIjCQPxSMWazfpL-mkA2nDq5UuniVF7_gmqVXXxeGKUkqVsqiGJZJ2VfTa9Ue5aaHwaQyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com/live?model=gemini-3.8-live)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:22Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live  
+Visit the [Live API](https://ai.google.dev/gemini-api/docs/live-api) guide for full coverage of features and capabilities.
 
+## gemini-3.8-live
+
+Property | Description  
+---|---  
+id_cardModel code |  `gemini-3.8-live`  
+saveSupported data types |  **Inputs** Text, images, audio **Output** Text and audio  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 131,072 **Output token limit** 65,536  
+handymanCapabilities |  **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Supported (interleaved reasoning) **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Stable: `gemini-3.8-live`
+
+  
+calendar_monthLatest update | September 2026  
+id_cardModel card | [Model card](https://deepmind.google/models/model-cards/gemini-3-8-audio/)  
+  
+## Migrating from Gemini 3.1 Flash Live
+
+Gemini 3.8 Live delivers ultra-low latency audio-to-audio interactions and expands support for asynchronous workflows. When migrating from `gemini-3.1-flash-live-preview`, review the following updates:
+
+  * **Model string** : Update your model string from `gemini-3.1-flash-live-preview` to `gemini-3.8-live`.
+  * **Thinking level** : `thinking_level` is not supported for `gemini-3.8-live`. Omit `thinking_level` (or `thinking_config`) from your session setup.
+  * **Asynchronous function calling** : Async execution (`behavior: NON_BLOCKING`) is now the default function calling mode. You can still use synchronous blocking mode for backwards compatibility by setting `behavior: BLOCKING` on your tool declarations. Function scheduling (`SILENT`, `WHEN_IDLE`, `INTERRUPTED`) is supported.
+  * **Client content updates** : `send_client_content` is supported throughout the entire session lifecycle with explicit roles (`user` or `model`). Setting `turn_complete=true` unconditionally interrupts active model generation. If you send content without `turn_complete`, the server waits for subsequent messages before responding.
+  * **Proactive audio** : Proactive audio is now permanently enabled. Setting `proactive_audio: false` returns an error.
+  * **Affective dialogue** : Affective dialogue is removed from the API. Remove any `enable_affective_dialog` configurations from your code.
+  * **Turn coverage** : Defaults to `TURN_INCLUDES_AUDIO_ACTIVITY_AND_ALL_VIDEO`. Video frames are sent to the model by default, so only send frames when needed to manage context and cost.
+  * **Response modalities** : Audio is the supported response modality. Enable output audio transcription if your application requires a text transcript.
+
+
+
+For a feature comparison across all Live API models, see the [Model comparison](https://ai.google.dev/gemini-api/docs/live-api/capabilities#model-comparison) table.

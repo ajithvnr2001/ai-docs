@@ -1,38 +1,35 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/
-title: https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:29.447022+00:00
+title: Lyria 3 Clip preview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:45.573995+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/
+# Lyria 3 Clip preview
 
 > Source: https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=10927661073162061248&q=EgQoUFpcGIHOxNYGIjD80vEIqyCjBpUVNZMMfcVrf98a7nvvJre-E4fG5fKQgfWgcZC7QX4zqyHM6NgqzikyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/)  
-  
-  
-  
-  
+Lyria 3 Clip Preview is Google's model optimized for generating short musical clips, loops, and previews. It generates 30-second high-quality, 48kHz stereo audio from text prompts or image inputs.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/&q=EgQoUFpcGIHOxNYGIjD80vEIqyCjBpUVNZMMfcVrf98a7nvvJre-E4fG5fKQgfWgcZC7QX4zqyHM6NgqzikyA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=lyria-3-clip-preview)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:26Z  
-URL: https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview/  
+Visit the [Music Generation](https://ai.google.dev/gemini-api/docs/music-generation) guide for full coverage of features and capabilities.
 
+## lyria-3-clip-preview
+
+Property | Description  
+---|---  
+id_cardModel code | `lyria-3-clip-preview`  
+saveSupported data types |  **Inputs** Text and Image **Output** Audio (MP3), Text (Lyrics)  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 131,072  
+handymanCapabilities | **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Not supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Not supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Not supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Not supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Not supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Preview: `lyria-3-clip-preview`
+  * Preview: `lyria-3-pro-preview`
+
+  
+calendar_monthLatest update | March 2026

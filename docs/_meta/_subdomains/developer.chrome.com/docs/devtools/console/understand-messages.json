@@ -1,10 +1,7 @@
 {
   "url": "https://developer.chrome.com/docs/devtools/console/understand-messages/",
   "file": "_subdomains/developer.chrome.com/docs/devtools/console/understand-messages.md",
-  "title": "https://developer.chrome.com/docs/devtools/console/understand-messages/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:19:43.771951+00:00",
-  "html_len": 3149,
-  "md_len": 1878,
-  "depth": 1
+  "title": "Understand errors and warnings better with console insights Stay organized with collections Save and categorize content based on your preferences.",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:46:15.750304+00:00"
 }

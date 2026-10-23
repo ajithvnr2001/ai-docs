@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/api/models/",
   "file": "api/models.md",
-  "title": "Models \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers",
+  "title": "Models",
   "method": "scrapling+scrapegraph",
-  "fetched_at": "2026-10-15T19:16:04.493226+00:00",
-  "html_len": 108165,
-  "md_len": 13874,
-  "depth": 0
+  "fetched_at": "2026-10-23T12:00:03.424655+00:00"
 }

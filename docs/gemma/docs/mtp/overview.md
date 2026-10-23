@@ -1,38 +1,26 @@
 ---
 url: https://ai.google.dev/gemma/docs/mtp/overview/
-title: https://ai.google.dev/gemma/docs/mtp/overview/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:19.053797+00:00
+title: Speed-up Gemma 4 with Multi-Token Prediction
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:58.574778+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/mtp/overview/
+# Speed-up Gemma 4 with Multi-Token Prediction
 
 > Source: https://ai.google.dev/gemma/docs/mtp/overview/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=17976355087024500002&q=EgQoUFpcGLTOxNYGIjDOxELzTFo46JenS8zNUPZ9Jd6s9kQx_SLTRsZW1PIna3Q7DmtjDFboLe-kw11Yrp8yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/mtp/overview/)  
-  
-  
-  
-  
+In Gemma 4, Multi-Token Prediction (MTP) is the specific architecture used to enable highly efficient Speculative Decoding. Speculative decoding is a technique to speed up inference in large language models. Instead of relying solely on the large target model to generate tokens autoregressively (generating one token at a time, where each new token depends on the previous ones), a smaller, faster 'draft model' predicts several tokens ahead. The target model then verifies these drafted tokens in parallel. If the target model rejects a drafted token, it still produces the correct token for that position (ensuring that step is not wasted), and the draft model resumes predicting from that new correct token.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/mtp/overview/&q=EgQoUFpcGLTOxNYGIjDOxELzTFo46JenS8zNUPZ9Jd6s9kQx_SLTRsZW1PIna3Q7DmtjDFboLe-kw11Yrp8yA2NyUloBQw)  
-  
+Gemma 4 implements MTP by extending the base model with this smaller, faster draft model. This draft model is not independent as it shares the input embedding table with the target model and builds directly upon its last-layer activations. This results in significant decoding speedups while guaranteeing the exact same quality as standard autoregressive generation, making these checkpoints perfect for low-latency and on-device applications.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Speculative decoding works by drafting several tokens and verifying them in a single forward pass. For dense models, the same weights are used for every token, so verifying multiple drafted tokens adds minimal overhead. Mixture of Experts (MoE) models like Gemma 4 26B A4B work differently. Each token may activate different experts, so verifying drafted tokens can require loading additional expert weights from memory, offsetting the gains from drafting. At higher batch sizes, there is typically more overlap in activated experts across sequences, improving reuse of loaded weights. At batch size 1 this overlap is limited, which is why the 26B A4B drafter may not yield speedups on hardware platforms without good parallelism.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:16Z  
-URL: https://ai.google.dev/gemma/docs/mtp/overview/  
+## MTP Enhancements
+
+Gemma 4 introduces several enhancements to the standard speculative decoding pipeline to improve the quality of drafted tokens and efficiency:
+
+  * **Shared Input Embeddings** : The draft model shares the input embedding table with the target model.
+  * **Target Activations** : The draft model uses the activations from the last layer of the target model, concatenates them with the token embeddings, and down-projects them to the drafter model's dimension.
+  * **Efficient Embedder** : To avoid the expensive operation of predicting across the entire vocabulary, the model groups similar tokens into clusters. It first identifies the most likely clusters and then restricts its final calculations to only the tokens within those selected clusters (E2B and E4B only).
+
 

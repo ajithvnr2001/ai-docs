@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/
-title: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:25.843077+00:00
+title: Gemini Embedding model
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:43.542048+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/
+# Gemini Embedding model
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=10099959905329296524&q=EgQoUFpcGP7NxNYGIjBug6dOQcL6Xlv94Sn_ckmyDxYjoqRqnbP3LSYBrjJEQt-Laeb_36UAv4yZOD83c-cyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/)  
-  
-  
-  
-  
+A specialized engine for high-dimensional vector representation, providing efficient numerical mapping of text and images. The Gemini Embedding model is best for semantic search, document retrieval, and recommendation systems that require fast, scalable similarity calculations across large datasets.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/&q=EgQoUFpcGP7NxNYGIjBug6dOQcL6Xlv94Sn_ckmyDxYjoqRqnbP3LSYBrjJEQt-Laeb_36UAv4yZOD83c-cyA2NyUloBQw)  
-  
+## Documentation
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Visit the [Embeddings](https://ai.google.dev/gemini-api/docs/embeddings) page for full coverage of features and capabilities.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:22Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001/  
+## gemini-embedding-001
 
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `gemini-embedding-001`  
+saveSupported data types |  **Input** Text **Output** Text embeddings  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 2,048 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Stable: `gemini-embedding-001`
+
+  
+calendar_monthLatest update | June 2025

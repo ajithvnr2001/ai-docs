@@ -1,38 +1,38 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:23.399959+00:00
+title: mp.tasks.vision.drawing_utils.math.isinf
+method: httpx+scrapegraph (scrapling: scrapling thin content (513 chars), fallback to crawl4ai | crawl4ai: crawl4ai failed: Unexpected error in _crawl_web at line 632 in wrap_api_call (../../../usr/local/lib/python3.10/dist-packages/playwright/_impl/_connection.py):
+Error: BrowserContext.add_cookies: Protocol error (Storage.setCookies): Invalid cookie fields
+
+Code context:
+ 627           )
+ 628           self._api_zone.set(parsed_st)
+ 629           try:
+ 630               return await cb()
+ 631           except Exception as error:
+ 632 →             raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+ 633           finally:
+ 634               self._api_zone.set(None)
+ 635   
+ 636       def wrap_api_call_sync(
+ 637           self, cb: Callable[[], Any], is_internal: bool = False, title: str = None)
+fetched_at: 2026-10-23T11:42:04.359704+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/
+# mp.tasks.vision.drawing_utils.math.isinf
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2542931051652954767&q=EgQoUFpcGL_NxNYGIjA02BsQcCQsJYpsJkiAXBFd2D5ttR43GfkXWm3vHacLJ0xygq9wKqPUboSJzlqwAMcyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/)  
-  
-  
-  
-  
+Return True if x is a positive or negative infinity, and False otherwise.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/&q=EgQoUFpcGL_NxNYGIjA02BsQcCQsJYpsJkiAXBFd2D5ttR43GfkXWm3vHacLJ0xygq9wKqPUboSJzlqwAMcyA2NyUloBQw)  
-  
+#### View aliases
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+**Main aliases**
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:20Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf/  
-
+[`mp.tasks.vision.drawing_styles.drawing_utils.math.isinf`](https://ai.google.dev/edge/api/mediapipe/python/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/math/isinf)
+    
+    
+    mp.tasks.vision.drawing_utils.math.isinf(
+        x, /
+    )
+    

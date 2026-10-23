@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemma/docs/functiongemma/full-function-calling-sequence-with-functiongemma/",
   "file": "gemma/docs/functiongemma/full-function-calling-sequence-with-functiongemma.md",
-  "title": "https://ai.google.dev/gemma/docs/functiongemma/full-function-calling-sequence-with-functiongemma/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:19:10.099270+00:00",
-  "html_len": 3254,
-  "md_len": 2009,
-  "depth": 0
+  "title": "Full function calling sequence with FunctionGemma",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:45:50.982966+00:00"
 }

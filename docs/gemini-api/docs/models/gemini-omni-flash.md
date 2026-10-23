@@ -1,38 +1,33 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/
-title: https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:27.912868+00:00
+title: Gemini Omni Flash
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:44.417773+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/
+# Gemini Omni Flash
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1005299040644105353&q=EgQoUFpcGIDOxNYGIjDuEjrwc-EakkA6nb4kY6UO-RJFRHwcRv8vLAitRv0axxc5gLMtTSc4xAqoE1cIow4yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/)  
-  
-  
-  
-  
+Gemini Omni Flash is a high-performance model for fast, conversational video generation and editing. It excels at turning text and images into video, lets you refine and edit generated videos through natural language conversations using the Interactions API, and supports video extension, resolution upscaling, and advanced interpolation.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/&q=EgQoUFpcGIDOxNYGIjDuEjrwc-EakkA6nb4kY6UO-RJFRHwcRv8vLAitRv0axxc5gLMtTSc4xAqoE1cIow4yA2NyUloBQw)  
-  
+[Try in Google AI Studio](https://aistudio.google.com?model=gemini-omni-1.1-flash)
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+## Documentation
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:24Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash/  
+Visit the [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/omni) page for full coverage of features and capabilities.
 
+## gemini-omni-1.1-flash
+
+Property | Description  
+---|---  
+id_cardModel code |  **Gemini API** `gemini-omni-1.1-flash`  
+saveSupported data types |  **Input** Text, Image, Video (up to 10s for editing and extension) **Output** Video  
+token_autoLimits |  **Context window** 1,048,576 tokens **Output video** 3s-10s (360p/720p/1080p/4K, 24 FPS)  
+pinVersions |  [Model versions:](https://ai.google.dev/gemini-api/docs/models#model-versions)
+
+  * Stable: `gemini-omni-1.1-flash`
+  * Shut down: `gemini-omni-flash-preview`
+
+  
+calendar_monthLatest update | August 2026

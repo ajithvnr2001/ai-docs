@@ -1,38 +1,49 @@
 ---
 url: https://ai.google.dev/gemma/docs/diffusiongemma/
-title: https://ai.google.dev/gemma/docs/diffusiongemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:05.365782+00:00
+title: DiffusionGemma model overview
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:45:45.135228+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/diffusiongemma/
+# DiffusionGemma model overview
 
 > Source: https://ai.google.dev/gemma/docs/diffusiongemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1844197897393252046&q=EgQoUFpcGKbOxNYGIjDRMROgEze9oywmSV0jQaQESusxm6Z5fEbkD8-EUppNIK6cqyCl_wWwGsvygqB2SQIyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/diffusiongemma/)  
-  
-  
-  
-  
+DiffusionGemma is an experimental open model that explores text diffusion, an exceptionally fast approach to text generation. Based on the 26B (4B active) Mixture-of-Experts (MoE) Gemma 4 architecture, DiffusionGemma generates tokens using discrete diffusion. This open-weights model is multimodal, handling text, image, and video inputs to generate text output.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/diffusiongemma/&q=EgQoUFpcGKbOxNYGIjDRMROgEze9oywmSV0jQaQESusxm6Z5fEbkD8-EUppNIK6cqyCl_wWwGsvygqB2SQIyA2NyUloBQw)  
-  
+Built on a MoE foundation, DiffusionGemma is designed to improve generation speed (tokens per second) while remaining deployable across various hardware environments. DiffusionGemma builds upon the architectural and capability advancements of Gemma 4, introducing several core features:
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * **Discrete Text Diffusion:** Shifts away from traditional causal token generation to block-autoregressive multi-canvas sampling. The model generates text by iteratively denoising blocks of tokens (a "canvas") in parallel to dramatically boost decoding speeds.
+  * **Multimodal Processing:** Natively accepts text, images (with variable aspect ratio and resolution support), and video inputs. (Note: Audio input is not supported).
+  * **Encoder-Decoder Architecture:** Utilizes an autoregressive encoder to process and cache prompt context, paired with denoising that applies bi-directional attention over the generation canvas.
+  * **Mixture-of-Experts (MoE) Efficiency:** Leverages a sparse MoE design based on the 26B (4B active) MoE variant, offering deep reasoning capabilities with minimal overhead. When quantized, it fits within the 18GB VRAM limits of consumer GPUs, ideal for local execution.
+  * **Thinking Mode:** Built-in configurable reasoning channels allow the model to think step-by-step before emitting a final answer.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:03Z  
-URL: https://ai.google.dev/gemma/docs/diffusiongemma/  
 
+
+## Tradeoff with traditional models
+
+While traditional language models are highly efficient for large-scale cloud deployments because they can batch thousands of requests, running them locally for a single user leaves hardware underutilized. DiffusionGemma solves this by generating an entire 256-token block simultaneously rather than one token at a time, maximizing local hardware performance.
+
+However, this approach is strictly aimed at consumer-facing, low-concurrency local use; because its parallel decoding offers diminishing returns under high-QPS cloud workloads, the throughput advantage is strongest at low-to-medium batch sizes on a single accelerator.
+
+## Recommended Serving Configuration
+
+For optimal latency and quality, we recommend deploying with the following default parameters for the Diffusion Sampling Settings:
+
+Parameter | Recommended Value | Function | Rationale  
+---|---|---|---  
+Maximum Number of Denoising Steps | 48 | Upper bound on number of denoising steps per canvas. | A safe limit on the number of denoising steps. Denoising will stop in fewer steps when adaptive stopping is enabled, typically 12-16 steps depending on the task.  
+Temperature Schedule | Linear 0.8 -> 0.4 | Temperature scaling schedule that starts high and reduces as a function of denoising steps. | High temperature (0.8) encourages early exploration; low temperature (0.4) locks in final tokens.  
+Adaptive Early Stopping | Entropy threshold: 0.005 | Halts execution early if  
+A) the average model entropy over the canvas is below the threshold, and  
+B) if two consecutive denoiser predictions remain identical. | Simpler prompts and structured tasks like code require fewer denoising steps, enabling dynamic tokens-per-second speeds based on task complexity.  
+Token selection | Entropy bound: 0.1 | At each step, the sampler selects the lowest-entropy tokens such that their mutual information bound stays below entropy bound. The sampler fully renoises the non-selected tokens. | Ensures only tokens that the model is relatively certain about are selected to refine the canvas, leaving other tokens to be refined in later denoising steps.  
+  
+[Get it on Hugging Face](https://huggingface.co/collections/google/diffusiongemma) [Get it on Kaggle](https://www.kaggle.com/models/google/diffusiongemma) [Access it on Vertex](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/diffusiongemma)
+
+Access the experimental model weights (released under the Apache 2.0 license), allowing you to deploy it in your own projects and applications.
+
+[Learn more about DiffusionGemma architecture](https://ai.google.dev/gemma/docs/diffusiongemma/explained) [Try DiffusionGemma](https://ai.google.dev/gemma/docs/diffusiongemma/inference-diffusiongemma-with-hf)
+
+[Fine-tune DiffusionGemma](https://github.com/google/hackable_diffusion) [Deploy DiffusionGemma](https://docs.cloud.google.com/kubernetes-engine/docs/tutorials/serve-gemma-gpu-vllm)

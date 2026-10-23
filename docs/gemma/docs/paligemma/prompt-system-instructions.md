@@ -1,38 +1,70 @@
 ---
 url: https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/
-title: https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:20.259791+00:00
+title: PaliGemma prompt and system instructions
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:00.325097+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/
+# PaliGemma prompt and system instructions
 
 > Source: https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=8152368280392646176&q=EgQoUFpcGLTOxNYGIjBci6PvxOQ5j_SzJXbDoJ-wsRiVi5T5c6CENxko3a43FuWkbB8RytR5CdcGFm1f2pcyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/)  
-  
-  
-  
-  
+This page describes prompt formatting and system instructions for PaliGemma models. These Gemma model variants use the same general formatting as Gemma foundation models and support a special syntax for specific image-related tasks.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/&q=EgQoUFpcGLTOxNYGIjBci6PvxOQ5j_SzJXbDoJ-wsRiVi5T5c6CENxko3a43FuWkbB8RytR5CdcGFm1f2pcyA2NyUloBQw)  
-  
+## Prompt format
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+PaliGemma models use the same prompt formatting as the Gemma foundation models they are based on. However, PaliGemma models also support a special task syntax, which is described in the next section. For more information on Gemma prompt formatting, see [Gemma prompt and system instructions](https://ai.google.dev/gemma/docs/core/prompt-structure).
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:16Z  
-URL: https://ai.google.dev/gemma/docs/paligemma/prompt-system-instructions/  
+### Image and text data order
 
+When prompting PaliGemma models with text and image data, the image data must always be provided _first_ , and then the text prompting data after it. Reversing the order of image and text prompt data, or mixing image and text data will typically generate unusable responses.
+
+### Prompt task syntax
+
+The PaliGemma models are trained with specific prompt patterns and syntax for tasks such as object identification and image captioning. You can use this prompt task syntax to request specific behavior from the PaliGemma models as follows:
+
+  * **`"cap {lang}\n"`:** Very raw short caption (only supported by PT)
+  * **`"caption {lang}\n"`:** Short captions
+  * **`"describe {lang}\n"`:** Somewhat longer, more descriptive captions (only supported by PT)
+  * **`"ocr"`:** Optical character recognition (only supported by PT)
+  * **`"answer {lang} {question}\n"`:** Question answering about the image contents
+  * **`"question {lang} {answer}\n"`:** Question generation for a given answer (only supported by PT)
+  * **`"detect {object} ; {object}\n"`:** Locate listed objects in an image and return the bounding boxes for those objects
+  * **`"segment {object} ; {object}\n"`:** Locate the area occupied by the listed objects in an image to create an image segmentation for that object
+
+
+
+The `{lang}` options are for language codes. PaliGemma supports language recognition for 34 different languages for task prompts with this option. You can find the list of supported languages on [GitHub](https://github.com/google/crossmodal-3600/blob/main/web-data/README.md).
+
+For a detailed code examples showing how to use this syntax, see the [Generate PaliGemma output with Keras](https://ai.google.dev/gemma/docs/paligemma/inference-with-keras) tutorial.
+
+### Prompting with natural language
+
+Although the syntax in the previous section is recommended, the mix models also support natural language for many of the tasks. For example, "describe this image briefly" or "what is this text" will still work even if not prompted with the exact syntax.
+
+### Batched prompt commands
+
+You can provide more than one prompt command within a single prompt as a batch of instructions. Each prompt command must end with a `\n` character. The following example demonstrates how to structure your prompt text to provide multiple instructions.
+    
+    
+    prompts = [
+        'answer en where is the cow standing?\n',
+        'answer en what color is the cow?\n',
+        'describe en\n',
+        'detect cow\n',
+        'segment cow\n',
+    ]
+    images = [cow_image, cow_image, cow_image, cow_image, cow_image]
+    outputs = paligemma.generate(
+        inputs={
+            "images": images,
+            "prompts": prompts,
+        }
+    )
+    for output in outputs:
+        print(output)
+    
+
+## System instructions
+
+The PaliGemma models don't support any additional system instructions beyond the [Gemma system instructions](https://ai.google.dev/gemma/docs/core/prompt-structure#system-instructions) from the foundation models they are based on.

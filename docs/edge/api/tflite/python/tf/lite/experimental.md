@@ -1,38 +1,30 @@
 ---
 url: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/
-title: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:35.018689+00:00
+title: Module: tf.lite.experimental
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:42:35.252788+00:00
 ---
 
-# https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/
+# Module: tf.lite.experimental
 
 > Source: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=6081951998461226875&q=EgQoUFpcGMvNxNYGIjBRQQ_uZiOc3zlrmqG8TNWEUhkGHrTOPcqfjo_I5x4VqlUiLdNcfSBReYkAzV5XP7MyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/)  
-  
-  
-  
-  
+Public API for tf._api.v2.lite.experimental namespace
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/&q=EgQoUFpcGMvNxNYGIjBRQQ_uZiOc3zlrmqG8TNWEUhkGHrTOPcqfjo_I5x4VqlUiLdNcfSBReYkAzV5XP7MyA2NyUloBQw)  
-  
+## Modules
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[`authoring`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/authoring) module: Public API for tf._api.v2.lite.experimental.authoring namespace
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:32Z  
-URL: https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/  
+## Classes
 
+[`class Analyzer`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/Analyzer): Provides a collection of TFLite model analyzer tools.
+
+[`class OpResolverType`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/OpResolverType): Different types of op resolvers for Tensorflow Lite.
+
+[`class QuantizationDebugOptions`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugOptions): Debug options to set up a given QuantizationDebugger.
+
+[`class QuantizationDebugger`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/QuantizationDebugger): Debugger for Quantized TensorFlow Lite debug mode models.
+
+## Functions
+
+[`load_delegate(...)`](https://ai.google.dev/edge/api/tflite/python/tf/lite/experimental/load_delegate): Returns loaded Delegate object.

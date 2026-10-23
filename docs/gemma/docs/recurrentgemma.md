@@ -1,38 +1,51 @@
 ---
 url: https://ai.google.dev/gemma/docs/recurrentgemma/
-title: https://ai.google.dev/gemma/docs/recurrentgemma/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:20.135215+00:00
+title: RecurrentGemma
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:00.074219+00:00
 ---
 
-# https://ai.google.dev/gemma/docs/recurrentgemma/
+# RecurrentGemma
 
 > Source: https://ai.google.dev/gemma/docs/recurrentgemma/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=18061603886647636515&q=EgQoUFpcGLTOxNYGIjBzNuc6YBcMhW1pAPYdqLNQu90FoVTnAiuDn2sF8qRT0t_W0ZF0VBPegsgux_kjLd0yA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemma/docs/recurrentgemma/)  
-  
-  
-  
-  
+##  RecurrentGemma 
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemma/docs/recurrentgemma/&q=EgQoUFpcGLTOxNYGIjBzNuc6YBcMhW1pAPYdqLNQu90FoVTnAiuDn2sF8qRT0t_W0ZF0VBPegsgux_kjLd0yA2NyUloBQw)  
-  
+RecurrentGemma is an open model based on [Griffin](https://arxiv.org/abs/2402.19427), a hybrid model architecture that mixes gated linear recurrences with local sliding window attention. 
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+Like Gemma, RecurrentGemma is well-suited for a variety of text generation tasks, including question answering, summarization, and reasoning. However, RecurrentGemma's unique architecture offers the following additional advantages: 
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:17Z  
-URL: https://ai.google.dev/gemma/docs/recurrentgemma/  
+  * memory 
 
+####  Reduced memory usage 
+
+Lower memory requirements allow for the generation of longer samples on devices with limited memory, like single GPUs or CPUs. 
+
+  * multiple_stop 
+
+####  Higher throughput 
+
+RecurrentGemma can perform inference at significantly higher batch sizes, meaning it can generate substantially more tokens per second — especially when generating long sequences. 
+
+  * trending_up 
+
+####  High performance 
+
+RecurrentGemma matches Gemma's performance while requiring less memory and achieving faster inference. 
+
+
+
+
+##  More resources 
+
+###  [ View the model card ](https://ai.google.dev/gemma/docs/recurrentgemma/model_card)
+
+RecurrentGemma's model card contains detailed information about the model, implementation information, evaluation information, model usage and limitations, and more. 
+
+###  [ View on Kaggle ](https://www.kaggle.com/models/google/recurrentgemma)
+
+View more code, Colab notebooks, information, and discussions about RecurrentGemma on Kaggle. 
+
+###  [ Run on GitHub ](https://github.com/google-deepmind/recurrentgemma/blob/main/colabs/)
+
+Run example Colab notebooks for JAX and PyTorch on GitHub. 

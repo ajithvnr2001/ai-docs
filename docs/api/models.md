@@ -1,25 +1,13 @@
 ---
 url: https://ai.google.dev/api/models/
-title: Models \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers
+title: Models
 method: scrapling+scrapegraph
-fetched_at: 2026-10-15T19:16:04.492977+00:00
+fetched_at: 2026-10-23T12:00:03.424200+00:00
 ---
 
-# Models  |  Gemini API  |  Google AI for Developers
+# Models
 
 > Source: https://ai.google.dev/api/models/
-
-Gemini 4 Argon is now available. [Try it out](https://aistudio.google.com/prompts/new_chat?model=gemini-4-argon). 
-
-  * [ Home ](https://ai.google.dev/)
-  * [ Gemini API ](https://ai.google.dev/gemini-api)
-  * [ API reference ](https://ai.google.dev/api)
-
-
-
-Send feedback 
-
-#  Models
 
 The models endpoint provides a way for you to programmatically list the available models, and retrieve extended metadata such as supported functionality and context window sizing. Read more in [the Models guide](https://ai.google.dev/gemini-api/docs/models/gemini).
 
@@ -59,7 +47,7 @@ The request body must be empty.
     
     client = genai.Client()
     model_info = client.models.get(model="gemini-3.8-flash")
-    print(model_info)[models.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/models.py#L41-L45)
+    print(model_info)[models.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/models.py#L41-L45)
 
 ### Go
     
@@ -78,7 +66,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
     
-    fmt.Println(modelInfo)[models.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/models.go#L54-L68)
+    fmt.Println(modelInfo)[models.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/models.go#L54-L68)
 
 ### Shell
     
@@ -134,7 +122,7 @@ The request body must be empty.
     for m in client.models.list():
       for action in m.supported_actions:
         if action == "embedContent":
-          print(m.name)[models.py](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/python/models.py#L22-L36)
+          print(m.name)[models.py](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/python/models.py#L22-L36)
 
 ### Go
     
@@ -172,7 +160,7 @@ The request body must be empty.
     			break
     		}
     	}
-    }[models.go](https://github.com/google-gemini/api-examples/blob/4d282409f4a0a31eb11e00fb7c598df03be3c595/go/models.go#L14-L47)
+    }[models.go](https://github.com/google-gemini/api-examples/blob/67c0ba4eda7b03a683c553bd38f5954f7a3161c5/go/models.go#L14-L47)
 
 ### Shell
     
@@ -317,4 +305,4 @@ The request body contains data with the following structure: | Fields
 
 ### Response body
 
-If successful, the response body contains an instance of `[Operation](https://ai.google.dev/api/batch-api#Operation)`. Send feedback  Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates. Last updated 2026-09-23 UTC. Need to tell us more?  [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-09-23 UTC."],[],[]] 
+If successful, the response body contains an instance of `[Operation](https://ai.google.dev/api/batch-api#Operation)`.

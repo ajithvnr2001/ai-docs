@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/migrate/",
   "file": "gemini-api/docs/migrate.md",
-  "title": "https://ai.google.dev/gemini-api/docs/migrate/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:14.102201+00:00",
-  "html_len": 3049,
-  "md_len": 1753,
-  "depth": 0
+  "title": "Migrate to the Google GenAI SDK",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:33.554635+00:00"
 }

@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/file-input-methods/",
   "file": "gemini-api/docs/generate-content/file-input-methods.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/file-input-methods/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:52.165028+00:00",
-  "html_len": 3160,
-  "md_len": 1892,
-  "depth": 0
+  "title": "File input methods",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:24.645989+00:00"
 }

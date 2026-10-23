@@ -1,38 +1,34 @@
 ---
 url: https://ai.google.dev/responsible/docs/
-title: https://ai.google.dev/responsible/docs/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:19:29.401535+00:00
+title: Responsible Generative AI Toolkit
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:46:06.872178+00:00
 ---
 
-# https://ai.google.dev/responsible/docs/
+# Responsible Generative AI Toolkit
 
 > Source: https://ai.google.dev/responsible/docs/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=7495754982167571598&q=EgQoUFpcGL3OxNYGIjBUmvqnbNzk219Ctohh7mk9Kt9Sp7P7dccqBeNUoCXTx3ruV5Sv4ub5GvaVzj14y0syA2NyUloBQw&hl=en&continue=https://ai.google.dev/responsible/docs/)  
-  
-  
-  
-  
+This toolkit provides resources and tools to apply best practices for responsible use of open models, such as [Gemma](https://ai.google.dev/gemma), including:
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/responsible/docs/&q=EgQoUFpcGL3OxNYGIjBUmvqnbNzk219Ctohh7mk9Kt9Sp7P7dccqBeNUoCXTx3ruV5Sv4ub5GvaVzj14y0syA2NyUloBQw)  
-  
+  * Guidance on setting safety policies, safety tuning, safety classifiers and model evaluation.
+  * The [Learning Interpretability Tool](https://ai.google.dev/responsible/docs/alignment#lit) for investigating and debugging Gemma's behavior in response to prompts.
+  * The [LLM Comparator](https://ai.google.dev/responsible/docs/evaluation#llm-comparator) for running and visualizing comparative evaluation results.
+  * A methodology for [building robust safety classifiers](https://ai.google.dev/responsible/docs/safeguards#agile-classifiers) with minimal examples.
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:19:25Z  
-URL: https://ai.google.dev/responsible/docs/  
+
+This version of the toolkit focuses on English text-to-text models only. You can provide feedback to make this toolkit more helpful through the feedback mechanism link at the bottom of the page.
+
+When building with Gemma, you should take a holistic approach to responsibility and consider all the possible challenges at the application and model levels. This toolkit covers risk and mitigation techniques to address safety, privacy, fairness, and accountability.
+
+![Functional diagram of responsible AI practices](https://ai.google.dev/static/responsible/images/rai-overview.png)
+
+Check out the rest of this toolkit for more information and guidance:
+
+  * [Design a responsible approach](https://ai.google.dev/responsible/docs/design)
+  * [Align your models](https://ai.google.dev/responsible/docs/alignment)
+  * [Evaluate your models and system for safety](https://ai.google.dev/responsible/docs/evaluation)
+  * [Protect your system with safeguards](https://ai.google.dev/responsible/docs/safeguards)
+
 

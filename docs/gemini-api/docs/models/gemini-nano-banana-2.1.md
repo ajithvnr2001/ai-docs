@@ -1,38 +1,45 @@
 ---
 url: https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1
-title: https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:18:26.389725+00:00
+title: Gemini Nano Banana 2.1
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:44:44.077881+00:00
 ---
 
-# https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1
+# Gemini Nano Banana 2.1
 
 > Source: https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=2441108082166399005&q=EgQoUFpcGIDOxNYGIjBqz0Bo2a6fhsKvgZv0jfjuH9NaZYY7lri0MYu48_eoSDBLF6xXHd4fF4UM3kqi4WMyA2NyUloBQw&hl=en&continue=https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1)  
-  
-  
-  
-  
+**Gemini Nano Banana 2.1** (`gemini-nano-banana-2.1`) is the latest high-efficiency image generation and conversational editing model. An update to Nano Banana 2 ([Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image)), it maintains Flash-level speed and cost efficiency while delivering significant improvements in visual quality, prompt adherence, multi-turn character consistency, and text rendering. It serves as the more efficient counterpart to [Gemini 3 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) (Nano Banana Pro).
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1&q=EgQoUFpcGIDOxNYGIjBqz0Bo2a6fhsKvgZv0jfjuH9NaZYY7lri0MYu48_eoSDBLF6xXHd4fF4UM3kqi4WMyA2NyUloBQw)  
-  
+**Key updates:**
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+  * Improved visual quality and realism across `1K`, `2K`, and `4K` output resolutions (default `1K`)
+  * Fixed tiling artifacts on wide and panoramic aspect ratios (`1:4`, `4:1`, `1:8`, `8:1`) at `2K` and `4K` resolutions
+  * Enhanced text rendering and infographic layout accuracy
+  * Multi-image fusion supporting up to 14 reference images (character consistency for up to 4 characters and object fidelity for up to 10 objects)
+  * Grounding with Google Web and Image Search
+  * Configurable Thinking levels (`minimal`, `medium` default, and `high`)
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:18:24Z  
-URL: https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1  
 
+
+[Try in Google AI Studio](https://aistudio.google.com?model=gemini-nano-banana-2.1)
+
+## Documentation
+
+Visit the [Image generation](https://ai.google.dev/gemini-api/docs/image-generation) page for full coverage of features and capabilities.
+
+## gemini-nano-banana-2.1
+
+Property | Description  
+---|---  
+id_cardModel code | `gemini-nano-banana-2.1`  
+saveSupported data types |  **Inputs** Text, Image, Video, and PDF **Output** Image and Text  
+token_autoToken limits[[*]](https://ai.google.dev/gemini-api/docs/tokens) |  **Input token limit** 131,072 **Output token limit** 32,768  
+handymanCapabilities | **[Audio generation](https://ai.google.dev/gemini-api/docs/speech-generation)** Not supported **[Caching](https://ai.google.dev/gemini-api/docs/caching)** Not supported **[Code execution](https://ai.google.dev/gemini-api/docs/code-execution)** Not supported **[File search](https://ai.google.dev/gemini-api/docs/file-search)** Not supported **[Function calling](https://ai.google.dev/gemini-api/docs/function-calling)** Not supported **[Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding)** Not supported **[Image generation](https://ai.google.dev/gemini-api/docs/image-generation)** Supported **[Live API](https://ai.google.dev/gemini-api/docs/live-api)** Not supported **[Search grounding](https://ai.google.dev/gemini-api/docs/google-search)** Supported **[Structured outputs](https://ai.google.dev/gemini-api/docs/structured-output)** Not supported **[Thinking](https://ai.google.dev/gemini-api/docs/thinking)** Supported **[URL context](https://ai.google.dev/gemini-api/docs/url-context)** Not supported  
+speedConsumption options |  **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported  
+123Versions |  Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details.
+
+  * Stable: `gemini-nano-banana-2.1`
+
+  
+calendar_monthLatest update | October 2026

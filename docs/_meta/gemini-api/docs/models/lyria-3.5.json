@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/models/lyria-3.5",
   "file": "gemini-api/docs/models/lyria-3.5.md",
-  "title": "https://ai.google.dev/gemini-api/docs/models/lyria-3.5",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:18:30.621734+00:00",
-  "html_len": 3082,
-  "md_len": 1794,
-  "depth": 0
+  "title": "Lyria 3.5",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:44:48.523995+00:00"
 }

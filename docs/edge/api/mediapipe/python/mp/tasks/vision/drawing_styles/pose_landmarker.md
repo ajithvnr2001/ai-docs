@@ -1,38 +1,20 @@
 ---
 url: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/
-title: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/
-method: crawl4ai+scrapegraph (scrapling: scrapling status 429)
-fetched_at: 2026-10-15T19:17:14.370925+00:00
+title: Module: mp.tasks.vision.drawing_styles.pose_landmarker
+method: scrapling+scrapegraph
+fetched_at: 2026-10-23T11:41:42.847659+00:00
 ---
 
-# https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/
+# Module: mp.tasks.vision.drawing_styles.pose_landmarker
 
 > Source: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/
 
-* * *
-  
-To continue, please type the characters below:  
-  
-![Please enable images](https://www.google.com/sorry/image?id=1743999400062242197&q=EgQoUFpcGLbNxNYGIjDC2Y9rIXrRpCTp-8rLlr8_EQhtIVSVPcaVFbiIjIHzGVI-aDr2mWv7QeLr5IIWTrMyA2NyUloBQw&hl=en&continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/)  
-  
-  
-  
-  
+[ ![](https://www.tensorflow.org/images/GitHub-Mark-32px.png) View source on GitHub ](https://github.com/google/mediapipe/blob/master/mediapipe/tasks/python/vision/pose_landmarker.py) MediaPipe pose landmarker task.
 
-* * *
-**About this page**  
-  
-Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/&q=EgQoUFpcGLbNxNYGIjDC2Y9rIXrRpCTp-8rLlr8_EQhtIVSVPcaVFbiIjIHzGVI-aDr2mWv7QeLr5IIWTrMyA2NyUloBQw)  
-  
+## Modules
 
-This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the [Terms of Service](https://www.google.com/policies/terms/). The block will expire shortly after those requests stop. In the meantime, solving the above CAPTCHA will let you continue to use our services.  
-  
-This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests. If you share your network connection, ask your administrator for help — a different computer using the same IP address may be responsible. [Learn more](https://support.google.com/websearch/answer/86640)  
-  
-Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly. 
-  
+[`async_result_dispatcher`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/async_result_dispatcher) module: A dispatcher to handle asynchronous results from a C library. [`base_options_c_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/base_options_c_lib) module: C types for BaseOptions. [`base_options_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/base_options_lib) module: Base options for MediaPipe Task APIs. [`image_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_lib) module: MediaPipe image container. [`image_processing_options_c_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_processing_options_c_lib) module: MediaPipe ImageProcessingOptions C API types. [`image_processing_options_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/image_processing_options_lib) module: MediaPipe vision options for image processing. [`landmark_c_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/components/containers/landmark_c) module: C types for Landmark. [`landmark_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_utils/landmark_module) module: Landmark data class. [`mediapipe_c_bindings_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/mediapipe_c_bindings_lib) module: MediaPipe Text tasks shared library. [`mediapipe_c_utils`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/mediapipe_c_utils) module: Common MediaPipe CTypes definitions and utilities. [`running_mode_lib`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/running_mode_lib) module: The running mode of MediaPipe Vision Tasks. [`serial_dispatcher`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/face_landmarker/serial_dispatcher) module: A thread-safe dispatcher for a ctypes.
 
-IP address: 40.80.90.92  
-Time: 2026-10-15T19:17:10Z  
-URL: https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/  
+## Classes
 
+[`class PoseLandmark`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/PoseLandmark): The 33 pose landmarks. [`class PoseLandmarker`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/PoseLandmarker): Class that performs pose landmarks detection on images. [`class PoseLandmarkerOptions`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/PoseLandmarkerOptions): Options for the pose landmarker task. [`class PoseLandmarkerOptionsC`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerOptionsC): The ctypes struct for PoseLandmarkerOptions. [`class PoseLandmarkerResult`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/PoseLandmarkerResult): The pose landmarks detection result from PoseLandmarker, where each vector element represents a single pose detected in the image. [`class PoseLandmarkerResultC`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/drawing_styles/pose_landmarker/PoseLandmarkerResultC): The ctypes struct for PoseLandmarkerResult. [`class PoseLandmarksConnections`](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/PoseLandmarksConnections): The connections between pose landmarks.

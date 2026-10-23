@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/api/generate-content/",
   "file": "api/generate-content.md",
-  "title": "Generating content \u00a0|\u00a0 Gemini API \u00a0|\u00a0 Google AI for Developers",
+  "title": "Generating content",
   "method": "scrapling+scrapegraph",
-  "fetched_at": "2026-10-15T19:16:01.226585+00:00",
-  "html_len": 1219588,
-  "md_len": 244328,
-  "depth": 0
+  "fetched_at": "2026-10-23T12:00:12.351921+00:00"
 }

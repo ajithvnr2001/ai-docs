@@ -1,10 +1,7 @@
 {
   "url": "https://ai.google.dev/gemini-api/docs/generate-content/maps-grounding/",
   "file": "gemini-api/docs/generate-content/maps-grounding.md",
-  "title": "https://ai.google.dev/gemini-api/docs/generate-content/maps-grounding/",
-  "method": "crawl4ai+scrapegraph (scrapling: scrapling status 429)",
-  "fetched_at": "2026-10-15T19:17:55.842649+00:00",
-  "html_len": 3145,
-  "md_len": 1873,
-  "depth": 0
+  "title": "Grounding with Google Maps",
+  "method": "scrapling+scrapegraph",
+  "fetched_at": "2026-10-23T11:43:36.109422+00:00"
 }
