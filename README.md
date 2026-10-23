@@ -4,7 +4,7 @@
 
 Crawls **https://ai.google.dev/** completely (sitemap + linked reference domains: aistudio, saif, discuss, developer.android, developer.chrome) and saves clean Markdown docs. Pipeline: **Scrapling** (cookie-warmed) → **Crawl4AI** → **ScrapeGraphAI** (local, no LLM key).
 
-**Current corpus:** 5,627 Markdown pages + 8 raw `.md.txt` API specs; **8,936 images across 1,263 pages**. Integrity audit: **0 CAPTCHA/OAuth pages, 0 404 pages, 0 missing index files, 0 relative image links**.
+**Current corpus:** 5,627 Markdown pages + 16 raw `.md.txt` API specs; **8,936 images across 1,263 pages**. Integrity audit: **0 CAPTCHA/OAuth pages, 0 404 pages, 0 missing/unindexed files, 0 relative image links**.
 
 ## Install
 

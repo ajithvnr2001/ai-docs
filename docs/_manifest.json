@@ -3,7 +3,7 @@
   "total_seeds": 654,
   "sitemap_count": 654,
   "llms_files": [],
-  "visited": 5635,
+  "visited": 5645,
   "failed": 0,
   "stats": {
     "ok": 5725,
@@ -19,9 +19,9 @@
     "crawl4ai (AsyncWebCrawler fallback)",
     "scrapegraph-ai (cleanup_html/convert_to_md)"
   ],
-  "generated_at": "2026-10-23T12:03:14.729443+00:00",
+  "generated_at": "2026-10-23T12:05:22.728611+00:00",
   "last_verified": "2026-10-23",
-  "pages": 5635,
+  "pages": 5645,
   "pruned_404": 152,
   "pruned_non_page": 3
 }

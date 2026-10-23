@@ -47,7 +47,7 @@ Expected: ~5,627 pages total (`ai.google.dev` + 5 subdomain hosts), ~90MB. Concu
    - **repair** = indexed pages whose saved file contains CAPTCHA/OAuth markers → refetched regardless of `lastmod`, capped at 300/run (`--repair-cap`)
    - writes daily stamp `docs/_last_verified.json`, updates `_manifest.json`, stamps "Last verified:" in both READMEs
 2. If anything changed: commit `chore: daily docs update <date>` + push with **retry-with-rebase** (on stamp-file conflicts it keeps our fresh copy: `git checkout --ours -- docs/_last_verified.json docs/_manifest.json`).
-3. `python3 audit_corpus.py` — fails the job on blocked/404/missing/duplicate/relative-image pages, so a regression cannot pass silently.
+3. `python3 audit_corpus.py` — fails the job on blocked/404/missing/unindexed/duplicate/relative-image pages, so a regression cannot pass silently.
 
 Run manually anytime: **Actions → daily-docs-update → Run workflow** (workflow_dispatch). Locally:
 
@@ -67,7 +67,7 @@ python3 -c "import json;print(json.load(open('docs/_last_verified.json')))"
 python3 prune_404.py                         # optional: remove dead pages recorded as 404
 ```
 
-`audit_corpus.py` warns about thin pages (client-rendered app shells, forum profiles, MediaPipe module stubs) but only exits nonzero for blocked pages, 404s, missing index files, duplicate URLs, or relative image links.
+`audit_corpus.py` warns about thin pages (client-rendered app shells, forum profiles, MediaPipe module stubs) but only exits nonzero for blocked pages, 404s, missing or unindexed files, duplicate URLs, or relative image links.
 
 A green daily Action that says "no changes" most days = healthy. If `new` grows monotonically without commits, check the Actions log for the push-retry dance.
 

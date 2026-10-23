@@ -29,5 +29,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/ README.md guide_code/README.md
           git diff --cached --quiet && echo "no changes" || (git commit -m "chore: daily docs update $(date -u +%F)" && (git push || (git fetch origin main && (git rebase origin/main || (git checkout --ours -- docs/_last_verified.json docs/_manifest.json && git add -u && GIT_EDITOR=true git rebase --continue)) && git push)))
-      - name: Corpus integrity audit (fails on blocked/404/relative-image pages)
+      - name: Corpus integrity audit (fails on blocked/404/unindexed/relative-image pages)
         run: python3 audit_corpus.py

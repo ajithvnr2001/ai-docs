@@ -6,6 +6,7 @@ Scans every mirrored page and exits nonzero on hard errors:
   - anti-bot CAPTCHA / OAuth pages saved as docs
   - 404 / error pages saved as docs
   - index rows whose Markdown file is missing
+  - Markdown files that are not present in _index.jsonl
   - duplicate index URLs
   - relative image URLs (GitHub cannot render them)
 
@@ -45,13 +46,14 @@ def split_frontmatter(text):
 
 def main():
     blocked, notfound, thin, relimg, missing = [], [], [], [], []
-    titles_eq_url = []
+    titles_eq_url, md_files = [], []
     pages = img_total = pages_with_img = 0
 
     for p in sorted(DOCS.rglob("*.md")):
         if p.name.startswith("_") and p.name != "_index.md":
             continue
         pages += 1
+        md_files.append(str(p.relative_to(DOCS)))
         try:
             text = p.read_text(errors="replace")
         except Exception as e:
@@ -91,6 +93,8 @@ def main():
         idx = [json.loads(l) for l in open(DOCS / "_index.jsonl") if l.strip()]
     urls = [r.get("url") for r in idx]
     dupes = len(urls) - len(set(urls))
+    indexed_files = {r.get("file") for r in idx}
+    unindexed = [f for f in md_files if f not in indexed_files]
     for r in idx:
         rel = r.get("file", "")
         if not rel or not (DOCS / rel).exists():
@@ -103,11 +107,11 @@ def main():
         except Exception:
             pass
 
-    hard = len(blocked) + len(notfound) + len(missing) + dupes + len(relimg)
+    hard = len(blocked) + len(notfound) + len(missing) + dupes + len(relimg) + len(unindexed)
     print(f"pages={pages} index={len(idx)} unique={len(set(urls))}")
     print(f"images={img_total} across {pages_with_img} pages")
     print(f"hard errors: blocked={len(blocked)} notfound={len(notfound)} "
-          f"missing={len(missing)} dupes={dupes} relative_images={len(relimg)}")
+          f"missing={len(missing)} unindexed={len(unindexed)} dupes={dupes} relative_images={len(relimg)}")
     if blocked:
         for p in blocked[:10]:
             print(f"  BLOCKED: {p}")
@@ -117,6 +121,9 @@ def main():
     if missing:
         for u, rel in missing[:10]:
             print(f"  MISSING: {u} -> {rel}")
+    if unindexed:
+        for f in unindexed[:10]:
+            print(f"  UNINDEXED: {f}")
     if relimg:
         for p, u in relimg[:10]:
             print(f"  REL-IMG: {p} -> {u}")
